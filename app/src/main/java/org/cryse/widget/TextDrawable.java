@@ -1,4 +1,4 @@
-package com.amulyakhare.textdrawable;
+package org.cryse.widget;
 
 import android.content.Context;
 import android.graphics.*;

@@ -28,9 +28,9 @@ import java.util.List;
 import javax.inject.Inject;
 
 public class HotThreadFragment extends SimpleCollectionFragment<
-        HotThreadModel,
-        HotThreadAdapter,
-        HotThreadPresenter> implements SimpleCollectionView<HotThreadModel> {
+    HotThreadModel,
+    HotThreadAdapter,
+    HotThreadPresenter> implements SimpleCollectionView<HotThreadModel> {
     private static final String LOG_TAG = ForumsFragment.class.getName();
     private static final String KEY_IS_DIGEST = "key_is_digest";
     AppNavigation mNavigation = new AppNavigation();
@@ -131,11 +131,12 @@ public class HotThreadFragment extends SimpleCollectionFragment<
                 mCollectionView.hideMoreProgress();
             }
 
-            @Override
-            public void onChangeMoreVisibility(int visibility) {
-                mMoreProgressBar.setVisibility(visibility);
-            }
-        };    }
+            //@Override
+            //public void onChangeMoreVisibility(int visibility) {
+            //    mMoreProgressBar.setVisibility(visibility);
+            //}
+        };
+    }
 
     @Override
     protected RecyclerView.LayoutManager getRecyclerViewLayoutManager() {

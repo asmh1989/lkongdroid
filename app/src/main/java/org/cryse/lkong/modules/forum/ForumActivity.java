@@ -151,10 +151,10 @@ public class ForumActivity extends AbstractSwipeBackActivity implements ForumVie
                 }
             }
 
-            @Override
-            public void onChangeMoreVisibility(int visibility) {
-                mMoreProgressBar.setVisibility(visibility);
-            }
+            //@Override
+            //public void onChangeMoreVisibility(int visibility) {
+            //    mMoreProgressBar.setVisibility(visibility);
+            //}
         });
         mCollectionAdapter.setOnThreadItemClickListener(new ThreadListAdapter.OnThreadItemClickListener() {
             @Override

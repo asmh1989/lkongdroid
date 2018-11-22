@@ -118,10 +118,10 @@ public class SearchFragment extends AbstractFragment implements SearchForumView 
                 }
             }
 
-            @Override
-            public void onChangeMoreVisibility(int visibility) {
-                mMoreProgressBar.setVisibility(visibility);
-            }
+            //@Override
+            //public void onChangeMoreVisibility(int visibility) {
+            //    mMoreProgressBar.setVisibility(visibility);
+            //}
         });
         mSearchResultAdapter.setOnItemClickListener((view, position, id) -> {
             switch (mSearchResultAdapter.getResultType()) {

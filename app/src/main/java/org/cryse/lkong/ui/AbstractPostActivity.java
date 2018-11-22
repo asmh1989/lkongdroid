@@ -133,7 +133,7 @@ public abstract class AbstractPostActivity extends AbstractSwipeBackActivity {
                 PreferenceConstant.SHARED_PREFERENCE_POST_TAIL_TEXT,
                 PreferenceConstant.SHARED_PREFERENCE_POST_TAIL_TEXT_VALUE
         );
-        setSwipeBackEnable(false);
+
         setUpToolbar(mToolbar);
         mContentTextSize = 14;
         mContentEditText.setTextSize(TypedValue.COMPLEX_UNIT_PX, mContentTextSize);

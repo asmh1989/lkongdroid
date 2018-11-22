@@ -108,12 +108,7 @@ public class PhotoViewPagerActivity extends AbstractSwipeBackActivity {
                 if (mViewPager.getCurrentItem() == 0) {
                     DisplayMetrics displaymetrics = new DisplayMetrics();
                     PhotoViewPagerActivity.this.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
-                    int width = displaymetrics.widthPixels;
-                    PhotoViewPagerActivity.this.getSwipeBackLayout().setEnableGesture(true);
-                    PhotoViewPagerActivity.this.getSwipeBackLayout().setEdgeSize(width);
                 } else {
-                    PhotoViewPagerActivity.this.getSwipeBackLayout().setEnableGesture(false);
-                    PhotoViewPagerActivity.this.getSwipeBackLayout().setEdgeSize(0);
                 }
             }
 

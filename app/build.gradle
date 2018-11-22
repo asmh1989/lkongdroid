@@ -84,6 +84,9 @@ dependencies {
 
     }
 
+    implementation 'com.malinskiy:superrecyclerview:1.1.4'
+
+
     implementation(libDependencies.fastScroller) {
         transitive = true
     }

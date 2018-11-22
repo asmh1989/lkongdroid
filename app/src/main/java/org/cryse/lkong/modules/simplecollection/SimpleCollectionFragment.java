@@ -287,10 +287,10 @@ public abstract class SimpleCollectionFragment<
                 }
             }
 
-            @Override
-            public void onChangeMoreVisibility(int visibility) {
-                mMoreProgressBar.setVisibility(visibility);
-            }
+            //@Override
+            //public void onChangeMoreVisibility(int visibility) {
+            //    mMoreProgressBar.setVisibility(visibility);
+            //}
         };
     }
 

@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.amulyakhare.textdrawable.TextDrawable;
+import org.cryse.widget.TextDrawable;
 
 import org.cryse.lkong.R;
 import org.cryse.lkong.model.HotThreadModel;

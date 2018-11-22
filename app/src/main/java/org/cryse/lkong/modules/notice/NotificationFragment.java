@@ -137,12 +137,7 @@ public class NotificationFragment extends InActivityFragment {
                     DisplayMetrics displaymetrics = new DisplayMetrics();
                     containerActivity.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
                     int width = displaymetrics.widthPixels;
-                    containerActivity.getSwipeBackLayout().setEnableGesture(true);
-                    containerActivity.getSwipeBackLayout().setEdgeSize(width);
                 } else {
-                    AbstractSwipeBackActivity containerActivity = (AbstractSwipeBackActivity) getActivity();
-                    containerActivity.getSwipeBackLayout().setEnableGesture(false);
-                    containerActivity.getSwipeBackLayout().setEdgeSize(0);
                 }
             }
         });
