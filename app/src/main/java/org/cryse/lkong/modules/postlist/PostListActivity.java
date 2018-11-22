@@ -179,9 +179,11 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
                 PreferenceConstant.SHARED_PREFERENCE_USE_PRIMARY_COLOR_POST_CONTROL,
                 PreferenceConstant.SHARED_PREFERENCE_USE_PRIMARY_COLOR_POST_CONTROL_VALUE
         );
+        mToolbar.setBackgroundColor(getResources().getColor(R.color.md_blue_400));
         setUpToolbar(mToolbar);
         setupPageControlListener();
         setTitle(R.string.activity_title_post_list);
+
 
         initRecyclerView();
         initTextPaint();
@@ -945,6 +947,8 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
         ThemeUtils.setTint(forwardArrow, toolbarTextColor);
         ((ImageButton)mFooterPagerControl.findViewById(R.id.widget_pager_control_button_backward)).setImageDrawable(backwardArrow);
         ((ImageButton)mFooterPagerControl.findViewById(R.id.widget_pager_control_button_forward)).setImageDrawable(forwardArrow);
+
+        //mFooterPagerControl.setBackgroundColor(getResources().getColor(R.color.design_default_color_primary));
     }
 
     private void openRateLogDialog(PostModel postModel) {
@@ -1221,13 +1225,13 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
         mTodayPrefix = getString(R.string.text_datetime_today);
         mContentTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         //float contentTextSize = Config.textSizeForMode(this, mATEKey, Config.TEXTSIZE_BODY);
-        //mContentTextPaint.setTextSize(contentTextSize);
-        mContentTextPaint.setColor(mTextColorPrimary);
+        mContentTextPaint.setTextSize(UIUtils.getSpDimensionPixelSize(this, R.dimen.text_size_edit));
+        //mContentTextPaint.setColor(mTextColorPrimary);
         mContentTextPaint.linkColor = getAccentColor();
         mAuthorTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         float authorTextSize =  UIUtils.getSpDimensionPixelSize(this, R.dimen.text_size_subhead);
         mAuthorTextPaint.setTextSize(authorTextSize);
-        mAuthorTextPaint.setColor(mTextColorPrimary);
+        //mAuthorTextPaint.setColor(mTextColorPrimary);
         mAuthorTextPaint.linkColor = getAccentColor();
         mDatelineTextSize = UIUtils.getSpDimensionPixelSize(this, R.dimen.text_size_body1);
     }

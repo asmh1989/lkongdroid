@@ -212,7 +212,7 @@ public abstract class AbstractActivity extends AppCompatActivity implements Snac
     }
 
     protected int getPrimaryColor() {
-        return  Color.parseColor("#455A64");
+        return  getResources().getColor(R.color.md_blue_400);
     }
 
     protected int getPrimaryDarkColor() {

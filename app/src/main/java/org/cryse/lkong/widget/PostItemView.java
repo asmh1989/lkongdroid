@@ -94,7 +94,7 @@ public class PostItemView extends View implements ImageSpanContainer {
 
         mOrdinalPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         mOrdinalPaint.setTextSize(getResources().getDimension(R.dimen.text_size_caption));
-        mOrdinalPaint.setColor(ThemeUtils.textColorSecondary(getContext()));
+        //mOrdinalPaint.setColor(ThemeUtils.textColorSecondary(getContext()));
         mOrdinalFontMetrics = mOrdinalPaint.getFontMetrics();
         initTouchHandler();
     }
@@ -171,7 +171,7 @@ public class PostItemView extends View implements ImageSpanContainer {
                     pendingImageSpan.loadImage(
                             this,
                             viewImageMaxWidth,
-                            mIsNightMode ? Color.argb(255, 15, 15, 15) : Color.argb(255, 229, 229, 229)
+                            Color.argb(255, 229, 229, 229)
                     );
                 }
             });

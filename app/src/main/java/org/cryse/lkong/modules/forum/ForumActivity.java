@@ -400,6 +400,8 @@ public class ForumActivity extends AbstractSwipeBackActivity implements ForumVie
         } else {
             mLastItemSortKey = -1;
         }
+
+        mCollectionAdapter.notifyDataSetChanged();
     }
 
     @Override

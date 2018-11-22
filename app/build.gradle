@@ -85,6 +85,7 @@ dependencies {
     }
 
     implementation 'com.malinskiy:superrecyclerview:1.1.4'
+//    implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
 
 
     implementation(libDependencies.fastScroller) {

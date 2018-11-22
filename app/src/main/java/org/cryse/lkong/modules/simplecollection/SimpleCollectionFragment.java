@@ -192,6 +192,7 @@ public abstract class SimpleCollectionFragment<
         } else {
             mLastItemSortKey = 0;
         }
+        mCollectionAdapter.notifyDataSetChanged();
     }
 
     @Override

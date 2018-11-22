@@ -36,12 +36,6 @@ public class LKongApplication extends Application {
     private SendServiceComponet mSendServiceComponet;
     private UserAccountManager mUserAccountManager;
 
-    /*@Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(base);
-        MultiDex.install(this);
-    }*/
-
     @Override
     public void onCreate() {
         super.onCreate();
@@ -49,7 +43,6 @@ public class LKongApplication extends Application {
         Realm.init(this);
         Timber.plant(new CrashReportingTree());
         Prefs.with(this).useDefault().init();
-        AnalyticsUtils.init(this, "....");
 
         UserAccountManager.startHandlerThread();
         UpgradeUtils.checkVersionCode(this);

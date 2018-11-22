@@ -107,9 +107,6 @@ public class MainActivity extends AbstractActivity implements EasyPermissions.Pe
         } else {
             UpgradeUtils.showChangelog(this);
         }
-        /*setDrawerLayoutBackground(isNightMode());
-        getDrawerLayout().setStatusBarBackgroundColor(getThemeEngine().getPrimaryDarkColor(this));
-        getSwipeBackLayout().setEnableGesture(false);*/
         if(savedInstanceState!=null && savedInstanceState.containsKey("selection_item_position")) {
             mCurrentSelection = savedInstanceState.getInt("selection_item_position");
             mIsRestorePosition = true;

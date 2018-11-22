@@ -346,8 +346,8 @@ public class HomePageFragment extends AbstractFragment implements HomePageView {
             adapter.addFragment(FollowedForumsFragment.newInstance(null), getString(R.string.drawer_item_followed_forums), R.drawable.ic_stared);
             adapter.addFragment(TimelineFragment.newInstance(null), getString(R.string.drawer_item_timeline), R.drawable.ic_timeline);
         } else {
-            adapter.addFragment(TimelineFragment.newInstance(null), getString(R.string.drawer_item_timeline), R.drawable.ic_timeline);
             adapter.addFragment(FollowedForumsFragment.newInstance(null), getString(R.string.drawer_item_followed_forums), R.drawable.ic_stared);
+            adapter.addFragment(TimelineFragment.newInstance(null), getString(R.string.drawer_item_timeline), R.drawable.ic_timeline);
             adapter.addFragment(ForumsFragment.newInstance(null), getString(R.string.drawer_item_forum_list), R.drawable.ic_forums);
         }
         adapter.addFragment(HotThreadFragment.newInstance(false), getString(R.string.drawer_item_hot_thread), R.drawable.ic_whatshot);
