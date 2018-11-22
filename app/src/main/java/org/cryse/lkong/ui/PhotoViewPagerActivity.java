@@ -49,7 +49,7 @@ import java.util.List;
 import java.util.concurrent.Future;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
+import butterknife.BindView;
 import rx.Observable;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
@@ -63,9 +63,9 @@ public class PhotoViewPagerActivity extends AbstractSwipeBackActivity {
     private String mInitUrl;
     private String mImageFolderName;
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.photo_viewpager)
+    @BindView(R.id.photo_viewpager)
     ViewPager mViewPager;
     PhotoPagerAdapter mPagerAdapter;
 
@@ -227,11 +227,11 @@ public class PhotoViewPagerActivity extends AbstractSwipeBackActivity {
         private static final String SUB_CACHE_DIR = "img-origin-cache";
         private Subscription mLoadImageSubscription;
         private String mImageUrl;
-        @Bind(R.id.viewpager_item_progressbar)
+        @BindView(R.id.viewpager_item_progressbar)
         ProgressBar mProgressBar;
-        @Bind(R.id.viewpager_item_imageview_secondary)
+        @BindView(R.id.viewpager_item_imageview_secondary)
         ImageView mSecondaryPhotoView;
-        @Bind(R.id.viewpager_item_imageview_primary)
+        @BindView(R.id.viewpager_item_imageview_primary)
         SubsamplingScaleImageView mPhotoView;
 
         public static ImageFragment newInstance(String url) {

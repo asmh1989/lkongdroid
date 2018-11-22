@@ -28,7 +28,7 @@ import org.cryse.lkong.utils.snackbar.SimpleSnackbarType;
 import org.cryse.lkong.utils.snackbar.SnackbarUtils;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
+import butterknife.BindView;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -63,24 +63,24 @@ public class LKongAuthenticatorActivity extends AccountAuthenticatorActivity {
     private AccountManager mAccountManager;
     private String mAuthTokenType;
 
-    @Bind(R.id.activity_sign_in_cardview)
+    @BindView(R.id.activity_sign_in_cardview)
     CardView mSignInCardView;
-    @Bind(R.id.edit_email)
+    @BindView(R.id.edit_email)
     EditText mEmailEditText;
-    @Bind(R.id.edit_password)
+    @BindView(R.id.edit_password)
     EditText mPasswordEditText;
-    @Bind(R.id.edit_email_textlayout)
+    @BindView(R.id.edit_email_textlayout)
     TextInputLayout mEmailTextLayout;
-    @Bind(R.id.edit_password_textlayout)
+    @BindView(R.id.edit_password_textlayout)
     TextInputLayout mPasswordTextLayout;
-    @Bind(R.id.sign_in_result_textview)
+    @BindView(R.id.sign_in_result_textview)
     TextView mResultTextView;
 
-    @Bind(R.id.button_sign_in)
+    @BindView(R.id.button_sign_in)
     Button mSignInButton;
-    @Bind(R.id.button_sign_up)
+    @BindView(R.id.button_sign_up)
     Button mSignUpButton;
-    @Bind(R.id.button_faq)
+    @BindView(R.id.button_faq)
     Button mFAQButton;
 
 

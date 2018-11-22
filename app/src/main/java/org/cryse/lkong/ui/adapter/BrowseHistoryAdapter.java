@@ -18,7 +18,7 @@ import org.cryse.widget.recyclerview.SimpleRecyclerViewAdapter;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class BrowseHistoryAdapter extends SimpleRecyclerViewAdapter<BrowseHistory> {
@@ -62,13 +62,13 @@ public class BrowseHistoryAdapter extends SimpleRecyclerViewAdapter<BrowseHistor
     public static class ViewHolder extends RecyclerViewHolder {
         // each data item is just a string in this case
 
-        @Bind(R.id.recyclerview_item_browse_history_relative_layout_root)
+        @BindView(R.id.recyclerview_item_browse_history_relative_layout_root)
         RelativeLayout mRootView;
-        @Bind(R.id.recyclerview_item_browse_history_textview_title)
+        @BindView(R.id.recyclerview_item_browse_history_textview_title)
         public TextView mTitleTextView;
-        @Bind(R.id.recyclerview_item_browse_history_textview_secondary)
+        @BindView(R.id.recyclerview_item_browse_history_textview_secondary)
         public TextView mSecondaryTextView;
-        @Bind(R.id.recyclerview_item_browse_history_textview_time)
+        @BindView(R.id.recyclerview_item_browse_history_textview_time)
         public TextView mTimeTextView;
 
         OnBrowseHistoryItemClickListener mOnThreadItemClickListener;

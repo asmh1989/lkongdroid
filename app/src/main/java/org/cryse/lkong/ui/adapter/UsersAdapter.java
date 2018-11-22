@@ -20,7 +20,7 @@ import org.cryse.widget.recyclerview.SimpleRecyclerViewAdapter;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class UsersAdapter extends SimpleRecyclerViewAdapter<SearchUserItem> {
@@ -68,11 +68,11 @@ public class UsersAdapter extends SimpleRecyclerViewAdapter<SearchUserItem> {
     public static class ViewHolder extends RecyclerViewHolder {
         private OnUserItemClickListener mOnUserItemClickListener;
 
-        @Bind(R.id.recyclerview_item_search_user_icon)
+        @BindView(R.id.recyclerview_item_search_user_icon)
         ImageView avatarImageView;
-        @Bind(R.id.recyclerview_item_search_user_name)
+        @BindView(R.id.recyclerview_item_search_user_name)
         TextView nameTextView;
-        @Bind(R.id.recyclerview_item_search_user_sign)
+        @BindView(R.id.recyclerview_item_search_user_sign)
         TextView signTextView;
         public ViewHolder(View itemView, String ateKey, OnUserItemClickListener onUserItemClickListener) {
             super(itemView);

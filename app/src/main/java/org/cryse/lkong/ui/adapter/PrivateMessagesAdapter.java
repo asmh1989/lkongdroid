@@ -25,7 +25,7 @@ import org.cryse.widget.recyclerview.SimpleRecyclerViewAdapter;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
+import butterknife.BindView;
 
 public class PrivateMessagesAdapter extends SimpleRecyclerViewAdapter<PrivateMessageModel> {
     private static final String LOG_TAG = PrivateMessagesAdapter.class.getSimpleName();
@@ -98,13 +98,13 @@ public class PrivateMessagesAdapter extends SimpleRecyclerViewAdapter<PrivateMes
 
     public static class PrivateMessageViewHolder extends RecyclerViewHolder {
         @Nullable
-        @Bind(R.id.recyclerview_item_private_message_imageview_avatar)
+        @BindView(R.id.recyclerview_item_private_message_imageview_avatar)
         ImageView mAvatarImageView;
-        @Bind(R.id.recyclerview_item_private_message_relativelayout_message_container)
+        @BindView(R.id.recyclerview_item_private_message_relativelayout_message_container)
         RelativeLayout mMessageContainer;
-        @Bind(R.id.recyclerview_item_private_message_textview_message)
+        @BindView(R.id.recyclerview_item_private_message_textview_message)
         TextView mMessageTextView;
-        @Bind(R.id.recyclerview_item_private_message_textview_dateline)
+        @BindView(R.id.recyclerview_item_private_message_textview_dateline)
         TextView mDatelineTextView;
 
         public PrivateMessageViewHolder(View itemView, String ateKey) {

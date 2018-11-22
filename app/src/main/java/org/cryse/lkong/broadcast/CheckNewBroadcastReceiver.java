@@ -6,7 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.NotificationCompat;
+//import android.support.v7.app.NotificationCompat;
 
 import org.cryse.lkong.R;
 import org.cryse.lkong.model.NoticeCountModel;
@@ -62,19 +62,19 @@ public class CheckNewBroadcastReceiver extends BroadcastReceiver {
 
         NotificationManager notificationManager =
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        NotificationCompat.Builder mResultBuilder = new NotificationCompat.Builder(context);
-        Intent openNotificationActivityIntent = new Intent(context, NotificationActivity.class);
-        openNotificationActivityIntent.putExtra(DataContract.BUNDLE_USER_ID, userId);
-        PendingIntent chaptersListIntent =
-                PendingIntent.getActivity(context, 0, openNotificationActivityIntent, PendingIntent.FLAG_ONE_SHOT);
-
-        Bundle extras = Bundle.EMPTY;
-        mResultBuilder.setContentTitle(context.getString(R.string.format_notice_all_count, noticeCount.getAllNoticeCount()))
-                .setContentText(stringBuilder.toString())
-                .setSmallIcon(R.drawable.ic_notification_lkong_logo)
-                .setExtras(extras)
-                .setContentIntent(chaptersListIntent)
-                .setAutoCancel(true);
-        notificationManager.notify(NOTIFICATION_START_ID + (int)userId, mResultBuilder.build());
+        //NotificationCompat.Builder mResultBuilder = new NotificationCompat.Builder(context);
+        //Intent openNotificationActivityIntent = new Intent(context, NotificationActivity.class);
+        //openNotificationActivityIntent.putExtra(DataContract.BUNDLE_USER_ID, userId);
+        //PendingIntent chaptersListIntent =
+        //        PendingIntent.getActivity(context, 0, openNotificationActivityIntent, PendingIntent.FLAG_ONE_SHOT);
+        //
+        //Bundle extras = Bundle.EMPTY;
+        //mResultBuilder.setContentTitle(context.getString(R.string.format_notice_all_count, noticeCount.getAllNoticeCount()))
+        //        .setContentText(stringBuilder.toString())
+        //        .setSmallIcon(R.drawable.ic_notification_lkong_logo)
+        //        .setExtras(extras)
+        //        .setContentIntent(chaptersListIntent)
+        //        .setAutoCancel(true);
+        //notificationManager.notify(NOTIFICATION_START_ID + (int)userId, mResultBuilder.build());
     }
 }

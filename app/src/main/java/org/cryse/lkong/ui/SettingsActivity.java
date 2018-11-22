@@ -14,12 +14,12 @@ import org.cryse.lkong.ui.common.AbstractSwipeBackActivity;
 import org.cryse.lkong.utils.AnalyticsUtils;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
+import butterknife.BindView;
 
 public class SettingsActivity extends AbstractSwipeBackActivity {
     public static final String LOG_TAG = SettingsActivity.class.getName();
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
     @Override

@@ -13,16 +13,16 @@ import android.widget.ImageButton;
 import org.cryse.lkong.R;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
+import butterknife.BindView;
 
 public class PagerControl extends FrameLayout {
     private static final int TRANSLATE_DURATION_MILLIS = 200;
 
-    @Bind(R.id.widget_pager_control_button_page_indicator)
+    @BindView(R.id.widget_pager_control_button_page_indicator)
     Button mPageIndicatorButton;
-    @Bind(R.id.widget_pager_control_button_backward)
+    @BindView(R.id.widget_pager_control_button_backward)
     ImageButton mPrevPageButton;
-    @Bind(R.id.widget_pager_control_button_forward)
+    @BindView(R.id.widget_pager_control_button_forward)
     ImageButton mNextPageButton;
 
     private boolean mVisible = true;

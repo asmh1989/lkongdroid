@@ -21,7 +21,7 @@ import org.cryse.widget.recyclerview.SimpleRecyclerViewAdapter;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
+import butterknife.BindView;
 
 public class NoticeCollectionAdapter extends SimpleRecyclerViewAdapter<NoticeModel> {
     private String mATEKey;
@@ -48,9 +48,9 @@ public class NoticeCollectionAdapter extends SimpleRecyclerViewAdapter<NoticeMod
     }
 
     public static class ViewHolder extends RecyclerViewHolder {
-        @Bind(R.id.recyclerview_item_notice_cardview_root_container)
+        @BindView(R.id.recyclerview_item_notice_cardview_root_container)
         public CardView mRootCardView;
-        @Bind(R.id.recyclerview_item_notice_textview_message)
+        @BindView(R.id.recyclerview_item_notice_textview_message)
         public TextView mNoticeMessageTextView;
 
         public ViewHolder(View v, String ateKey) {

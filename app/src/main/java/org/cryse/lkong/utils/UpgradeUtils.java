@@ -48,25 +48,25 @@ public class UpgradeUtils {
     }
 
     protected static void onUpgrade(Context context, int oldVersion, int newVersion) {
-        if(oldVersion < 910) {
-            StringPrefs stringPrefs = Prefs.getStringPrefs(
-                    PreferenceConstant.SHARED_PREFERENCE_POST_TAIL_TEXT,
-                    PreferenceConstant.SHARED_PREFERENCE_POST_TAIL_TEXT_VALUE
-            );
-            if(stringPrefs.get().compareTo(PreferenceConstant.SHARED_PREFERENCE_POST_TAIL_TEXT_OLD_VALUE_BEFORE_910) == 0) {
-                stringPrefs.set(context.getString(R.string.settings_item_post_extra_tail_text_default));
-            }
-        }
-        if(oldVersion < 911) {
-            boolean removeAccountsResult = UserAccountManager.removeAllAccounts(context);
-            if(BuildConfig.DEBUG) {
-                Timber.d(removeAccountsResult ? "All old accounts removed." : "Not all old accounts removed.", "ACCOUNT_MANAGER");
-            }
-        }
-        if(oldVersion < 912) {
-            RealmConfiguration.Builder configBuilder = new RealmConfiguration.Builder(context);
-            RealmConfiguration realmConfiguration = configBuilder.build();
-            Realm.deleteRealm(realmConfiguration);
-        }
+        //if(oldVersion < 910) {
+        //    StringPrefs stringPrefs = Prefs.getStringPrefs(
+        //            PreferenceConstant.SHARED_PREFERENCE_POST_TAIL_TEXT,
+        //            PreferenceConstant.SHARED_PREFERENCE_POST_TAIL_TEXT_VALUE
+        //    );
+        //    if(stringPrefs.get().compareTo(PreferenceConstant.SHARED_PREFERENCE_POST_TAIL_TEXT_OLD_VALUE_BEFORE_910) == 0) {
+        //        stringPrefs.set(context.getString(R.string.settings_item_post_extra_tail_text_default));
+        //    }
+        //}
+        //if(oldVersion < 911) {
+        //    boolean removeAccountsResult = UserAccountManager.removeAllAccounts(context);
+        //    if(BuildConfig.DEBUG) {
+        //        Timber.d(removeAccountsResult ? "All old accounts removed." : "Not all old accounts removed.", "ACCOUNT_MANAGER");
+        //    }
+        //}
+        //if(oldVersion < 912) {
+        //    RealmConfiguration.Builder configBuilder = new RealmConfiguration.Builder(context);
+        //    RealmConfiguration realmConfiguration = configBuilder.build();
+        //    Realm.deleteRealm(realmConfiguration);
+        //}
     }
 }

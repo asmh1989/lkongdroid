@@ -43,7 +43,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
+import butterknife.BindView;
 
 public class PrivateChatFragment extends AbstractFragment implements PrivateChatView {
     public static final String LOG_TAG = PrivateChatFragment.class.getSimpleName();
@@ -53,13 +53,13 @@ public class PrivateChatFragment extends AbstractFragment implements PrivateChat
     @Inject
     UserAccountManager mUserAccountManager;
     StringPrefs mAvatarDownloadPolicy;
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.fragment_private_chat_ptrrecyclerview_messages)
+    @BindView(R.id.fragment_private_chat_ptrrecyclerview_messages)
     PtrRecyclerView mRecyclerView;
-    @Bind(R.id.fragment_private_chat_edittext_message)
+    @BindView(R.id.fragment_private_chat_edittext_message)
     EditText mMessageEditText;
-    @Bind(R.id.fragment_private_chat_button_send)
+    @BindView(R.id.fragment_private_chat_button_send)
     ImageButton mSendButton;
 
     PrivateMessagesAdapter mCollectionAdapter;

@@ -84,7 +84,7 @@ import java.util.UUID;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
+import butterknife.BindView;
 import timber.log.Timber;
 
 public abstract class AbstractPostActivity extends AbstractSwipeBackActivity {
@@ -93,20 +93,20 @@ public abstract class AbstractPostActivity extends AbstractSwipeBackActivity {
 
     StringPrefs mPostTailText;
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.activity_new_thread_edittext_title)
+    @BindView(R.id.activity_new_thread_edittext_title)
     EditText mTitleEditText;
-    @Bind(R.id.activity_new_thread_view_div)
+    @BindView(R.id.activity_new_thread_view_div)
     View mDivideView;
-    @Bind(R.id.activity_new_thread_edittext_content)
+    @BindView(R.id.activity_new_thread_edittext_content)
     EditText mContentEditText;
 
-    @Bind(R.id.action_insert_emoji)
+    @BindView(R.id.action_insert_emoji)
     ImageButton mInsertEmoticonButton;
-    @Bind(R.id.action_insert_image)
+    @BindView(R.id.action_insert_image)
     ImageButton mInsertImageButton;
-    @Bind(R.id.action_insert_link)
+    @BindView(R.id.action_insert_link)
     ImageButton mInsertUrlButton;
 
     ImageEditTextHandler mContentEditTextHandler;

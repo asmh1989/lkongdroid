@@ -69,7 +69,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
+import butterknife.BindView;
 import timber.log.Timber;
 
 public class HomePageFragment extends AbstractFragment implements HomePageView {
@@ -85,17 +85,17 @@ public class HomePageFragment extends AbstractFragment implements HomePageView {
     UserAccountManager mUserAccountManager;
     BooleanPrefs mForumsFirst;
 
-    @Bind(R.id.searchview)
+    @BindView(R.id.searchview)
     PersistentSearchView mSearchView;
-    @Bind(R.id.view_search_tint)
+    @BindView(R.id.view_search_tint)
     View mSearchTintView;
-    @Bind(R.id.search_fragment_container)
+    @BindView(R.id.search_fragment_container)
     FrameLayout mSearchContainer;
-    @Bind(R.id.tablayout)
+    @BindView(R.id.tablayout)
     TabLayout mTabLayout;
-    @Bind(R.id.fragment_homepage_viewpager)
+    @BindView(R.id.fragment_homepage_viewpager)
     ViewPager mViewPager;
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
     protected MenuItem mChangeThemeMenuItem;

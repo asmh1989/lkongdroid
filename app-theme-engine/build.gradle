@@ -23,11 +23,11 @@ android {
 
 dependencies {
 
-    compile libDependencies.appcompat
-    compile libDependencies.design
-    provided libDependencies.cardview
+    implementation libDependencies.appcompat
+    implementation libDependencies.design
+    compileOnly libDependencies.cardview
 
     // Used for the preference classes
-    provided libDependencies.materialdialog
-    provided libDependencies.materialdialog_commons
+    compileOnly libDependencies.materialdialog
+    compileOnly libDependencies.materialdialog_commons
 }

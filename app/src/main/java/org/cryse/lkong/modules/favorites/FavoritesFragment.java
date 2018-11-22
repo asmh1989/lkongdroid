@@ -51,7 +51,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 
 public class FavoritesFragment extends SimpleCollectionFragment<
         ThreadModel,
@@ -67,11 +67,11 @@ public class FavoritesFragment extends SimpleCollectionFragment<
 
     StringPrefs mAvatarDownloadPolicy;
 
-    @Bind(R.id.searchview)
+    @BindView(R.id.searchview)
     PersistentSearchView mSearchView;
-    @Bind(R.id.view_search_tint)
+    @BindView(R.id.view_search_tint)
     View mSearchTintView;
-    @Bind(R.id.search_fragment_container)
+    @BindView(R.id.search_fragment_container)
     FrameLayout mSearchContainer;
 
     protected MenuItem mChangeThemeMenuItem;

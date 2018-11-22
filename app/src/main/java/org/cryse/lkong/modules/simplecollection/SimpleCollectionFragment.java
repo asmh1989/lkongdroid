@@ -36,7 +36,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
+import butterknife.BindView;
 
 public abstract class SimpleCollectionFragment<
         ItemType extends SimpleCollectionItem,
@@ -55,9 +55,9 @@ public abstract class SimpleCollectionFragment<
     protected UserAccountManager mUserAccountManager;
 
     @Nullable
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     protected Toolbar mToolbar;
-    @Bind(R.id.simple_collection_recyclerview)
+    @BindView(R.id.simple_collection_recyclerview)
     protected SuperRecyclerView mCollectionView;
 
     protected ProgressBar mMoreProgressBar;

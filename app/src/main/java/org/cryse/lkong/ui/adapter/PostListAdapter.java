@@ -23,7 +23,7 @@ import org.cryse.widget.recyclerview.SimpleRecyclerViewAdapter;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
+import butterknife.BindView;
 
 public class PostListAdapter extends SimpleRecyclerViewAdapter<PostModel> {
     private static final String LOG_TAG = PostListAdapter.class.getName();
@@ -123,21 +123,21 @@ public class PostListAdapter extends SimpleRecyclerViewAdapter<PostModel> {
 
     public static class ViewHolder extends RecyclerViewHolder {
         // each data item is just a string in this case
-        @Bind(R.id.recyclerview_item_post_cardview_root_container)
+        @BindView(R.id.recyclerview_item_post_cardview_root_container)
         CardView mRootCardView;
-        @Bind(R.id.recyclerview_item_post_view_item)
+        @BindView(R.id.recyclerview_item_post_view_item)
         PostItemView mPostItemView;
-        @Bind(R.id.recyclerview_item_post_imageview_avatar)
+        @BindView(R.id.recyclerview_item_post_imageview_avatar)
         ImageView mAvatarImageView;
-        @Bind(R.id.recyclerview_item_post_button_rate)
+        @BindView(R.id.recyclerview_item_post_button_rate)
         ImageButton mRateButton;
-        @Bind(R.id.recyclerview_item_post_button_share)
+        @BindView(R.id.recyclerview_item_post_button_share)
         ImageButton mShareButton;
-        @Bind(R.id.recyclerview_item_post_textview_rate)
+        @BindView(R.id.recyclerview_item_post_textview_rate)
         TextView mRateTextView;
-        @Bind(R.id.recyclerview_item_post_button_edit)
+        @BindView(R.id.recyclerview_item_post_button_edit)
         ImageButton mEditButton;
-        @Bind(R.id.recyclerview_item_post_button_replay)
+        @BindView(R.id.recyclerview_item_post_button_replay)
         ImageButton mReplyButton;
 
         OnItemButtonClickListener mOnItemButtonClickListener;

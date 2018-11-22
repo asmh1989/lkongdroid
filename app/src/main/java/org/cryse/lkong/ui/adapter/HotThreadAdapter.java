@@ -20,7 +20,7 @@ import org.cryse.widget.recyclerview.SimpleRecyclerViewAdapter;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class HotThreadAdapter extends SimpleRecyclerViewAdapter<HotThreadModel> {
@@ -58,9 +58,9 @@ public class HotThreadAdapter extends SimpleRecyclerViewAdapter<HotThreadModel> 
     }
 
     public static class ViewHolder extends RecyclerViewHolder {
-        @Bind(R.id.item_hot_thread_imageview_rank)
+        @BindView(R.id.item_hot_thread_imageview_rank)
         ImageView iconTextView;
-        @Bind(R.id.item_hot_thread_textview_subject)
+        @BindView(R.id.item_hot_thread_textview_subject)
         TextView titleTextView;
         public ViewHolder(View itemView, String ateKey) {
             super(itemView);

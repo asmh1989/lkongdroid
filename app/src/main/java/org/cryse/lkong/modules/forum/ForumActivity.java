@@ -55,7 +55,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
+import butterknife.BindView;
 
 public class ForumActivity extends AbstractSwipeBackActivity implements ForumView {
     public static final String LOG_TAG = ForumActivity.class.getName();
@@ -75,11 +75,11 @@ public class ForumActivity extends AbstractSwipeBackActivity implements ForumVie
 
     StringPrefs mAvatarDownloadPolicy;
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.activity_forum_thread_list_recyclerview)
+    @BindView(R.id.activity_forum_thread_list_recyclerview)
     SuperRecyclerView mThreadCollectionView;
-    @Bind(R.id.fab)
+    @BindView(R.id.fab)
     FloatingActionButtonEx mFab;
 
     View mHeaderView;

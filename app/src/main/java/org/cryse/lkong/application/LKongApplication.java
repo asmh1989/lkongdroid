@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
-import com.crashlytics.android.Crashlytics;
+//import com.crashlytics.android.Crashlytics;
 import com.tencent.bugly.crashreport.CrashReport;
 
 import org.cryse.lkong.BuildConfig;
@@ -27,7 +27,7 @@ import org.cryse.utils.preference.Prefs;
 
 import javax.inject.Singleton;
 
-import io.fabric.sdk.android.Fabric;
+import io.realm.Realm;
 
 import timber.log.Timber;
 
@@ -49,17 +49,18 @@ public class LKongApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        Realm.init(this);
         Timber.plant(new CrashReportingTree());
         Prefs.with(this).useDefault().init();
-        AnalyticsUtils.init(this, getString(R.string.UMENG_APPKEY_VALUE));
-        Fabric.with(this, new Crashlytics());
+        AnalyticsUtils.init(this, "....");
         if(BuildConfig.DEBUG) {
-            CrashReport.initCrashReport(getApplicationContext(), getString(R.string.bugly_app_id), false);
+            CrashReport.initCrashReport(getApplicationContext(), "....", false);
         }
-        if(BuildConfig.InAppUpdate) {
-            /*UmengUpdateAgent.setAppkey(getString(R.string.UMENG_APPKEY_VALUE));
-            UmengUpdateAgent.update(this);*/
-        }
+        //if(BuildConfig.InAppUpdate) {
+        //    /*UmengUpdateAgent.setAppkey(getString(R.string.UMENG_APPKEY_VALUE));
+        //    UmengUpdateAgent.update(this);*/
+        //}
         UserAccountManager.startHandlerThread();
         UpgradeUtils.checkVersionCode(this);
         mUserAccountManager = new UserAccountManager();
@@ -123,8 +124,8 @@ public class LKongApplication extends Application {
             if (BuildConfig.DEBUG) {
                 Log.i((String) args[0], message);
             }
-            if(args.length >= 2)
-                Crashlytics.log(args[0] + "<||>" + message + "<||>" + (String) args[1]);
+            //if(args.length >= 2)
+            //    Crashlytics.log(args[0] + "<||>" + message + "<||>" + (String) args[1]);
         }
 
         @Override
@@ -147,7 +148,7 @@ public class LKongApplication extends Application {
             if (BuildConfig.DEBUG) {
                 Log.e((String) args[0], message, t);
             } else {
-                Crashlytics.logException(t);
+                //Crashlytics.logException(t);
             }
         }
 

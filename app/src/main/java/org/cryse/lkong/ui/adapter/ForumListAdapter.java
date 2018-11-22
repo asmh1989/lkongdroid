@@ -21,7 +21,7 @@ import org.cryse.widget.recyclerview.SimpleRecyclerViewAdapter;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
+import butterknife.BindView;
 
 public class ForumListAdapter extends SimpleRecyclerViewAdapter<ForumModel> {
     Fragment mParentFragment;
@@ -97,12 +97,12 @@ public class ForumListAdapter extends SimpleRecyclerViewAdapter<ForumModel> {
     public static class ViewHolder extends RecyclerViewHolder {
         // each data item is just a string in this case
 
-        @Bind(R.id.recyclerview_item_forum_imageview_icon)
+        @BindView(R.id.recyclerview_item_forum_imageview_icon)
         public ImageView mForumIconImageView;
-        @Bind(R.id.recyclerview_item_forum_textview_title)
+        @BindView(R.id.recyclerview_item_forum_textview_title)
         public TextView mForumTitleTextView;
         @Nullable
-        @Bind(R.id.recyclerview_item_forum_textview_secondary)
+        @BindView(R.id.recyclerview_item_forum_textview_secondary)
         public TextView mForumSecondaryTextView;
 
         public ViewHolder(View v, String ateKey) {

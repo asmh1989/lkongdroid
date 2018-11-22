@@ -92,7 +92,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
+import butterknife.BindView;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -118,17 +118,17 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
     BooleanPrefs mPrimaryColorInPostControl;
 
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.activity_post_list_recyclerview)
+    @BindView(R.id.activity_post_list_recyclerview)
     PtrRecyclerView mPostCollectionView;
-    @Bind(R.id.activity_post_list_recyclerview_fastscroller)
+    @BindView(R.id.activity_post_list_recyclerview_fastscroller)
     RecyclerFastScroller mFastScroller;
-    @Bind(R.id.fab)
+    @BindView(R.id.fab)
     FloatingActionButtonEx mFab;
-    @Bind(R.id.activity_post_list_page_control)
+    @BindView(R.id.activity_post_list_page_control)
     PagerControl mFooterPagerControl;
-    @Bind(R.id.loading_progressbar)
+    @BindView(R.id.loading_progressbar)
     ProgressBar mProgressBar;
 
     View mThreadIntroHeaderView;

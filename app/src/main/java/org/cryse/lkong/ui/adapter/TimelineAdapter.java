@@ -34,7 +34,7 @@ import org.cryse.widget.recyclerview.RecyclerViewHolder;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
+import butterknife.BindView;
 
 public class TimelineAdapter extends SimpleRecyclerViewAdapter<TimelineModel> {
     private static final String LOG_TAG = TimelineAdapter.class.getName();
@@ -189,26 +189,26 @@ public class TimelineAdapter extends SimpleRecyclerViewAdapter<TimelineModel> {
 
     public static class ViewHolder extends RecyclerViewHolder {
         // each data item is just a string in this case
-        @Bind(R.id.recyclerview_item_timeline_cardview_root_container)
+        @BindView(R.id.recyclerview_item_timeline_cardview_root_container)
         CardView mRootCardView;
-        @Bind(R.id.recyclerview_item_timeline_textview_author_name)
+        @BindView(R.id.recyclerview_item_timeline_textview_author_name)
         TextView mAuthorTextView;
-        @Bind(R.id.recyclerview_item_timeline_textview_dateline)
+        @BindView(R.id.recyclerview_item_timeline_textview_dateline)
         TextView mDatelineTextView;
-        @Bind(R.id.recyclerview_item_timeline_textview_message)
+        @BindView(R.id.recyclerview_item_timeline_textview_message)
         TextView mMessageTextView;
-        @Bind(R.id.recyclerview_item_timeline_imageview_author_avatar)
+        @BindView(R.id.recyclerview_item_timeline_imageview_author_avatar)
         ImageView mAuthorAvatarImageView;
 
 
         @Nullable
-        @Bind(R.id.secondary_message_container)
+        @BindView(R.id.secondary_message_container)
         RelativeLayout mSecondaryContainer;
         @Nullable
-        @Bind(R.id.recyclerview_item_timeline_secondary_message)
+        @BindView(R.id.recyclerview_item_timeline_secondary_message)
         TextView mSecondaryMessageTextView;
         @Nullable
-        @Bind(R.id.recyclerview_item_timeline_third_message)
+        @BindView(R.id.recyclerview_item_timeline_third_message)
         TextView mThirdMessageTextView;
 
 

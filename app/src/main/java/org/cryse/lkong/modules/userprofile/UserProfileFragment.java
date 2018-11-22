@@ -50,7 +50,7 @@ import org.cryse.lkong.utils.DataContract;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
+import butterknife.BindView;
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
@@ -69,68 +69,68 @@ public class UserProfileFragment extends AbstractFragment implements /*RevealBac
     @Inject
     UserAccountManager mUserAccountManager;
 
-    @Bind(R.id.appbarlayout)
+    @BindView(R.id.appbarlayout)
     AppBarLayout mAppBarLayout;
-    @Bind(R.id.collapseing_toolbar)
+    @BindView(R.id.collapseing_toolbar)
     CollapsingToolbarLayout mCollapsingToolbarLayout;
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
-    @Bind(R.id.activity_profile_imageview_avatar)
+    @BindView(R.id.activity_profile_imageview_avatar)
     ImageView mAvatarImageView;
-    @Bind(R.id.activity_profile_textview_user_name)
+    @BindView(R.id.activity_profile_textview_user_name)
     TextView mUserNameTextView;
-    @Bind(R.id.activity_profile_textview_user_extra0)
+    @BindView(R.id.activity_profile_textview_user_extra0)
     TextView mUserExtra0TextView;
 
-    @Bind(R.id.activity_profile_textview_follower_count)
+    @BindView(R.id.activity_profile_textview_follower_count)
     TextView mUserFollowerCountTextView;
-    @Bind(R.id.activity_profile_textview_following_count)
+    @BindView(R.id.activity_profile_textview_following_count)
     TextView mUserFollowingCountTextView;
-    @Bind(R.id.activity_profile_textview_thread_count)
+    @BindView(R.id.activity_profile_textview_thread_count)
     TextView mUserThreadCountTextView;
-    @Bind(R.id.activity_profile_textview_post_count)
+    @BindView(R.id.activity_profile_textview_post_count)
     TextView mUserPostCountTextView;
 
-    @Bind(R.id.activity_profile_header_root)
+    @BindView(R.id.activity_profile_header_root)
     View mHeaderRootView;
-    @Bind(R.id.activity_profile_header_detail)
+    @BindView(R.id.activity_profile_header_detail)
     View mHeaderDetailView;
-    @Bind(R.id.activity_profile_header_stats)
+    @BindView(R.id.activity_profile_header_stats)
     View mHeaderStatsView;
 
-    @Bind(R.id.fragment_user_detail_cardview_introduction)
+    @BindView(R.id.fragment_user_detail_cardview_introduction)
     CardView mIntroductionCardView;
-    @Bind(R.id.fragment_user_detail_cardview_else)
+    @BindView(R.id.fragment_user_detail_cardview_else)
     CardView mElseCardView;
 
 
-    @Bind(R.id.fragment_user_detail_textview_introduction)
+    @BindView(R.id.fragment_user_detail_textview_introduction)
     TextView mIntroductionTextView;
 
-    @Bind(R.id.activity_profile_layout_all_activities)
+    @BindView(R.id.activity_profile_layout_all_activities)
     RelativeLayout mAllActivitiesLayout;
-    @Bind(R.id.activity_profile_layout_digests)
+    @BindView(R.id.activity_profile_layout_digests)
     RelativeLayout mDigestsLayout;
 
-    @Bind(R.id.activity_profile_imageview_crystal)
+    @BindView(R.id.activity_profile_imageview_crystal)
     ImageView mCrystalImageView;
-    @Bind(R.id.activity_profile_textview_crystal)
+    @BindView(R.id.activity_profile_textview_crystal)
     TextView mCrystalTextView;
-    @Bind(R.id.activity_profile_imageview_coin)
+    @BindView(R.id.activity_profile_imageview_coin)
     ImageView mCoinImageView;
-    @Bind(R.id.activity_profile_textview_coin)
+    @BindView(R.id.activity_profile_textview_coin)
     TextView mCoinTextView;
 
-    @Bind(R.id.activity_profile_textview_current_punch)
+    @BindView(R.id.activity_profile_textview_current_punch)
     TextView mCurrentContinuousPunchDaysTextView;
-    @Bind(R.id.activity_profile_textview_longest_punch)
+    @BindView(R.id.activity_profile_textview_longest_punch)
     TextView mLongestContinuousPunchDaysTextView;
-    @Bind(R.id.activity_profile_textview_last_punch)
+    @BindView(R.id.activity_profile_textview_last_punch)
     TextView mLastPunchTimeTextView;
-    @Bind(R.id.activity_profile_textview_total_punch)
+    @BindView(R.id.activity_profile_textview_total_punch)
     TextView mTotalPunchDaysTextView;
-    @Bind(R.id.activity_profile_textview_registration_time)
+    @BindView(R.id.activity_profile_textview_registration_time)
     TextView mRegistrationTextView;
 
 

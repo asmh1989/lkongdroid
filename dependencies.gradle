@@ -1,7 +1,6 @@
 ext {
     junitVersion = '4.12'
-    supportLibraryVersion = '23.3.0'
-    multidexVersion='1.0.0'
+    supportLibraryVersion = '28+'
     gsonVersion = '2.6.2'
     rxVersion = '1.1.0'
     butterknifeVersion = '7.0.1'
@@ -12,7 +11,6 @@ ext {
     okhttpVersion = '3.2.0'
     commonslang3Version = '3.4'
     timberVersion = '3.1.0'
-    playServiceVersion = '8.4.0'
     buglyVersion = '2.2.0'
     umengAnalyticsVersion = '6.0.1'
     retroLambdaVersion = '2.1.0'
@@ -40,7 +38,6 @@ ext {
             cardview: "com.android.support:cardview-v7:$supportLibraryVersion",
             recyclerview: "com.android.support:recyclerview-v7:$supportLibraryVersion",
             design: "com.android.support:design:$supportLibraryVersion",
-            multidex: "com.android.support:multidex:$multidexVersion",
 
             // Permissions
             easypermission: "pub.devrel:easypermissions:$easyPermissionVersion",
@@ -72,12 +69,11 @@ ext {
             finestwebview: "com.thefinestartist:finestwebview:$finestwebviewVersion",
             fastScroller: "com.github.pluscubed:recycler-fast-scroll:$fastScrollerVersion@aar",
 
-            play_services_analytics: "com.google.android.gms:play-services-analytics:$playServiceVersion",
             // compile fileTree(dir: 'libs', include: ['*.jar'])
             bugly: "com.tencent.bugly:crashreport:$buglyVersion",
             umeng_analytics: "com.umeng.analytics:analytics:$umengAnalyticsVersion",
 
-            retorlambda: "net.orfjackal.retrolambda:retrolambda:$retroLambdaVersion",
+//            retorlambda: "net.orfjackal.retrolambda:retrolambda:$retroLambdaVersion",
             dagger: "com.google.dagger:dagger:$daggerVersion",
             dagger_compiler: "com.google.dagger:dagger-compiler:$daggerVersion",
             jsr250_api: "javax.annotation:jsr250-api:$jsr250ApiVersion",

@@ -28,7 +28,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
+import butterknife.BindView;
 
 public class EmoticonDialog extends DialogFragment {
 
@@ -134,7 +134,7 @@ public class EmoticonDialog extends DialogFragment {
         public static class ViewHolder extends RecyclerViewHolder {
             // each data item is just a string in this case
 
-            @Bind(R.id.recyclerview_item_emoticon_imageview)
+            @BindView(R.id.recyclerview_item_emoticon_imageview)
             public ImageView mEmoticonImageView;
 
             public ViewHolder(View v) {

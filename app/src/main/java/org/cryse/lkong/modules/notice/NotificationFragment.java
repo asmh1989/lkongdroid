@@ -33,17 +33,17 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
+import butterknife.BindView;
 
 public class NotificationFragment extends InActivityFragment {
     private static final String LOG_TAG = NotificationFragment.class.getName();
     @Inject
     UserAccountManager mUserAccountManager;
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.tablayout)
+    @BindView(R.id.tablayout)
     TabLayout mTabLayout;
-    @Bind(R.id.fragment_notification_viewpager)
+    @BindView(R.id.fragment_notification_viewpager)
     ViewPager mViewPager;
     NotificationFragmentPagerAdapter mHomePagerAdapter;
 

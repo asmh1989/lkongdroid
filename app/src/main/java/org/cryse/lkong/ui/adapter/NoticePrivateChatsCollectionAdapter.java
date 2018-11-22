@@ -21,7 +21,7 @@ import org.cryse.widget.recyclerview.SimpleRecyclerViewAdapter;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
+import butterknife.BindView;
 
 public class NoticePrivateChatsCollectionAdapter extends SimpleRecyclerViewAdapter<PrivateChatModel> {
     private String mATEKey;
@@ -69,13 +69,13 @@ public class NoticePrivateChatsCollectionAdapter extends SimpleRecyclerViewAdapt
     }
 
     public static class ViewHolder extends RecyclerViewHolder {
-        @Bind(R.id.recyclerview_item_private_chat_imageview_icon)
+        @BindView(R.id.recyclerview_item_private_chat_imageview_icon)
         public ImageView mAvatarImageView;
-        @Bind(R.id.recyclerview_item_private_chat_textview_message)
+        @BindView(R.id.recyclerview_item_private_chat_textview_message)
         public TextView mChatMessageTextView;
-        @Bind(R.id.recyclerview_item_private_chat_textview_username)
+        @BindView(R.id.recyclerview_item_private_chat_textview_username)
         public TextView mUserNameTextView;
-        @Bind(R.id.recyclerview_item_private_chat_textview_dateline)
+        @BindView(R.id.recyclerview_item_private_chat_textview_dateline)
         public TextView mDatelineTextView;
 
         public ViewHolder(View v, String ateKey) {

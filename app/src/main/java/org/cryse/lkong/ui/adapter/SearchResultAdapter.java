@@ -26,7 +26,7 @@ import org.cryse.widget.recyclerview.SimpleRecyclerViewAdapter;
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
+import butterknife.BindView;
 
 public class SearchResultAdapter extends SimpleRecyclerViewAdapter<AbstractSearchResult> {
     private String mATEKey;
@@ -137,11 +137,11 @@ public class SearchResultAdapter extends SimpleRecyclerViewAdapter<AbstractSearc
     }
 
     protected static class SearchPostViewHolder extends RecyclerViewHolder {
-        @Bind(R.id.recyclerview_item_search_post_title)
+        @BindView(R.id.recyclerview_item_search_post_title)
         TextView titleTextView;
-        @Bind(R.id.recyclerview_item_search_post_secondary)
+        @BindView(R.id.recyclerview_item_search_post_secondary)
         TextView secondaryTextView;
-        @Bind(R.id.recyclerview_item_search_post_reply_count)
+        @BindView(R.id.recyclerview_item_search_post_reply_count)
         TextView replyCountTextView;
         public SearchPostViewHolder(View itemView, String ateKey) {
             super(itemView);
@@ -151,11 +151,11 @@ public class SearchResultAdapter extends SimpleRecyclerViewAdapter<AbstractSearc
     }
 
     protected static class SearchUserViewHolder extends RecyclerViewHolder {
-        @Bind(R.id.recyclerview_item_search_user_icon)
+        @BindView(R.id.recyclerview_item_search_user_icon)
         ImageView avatarImageView;
-        @Bind(R.id.recyclerview_item_search_user_name)
+        @BindView(R.id.recyclerview_item_search_user_name)
         TextView nameTextView;
-        @Bind(R.id.recyclerview_item_search_user_sign)
+        @BindView(R.id.recyclerview_item_search_user_sign)
         TextView signTextView;
         public SearchUserViewHolder(View itemView, String ateKey) {
             super(itemView);
@@ -165,11 +165,11 @@ public class SearchResultAdapter extends SimpleRecyclerViewAdapter<AbstractSearc
     }
 
     protected static class SearchGroupViewHolder extends RecyclerViewHolder {
-        @Bind(R.id.recyclerview_item_search_group_icon)
+        @BindView(R.id.recyclerview_item_search_group_icon)
         ImageView iconImageView;
-        @Bind(R.id.recyclerview_item_search_group_name)
+        @BindView(R.id.recyclerview_item_search_group_name)
         TextView nameTextView;
-        @Bind(R.id.recyclerview_item_search_group_description)
+        @BindView(R.id.recyclerview_item_search_group_description)
         TextView descriptionTextView;
         public SearchGroupViewHolder(View itemView, String ateKey) {
             super(itemView);

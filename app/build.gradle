@@ -1,9 +1,6 @@
 apply plugin: 'com.android.application'
-apply plugin: 'me.tatarka.retrolambda'
-apply plugin: 'com.neenbedankt.android-apt'
-apply plugin: 'com.getkeepsafe.dexcount'
 apply plugin: 'realm-android'
-apply plugin: 'io.fabric'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion appCompileSdkVersion
@@ -17,18 +14,18 @@ android {
         versionName appVersionName
     }
 
-    dexOptions { jumboMode = true }
+//    dexOptions { jumboMode = true }
 
     compileOptions {
         encoding 'UTF-8'
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
-    signingConfigs {
-        debug {}
-        release {}
-    }
+//
+//    signingConfigs {
+//        debug {}
+//        release {}
+//    }
 
     buildTypes {
         debug {
@@ -38,17 +35,17 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
-    productFlavors {
-        playStore {
-            resValue 'string', 'track_channel_name', 'playStore'
-            buildConfigField "boolean", "InAppUpdate", "true"
-        }
-    }
+//    productFlavors {
+//        playStore {
+//            resValue 'string', 'track_channel_name', 'playStore'
+//            buildConfigField "boolean", "InAppUpdate", "true"
+//        }
+//    }
 
     lintOptions {
         abortOnError false
@@ -63,110 +60,121 @@ android {
 }
 
 dependencies {
-    // compile libDependencies.multidex
-    compile libDependencies.support_v13
-    compile libDependencies.design
-    compile libDependencies.appcompat
-    compile libDependencies.recyclerview
-    compile libDependencies.cardview
+    implementation libDependencies.support_v13
+    implementation libDependencies.design
+    implementation libDependencies.appcompat
+    implementation libDependencies.recyclerview
+    implementation libDependencies.cardview
 
-    compile libDependencies.easypermission
-    compile libDependencies.gson
-    compile libDependencies.okhttp
+    implementation libDependencies.easypermission
+    implementation libDependencies.gson
+    implementation libDependencies.okhttp
 
-    compile libDependencies.rxjava
-    compile libDependencies.rxandroid
-    compile libDependencies.butterknife
+    implementation libDependencies.rxjava
+    implementation libDependencies.rxandroid
 
-    compile libDependencies.timber
+    implementation 'com.jakewharton:butterknife:9.0.0-rc2'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc2'
 
-    compile libDependencies.finestwebview
+    implementation libDependencies.timber
 
-    compile(libDependencies.materialdrawer) {
+    implementation libDependencies.finestwebview
+
+    implementation(libDependencies.materialdrawer) {
         transitive = true
-    }
-
-    compile(libDependencies.materialdialog) {
-        transitive = true
-    }
-
-    compile(libDependencies.materialdialog_commons) {
-        transitive = true
-    }
-
-    compile(libDependencies.fastScroller) {
-        transitive = true
-    }
-
-    compile project(':app-theme-engine')
-
-    compile (libDependencies.pulltorefresh) {
         exclude module: 'support-v4'
     }
 
-    // compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile libDependencies.play_services_analytics
-    compile libDependencies.bugly
-    compile libDependencies.umeng_analytics
-    retrolambdaConfig libDependencies.retorlambda
-    compile libDependencies.dagger
-    apt libDependencies.dagger_compiler
-    provided libDependencies.jsr250_api
+    implementation(libDependencies.materialdialog) {
+        transitive = true
+        exclude module: 'support-v4'
 
-    compile libDependencies.glide
-    compile libDependencies.jsoup
-    compile libDependencies.fab
-    compile libDependencies.subsampling_scale_image_view
-    provided libDependencies.tagsoup_osgi
-    compile(libDependencies.crashlytics) {
-        transitive = true;
     }
-    compile libDependencies.persistentsearchview
 
-}
+    implementation(libDependencies.materialdialog_commons) {
+        transitive = true
+        exclude module: 'support-v4'
 
-retrolambda {
-    jdk System.getenv('JAVA8_HOME')
-    oldJdk System.getenv('JAVA7_HOME')
-    javaVersion JavaVersion.VERSION_1_7
-    defaultMethods false
-    incremental true
-}
-
-dexcount {
-    includeClasses = false
-    includeFieldCount = true
-    includeTotalMethodCount = false
-    printAsTree = false
-    orderByMethodCount = false
-    verbose = false
-}
-
-def Properties props = new Properties()
-def propFile = new File('app/signing.properties')
-if (propFile.canRead()){
-    props.load(new FileInputStream(propFile))
-
-    if (props!=null && props.containsKey('STORE_FILE') && props.containsKey('STORE_PASSWORD') &&
-            props.containsKey('KEY_ALIAS') && props.containsKey('KEY_PASSWORD')) {
-        android.signingConfigs.debug.storeFile = file(props['STORE_FILE'])
-        android.signingConfigs.debug.storePassword = props['STORE_PASSWORD']
-        android.signingConfigs.debug.keyAlias = props['KEY_ALIAS']
-        android.signingConfigs.debug.keyPassword = props['KEY_PASSWORD']
-        android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
-        android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
-        android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
-        android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
-    } else {
-        println 'signing.properties found but some entries are missing'
-        android.buildTypes.debug.signingConfig = null
-        android.buildTypes.release.signingConfig = null
     }
-} else {
-    println 'signing.properties not found'
-    android.buildTypes.debug.signingConfig = null
-    android.buildTypes.release.signingConfig = null
+
+    implementation(libDependencies.fastScroller) {
+        transitive = true
+    }
+
+    implementation project(':app-theme-engine')
+
+    implementation (libDependencies.pulltorefresh) {
+        exclude module: 'support-v4'
+    }
+
+    // implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation libDependencies.bugly
+    implementation libDependencies.umeng_analytics
+    implementation libDependencies.dagger
+    annotationProcessor libDependencies.dagger_compiler
+    compileOnly libDependencies.jsr250_api
+
+    implementation libDependencies.glide
+    implementation libDependencies.jsoup
+    implementation libDependencies.fab
+    implementation libDependencies.subsampling_scale_image_view
+    compileOnly libDependencies.tagsoup_osgi
+    implementation libDependencies.persistentsearchview
+
+    implementation "android.arch.core:runtime:1.1.1"
+    implementation "android.arch.core:common:1.1.1"
 }
 
 
-apply plugin: 'com.google.gms.google-services'
+configurations.all {
+    resolutionStrategy {
+        force "com.android.support:support-v4:28+"
+    }
+}
+
+
+//retrolambda {
+//    jdk System.getenv('JAVA8_HOME')
+//    oldJdk System.getenv('JAVA7_HOME')
+//    javaVersion JavaVersion.VERSION_1_7
+//    defaultMethods false
+//    incremental true
+//}
+
+//dexcount {
+//    includeClasses = false
+//    includeFieldCount = true
+//    includeTotalMethodCount = false
+//    printAsTree = false
+//    orderByMethodCount = false
+//    verbose = false
+//}
+//
+//def Properties props = new Properties()
+//def propFile = new File('app/signing.properties')
+//if (propFile.canRead()){
+//    props.load(new FileInputStream(propFile))
+//
+//    if (props!=null && props.containsKey('STORE_FILE') && props.containsKey('STORE_PASSWORD') &&
+//            props.containsKey('KEY_ALIAS') && props.containsKey('KEY_PASSWORD')) {
+//        android.signingConfigs.debug.storeFile = file(props['STORE_FILE'])
+//        android.signingConfigs.debug.storePassword = props['STORE_PASSWORD']
+//        android.signingConfigs.debug.keyAlias = props['KEY_ALIAS']
+//        android.signingConfigs.debug.keyPassword = props['KEY_PASSWORD']
+//        android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
+//        android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
+//        android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
+//        android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
+//    } else {
+//        println 'signing.properties found but some entries are missing'
+//        android.buildTypes.debug.signingConfig = null
+//        android.buildTypes.release.signingConfig = null
+//    }
+//} else {
+//    println 'signing.properties not found'
+//    android.buildTypes.debug.signingConfig = null
+//    android.buildTypes.release.signingConfig = null
+//}
+
+
+//apply plugin: 'com.google.gms.google-services'

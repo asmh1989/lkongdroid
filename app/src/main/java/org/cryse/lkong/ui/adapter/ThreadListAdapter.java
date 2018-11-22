@@ -28,7 +28,7 @@ import org.cryse.widget.recyclerview.SimpleRecyclerViewAdapter;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
+import butterknife.BindView;
 
 public class ThreadListAdapter extends SimpleRecyclerViewAdapter<ThreadModel> {
     private String mATEKey;
@@ -96,17 +96,17 @@ public class ThreadListAdapter extends SimpleRecyclerViewAdapter<ThreadModel> {
     public static class ViewHolder extends RecyclerViewHolder {
         // each data item is just a string in this case
 
-        @Bind(R.id.recyclerview_item_thread_relative_layout_root)
+        @BindView(R.id.recyclerview_item_thread_relative_layout_root)
         RelativeLayout mRootView;
-        @Bind(R.id.recyclerview_item_thread_imageview_icon)
+        @BindView(R.id.recyclerview_item_thread_imageview_icon)
         public ImageView mThreadIconImageView;
-        @Bind(R.id.recyclerview_item_thread_textview_title)
+        @BindView(R.id.recyclerview_item_thread_textview_title)
         public TextView mThreadTitleTextView;
-        @Bind(R.id.recyclerview_item_thread_textview_secondary)
+        @BindView(R.id.recyclerview_item_thread_textview_secondary)
         public TextView mThreadSecondaryTextView;
-        @Bind(R.id.recyclerview_item_thread_textview_notice1)
+        @BindView(R.id.recyclerview_item_thread_textview_notice1)
         public TextView mNotice1TextView;
-        @Bind(R.id.recyclerview_item_thread_textview_notice2)
+        @BindView(R.id.recyclerview_item_thread_textview_notice2)
         public TextView mNotice2TextView;
 
         OnThreadItemClickListener mOnThreadItemClickListener;
