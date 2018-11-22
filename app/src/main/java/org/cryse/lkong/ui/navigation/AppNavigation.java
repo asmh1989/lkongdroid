@@ -15,8 +15,6 @@ import android.provider.Browser;
 import android.provider.Settings;
 import android.support.design.widget.AppBarLayout;
 
-import com.afollestad.appthemeengine.Config;
-import com.afollestad.appthemeengine.util.ATEUtil;
 import com.thefinestartist.finestwebview.FinestWebView;
 
 import org.cryse.lkong.R;
@@ -175,12 +173,12 @@ public class AppNavigation {
         if(inAppBrowser) {
             String ateKey = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("dark_theme", false) ?
                     "dark_theme" : "light_theme";
-            int statusBarColor = Config.primaryColorDark(context, ateKey);
-            int primaryColor = Config.primaryColor(context, ateKey);
-            int accentColor = Config.primaryColor(context, ateKey);
-            int iconColor = ATEUtil.isColorLight(primaryColor) ? Color.BLACK : Color.WHITE;
-            int iconColorPressed = ThemeUtils.makeColorDarken(iconColor, 0.8f);
-            int iconColorDisabled = ThemeUtils.makeColorDarken(iconColor, 0.6f);
+            //int statusBarColor = Config.primaryColorDark(context, ateKey);
+            //int primaryColor = Config.primaryColor(context, ateKey);
+            //int accentColor = Config.primaryColor(context, ateKey);
+            //int iconColor = ATEUtil.isColorLight(primaryColor) ? Color.BLACK : Color.WHITE;
+            //int iconColorPressed = ThemeUtils.makeColorDarken(iconColor, 0.8f);
+            //int iconColorDisabled = ThemeUtils.makeColorDarken(iconColor, 0.6f);
             FinestWebView.Builder builder = new FinestWebView.Builder(context);
             builder
                     .showUrl(showUrl)
@@ -188,15 +186,15 @@ public class AppNavigation {
                     .showMenuOpenWith(showMenuOpenWith)
                     .showMenuRefresh(showMenuRefresh)
                     .showMenuShareVia(showMenuShareVia)
-                    .statusBarColor(statusBarColor)
-                    .toolbarColor(primaryColor)
+                    //.statusBarColor(statusBarColor)
+                    //.toolbarColor(primaryColor)
                     .toolbarScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL | AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS)
-                    .iconDefaultColor(iconColor)
-                    .iconDisabledColor(iconColorDisabled)
-                    .iconPressedColor(iconColorPressed)
-                    .titleColor(iconColor)
-                    .urlColor(iconColorPressed)
-                    .progressBarColor(accentColor)
+                    //.iconDefaultColor(iconColor)
+                    //.iconDisabledColor(iconColorDisabled)
+                    //.iconPressedColor(iconColorPressed)
+                    //.titleColor(iconColor)
+                    //.urlColor(iconColorPressed)
+                    //.progressBarColor(accentColor)
                     .show(url);
             /*Intent intent = new Intent(context, InAppBrowserActivity.class);
             intent.putExtra("url", url);

@@ -22,8 +22,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 
-import com.afollestad.appthemeengine.Config;
-import com.afollestad.appthemeengine.util.ATEUtil;
 import com.bumptech.glide.Glide;
 import com.malinskiy.superrecyclerview.OnMoreListener;
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
@@ -217,7 +215,7 @@ public class ForumActivity extends AbstractSwipeBackActivity implements ForumVie
         mListTypeSpinner.setAdapter(dataAdapter);
         RecyclerView.LayoutParams headerLP = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         mHeaderView.setLayoutParams(headerLP);
-        ((CardView)mHeaderView).setCardBackgroundColor(Config.textColorPrimaryInverse(this, mATEKey));
+        //((CardView)mHeaderView).setCardBackgroundColor(Config.textColorPrimaryInverse(this, mATEKey));
         mWrapperAdapter.addHeader(mHeaderView);
 
         mMoreProgressBar = new ProgressBar(this);
@@ -448,7 +446,7 @@ public class ForumActivity extends AbstractSwipeBackActivity implements ForumVie
         mFab.setColorPressed(accentColorDark);
         mFab.setColorRipple(accentColorRipple);
         Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_button_edit, null).mutate();
-        DrawableCompat.setTint(drawable, ATEUtil.isColorLight(accentColor) ? Color.BLACK : Color.WHITE);
+        DrawableCompat.setTint(drawable, Color.BLACK);
         mFab.setImageDrawable(drawable);
     }
 }

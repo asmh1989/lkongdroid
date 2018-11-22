@@ -10,9 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
 import android.view.View;
 
-import com.afollestad.appthemeengine.ATE;
-import com.afollestad.appthemeengine.Config;
-
 import org.cryse.lkong.event.AbstractEvent;
 import org.cryse.lkong.event.RxEventBus;
 import org.cryse.lkong.utils.SubscriptionUtils;
@@ -53,11 +50,6 @@ public abstract class AbstractFragment extends Fragment implements SnackbarSuppo
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //ATE.apply(this, mATEKey);
-        ATE.postApply(getActivity(), mATEKey);
-        mPrimaryColor = Config.primaryColor(getActivity(), mATEKey);
-        mPrimaryDarkColor = Config.primaryColorDark(getActivity(), mATEKey);
-        mAccentColor = Config.accentColor(getActivity(), mATEKey);
         getAppCompatActivity().invalidateOptionsMenu();
     }
 

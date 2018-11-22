@@ -8,7 +8,6 @@ import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.v4.graphics.drawable.DrawableCompat;
 
-import com.afollestad.appthemeengine.Config;
 
 public class ThemeUtils {
     public static boolean isNightMode() {
@@ -18,13 +17,13 @@ public class ThemeUtils {
     public static int textColorSecondary(Context context) {
         String key = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("dark_theme", false) ?
                 "dark_theme" : "light_theme";
-        return Config.textColorSecondary(context, key);
+        return Color.BLACK;
     }
 
     public static int accentColor(Context context) {
         String key = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("dark_theme", false) ?
                 "dark_theme" : "light_theme";
-        return Config.accentColor(context, key);
+        return Color.parseColor("#263238");
     }
 
     public static int makeColorDarken(int color, float factor) {

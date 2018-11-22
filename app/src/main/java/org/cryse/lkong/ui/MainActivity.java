@@ -15,10 +15,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.afollestad.appthemeengine.ATE;
-import com.afollestad.appthemeengine.Config;
-import com.afollestad.appthemeengine.customizers.ATEStatusBarCustomizer;
-import com.afollestad.appthemeengine.util.ATEUtil;
 import com.bumptech.glide.Glide;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -63,8 +59,7 @@ import javax.inject.Inject;
 
 import pub.devrel.easypermissions.EasyPermissions;
 
-public class MainActivity extends AbstractActivity implements EasyPermissions.PermissionCallbacks ,
-        ATEStatusBarCustomizer {
+public class MainActivity extends AbstractActivity implements EasyPermissions.PermissionCallbacks {
     private static final String LOG_TAG = MainActivity.class.getName();
     public static AtomicBoolean Running = new AtomicBoolean(false);
     private static final int ID_HOMEPAGE = 1001;
@@ -99,29 +94,6 @@ public class MainActivity extends AbstractActivity implements EasyPermissions.Pe
     protected void onCreate(Bundle savedInstanceState) {
         Running.set(true);
         injectThis();
-        // Default config
-        if (!ATE.config(this, "light_theme").isConfigured(BuildConfig.VERSION_CODE)) {
-            ATE.config(this, "light_theme")
-                    .activityTheme(R.style.AppTheme)
-                    .primaryColorRes(R.color.colorPrimaryLightDefault)
-                    .accentColorRes(R.color.colorAccentLightDefault)
-                    .lightToolbarMode(Config.LIGHT_TOOLBAR_AUTO)
-                    .coloredActionBar(true)
-                    .coloredNavigationBar(false)
-                    .textSizeSpForMode(16, Config.TEXTSIZE_BODY)
-                    .commit();
-        }
-        if (!ATE.config(this, "dark_theme").isConfigured(BuildConfig.VERSION_CODE)) {
-            ATE.config(this, "dark_theme")
-                    .activityTheme(R.style.AppThemeDark)
-                    .primaryColorRes(R.color.colorPrimaryDarkDefault)
-                    .accentColorRes(R.color.colorAccentDarkDefault)
-                    .lightToolbarMode(Config.LIGHT_TOOLBAR_AUTO)
-                    .coloredActionBar(true)
-                    .coloredNavigationBar(true)
-                    .textSizeSpForMode(16, Config.TEXTSIZE_BODY)
-                    .commit();
-        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mCheckNoticeDuration = Prefs.getStringPrefs(
@@ -199,7 +171,7 @@ public class MainActivity extends AbstractActivity implements EasyPermissions.Pe
                     return false;
                 })
                 .withCurrentProfileHiddenInList(true)
-                .withTextColor(ATEUtil.isColorLight(getAccentColor()) ? Color.BLACK : Color.WHITE);
+                .withTextColor(Color.WHITE);
         mAccountHeader = accountHeaderBuilder.build();
         IDrawerItem[] drawerItems = new IDrawerItem[7];
         drawerItems[0] = applyColorToDrawerItem(new PrimaryDrawerItem()
@@ -232,7 +204,7 @@ public class MainActivity extends AbstractActivity implements EasyPermissions.Pe
                 .withActivity(this)
                 .withAccountHeader(mAccountHeader)
                 //.withStatusBarColor(getPrimaryDarkColor())
-                .withSliderBackgroundColor(Config.textColorPrimaryInverse(this, mATEKey))
+                //.withSliderBackgroundColor(Config.textColorPrimaryInverse(this, mATEKey))
                 .addDrawerItems(
                         drawerItems
                 )
@@ -278,23 +250,23 @@ public class MainActivity extends AbstractActivity implements EasyPermissions.Pe
     }
 
     private BaseDrawerItem applyColorToDrawerItem(BaseDrawerItem drawerItem) {
-        int normalTextColor = Config.navigationViewNormalText(this, mATEKey, isNightMode());
-        int selectedTextColor = Config.navigationViewSelectedText(this, mATEKey, isNightMode());
-        drawerItem.withIconColor(normalTextColor);
-        drawerItem.withSelectedIconColor(selectedTextColor);
+        //int normalTextColor = Config.navigationViewNormalText(this, mATEKey, isNightMode());
+        //int selectedTextColor = Config.navigationViewSelectedText(this, mATEKey, isNightMode());
+        //drawerItem.withIconColor(normalTextColor);
+        //drawerItem.withSelectedIconColor(selectedTextColor);
         drawerItem.withIconTintingEnabled(true);
-        drawerItem.withTextColor(normalTextColor);
-        drawerItem.withSelectedTextColor(selectedTextColor);
-        drawerItem.withSelectedColor(Config.navigationViewSelectedBg(this, mATEKey, isNightMode()));
+        //drawerItem.withTextColor(normalTextColor);
+        //drawerItem.withSelectedTextColor(selectedTextColor);
+        //drawerItem.withSelectedColor(Config.navigationViewSelectedBg(this, mATEKey, isNightMode()));
         return drawerItem;
     }
 
     private ProfileSettingDrawerItem applyColorToDrawerItem(ProfileSettingDrawerItem drawerItem) {
-        int normalTextColor = Config.navigationViewNormalText(this, mATEKey, isNightMode());
-        drawerItem.withIconColor(normalTextColor);
+        //int normalTextColor = Config.navigationViewNormalText(this, mATEKey, isNightMode());
+        //drawerItem.withIconColor(normalTextColor);
         drawerItem.withIconTinted(true);
-        drawerItem.withTextColor(normalTextColor);
-        drawerItem.withSelectedColor(Config.navigationViewSelectedBg(this, mATEKey, isNightMode()));
+        //drawerItem.withTextColor(normalTextColor);
+        //drawerItem.withSelectedColor(Config.navigationViewSelectedBg(this, mATEKey, isNightMode()));
         return drawerItem;
     }
 
@@ -545,15 +517,11 @@ public class MainActivity extends AbstractActivity implements EasyPermissions.Pe
         finish();
     }
 
-    @Override
     public int getStatusBarColor() {
         if(mNaviagtionDrawer != null && mNaviagtionDrawer.getDrawerLayout() != null)
             mNaviagtionDrawer.getDrawerLayout().setStatusBarBackgroundColor(getPrimaryDarkColor());
         return ResourcesCompat.getColor(getResources(), R.color.scrim_inset_color, null);
     }
 
-    @Override
-    public int getLightStatusBarMode() {
-        return Config.lightStatusBarMode(LKongApplication.get(this), mATEKey);
-    }
+
 }

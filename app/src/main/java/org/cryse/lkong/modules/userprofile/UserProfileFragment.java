@@ -26,7 +26,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.afollestad.appthemeengine.Config;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
 
@@ -216,17 +215,17 @@ public class UserProfileFragment extends AbstractFragment implements /*RevealBac
                     R.drawable.ic_arrow_backward,
                     null
             );
-            ThemeUtils.setTint(
-                    drawable,
-                    Config.textColorPrimaryInverse(getActivity(), mATEKey)
-            );
+            //ThemeUtils.setTint(
+            //        drawable,
+            //        Config.textColorPrimaryInverse(getActivity(), mATEKey)
+            //);
             actionBar.setHomeAsUpIndicator(drawable);
         }
     }
 
     private void setColors() {
-        mIntroductionCardView.setCardBackgroundColor(Config.textColorPrimaryInverse(getActivity(), mATEKey));
-        mElseCardView.setCardBackgroundColor(Config.textColorPrimaryInverse(getActivity(), mATEKey));
+        //mIntroductionCardView.setCardBackgroundColor(Config.textColorPrimaryInverse(getActivity(), mATEKey));
+        //mElseCardView.setCardBackgroundColor(Config.textColorPrimaryInverse(getActivity(), mATEKey));
     }
 
     private void setClickListeners() {

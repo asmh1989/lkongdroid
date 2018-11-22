@@ -8,9 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.afollestad.appthemeengine.ATE;
-import com.afollestad.appthemeengine.Config;
-
 import org.cryse.lkong.R;
 import org.cryse.lkong.model.NoticeRateModel;
 import org.cryse.widget.recyclerview.RecyclerViewHolder;
@@ -64,7 +61,7 @@ public class NoticeRateCollectionAdapter extends SimpleRecyclerViewAdapter<Notic
             super(v);
             ButterKnife.bind(this, v);
             // ATE.apply(itemView, ateKey);
-            mRootCardView.setCardBackgroundColor(Config.textColorPrimaryInverse(itemView.getContext(), ateKey));
+            //mRootCardView.setCardBackgroundColor(Config.textColorPrimaryInverse(itemView.getContext(), ateKey));
         }
     }
 }

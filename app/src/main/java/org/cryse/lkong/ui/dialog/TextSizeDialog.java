@@ -13,9 +13,6 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
-import com.afollestad.appthemeengine.ATE;
-import com.afollestad.appthemeengine.Config;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -38,7 +35,7 @@ public class TextSizeDialog extends DialogFragment implements MaterialDialog.Sin
     private SeekBar mSeeker;
     private TextView mValue;
 
-    public static void show(@NonNull Activity context, @NonNull @Config.TextSizeMode String textSizeMode,
+    public static void show(@NonNull Activity context, @NonNull String textSizeMode,
                             @Nullable String ateKey, @StringRes int title, boolean recreateOnApply) {
         TextSizeDialog dialog = new TextSizeDialog();
         Bundle args = new Bundle();
@@ -83,8 +80,7 @@ public class TextSizeDialog extends DialogFragment implements MaterialDialog.Sin
         if (mode != null)
             mode = mode.substring(mode.indexOf('|') + 1);
 
-        final int defaultValue = Config.textSizeForMode(getActivity(),
-                getArguments().getString(KEY_ATEKEY), mode);
+        final int defaultValue =  16;
         mPreview.setTextSize(TypedValue.COMPLEX_UNIT_PX, defaultValue);
         mSeeker.setMax(seekerMax(mode));
         final int dpValue = pxToSp(this, defaultValue);
@@ -117,50 +113,49 @@ public class TextSizeDialog extends DialogFragment implements MaterialDialog.Sin
     @SuppressWarnings("ResourceType")
     @Override
     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-        @Config.TextSizeMode
         String mode = getArguments().getString(KEY_MODE);
         assert mode != null;
         mode = mode.substring(mode.indexOf('|') + 1);
         if (which == DialogAction.POSITIVE) {
             dismiss();
             if (getActivity() == null) return;
-            ATE.config(getActivity(), getArguments().getString(KEY_ATEKEY))
-                    .textSizeSpForMode(mSeeker.getProgress() + 1, mode)
-                    .apply(getActivity());
+            //ATE.config(getActivity(), getArguments().getString(KEY_ATEKEY))
+            //        .textSizeSpForMode(mSeeker.getProgress() + 1, mode)
+            //        .apply(getActivity());
             if (getArguments().getBoolean(KEY_RECREATE))
                 getActivity().recreate();
         } else if (which == DialogAction.NEUTRAL) {
-            int size;
-            switch (mode) {
-                default:
-                case Config.TEXTSIZE_CAPTION:
-                    size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_caption);
-                    break;
-                case Config.TEXTSIZE_BODY:
-                    size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_body);
-                    break;
-                case Config.TEXTSIZE_SUBHEADING:
-                    size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_subheading);
-                    break;
-                case Config.TEXTSIZE_TITLE:
-                    size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_title);
-                    break;
-                case Config.TEXTSIZE_HEADLINE:
-                    size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_headline);
-                    break;
-                case Config.TEXTSIZE_DISPLAY1:
-                    size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_display1);
-                    break;
-                case Config.TEXTSIZE_DISPLAY2:
-                    size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_display2);
-                    break;
-                case Config.TEXTSIZE_DISPLAY3:
-                    size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_display3);
-                    break;
-                case Config.TEXTSIZE_DISPLAY4:
-                    size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_display4);
-                    break;
-            }
+            int size = 16;
+            //switch (mode) {
+            //    default:
+            //    case Config.TEXTSIZE_CAPTION:
+            //        size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_caption);
+            //        break;
+            //    case Config.TEXTSIZE_BODY:
+            //        size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_body);
+            //        break;
+            //    case Config.TEXTSIZE_SUBHEADING:
+            //        size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_subheading);
+            //        break;
+            //    case Config.TEXTSIZE_TITLE:
+            //        size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_title);
+            //        break;
+            //    case Config.TEXTSIZE_HEADLINE:
+            //        size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_headline);
+            //        break;
+            //    case Config.TEXTSIZE_DISPLAY1:
+            //        size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_display1);
+            //        break;
+            //    case Config.TEXTSIZE_DISPLAY2:
+            //        size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_display2);
+            //        break;
+            //    case Config.TEXTSIZE_DISPLAY3:
+            //        size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_display3);
+            //        break;
+            //    case Config.TEXTSIZE_DISPLAY4:
+            //        size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_display4);
+            //        break;
+            //}
             mPreview.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
             final int dpValue = pxToSp(this, size);
             mValue.setText(String.format("%dsp", dpValue));
@@ -171,37 +166,37 @@ public class TextSizeDialog extends DialogFragment implements MaterialDialog.Sin
     }
 
     public int seekerMax(String mode) {
-        int size;
-        switch (mode) {
-            default:
-            case Config.TEXTSIZE_CAPTION:
-                size = 32;
-                break;
-            case Config.TEXTSIZE_BODY:
-                size = 32;
-                break;
-            case Config.TEXTSIZE_SUBHEADING:
-                size = 32;
-                break;
-            case Config.TEXTSIZE_TITLE:
-                size = 48;
-                break;
-            case Config.TEXTSIZE_HEADLINE:
-                size = 48;
-                break;
-            case Config.TEXTSIZE_DISPLAY1:
-                size = 48;
-                break;
-            case Config.TEXTSIZE_DISPLAY2:
-                size = 48;
-                break;
-            case Config.TEXTSIZE_DISPLAY3:
-                size = 48;
-                break;
-            case Config.TEXTSIZE_DISPLAY4:
-                size = 48;
-                break;
-        }
+        int size = 32;
+        //switch (mode) {
+        //    default:
+        //    case Config.TEXTSIZE_CAPTION:
+        //        size = 32;
+        //        break;
+        //    case Config.TEXTSIZE_BODY:
+        //        size = 32;
+        //        break;
+        //    case Config.TEXTSIZE_SUBHEADING:
+        //        size = 32;
+        //        break;
+        //    case Config.TEXTSIZE_TITLE:
+        //        size = 48;
+        //        break;
+        //    case Config.TEXTSIZE_HEADLINE:
+        //        size = 48;
+        //        break;
+        //    case Config.TEXTSIZE_DISPLAY1:
+        //        size = 48;
+        //        break;
+        //    case Config.TEXTSIZE_DISPLAY2:
+        //        size = 48;
+        //        break;
+        //    case Config.TEXTSIZE_DISPLAY3:
+        //        size = 48;
+        //        break;
+        //    case Config.TEXTSIZE_DISPLAY4:
+        //        size = 48;
+        //        break;
+        //}
         return size;
     }
 }

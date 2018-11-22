@@ -38,9 +38,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import com.afollestad.appthemeengine.Config;
-import com.afollestad.appthemeengine.util.ATEUtil;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -236,7 +233,7 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
         mThreadDetailCountTextView = (TextView) mThreadIntroHeaderView.findViewById(R.id.layout_post_intro_header_textview_detail_count);
         mForumNameTextView = (TextView) mThreadIntroHeaderView.findViewById(R.id.layout_post_intro_header_textview_forum_name);
         // ATE.apply(mThreadIntroHeaderView, mATEKey);
-        ((CardView)mThreadIntroHeaderView).setCardBackgroundColor(Config.textColorPrimaryInverse(this, mATEKey));
+        //((CardView)mThreadIntroHeaderView).setCardBackgroundColor(Config.textColorPrimaryInverse(this, mATEKey));
 
         mWrapperAdapter.addHeader(mThreadIntroHeaderView);
 
@@ -937,7 +934,7 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
         mFab.setColorPressed(postControlColorDark);
         mFab.setColorRipple(postControlColorRipple);
         Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_button_edit, null).mutate();
-        int toolbarTextColor = ATEUtil.isColorLight(postControlColor) ? Color.BLACK : Color.WHITE;
+        int toolbarTextColor = Color.BLACK;
         ThemeUtils.setTint(drawable, toolbarTextColor);
         mFab.setImageDrawable(drawable);
 
@@ -1219,12 +1216,12 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
     TextPaint mContentTextPaint;
     float mDatelineTextSize;
     private void initTextPaint() {
-        mTextColorPrimary = Config.textColorPrimary(this, mATEKey);
-        mTextColorSecondary = Config.textColorSecondary(this, mATEKey);
+        //mTextColorPrimary = Config.textColorPrimary(this, mATEKey);
+        //mTextColorSecondary = Config.textColorSecondary(this, mATEKey);
         mTodayPrefix = getString(R.string.text_datetime_today);
         mContentTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        float contentTextSize = Config.textSizeForMode(this, mATEKey, Config.TEXTSIZE_BODY);
-        mContentTextPaint.setTextSize(contentTextSize);
+        //float contentTextSize = Config.textSizeForMode(this, mATEKey, Config.TEXTSIZE_BODY);
+        //mContentTextPaint.setTextSize(contentTextSize);
         mContentTextPaint.setColor(mTextColorPrimary);
         mContentTextPaint.linkColor = getAccentColor();
         mAuthorTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);

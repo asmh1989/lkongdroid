@@ -4,9 +4,6 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
-//import com.crashlytics.android.Crashlytics;
-import com.tencent.bugly.crashreport.CrashReport;
-
 import org.cryse.lkong.BuildConfig;
 import org.cryse.lkong.R;
 import org.cryse.lkong.account.UserAccountManager;
@@ -54,13 +51,7 @@ public class LKongApplication extends Application {
         Timber.plant(new CrashReportingTree());
         Prefs.with(this).useDefault().init();
         AnalyticsUtils.init(this, "....");
-        if(BuildConfig.DEBUG) {
-            CrashReport.initCrashReport(getApplicationContext(), "....", false);
-        }
-        //if(BuildConfig.InAppUpdate) {
-        //    /*UmengUpdateAgent.setAppkey(getString(R.string.UMENG_APPKEY_VALUE));
-        //    UmengUpdateAgent.update(this);*/
-        //}
+
         UserAccountManager.startHandlerThread();
         UpgradeUtils.checkVersionCode(this);
         mUserAccountManager = new UserAccountManager();

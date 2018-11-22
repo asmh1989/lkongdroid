@@ -2,32 +2,28 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.afollestad.appthemeengine.prefs.ATEPreferenceCategory
-        android:title="@string/settings_category_author_title"
-        app:ateKey_prefCategory_textColor="?ate_key">
-        <com.afollestad.appthemeengine.prefs.ATEPreference
+    <PreferenceCategory
+        android:title="@string/settings_category_author_title">
+        <Preference
             android:summary="@string/settings_item_author_name_value"
-            android:title="@string/settings_item_author_name_title"
-            app:ateKey_pref="?ate_key">
+            android:title="@string/settings_item_author_name_title">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="https://plus.google.com/+CryseHillmes" />
-        </com.afollestad.appthemeengine.prefs.ATEPreference>
-        <com.afollestad.appthemeengine.prefs.ATEPreference
+        </Preference>
+        <Preference
             android:summary="@string/settings_item_email_address_value"
-            android:title="@string/settings_item_email_address_title"
-            app:ateKey_pref="?ate_key">
+            android:title="@string/settings_item_email_address_title">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="mailto:tyk5555@hotmail.com" />
-        </com.afollestad.appthemeengine.prefs.ATEPreference>
-        <com.afollestad.appthemeengine.prefs.ATEPreference
+        </Preference>
+        <Preference
             android:summary="@string/settings_item_author_blog_site_value"
-            android:title="@string/settings_item_author_blog_site"
-            app:ateKey_pref="?ate_key">
+            android:title="@string/settings_item_author_blog_site">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="http://www.cryse.org" />
-        </com.afollestad.appthemeengine.prefs.ATEPreference>
-    </com.afollestad.appthemeengine.prefs.ATEPreferenceCategory>
+        </Preference>
+    </PreferenceCategory>
 </PreferenceScreen>

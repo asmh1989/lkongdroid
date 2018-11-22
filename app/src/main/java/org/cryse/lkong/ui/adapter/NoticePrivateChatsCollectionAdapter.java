@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.afollestad.appthemeengine.ATE;
-
 import org.cryse.lkong.R;
 import org.cryse.lkong.model.PrivateChatModel;
 import org.cryse.lkong.utils.ImageLoader;

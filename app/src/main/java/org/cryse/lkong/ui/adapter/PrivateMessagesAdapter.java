@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.afollestad.appthemeengine.ATE;
 
 import org.cryse.lkong.R;
 import org.cryse.lkong.model.PrivateMessageModel;

@@ -2,18 +2,15 @@ package org.cryse.lkong.ui.common;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.afollestad.appthemeengine.ATE;
-import com.afollestad.appthemeengine.ATEActivity;
-import com.afollestad.appthemeengine.Config;
-
-import org.cryse.lkong.BuildConfig;
 import org.cryse.lkong.R;
 import org.cryse.lkong.event.AbstractEvent;
 import org.cryse.lkong.event.RxEventBus;
@@ -32,14 +29,10 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public abstract class AbstractActivity extends ATEActivity implements SnackbarSupport {
+public abstract class AbstractActivity extends AppCompatActivity implements SnackbarSupport {
     private View mSnackbarRootView;
     private Subscription mEventBusSubscription;
     private boolean mIsDestroyed;
-    private int mPrimaryColor;
-    private int mTextPrimaryColor;
-    private int mPrimaryDarkColor;
-    private int mAccentColor;
     protected String mATEKey;
     protected BooleanPrefs mIsNightMode;
     protected StringPrefs mScreenRotation;
@@ -47,7 +40,7 @@ public abstract class AbstractActivity extends ATEActivity implements SnackbarSu
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mATEKey = getATEKey();
+        //mATEKey = getATEKey();
         super.onCreate(savedInstanceState);
 
         mScreenRotation = Prefs.getStringPrefs(
@@ -65,14 +58,11 @@ public abstract class AbstractActivity extends ATEActivity implements SnackbarSu
                 PreferenceConstant.SHARED_PREFERENCE_IS_NIGHT_MODE,
                 PreferenceConstant.SHARED_PREFERENCE_IS_NIGHT_MODE_VALUE
         );
-        mPrimaryColor = Config.primaryColor(this, mATEKey);
-        mPrimaryDarkColor = Config.primaryColorDark(this, mATEKey);
-        mTextPrimaryColor = Config.textColorPrimary(this, mATEKey);
-        mAccentColor = Config.accentColor(this, mATEKey);
+
+        //mTextPrimaryColor = android.R.attr.textColorPrimary;
     }
 
     @Nullable
-    @Override
     public final String getATEKey() {
         return PreferenceManager.getDefaultSharedPreferences(this).getBoolean("dark_theme", false) ?
                 "dark_theme" : "light_theme";
@@ -130,7 +120,6 @@ public abstract class AbstractActivity extends ATEActivity implements SnackbarSu
 
     public void toggleNightMode() {
         mIsNightMode.set(!mIsNightMode.get());
-        Config.markChanged(this, "light_theme", "dark_theme");
         recreate();
     }
 
@@ -223,15 +212,15 @@ public abstract class AbstractActivity extends ATEActivity implements SnackbarSu
     }
 
     protected int getPrimaryColor() {
-        return mPrimaryColor;
+        return  Color.parseColor("#455A64");
     }
 
     protected int getPrimaryDarkColor() {
-        return mPrimaryDarkColor;
+        return Color.parseColor("#37474F");
     }
 
     protected int getAccentColor() {
-        return mAccentColor;
+        return Color.parseColor("#263238");
     }
 
     public boolean isActivityDestroyed() {

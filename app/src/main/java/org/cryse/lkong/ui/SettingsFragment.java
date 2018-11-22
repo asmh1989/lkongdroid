@@ -12,7 +12,6 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Toast;
 
-import com.afollestad.appthemeengine.prefs.ATESwitchPreference;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.cryse.changelog.ChangeLogUtils;
@@ -221,12 +220,12 @@ public class SettingsFragment extends PreferenceFragment {
     }
 
     private void refreshCheckNoticeAutoSync() {
-        boolean isCheckNoticeAutoSync = ContentResolver.getSyncAutomatically(
-                mUserAccountManager.getCurrentUserAccount().getAccount(),
-                SyncUtils.SYNC_AUTHORITY_CHECK_NOTICE
-        );
-        ATESwitchPreference autoSyncPreference = (ATESwitchPreference) findPreference(PreferenceConstant.SHARED_PREFERENCE_ENABLE_BACKGROUND_NOTIFICATION);
-        getPreferenceManager().getSharedPreferences().edit().putBoolean(PreferenceConstant.SHARED_PREFERENCE_ENABLE_BACKGROUND_NOTIFICATION, isCheckNoticeAutoSync);
-        autoSyncPreference.setChecked(isCheckNoticeAutoSync);
+        //boolean isCheckNoticeAutoSync = ContentResolver.getSyncAutomatically(
+        //        mUserAccountManager.getCurrentUserAccount().getAccount(),
+        //        SyncUtils.SYNC_AUTHORITY_CHECK_NOTICE
+        //);
+        //ATESwitchPreference autoSyncPreference = (ATESwitchPreference) findPreference(PreferenceConstant.SHARED_PREFERENCE_ENABLE_BACKGROUND_NOTIFICATION);
+        //getPreferenceManager().getSharedPreferences().edit().putBoolean(PreferenceConstant.SHARED_PREFERENCE_ENABLE_BACKGROUND_NOTIFICATION, isCheckNoticeAutoSync);
+        //autoSyncPreference.setChecked(isCheckNoticeAutoSync);
     }
 }

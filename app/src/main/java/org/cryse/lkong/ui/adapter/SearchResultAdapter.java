@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.afollestad.appthemeengine.ATE;
 import com.bumptech.glide.Glide;
 
 import org.cryse.lkong.R;

@@ -39,9 +39,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.afollestad.appthemeengine.Config;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.Theme;
 import com.bumptech.glide.Glide;
 
 import org.cryse.lkong.R;
@@ -137,7 +135,7 @@ public abstract class AbstractPostActivity extends AbstractSwipeBackActivity {
         );
         setSwipeBackEnable(false);
         setUpToolbar(mToolbar);
-        mContentTextSize = Config.textSizeForMode(this, mATEKey, Config.TEXTSIZE_BODY);
+        mContentTextSize = 14;
         mContentEditText.setTextSize(TypedValue.COMPLEX_UNIT_PX, mContentTextSize);
         mTitleEditText.setTextSize(TypedValue.COMPLEX_UNIT_PX, mContentTextSize);
         mTitleEditText.setVisibility(hasTitleField() ? View.VISIBLE : View.GONE);

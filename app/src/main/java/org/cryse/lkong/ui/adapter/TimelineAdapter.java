@@ -1,6 +1,7 @@
 package org.cryse.lkong.ui.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
@@ -17,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.afollestad.appthemeengine.Config;
 
 import org.cryse.lkong.R;
 import org.cryse.lkong.model.TimelineModel;
@@ -55,7 +55,7 @@ public class TimelineAdapter extends SimpleRecyclerViewAdapter<TimelineModel> {
         this.mCircleTransform = new CircleTransform(context);
         this.mAvatarLoadPolicy = avatarLoadPolicy;
         this.mATEKey = ateKey;
-        this.mTextColorSecondary = Config.textColorPrimary(context, mATEKey);
+        this.mTextColorSecondary = Color.BLACK;
     }
 
     @Override
@@ -228,7 +228,7 @@ public class TimelineAdapter extends SimpleRecyclerViewAdapter<TimelineModel> {
                 }
             });
             // ATE.apply(itemView, ateKey);
-            mRootCardView.setCardBackgroundColor(Config.textColorPrimaryInverse(v.getContext(), ateKey));
+            //mRootCardView.setCardBackgroundColor(Config.textColorPrimaryInverse(v.getContext(), ateKey));
         }
     }
 

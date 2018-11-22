@@ -14,18 +14,12 @@ android {
         versionName appVersionName
     }
 
-//    dexOptions { jumboMode = true }
 
     compileOptions {
         encoding 'UTF-8'
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-//
-//    signingConfigs {
-//        debug {}
-//        release {}
-//    }
 
     buildTypes {
         debug {
@@ -39,13 +33,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-//    productFlavors {
-//        playStore {
-//            resValue 'string', 'track_channel_name', 'playStore'
-//            buildConfigField "boolean", "InAppUpdate", "true"
-//        }
-//    }
 
     lintOptions {
         abortOnError false
@@ -101,15 +88,15 @@ dependencies {
         transitive = true
     }
 
-    implementation project(':app-theme-engine')
+//    implementation project(':app-theme-engine')
 
     implementation (libDependencies.pulltorefresh) {
         exclude module: 'support-v4'
     }
 
     // implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation libDependencies.bugly
-    implementation libDependencies.umeng_analytics
+//    implementation libDependencies.bugly
+//    implementation libDependencies.umeng_analytics
     implementation libDependencies.dagger
     annotationProcessor libDependencies.dagger_compiler
     compileOnly libDependencies.jsr250_api
@@ -126,55 +113,8 @@ dependencies {
 }
 
 
-configurations.all {
-    resolutionStrategy {
-        force "com.android.support:support-v4:28+"
-    }
-}
-
-
-//retrolambda {
-//    jdk System.getenv('JAVA8_HOME')
-//    oldJdk System.getenv('JAVA7_HOME')
-//    javaVersion JavaVersion.VERSION_1_7
-//    defaultMethods false
-//    incremental true
-//}
-
-//dexcount {
-//    includeClasses = false
-//    includeFieldCount = true
-//    includeTotalMethodCount = false
-//    printAsTree = false
-//    orderByMethodCount = false
-//    verbose = false
-//}
-//
-//def Properties props = new Properties()
-//def propFile = new File('app/signing.properties')
-//if (propFile.canRead()){
-//    props.load(new FileInputStream(propFile))
-//
-//    if (props!=null && props.containsKey('STORE_FILE') && props.containsKey('STORE_PASSWORD') &&
-//            props.containsKey('KEY_ALIAS') && props.containsKey('KEY_PASSWORD')) {
-//        android.signingConfigs.debug.storeFile = file(props['STORE_FILE'])
-//        android.signingConfigs.debug.storePassword = props['STORE_PASSWORD']
-//        android.signingConfigs.debug.keyAlias = props['KEY_ALIAS']
-//        android.signingConfigs.debug.keyPassword = props['KEY_PASSWORD']
-//        android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
-//        android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
-//        android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
-//        android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
-//    } else {
-//        println 'signing.properties found but some entries are missing'
-//        android.buildTypes.debug.signingConfig = null
-//        android.buildTypes.release.signingConfig = null
+//configurations.all {
+//    resolutionStrategy {
+//        force "com.android.support:support-v4:28+"
 //    }
-//} else {
-//    println 'signing.properties not found'
-//    android.buildTypes.debug.signingConfig = null
-//    android.buildTypes.release.signingConfig = null
 //}
-
-
-//apply plugin: 'com.google.gms.google-services'
