@@ -69,7 +69,7 @@ public class LKongForumService {
     LKongDatabase mLKongDatabase;
     RxEventBus mEventBus = RxEventBus.getInstance();
 
-    @Inject
+    //@Inject
     @Singleton
     public LKongForumService(LKongDatabase lKongDatabase) {
         this.mLKongDatabase = lKongDatabase;

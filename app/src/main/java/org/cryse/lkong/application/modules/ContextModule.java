@@ -6,7 +6,6 @@ import android.net.ConnectivityManager;
 
 import org.cryse.lkong.application.LKongApplication;
 import org.cryse.lkong.application.qualifier.ApplicationContext;
-import org.cryse.lkong.event.RxEventBus;
 
 import javax.inject.Singleton;
 

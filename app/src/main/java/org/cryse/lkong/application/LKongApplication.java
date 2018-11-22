@@ -5,7 +5,6 @@ import android.content.Context;
 import android.util.Log;
 
 import org.cryse.lkong.BuildConfig;
-import org.cryse.lkong.R;
 import org.cryse.lkong.account.UserAccountManager;
 import org.cryse.lkong.application.component.DaggerLKongPresenterComponent;
 import org.cryse.lkong.application.component.DaggerSendServiceComponet;

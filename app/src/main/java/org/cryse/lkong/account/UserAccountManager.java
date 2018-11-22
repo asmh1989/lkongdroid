@@ -14,7 +14,6 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.text.TextUtils;
 
-import org.cryse.lkong.BuildConfig;
 import org.cryse.lkong.application.qualifier.ApplicationContext;
 import org.cryse.lkong.event.AccountRemovedEvent;
 import org.cryse.lkong.event.CurrentAccountChangedEvent;
