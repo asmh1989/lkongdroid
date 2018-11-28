@@ -42,19 +42,19 @@ public class UIUtils {
      */
     private static final Pattern REGEX_HTML_ESCAPE = Pattern.compile(".*&\\S;.*");
 
-    static {
-        if(Build.VERSION.SDK_INT >= 19) {
-            try {
-                Class e = Class.forName("android.os.SystemProperties");
-                Method m = e.getDeclaredMethod("get", new Class[]{String.class});
-                m.setAccessible(true);
-                sNavBarOverride = (String)m.invoke((Object)null, new Object[]{"qemu.hw.mainkeys"});
-            } catch (Throwable var2) {
-                sNavBarOverride = null;
-            }
-        }
-
-    }
+    //static {
+    //    if(Build.VERSION.SDK_INT >= 19) {
+    //        try {
+    //            Class e = Class.forName("android.os.SystemProperties");
+    //            Method m = e.getDeclaredMethod("get", new Class[]{String.class});
+    //            m.setAccessible(true);
+    //            sNavBarOverride = (String)m.invoke((Object)null, new Object[]{"qemu.hw.mainkeys"});
+    //        } catch (Throwable var2) {
+    //            sNavBarOverride = null;
+    //        }
+    //    }
+    //
+    //}
 
     public static float getDisplayDensity(Activity activity) {
         DisplayMetrics mDisplayMetrics = new DisplayMetrics();

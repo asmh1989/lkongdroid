@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
+import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
@@ -162,7 +163,7 @@ public class UrlImageGetter implements ImageGetter {
             if (mDrawable != null) {
                 return mDrawable.getOpacity();
             }
-            return 0;
+            return PixelFormat.UNKNOWN;
         }
 
         public void setDrawable(GlideDrawable drawable) {

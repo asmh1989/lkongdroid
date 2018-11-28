@@ -3,16 +3,17 @@
   <!-- Disable this given check in this project -->
   <issue id="IconMissingDensityFolder" severity="ignore" />
 
-  <issue id="ExpiredTargetSdkVersion" severity="ignore" />
+  <!--<issue id="ExpiredTargetSdkVersion" severity="ignore" />-->
   <issue id="ProtectedPermissions" severity="ignore" />
-  <issue id="DefaultLocale" severity="ignore" />
-  <issue id="InvalidPackage" severity="ignore" />
-  <issue id="UnusedResources" severity="ignore" />
-  <issue id="RtlSymmetry" severity="ignore" />
-  <issue id="RtlEnabled" severity="ignore" />
-  <issue id="SetTextI18n" severity="ignore" />
-  <issue id="HardwareIds" severity="ignore" />
-  <issue id="RtlHardcoded" severity="ignore" />
+  <!--<issue id="DefaultLocale" severity="ignore" />-->
+  <!--<issue id="InvalidPackage" severity="ignore" />-->
+  <!--<issue id="UnusedResources" severity="ignore" />-->
+  <!--<issue id="RtlSymmetry" severity="ignore" />-->
+  <!--<issue id="RtlEnabled" severity="ignore" />-->
+  <!--<issue id="SetTextI18n" severity="ignore" />-->
+  <!--<issue id="HardwareIds" severity="ignore" />-->
+  <!--<issue id="RtlHardcoded" severity="ignore" />-->
+  <issue id="MissingDefaultResource" severity="ignore" />
   <!--&lt;!&ndash; Change the severity of hardcoded strings to "error" &ndash;&gt;-->
   <!--<issue id="HardcodedText" severity="error" />-->
 </lint>

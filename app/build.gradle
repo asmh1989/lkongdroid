@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "org.cryse.lkong"
-        minSdkVersion appMinSdkVersion
+        minSdkVersion 21
         targetSdkVersion appTargetSdkVersion
         versionCode appVersionCode
         versionName appVersionName
@@ -36,6 +36,7 @@ android {
 
     lintOptions {
         abortOnError true
+//        quiet true
         //        ignoreWarnings true
     }
 

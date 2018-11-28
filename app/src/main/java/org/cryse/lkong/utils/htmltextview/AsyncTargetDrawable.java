@@ -3,6 +3,7 @@ package org.cryse.lkong.utils.htmltextview;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
+import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.Region;
@@ -96,7 +97,7 @@ public class AsyncTargetDrawable extends Drawable implements Target<GlideDrawabl
         if (mInnerDrawable != null) {
             return mInnerDrawable.getOpacity();
         }
-        return 0;
+        return PixelFormat.UNKNOWN;
     }
 
     public void setDrawable(Drawable drawable) {

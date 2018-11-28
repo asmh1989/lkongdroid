@@ -21,7 +21,7 @@ allprojects {
         jcenter()
         maven { url "https://jitpack.io" }
     }
-    ext.appVersionCode = 100
+    ext.appVersionCode = 10000
     ext.appVersionName = '1.0.0'
     ext.appMinSdkVersion = 21
     ext.appTargetSdkVersion = 23

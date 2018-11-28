@@ -1,5 +1,6 @@
 package org.cryse.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -8,7 +9,7 @@ import android.widget.ImageView;
 
 import org.cryse.lkong.R;
 
-public class FixedAspectRatioImageView extends ImageView {
+@SuppressLint("AppCompatCustomView") public class FixedAspectRatioImageView extends ImageView {
     private static final int VERTICAL = 0;
     private static final int HORIZONTAL = 1;
     private int mFixedOrientation = 0;
