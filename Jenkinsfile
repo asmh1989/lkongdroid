@@ -3,10 +3,32 @@ pipeline {
   stages {
     stage('android-lint') {
       steps {
-        sh '''echo "start android-lint"
-
-./gradlew check'''
+        echo 'start android lint ...'
+        sh './gradlew check'
       }
     }
+    stage('build') {
+      steps {
+        echo 'start build ...'
+        sh './gradlew assembleRelease'
+      }
+    }
+
   }
+  post {
+    success {
+      echo 'post success ...'
+    }
+    failure {
+      echo 'post failure ...'
+      mail to: 'team@example.com', subject: 'The Pipeline failed :('
+    }
+    unstable {
+      echo 'post unstable ...'
+    }
+    aborted {
+      echo 'post aborted ...'
+    }
+  }
+
 }

@@ -23,7 +23,7 @@ allprojects {
     }
     ext.appVersionCode = generateVersionCode()
     ext.appVersionName = generateVersionName()
-    ext.appMinSdkVersion = 14
+    ext.appMinSdkVersion = 21
     ext.appTargetSdkVersion = 23
     ext.appCompileSdkVersion = 28
     ext.appBuildToolsVersion = '28.0.3'
