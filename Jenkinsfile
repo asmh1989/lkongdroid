@@ -21,7 +21,7 @@ pipeline {
     }
     failure {
       echo 'post failure ...'
-      mail to: 'team@example.com', subject: 'The Pipeline failed :('
+      mail to: 'sunmh@justsy.com', subject: 'The Pipeline failed :('
     }
     unstable {
       echo 'post unstable ...'
