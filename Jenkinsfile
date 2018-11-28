@@ -21,7 +21,9 @@ pipeline {
     }
     failure {
       echo 'post failure ...'
-      mail to: 'sunmh@justsy.com', subject: 'The Pipeline failed :('
+      mail (to: 'sunmh@justsy.com',
+         subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER}) is pipeline failed",
+         body: "Please go to ${env.BUILD_URL}.")
     }
     unstable {
       echo 'post unstable ...'
