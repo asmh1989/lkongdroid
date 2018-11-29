@@ -13,7 +13,7 @@ import org.cryse.lkong.data.provider.base.AbstractContentValues;
 /**
  * Content values wrapper for the {@code followed_user} table.
  */
-public class FollowedUserContentValues extends AbstractContentValues {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FollowedUserContentValues extends AbstractContentValues {
     @Override
     public Uri uri() {
         return FollowedUserColumns.CONTENT_URI;

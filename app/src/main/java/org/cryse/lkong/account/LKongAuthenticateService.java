@@ -4,7 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 
-public class LKongAuthenticateService extends Service {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKongAuthenticateService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
 

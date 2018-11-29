@@ -7,7 +7,7 @@ import org.cryse.lkong.modules.base.ContentView;
 
 import java.util.List;
 
-public interface PostListView extends ContentView {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public interface PostListView extends ContentView {
     int SHOW_MODE_REPLACE_SIMPLE = 0;
     int SHOW_MODE_REPLACE = 1;
     int SHOW_MODE_PREV_PAGE = 2;

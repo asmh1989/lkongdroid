@@ -27,7 +27,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class HotThreadFragment extends SimpleCollectionFragment<
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class HotThreadFragment extends SimpleCollectionFragment<
     HotThreadModel,
     HotThreadAdapter,
     HotThreadPresenter> implements SimpleCollectionView<HotThreadModel> {
@@ -130,11 +130,6 @@ public class HotThreadFragment extends SimpleCollectionFragment<
                 mCollectionView.setLoadingMore(false);
                 mCollectionView.hideMoreProgress();
             }
-
-            //@Override
-            //public void onChangeMoreVisibility(int visibility) {
-            //    mMoreProgressBar.setVisibility(visibility);
-            //}
         };
     }
 

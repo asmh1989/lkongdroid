@@ -38,7 +38,7 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.BindView;
 
-public class SearchFragment extends AbstractFragment implements SearchForumView {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class SearchFragment extends AbstractFragment implements SearchForumView {
     private static final String LOG_TAG = SearchFragment.class.getName();
     AppNavigation mNavigation = new AppNavigation();
 
@@ -80,16 +80,12 @@ public class SearchFragment extends AbstractFragment implements SearchForumView 
         super.onCreate(savedInstanceState);
         mAvatarDownloadPolicy = Prefs.getStringPrefs(PreferenceConstant.SHARED_PREFERENCE_AVATAR_DOWNLOAD_POLICY,
                 PreferenceConstant.SHARED_PREFERENCE_AVATAR_DOWNLOAD_POLICY_VALUE);
-        // UIUtils.setInsets(this, mCollectionView, false, false, true, Build.VERSION.SDK_INT < 21);
         Bundle args = getArguments();
         if (args != null) {
             if (args.containsKey(DataContract.BUNDLE_SEARCH_QUERY)) {
                 mQueryString = args.getString(DataContract.BUNDLE_SEARCH_QUERY);
             }
         }
-        /*if(TextUtils.isEmpty(mSearchString)) {
-            throw new IllegalArgumentException("Need SEARCH_STRING param.");
-        }*/
     }
 
     @Nullable
@@ -117,21 +113,18 @@ public class SearchFragment extends AbstractFragment implements SearchForumView 
                     mSearchResultRecyclerView.hideMoreProgress();
                 }
             }
-
-            //@Override
-            //public void onChangeMoreVisibility(int visibility) {
-            //    mMoreProgressBar.setVisibility(visibility);
-            //}
         });
         mSearchResultAdapter.setOnItemClickListener((view, position, id) -> {
             switch (mSearchResultAdapter.getResultType()) {
                 case SearchDataSet.TYPE_POST:
                     SearchPostItem postResult = (SearchPostItem) mSearchResultAdapter.getItem(position);
                     String idString = postResult.getId();
-                    if (idString.startsWith("thread_"))
-                        idString = idString.substring(7);
-                    if (TextUtils.isDigitsOnly(idString))
-                        mNavigation.openActivityForPostListByThreadId(getContext(), Long.valueOf(idString));
+                    if (idString.startsWith("thread_")) {
+                      idString = idString.substring(7);
+                    }
+                    if (TextUtils.isDigitsOnly(idString)) {
+                      mNavigation.openActivityForPostListByThreadId(getContext(), Long.valueOf(idString));
+                    }
                     break;
                 case SearchDataSet.TYPE_USER:
                     SearchUserItem userResult = (SearchUserItem) mSearchResultAdapter.getItem(position);
@@ -143,6 +136,8 @@ public class SearchFragment extends AbstractFragment implements SearchForumView 
                 case SearchDataSet.TYPE_GROUP:
                     SearchGroupItem groupResult = (SearchGroupItem) mSearchResultAdapter.getItem(position);
                     mNavigation.openActivityForForumByForumId(getContext(), groupResult.getForumId(), groupResult.getGroupName().toString(), groupResult.getGroupDescription().toString());
+                    break;
+                default:
                     break;
             }
         });
@@ -209,7 +204,9 @@ public class SearchFragment extends AbstractFragment implements SearchForumView 
     @Override
     public void onSearchDone(SearchDataSet dataSet, boolean isLoadingMore) {
         if(isLoadingMore) {
-            if (dataSet.getSearchResultItems() == null || dataSet.getSearchResultItems().size() == 0) mIsNoMore.set(true);
+            if (dataSet.getSearchResultItems() == null || dataSet.getSearchResultItems().size() == 0) {
+              mIsNoMore.set(true);
+            }
             mSearchResultAdapter.appendDataSet(dataSet);
         }
         else {
@@ -244,10 +241,11 @@ public class SearchFragment extends AbstractFragment implements SearchForumView 
     public void setLoadingMore(boolean value) {
         mIsLoadingMore.set(value);
         mSearchResultRecyclerView.setLoadingMore(value);
-        if(value)
-            mSearchResultRecyclerView.showMoreProgress();
-        else
-            mSearchResultRecyclerView.hideMoreProgress();
+        if(value) {
+          mSearchResultRecyclerView.showMoreProgress();
+        } else {
+          mSearchResultRecyclerView.hideMoreProgress();
+        }
     }
 
     @Override

@@ -1,6 +1,6 @@
 package org.cryse.lkong.logic.restservice.model;
 
-public class LKNewPostResult {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKNewPostResult {
     private String requestid;
     private long tid;
     private long pid;

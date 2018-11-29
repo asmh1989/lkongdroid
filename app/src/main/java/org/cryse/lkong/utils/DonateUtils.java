@@ -12,7 +12,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.cryse.lkong.R;
 
-public class DonateUtils {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class DonateUtils {
     public static void showDonateDialog(Activity activity) {
         new MaterialDialog.Builder(activity)
                 .title(R.string.donation_title)
@@ -23,8 +23,6 @@ public class DonateUtils {
                     ClipData clip = ClipData.newPlainText("tyk5555@hotmail.com", "tyk5555@hotmail.com");
                     clipboard.setPrimaryClip(clip);
                     Toast.makeText(activity, activity.getString(R.string.donation_clipboard_toast), Toast.LENGTH_SHORT).show();
-                    //Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.alipay.com"));
-                    //activity.startActivity(browserIntent);
                     Intent startAlipayIntent = activity.getPackageManager().getLaunchIntentForPackage("com.eg.android.AlipayGphone");
                     if(startAlipayIntent == null) {
                         startAlipayIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.alipay.com"));

@@ -44,7 +44,7 @@ import java.util.List;
  * <p/>
  * From https://gist.github.com/pyricau/3424004 with fix from comments
  */
-@SuppressLint("AppCompatCustomView") public class JellyBeanSpanFixTextView extends TextView {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) @SuppressLint("AppCompatCustomView") public class JellyBeanSpanFixTextView extends TextView {
 
     private static class FixingResult {
         public final boolean fixed;

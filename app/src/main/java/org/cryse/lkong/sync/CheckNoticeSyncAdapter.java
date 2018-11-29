@@ -23,7 +23,7 @@ import org.cryse.lkong.model.NoticeCountModel;
 import org.cryse.lkong.utils.DataContract;
 import org.cryse.lkong.account.LKAuthObject;
 
-public class CheckNoticeSyncAdapter extends AbstractThreadedSyncAdapter {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class CheckNoticeSyncAdapter extends AbstractThreadedSyncAdapter {
     public static final int NOTIFICATION_START_ID = 150;
 
     private AccountManager mAccountManager;

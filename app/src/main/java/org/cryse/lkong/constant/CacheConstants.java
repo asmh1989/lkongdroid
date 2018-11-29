@@ -1,6 +1,6 @@
 package org.cryse.lkong.constant;
 
-public class CacheConstants {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class CacheConstants {
     public static final String CACHE_KEY_FORUM_LIST = "cache_forum_list";
     public static final String CACHE_KEY_PUNCH_RESULT = "cache_punch_result";
     public static final String CACHE_KEY_NOTIFICATION_COUNT = "cache_notification_count";

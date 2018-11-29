@@ -12,7 +12,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
-public class SearchPresenter implements BasePresenter<SearchForumView> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class SearchPresenter implements BasePresenter<SearchForumView> {
     private static final String LOG_TAG = SearchPresenter.class.getName();
     LKongForumService mLKongForumService;
     Subscription mSearchSubscription;
@@ -30,8 +30,9 @@ public class SearchPresenter implements BasePresenter<SearchForumView> {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         result -> {
-                            if(mView != null)
-                                mView.onSearchDone(result, loadingMore);
+                            if(mView != null) {
+                              mView.onSearchDone(result, loadingMore);
+                            }
                         },
                         error -> {
                             if(mView != null) {
@@ -48,11 +49,14 @@ public class SearchPresenter implements BasePresenter<SearchForumView> {
     }
 
     private void setLoadingStatus(boolean loadingMore, boolean isLoading) {
-        if(mView == null) return;
-        if(loadingMore)
-            mView.setLoadingMore(isLoading);
-        else
-            mView.setLoading(isLoading);
+        if(mView == null) {
+          return;
+        }
+        if(loadingMore) {
+          mView.setLoadingMore(isLoading);
+        } else {
+          mView.setLoading(isLoading);
+        }
     }
 
     @Override

@@ -1,6 +1,6 @@
 package org.cryse.lkong.account;
 
-public class AccountConst {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class AccountConst {
     /**
      * Account type id
      */

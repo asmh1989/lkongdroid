@@ -24,7 +24,7 @@ import org.cryse.lkong.utils.htmltextview.HtmlTagHandler;
 import org.cryse.lkong.utils.htmltextview.HtmlTextUtils;
 import org.cryse.lkong.utils.snackbar.SimpleSnackbarType;
 
-public class NewPostActivity extends AbstractPostActivity {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NewPostActivity extends AbstractPostActivity {
     public static final String LOG_TAG = NewPostActivity.class.getName();
 
     String mTitle;
@@ -38,10 +38,11 @@ public class NewPostActivity extends AbstractPostActivity {
         if (intent.hasExtra(DataContract.BUNDLE_THREAD_ID)) {
             mThreadId = intent.getLongExtra(DataContract.BUNDLE_THREAD_ID, 0);
             mTitle = intent.getStringExtra(DataContract.BUNDLE_POST_REPLY_TITLE);
-            if (intent.hasExtra(DataContract.BUNDLE_POST_ID))
-                mPostId = intent.getLongExtra(DataContract.BUNDLE_POST_ID, 0);
-            else
-                mPostId = null;
+            if (intent.hasExtra(DataContract.BUNDLE_POST_ID)) {
+              mPostId = intent.getLongExtra(DataContract.BUNDLE_POST_ID, 0);
+            } else {
+              mPostId = null;
+            }
             if (intent.hasExtra(DataContract.BUNDLE_IS_EDIT_MODE)) {
                 mIsEditMode = true;
                 mEditHtmlContent = removeLastEditInfo(intent.getStringExtra(DataContract.BUNDLE_EDIT_CONTENT));
@@ -65,7 +66,6 @@ public class NewPostActivity extends AbstractPostActivity {
                 if (spanObj instanceof ClickableImageSpan) {
                     ((ClickableImageSpan) spanObj).loadImage(imageSpanContainer);
                 } else if (spanObj instanceof EmojiSpan) {
-                    //((EmojiSpan) spanObj).loadImage(imageSpanContainer);
                 }
             }
         }
@@ -74,10 +74,11 @@ public class NewPostActivity extends AbstractPostActivity {
 
     @Override
     protected void sendData(String title, String content) {
-        if(mIsEditMode)
-            getSendServiceBinder().editPost(mUserAccountManager.getAuthObject(), mThreadId, mPostId, content);
-        else
-            getSendServiceBinder().sendPost(mUserAccountManager.getAuthObject(), mThreadId, mPostId, content);
+        if(mIsEditMode) {
+          getSendServiceBinder().editPost(mUserAccountManager.getAuthObject(), mThreadId, mPostId, content);
+        } else {
+          getSendServiceBinder().sendPost(mUserAccountManager.getAuthObject(), mThreadId, mPostId, content);
+        }
     }
 
     @Override
@@ -103,8 +104,9 @@ public class NewPostActivity extends AbstractPostActivity {
     protected void onSendDataDone(AbstractEvent event) {
         if (event instanceof NewPostDoneEvent) {
             NewPostResult result = ((NewPostDoneEvent) event).getPostResult();
-            if (mProgressDialog != null && mProgressDialog.isShowing())
-                mProgressDialog.dismiss();
+            if (mProgressDialog != null && mProgressDialog.isShowing()) {
+              mProgressDialog.dismiss();
+            }
             if (result != null && result.isSuccess()) {
                 new Handler().postDelayed(this::closeActivityWithTransition, 300);
             } else {

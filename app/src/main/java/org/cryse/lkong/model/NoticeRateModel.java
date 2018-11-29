@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import java.util.Date;
 
-public class NoticeRateModel implements SimpleCollectionItem {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NoticeRateModel implements SimpleCollectionItem {
     private long sortKey;
     private long userId;
     private String userName;
@@ -135,11 +135,11 @@ public class NoticeRateModel implements SimpleCollectionItem {
     }
 
     public static final Parcelable.Creator<NoticeRateModel> CREATOR = new Parcelable.Creator<NoticeRateModel>() {
-        public NoticeRateModel createFromParcel(Parcel source) {
+        @Override public NoticeRateModel createFromParcel(Parcel source) {
             return new NoticeRateModel(source);
         }
 
-        public NoticeRateModel[] newArray(int size) {
+        @Override public NoticeRateModel[] newArray(int size) {
             return new NoticeRateModel[size];
         }
     };

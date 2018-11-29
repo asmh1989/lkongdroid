@@ -29,7 +29,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.BindView;
 
-public class ThreadListAdapter extends SimpleRecyclerViewAdapter<ThreadModel> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class ThreadListAdapter extends SimpleRecyclerViewAdapter<ThreadModel> {
     private String mATEKey;
     private final String mTodayPrefix;
     private int mColorAccent;
@@ -57,7 +57,6 @@ public class ThreadListAdapter extends SimpleRecyclerViewAdapter<ThreadModel> {
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-        //super.onBindViewHolder(holder, position);
         ViewHolder viewHolder = (ViewHolder) holder;
         ThreadModel threadModel = getItem(position);
         bindThreadModel(viewHolder, threadModel);

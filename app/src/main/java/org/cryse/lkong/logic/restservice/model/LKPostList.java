@@ -2,7 +2,7 @@ package org.cryse.lkong.logic.restservice.model;
 
 import java.util.List;
 
-public class LKPostList {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKPostList {
     private String model;
     private int replies;
     private int page;

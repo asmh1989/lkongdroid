@@ -26,7 +26,7 @@ import org.cryse.lkong.R;
 import java.lang.reflect.Method;
 import java.util.regex.Pattern;
 
-public class UIUtils {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class UIUtils {
     private static String sNavBarOverride;
     public static final float SESSION_BG_COLOR_SCALE_FACTOR = 0.65f;
     private static final int[] RES_IDS_ACTION_BAR_SIZE = { android.R.attr.actionBarSize };
@@ -134,10 +134,11 @@ public class UIUtils {
     }
 
     public static String addIndentToStart(String text) {
-        if(text.substring(0,2).equals("\u3000\u3000"))
+        if("\u3000\u3000".equals(text.substring(0, 2))) {
             return text;
-        else
+        } else {
             return "\u3000\u3000" + text;
+        }
     }
 
     public static InsetsValue getInsets(Activity context, View view, boolean translucentStatusBar, boolean traslucentNavBar, boolean withToolbar, int extraHeight) {

@@ -2,7 +2,7 @@ package org.cryse.utils.preference;
 
 import android.content.SharedPreferences;
 
-public class LongPrefs extends PrefsItem<Long> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LongPrefs extends PrefsItem<Long> {
     public LongPrefs(SharedPreferences preferences, String key, Long defaultValue) {
         super(preferences, key, defaultValue);
     }

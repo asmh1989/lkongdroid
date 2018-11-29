@@ -10,7 +10,7 @@ import android.text.style.StyleSpan;
 
 import java.util.LinkedList;
 
-public class ChangeLogUtils {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class ChangeLogUtils {
     ChangeLog mChangeLog;
     public ChangeLogUtils(Context context, int changeLogResId) {
         XmlParser xmlParser = new XmlParser(context, changeLogResId);
@@ -27,8 +27,9 @@ public class ChangeLogUtils {
         boolean isFirstRow = true;
         for (ChangeLogRow row : rows) {
             if(row.isHeader()) {
-                if(!isFirstRow)
-                    stringBuilder.append("\n");
+                if(!isFirstRow) {
+                  stringBuilder.append("\n");
+                }
                 int versionStart = stringBuilder.length();
                 int versionEnd = versionStart + row.getVersionName().length();
                 stringBuilder.append(row.getVersionName());
@@ -38,10 +39,7 @@ public class ChangeLogUtils {
             } else {
                 CharSequence displayChange = Html.fromHtml(row.getChangeText());
                 int changeStart = stringBuilder.length();
-                int changeEnd = changeStart + displayChange.length();
                 stringBuilder.append("    \u2022  ").append(displayChange);
-                //stringBuilder.setSpan(new BulletSpan(15), changeStart, changeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                //stringBuilder.append("\n");
             }
             stringBuilder.append("\n");
         }
@@ -56,8 +54,9 @@ public class ChangeLogUtils {
         for (ChangeLogRow row : rows) {
             if(row.isHeader() && row.getVersionCode() == versionCode) {
                 isSpecificVersion = true;
-                if(!isFirstRow)
-                    stringBuilder.append("\n");
+                if(!isFirstRow) {
+                  stringBuilder.append("\n");
+                }
                 int versionStart = stringBuilder.length();
                 int versionEnd = versionStart + row.getVersionName().length();
                 stringBuilder.append(row.getVersionName());

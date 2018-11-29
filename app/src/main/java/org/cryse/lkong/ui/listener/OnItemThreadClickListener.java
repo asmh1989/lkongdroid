@@ -1,6 +1,6 @@
 package org.cryse.lkong.ui.listener;
 
 import android.view.View;
-public interface OnItemThreadClickListener {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public interface OnItemThreadClickListener {
     void onItemThreadClick(View view, int adapterPosition);
 }

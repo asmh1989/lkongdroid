@@ -15,7 +15,7 @@ import org.cryse.lkong.R;
 import butterknife.ButterKnife;
 import butterknife.BindView;
 
-public class PagerControl extends FrameLayout {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class PagerControl extends FrameLayout {
     private static final int TRANSLATE_DURATION_MILLIS = 200;
 
     @BindView(R.id.widget_pager_control_button_page_indicator)

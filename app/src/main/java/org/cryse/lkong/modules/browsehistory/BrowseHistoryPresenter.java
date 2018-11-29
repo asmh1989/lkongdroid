@@ -13,7 +13,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
-public class BrowseHistoryPresenter extends SimpleCollectionPresenter<BrowseHistory, BrowseHistoryView<BrowseHistory>> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class BrowseHistoryPresenter extends SimpleCollectionPresenter<BrowseHistory, BrowseHistoryView<BrowseHistory>> {
     private static final String LOG_TAG = BrowseHistoryPresenter.class.getName();
 
     Subscription mCheckNoticeCountSubscription;
@@ -83,8 +83,9 @@ public class BrowseHistoryPresenter extends SimpleCollectionPresenter<BrowseHist
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         result -> {
-                            if(mView != null)
-                                mView.onCheckNoticeCountComplete(result);
+                            if(mView != null) {
+                              mView.onCheckNoticeCountComplete(result);
+                            }
                         },
                         error -> {
                             Timber.e(error, "BrowseHistoryPresenter::checkNoticeCountFromDatabase() onError().", LOG_TAG);

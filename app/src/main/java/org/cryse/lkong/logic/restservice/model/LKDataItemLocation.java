@@ -1,6 +1,6 @@
 package org.cryse.lkong.logic.restservice.model;
 
-public class LKDataItemLocation {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKDataItemLocation {
     private boolean isload;
     private String location;
     private int lou;

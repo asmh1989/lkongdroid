@@ -15,7 +15,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
-public class HotThreadPresenter extends SimpleCollectionPresenter<HotThreadModel, SimpleCollectionView<HotThreadModel>> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class HotThreadPresenter extends SimpleCollectionPresenter<HotThreadModel, SimpleCollectionView<HotThreadModel>> {
     private static final String LOG_TAG = HotThreadPresenter.class.getName();
 
     @Inject
@@ -32,8 +32,9 @@ public class HotThreadPresenter extends SimpleCollectionPresenter<HotThreadModel
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         result -> {
-                            if(mView != null)
-                                mView.showSimpleData(result, isLoadingMore);
+                            if(mView != null) {
+                              mView.showSimpleData(result, isLoadingMore);
+                            }
                         },
                         error -> {
                             if(mView != null) {

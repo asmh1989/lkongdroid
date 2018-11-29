@@ -1,4 +1,4 @@
 package org.cryse.lkong.data.provider.base;
 
-public interface BaseModel {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public interface BaseModel {
 }

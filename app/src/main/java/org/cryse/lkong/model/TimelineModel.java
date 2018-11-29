@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import java.util.Date;
 
-public class TimelineModel implements SimpleCollectionItem {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class TimelineModel implements SimpleCollectionItem {
     private boolean isQuote;
     private long userId;
     private String userName;
@@ -209,11 +209,11 @@ public class TimelineModel implements SimpleCollectionItem {
         }
 
         public static final Creator<ReplyQuote> CREATOR = new Creator<ReplyQuote>() {
-            public ReplyQuote createFromParcel(Parcel source) {
+            @Override public ReplyQuote createFromParcel(Parcel source) {
                 return new ReplyQuote(source);
             }
 
-            public ReplyQuote[] newArray(int size) {
+            @Override public ReplyQuote[] newArray(int size) {
                 return new ReplyQuote[size];
             }
         };
@@ -264,11 +264,11 @@ public class TimelineModel implements SimpleCollectionItem {
     }
 
     public static final Creator<TimelineModel> CREATOR = new Creator<TimelineModel>() {
-        public TimelineModel createFromParcel(Parcel source) {
+        @Override public TimelineModel createFromParcel(Parcel source) {
             return new TimelineModel(source);
         }
 
-        public TimelineModel[] newArray(int size) {
+        @Override public TimelineModel[] newArray(int size) {
             return new TimelineModel[size];
         }
     };

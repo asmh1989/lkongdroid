@@ -20,7 +20,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class HotThreadAdapter extends SimpleRecyclerViewAdapter<HotThreadModel> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class HotThreadAdapter extends SimpleRecyclerViewAdapter<HotThreadModel> {
     private String mATEKey;
     private int mAccentColor;
     private int mAccentTextColor;

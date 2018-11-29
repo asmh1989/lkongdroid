@@ -77,8 +77,9 @@ public class TextSizeDialog extends DialogFragment implements MaterialDialog.Sin
         mValue = (TextView) view.findViewById(R.id.value);
 
         String mode = getArguments().getString(KEY_MODE);
-        if (mode != null)
-            mode = mode.substring(mode.indexOf('|') + 1);
+        if (mode != null) {
+          mode = mode.substring(mode.indexOf('|') + 1);
+        }
 
         final int defaultValue =  16;
         mPreview.setTextSize(TypedValue.COMPLEX_UNIT_PX, defaultValue);
@@ -118,44 +119,14 @@ public class TextSizeDialog extends DialogFragment implements MaterialDialog.Sin
         mode = mode.substring(mode.indexOf('|') + 1);
         if (which == DialogAction.POSITIVE) {
             dismiss();
-            if (getActivity() == null) return;
-            //ATE.config(getActivity(), getArguments().getString(KEY_ATEKEY))
-            //        .textSizeSpForMode(mSeeker.getProgress() + 1, mode)
-            //        .apply(getActivity());
-            if (getArguments().getBoolean(KEY_RECREATE))
-                getActivity().recreate();
+            if (getActivity() == null) {
+              return;
+            }
+            if (getArguments().getBoolean(KEY_RECREATE)) {
+              getActivity().recreate();
+            }
         } else if (which == DialogAction.NEUTRAL) {
             int size = 16;
-            //switch (mode) {
-            //    default:
-            //    case Config.TEXTSIZE_CAPTION:
-            //        size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_caption);
-            //        break;
-            //    case Config.TEXTSIZE_BODY:
-            //        size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_body);
-            //        break;
-            //    case Config.TEXTSIZE_SUBHEADING:
-            //        size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_subheading);
-            //        break;
-            //    case Config.TEXTSIZE_TITLE:
-            //        size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_title);
-            //        break;
-            //    case Config.TEXTSIZE_HEADLINE:
-            //        size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_headline);
-            //        break;
-            //    case Config.TEXTSIZE_DISPLAY1:
-            //        size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_display1);
-            //        break;
-            //    case Config.TEXTSIZE_DISPLAY2:
-            //        size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_display2);
-            //        break;
-            //    case Config.TEXTSIZE_DISPLAY3:
-            //        size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_display3);
-            //        break;
-            //    case Config.TEXTSIZE_DISPLAY4:
-            //        size = getResources().getDimensionPixelSize(R.dimen.ate_default_textsize_display4);
-            //        break;
-            //}
             mPreview.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
             final int dpValue = pxToSp(this, size);
             mValue.setText(String.format("%dsp", dpValue));
@@ -167,36 +138,6 @@ public class TextSizeDialog extends DialogFragment implements MaterialDialog.Sin
 
     public int seekerMax(String mode) {
         int size = 32;
-        //switch (mode) {
-        //    default:
-        //    case Config.TEXTSIZE_CAPTION:
-        //        size = 32;
-        //        break;
-        //    case Config.TEXTSIZE_BODY:
-        //        size = 32;
-        //        break;
-        //    case Config.TEXTSIZE_SUBHEADING:
-        //        size = 32;
-        //        break;
-        //    case Config.TEXTSIZE_TITLE:
-        //        size = 48;
-        //        break;
-        //    case Config.TEXTSIZE_HEADLINE:
-        //        size = 48;
-        //        break;
-        //    case Config.TEXTSIZE_DISPLAY1:
-        //        size = 48;
-        //        break;
-        //    case Config.TEXTSIZE_DISPLAY2:
-        //        size = 48;
-        //        break;
-        //    case Config.TEXTSIZE_DISPLAY3:
-        //        size = 48;
-        //        break;
-        //    case Config.TEXTSIZE_DISPLAY4:
-        //        size = 48;
-        //        break;
-        //}
         return size;
     }
 }

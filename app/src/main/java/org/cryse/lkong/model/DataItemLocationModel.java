@@ -1,6 +1,6 @@
 package org.cryse.lkong.model;
 
-public class DataItemLocationModel {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class DataItemLocationModel {
     private boolean isLoad;
     private String location;
     private int ordinal;

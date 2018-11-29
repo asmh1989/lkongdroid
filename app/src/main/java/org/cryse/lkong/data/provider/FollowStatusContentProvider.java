@@ -8,7 +8,7 @@ import org.cryse.lkong.data.provider.followedforum.FollowedForumColumns;
 import org.cryse.lkong.data.provider.followedthread.FollowedThreadColumns;
 import org.cryse.lkong.data.provider.followeduser.FollowedUserColumns;
 
-public class FollowStatusContentProvider extends LKongContentProvider {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FollowStatusContentProvider extends LKongContentProvider {
     private static final String TAG = FollowStatusContentProvider.class.getSimpleName();
     private static final String FOLLOW_STATUS_AUTHORITY = "org.cryse.lkong.data.provider.followstatus";
     private static final UriMatcher URI_MATCHER = new UriMatcher(UriMatcher.NO_MATCH);

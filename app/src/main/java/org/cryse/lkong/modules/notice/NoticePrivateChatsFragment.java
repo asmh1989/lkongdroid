@@ -19,7 +19,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class NoticePrivateChatsFragment extends SimpleCollectionFragment<
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NoticePrivateChatsFragment extends SimpleCollectionFragment<
         PrivateChatModel,
         NoticePrivateChatsCollectionAdapter,
         NoticePrivateChatsPresenter> {
@@ -31,8 +31,9 @@ public class NoticePrivateChatsFragment extends SimpleCollectionFragment<
 
     public static NoticePrivateChatsFragment newInstance(Bundle args) {
         NoticePrivateChatsFragment fragment = new NoticePrivateChatsFragment();
-        if(args != null)
-            fragment.setArguments(args);
+        if(args != null) {
+          fragment.setArguments(args);
+        }
         return fragment;
     }
 

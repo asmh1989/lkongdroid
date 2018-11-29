@@ -2,7 +2,7 @@ package org.cryse.lkong.model;
 
 import android.os.Parcel;
 
-public class SearchUserItem extends AbstractSearchResult implements SimpleCollectionItem {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class SearchUserItem extends AbstractSearchResult implements SimpleCollectionItem {
     private String avatarUrl;
     private CharSequence customStatus; // "customstatus": "",
     private CharSequence signHtml; // "sightml": "",
@@ -110,11 +110,11 @@ public class SearchUserItem extends AbstractSearchResult implements SimpleCollec
     }
 
     public static final Creator<SearchUserItem> CREATOR = new Creator<SearchUserItem>() {
-        public SearchUserItem createFromParcel(Parcel source) {
+        @Override public SearchUserItem createFromParcel(Parcel source) {
             return new SearchUserItem(source);
         }
 
-        public SearchUserItem[] newArray(int size) {
+        @Override public SearchUserItem[] newArray(int size) {
             return new SearchUserItem[size];
         }
     };

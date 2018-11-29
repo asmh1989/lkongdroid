@@ -19,35 +19,18 @@ import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 
 
-public class HTML5WebView extends WebView {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class HTML5WebView extends WebView {
 
     private Context mContext;
     private MyWebChromeClient mWebChromeClient;
-    /*private View mCustomView;
-    private FrameLayout	mCustomViewContainer;*/
-    private WebChromeClient.CustomViewCallback mCustomViewCallback;
     private OnLoadProgressChangedListener mOnLoadProgressChangedListener;
-
-/*    private FrameLayout mContentView;
-    private FrameLayout	mBrowserFrameLayout;
-    private FrameLayout	mLayout;*/
 
     private void init(Context context) {
         mContext = context;
-        if(isInEditMode()) return;
-        Activity a = (Activity) mContext;
-
-        /*mLayout = new FrameLayout(context);
-
-        try {
-            mBrowserFrameLayout = (FrameLayout) LayoutInflater.from(a).inflate(R.layout.layout_html_web_view, null);
-        } catch (Exception e) {
-            return;
+        if(isInEditMode()) {
+          return;
         }
-        mContentView = (FrameLayout) mBrowserFrameLayout.findViewById(R.id.main_content);
-        mCustomViewContainer = (FrameLayout) mBrowserFrameLayout.findViewById(R.id.fullscreen_custom_content);
-
-        mLayout = mBrowserFrameLayout;*/
+        Activity a = (Activity) mContext;
 
         mWebChromeClient = new MyWebChromeClient();
         setWebChromeClient(mWebChromeClient);
@@ -76,7 +59,6 @@ public class HTML5WebView extends WebView {
         // enable Web Storage: localStorage, sessionStorage
         s.setDomStorageEnabled(true);
 
-        //mContentView.addView(this);
     }
 
     public HTML5WebView(Context context) {
@@ -110,46 +92,15 @@ public class HTML5WebView extends WebView {
     }
 
     private class MyWebChromeClient extends WebChromeClient {
-        private Bitmap 		mDefaultVideoPoster;
-        private View 		mVideoProgressView;
 
         @Override
         public void onShowCustomView(View view, WebChromeClient.CustomViewCallback callback)
         {
             Log.v("talon_webview", "showing custom view of youtube");
-
-            /*HTML5WebView.this.setVisibility(View.GONE);
-
-            // if a view already exists then immediately terminate the new one
-            if (mCustomView != null) {
-                callback.onCustomViewHidden();
-                return;
-            }
-
-            mCustomViewContainer.addView(view);
-            mCustomView = view;
-            mCustomViewCallback = callback;
-            mCustomViewContainer.setVisibility(View.VISIBLE);*/
         }
 
         @Override
         public void onHideCustomView() {
-
-            /*if (mCustomView == null)
-                return;
-
-            // Hide the custom view.
-            mCustomView.setVisibility(View.GONE);
-
-            // Remove the custom view from its container.
-            mCustomViewContainer.removeView(mCustomView);
-            mCustomView = null;
-            mCustomViewContainer.setVisibility(View.GONE);
-            mCustomViewCallback.onCustomViewHidden();
-
-            HTML5WebView.this.setVisibility(View.VISIBLE);
-
-            //Log.i(LOGTAG, "set it to webVew");*/
         }
 
         @Override

@@ -13,7 +13,7 @@ import org.cryse.lkong.logic.restservice.model.LKNewPostResult;
 import org.cryse.lkong.model.NewPostResult;
 import org.cryse.lkong.utils.GsonUtils;
 
-public class NewReplyRequest extends AbstractAuthedHttpRequest<NewPostResult> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NewReplyRequest extends AbstractAuthedHttpRequest<NewPostResult> {
     private long mTid;
     private Long mPid;
     private String mContent;

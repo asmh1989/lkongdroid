@@ -2,7 +2,7 @@ package org.cryse.lkong.data.model;
 
 import org.cryse.lkong.data.provider.followeduser.FollowedUserModel;
 
-public class FollowedUser implements FollowedUserModel {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FollowedUser implements FollowedUserModel {
     private long userId;
     private long targetUserId;
 

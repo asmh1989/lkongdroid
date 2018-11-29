@@ -2,7 +2,7 @@ package org.cryse.lkong.logic.restservice.model;
 
 import java.util.Date;
 
-public class LKPrivateMessagesItem {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKPrivateMessagesItem {
     long uid;
     String username;
     long typeId;

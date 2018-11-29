@@ -5,7 +5,7 @@ import org.cryse.utils.http.cookie.SerializableCookie;
 import okhttp3.Cookie;
 import okhttp3.HttpUrl;
 
-public class LKAuthObject {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKAuthObject {
     long mUserId;
     String mUserName;
     HttpUrl mAuthUrl;

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class SearchDataSet {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class SearchDataSet {
     public static final int TYPE_POST = 111;
     public static final int TYPE_USER = 112;
     public static final int TYPE_GROUP = 113;
@@ -48,19 +48,20 @@ public class SearchDataSet {
         Long nextTime = rootObject.getLong("nexttime");
         if(rootObject.has("isend")) {
             if(rootObject.getInt("isend") == 1) {
-                nextTime = 0l;
+                nextTime = 0L;
             }
         }
         setNextTime(nextTime);
         String tmpSignature = rootObject.getString("tmp");
-        if(tmpSignature.equalsIgnoreCase("d_forum")) {
+        if("d_forum".equalsIgnoreCase(tmpSignature)) {
             parsePostDataSet(rootObject.getJSONArray("data"));
-        } else if(tmpSignature.equalsIgnoreCase("d_user")) {
+        } else if("d_user".equalsIgnoreCase(tmpSignature)) {
             parseUserDataSet(rootObject.getJSONArray("data"));
-        } else if(tmpSignature.equalsIgnoreCase("d_group")) {
+        } else if("d_group".equalsIgnoreCase(tmpSignature)) {
             parseGroupDataSet(rootObject.getJSONArray("data"));
-        } else
+        } else {
             throw new IllegalArgumentException("Wrong json input.");
+        }
     }
 
     private void parsePostDataSet(JSONArray dataArray) throws JSONException {
@@ -71,18 +72,24 @@ public class SearchDataSet {
         for(int i = 0; i < count; i++) {
             JSONObject jsonObject = dataArray.getJSONObject(i);
             SearchPostItem item = new SearchPostItem();
-            if(jsonObject.has("id"))
+            if(jsonObject.has("id")) {
                 item.setId(jsonObject.getString("id"));
-            if(jsonObject.has("sortkey"))
+            }
+            if(jsonObject.has("sortkey")) {
                 item.setSortKey(jsonObject.getLong("sortkey"));
-            if(jsonObject.has("subject"))
+            }
+            if(jsonObject.has("subject")) {
                 item.setSubject(Html.fromHtml(jsonObject.getString("subject").replace("<em>","").replace("</em>","")));
-            if(jsonObject.has("replynum"))
+            }
+            if(jsonObject.has("replynum")) {
                 item.setReplyCount(Integer.valueOf(jsonObject.getString("replynum")));
-            if(jsonObject.has("uid"))
+            }
+            if(jsonObject.has("uid")) {
                 item.setUserId(Long.valueOf(jsonObject.getString("uid")));
-            if(jsonObject.has("username"))
+            }
+            if(jsonObject.has("username")) {
                 item.setUserName(jsonObject.getString("username"));
+            }
             if(jsonObject.has("dateline")) {
                 try {
                     Date result =  df.parse(jsonObject.getString("dateline"));
@@ -102,22 +109,30 @@ public class SearchDataSet {
         for(int i = 0; i < count; i++) {
             JSONObject jsonObject = dataArray.getJSONObject(i);
             SearchUserItem item = new SearchUserItem();
-            if(jsonObject.has("id"))
+            if(jsonObject.has("id")) {
                 item.setId(jsonObject.getString("id"));
-            if(jsonObject.has("uid"))
+            }
+            if(jsonObject.has("uid")) {
                 item.setUserId(Long.valueOf(jsonObject.getString("uid")));
-            if(jsonObject.has("username"))
+            }
+            if(jsonObject.has("username")) {
                 item.setUserName(htmlToCharSequence(jsonObject.getString("username").replace("<em>","").replace("</em>","")));
-            if(jsonObject.has("gender"))
+            }
+            if(jsonObject.has("gender")) {
                 item.setGender(jsonObject.getInt("gender"));
-            if(jsonObject.has("sightml"))
+            }
+            if(jsonObject.has("sightml")) {
                 item.setSignHtml(htmlToCharSequence(jsonObject.getString("sightml")));
-            if(jsonObject.has("customstatus"))
+            }
+            if(jsonObject.has("customstatus")) {
                 item.setCustomStatus(htmlToCharSequence(jsonObject.getString("customstatus")));
-            if(jsonObject.has("uid"))
+            }
+            if(jsonObject.has("uid")) {
                 item.setAvatarUrl(ModelConverter.uidToAvatarUrl(item.getUserId()));
-            if(jsonObject.has("sortkey"))
+            }
+            if(jsonObject.has("sortkey")) {
                 item.setSortKey(jsonObject.getLong("sortkey"));
+            }
             searchResultItems.add(item);
         }
     }
@@ -129,18 +144,24 @@ public class SearchDataSet {
         for(int i = 0; i < count; i++) {
             JSONObject jsonObject = dataArray.getJSONObject(i);
             SearchGroupItem item = new SearchGroupItem();
-            if(jsonObject.has("id"))
+            if(jsonObject.has("id")) {
                 item.setId(jsonObject.getString("id"));
-            if(jsonObject.has("fid"))
+            }
+            if(jsonObject.has("fid")) {
                 item.setForumId(Long.valueOf(jsonObject.getString("fid")));
-            if(jsonObject.has("fansnum"))
+            }
+            if(jsonObject.has("fansnum")) {
                 item.setFansCount(Integer.valueOf(jsonObject.getString("fansnum")));
-            if(jsonObject.has("name"))
+            }
+            if(jsonObject.has("name")) {
                 item.setGroupName(htmlToCharSequence(jsonObject.getString("name").replace("<em>","").replace("</em>","")));
-            if(jsonObject.has("description"))
+            }
+            if(jsonObject.has("description")) {
                 item.setGroupDescription(htmlToCharSequence(jsonObject.getString("description")));
-            if(jsonObject.has("fid"))
+            }
+            if(jsonObject.has("fid")) {
                 item.setIconUrl(ModelConverter.fidToForumIconUrl(item.getForumId()));
+            }
             searchResultItems.add(item);
         }
     }

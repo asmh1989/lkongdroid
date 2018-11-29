@@ -1,6 +1,6 @@
 package org.cryse.lkong.model;
 
-public class FollowInfo {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FollowInfo {
     public long[] followedUserIds;
     public long[] followedThreadIds;
     public long[] followedForumIds;

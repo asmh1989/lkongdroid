@@ -1,6 +1,6 @@
 package org.cryse.lkong.event;
 
-public abstract class AbstractEvent {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public abstract class AbstractEvent {
     private boolean isHandled = false;
 
     public boolean isHandled() {

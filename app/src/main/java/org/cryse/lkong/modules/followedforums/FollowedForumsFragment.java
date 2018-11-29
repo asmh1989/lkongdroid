@@ -29,7 +29,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 
-public class FollowedForumsFragment extends SimpleCollectionFragment<
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FollowedForumsFragment extends SimpleCollectionFragment<
         ForumModel,
         ForumListAdapter,
         FollowedForumsPresenter> {
@@ -44,8 +44,9 @@ public class FollowedForumsFragment extends SimpleCollectionFragment<
 
     public static FollowedForumsFragment newInstance(Bundle args) {
         FollowedForumsFragment fragment = new FollowedForumsFragment();
-        if(args != null)
-            fragment.setArguments(args);
+        if(args != null) {
+          fragment.setArguments(args);
+        }
         return fragment;
     }
 
@@ -130,7 +131,7 @@ public class FollowedForumsFragment extends SimpleCollectionFragment<
         }
     }
 
-    protected RecyclerView.ItemAnimator getRecyclerViewItemAnimator() {
+    @Override protected RecyclerView.ItemAnimator getRecyclerViewItemAnimator() {
         return null;
     }
 

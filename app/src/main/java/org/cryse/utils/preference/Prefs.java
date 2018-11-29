@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" })
 public final class Prefs {
     private Context mContext;
     private SharedPreferences mSharedPreference;
@@ -14,7 +14,7 @@ public final class Prefs {
     private Prefs(Context context, String prefsName) {
         sInstance = this;
         mContext = context;
-        if(prefsName.equalsIgnoreCase("")) {
+        if("".equalsIgnoreCase(prefsName)) {
             mSharedPreference = PreferenceManager.getDefaultSharedPreferences(context);
         } else {
             mSharedPreference = context.getSharedPreferences(prefsName, Context.MODE_PRIVATE);

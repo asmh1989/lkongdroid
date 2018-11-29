@@ -26,7 +26,7 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public abstract class AbstractFragment extends Fragment implements SnackbarSupport {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public abstract class AbstractFragment extends Fragment implements SnackbarSupport {
     private int mPrimaryColor;
     private int mPrimaryDarkColor;
     private int mAccentColor;
@@ -118,15 +118,17 @@ public abstract class AbstractFragment extends Fragment implements SnackbarSuppo
     }
 
     public Boolean isNightMode() {
-        if(isAdded())
-            return getThemedActivity().isNightMode();
-        else
-            return null;
+        if(isAdded()) {
+          return getThemedActivity().isNightMode();
+        } else {
+          return null;
+        }
     }
 
     public void toggleNightMode() {
-        if(getThemedActivity() != null)
-            getThemedActivity().toggleNightMode();
+        if(getThemedActivity() != null) {
+          getThemedActivity().toggleNightMode();
+        }
     }
 
     protected int getPrimaryColor() {

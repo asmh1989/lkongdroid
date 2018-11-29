@@ -11,7 +11,7 @@ import org.cryse.lkong.model.FollowResult;
 import org.cryse.lkong.account.LKAuthObject;
 import org.json.JSONObject;
 
-public class FollowRequest extends AbstractAuthedHttpRequest<FollowResult> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FollowRequest extends AbstractAuthedHttpRequest<FollowResult> {
     private int mAction;
     private int mType;
     private long mId;
@@ -74,7 +74,7 @@ public class FollowRequest extends AbstractAuthedHttpRequest<FollowResult> {
         if(responseJson.has("ok") && responseJson.getBoolean("ok")) {
             FollowResult result = new FollowResult();
             String action = responseJson.getString("dos");
-            if(action.equals("follow")) {
+            if("follow".equals(action)) {
                 result.setAction(FollowResult.ACTION_FOLLOW);
             } else {
                 result.setAction(FollowResult.ACTION_UNFOLLOW);
@@ -89,6 +89,8 @@ public class FollowRequest extends AbstractAuthedHttpRequest<FollowResult> {
                     break;
                 case "uid":
                     result.setType(FollowResult.TYPE_USER);
+                    break;
+                default:
                     break;
             }
             long id = responseJson.getLong("theid");

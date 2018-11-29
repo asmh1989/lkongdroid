@@ -44,7 +44,7 @@ import java.util.List;
 import java.util.TimeZone;
 import java.util.regex.Pattern;
 
-public class ModelConverter {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class ModelConverter {
     public static UserInfoModel toUserInfoModel(LKUserInfo lkUserInfo) {
         UserInfoModel userInfoModel = new UserInfoModel();
         userInfoModel.setThreads(lkUserInfo.getThreads());
@@ -93,11 +93,12 @@ public class ModelConverter {
                 threadModel.setId(item.getId());
                 threadModel.setReplyCount(item.getReplynum());
                 threadModel.setSubject(HtmlCleaner.htmlToPlain(item.getSubject()));
-                threadModel.setSortKeyTime(new Date(item.getSortkey() * 1000l));
-                if(checkNextTimeSortKey && lkForumThreadList.getNexttime() == item.getSortkey())
+                threadModel.setSortKeyTime(new Date(item.getSortkey() * 1000L));
+                if(checkNextTimeSortKey && lkForumThreadList.getNexttime() == item.getSortkey()) {
                     nextSortKeyItem = threadModel;
-                else
+                } else {
                     threadList.add(threadModel);
+                }
             }
         }
 
@@ -135,7 +136,6 @@ public class ModelConverter {
             for (LKPostItem item : lkPostList.getData()) {
                 PostModel postModel = new PostModel();
                 postModel.setAdmin(item.getIsadmin() != 0);
-                //postModel.setAuthor(item.getAuthor());
                 postModel.setAuthorId(item.getAuthorid());
                 postModel.setAuthorName(item.getAuthor());
                 postModel.setAuthorAvatar(uidToAvatarUrl(item.getAuthorid()));
@@ -145,13 +145,11 @@ public class ModelConverter {
                 postModel.setFirst(item.getFirst() != 0);
                 postModel.setId(item.getId());
                 postModel.setMe(item.getIsme() != 0);
-                // postModel.setMessage(item.getMessage());
                 postModel.setNotGroup(item.getNotgroup() != 0);
                 postModel.setOrdinal(item.getLou());
                 postModel.setPid(Long.parseLong(item.getPid()));
-                //postModel.setRateLog();
                 postModel.setSortKey(item.getSortkey());
-                postModel.setSortKeyTime(new Date(item.getSortkey() * 1000l));
+                postModel.setSortKeyTime(new Date(item.getSortkey() * 1000L));
                 postModel.setStatus(item.getStatus());
                 postModel.setTid(item.getTid());
                 postModel.setTsAdmin(item.isTsadmin());
@@ -201,7 +199,7 @@ public class ModelConverter {
                     if(hyperlink.hasAttr("href")) {
                         String href = hyperlink.attr("href");
                         if(href.contains("pid=") && hyperlink.childNodeSize() > 0 &&
-                                hyperlink.child(0).tagName().equalsIgnoreCase("i")) {
+                            "i".equalsIgnoreCase(hyperlink.child(0).tagName())) {
                             hyperlink.child(0).html("\u2191\u2191\u2191\u2191");
                             hyperlink.child(0).unwrap();
                         }
@@ -226,7 +224,7 @@ public class ModelConverter {
             model.setQuote(item.isIsquote());
             model.setUserId(Long.valueOf(item.getUid()));
             model.setUserName(item.getUsername());
-            model.setDateline(new Date(Long.valueOf(item.getDateline())* 1000l));
+            model.setDateline(new Date(Long.valueOf(item.getDateline())* 1000L));
             model.setThread(item.isIsthread());
             if(item.isIsthread()) {
                 model.setTid(Long.valueOf(item.getId().substring(7)));
@@ -243,7 +241,7 @@ public class ModelConverter {
             model.setMessage(HtmlCleaner.htmlToPlainReplaceImg(item.getMessage().replaceAll(SMALL_EMOJI_TEXT, SIMPLE_EMOJI_TEXT/*SMALL_EMOJI_IMG*/), SIMPLE_EMOJI_TEXT));
             model.setSubject(item.getSubject());
             model.setSortKey(item.getSortkey());
-            model.setSortKeyDate(new Date(item.getSortkey() * 1000l));
+            model.setSortKeyDate(new Date(item.getSortkey() * 1000L));
             if(item.isIsquote()) {
                 TimelineModel.ReplyQuote replyQuote = new TimelineModel.ReplyQuote();
                 Document document = Jsoup.parseBodyFragment(item.getMessage());
@@ -304,7 +302,7 @@ public class ModelConverter {
 
     public static List<NoticeModel> toNoticeModel(LKNoticeResult result) {
         List<NoticeModel> noticeModelList = new ArrayList<NoticeModel>();
-        if(result.getData() != null)
+        if(result.getData() != null) {
             for(LKNoticeItem item : result.getData()) {
                 NoticeModel model = new NoticeModel();
                 model.setDateline(item.getDateline());
@@ -326,13 +324,14 @@ public class ModelConverter {
 
                 noticeModelList.add(model);
             }
+        }
 
         return noticeModelList;
     }
 
     public static List<NoticeRateModel> toNoticeRateModel(LKNoticeRateResult result) {
         List<NoticeRateModel> noticeModelList = new ArrayList<NoticeRateModel>();
-        if(result.getData() != null)
+        if(result.getData() != null) {
             for(LKNoticeRateItem item : result.getData()) {
                 NoticeRateModel model = new NoticeRateModel();
                 model.setDateline(item.getDateline());
@@ -347,6 +346,7 @@ public class ModelConverter {
                 model.setSortKey(item.getSortkey());
                 noticeModelList.add(model);
             }
+        }
 
         return noticeModelList;
     }
@@ -402,7 +402,7 @@ public class ModelConverter {
 
     public static class ThreadModelCompareBySortKeyTime implements Comparator<ThreadModel> {
 
-        public int compare(ThreadModel o1, ThreadModel o2) {
+        @Override public int compare(ThreadModel o1, ThreadModel o2) {
             return o1.getSortKeyTime().compareTo(o2.getSortKeyTime());
         }
     }

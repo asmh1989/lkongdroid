@@ -22,7 +22,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.BindView;
 
-public class ForumListAdapter extends SimpleRecyclerViewAdapter<ForumModel> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class ForumListAdapter extends SimpleRecyclerViewAdapter<ForumModel> {
     Fragment mParentFragment;
     private String mATEKey;
     private boolean mShowInGrid = false;
@@ -48,7 +48,8 @@ public class ForumListAdapter extends SimpleRecyclerViewAdapter<ForumModel> {
         if(!mShowInGrid && viewHolder.mForumSecondaryTextView != null) {
             String todayPostsCount;
             String threadsCount;
-            if (mContext.getResources().getConfiguration().locale.getLanguage().equalsIgnoreCase("zh")) {
+            if ("zh".equalsIgnoreCase(
+                mContext.getResources().getConfiguration().locale.getLanguage())) {
                 todayPostsCount = NumberFormatUtils.numberToTenKiloString(
                         forumModel.getTodayPosts(),
                         mContext.getString(R.string.format_unit_ten_kilo),
@@ -77,7 +78,6 @@ public class ForumListAdapter extends SimpleRecyclerViewAdapter<ForumModel> {
             }
 
             String secondaryInfo = mContext.getString(R.string.format_forum_item_summary, threadsCount, todayPostsCount);
-            // String todayPosts = getString(R.string.format_forum_item_todayposts, forumModel.getTodayPosts());
             viewHolder.mForumSecondaryTextView.setText(secondaryInfo);
         }
 

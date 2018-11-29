@@ -8,7 +8,7 @@ import org.cryse.lkong.R;
 import org.cryse.lkong.ui.common.AbstractSwipeBackActivity;
 import org.cryse.lkong.utils.AnalyticsUtils;
 
-public abstract class SimpleContainerActivity extends AbstractSwipeBackActivity {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public abstract class SimpleContainerActivity extends AbstractSwipeBackActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         injectThis();

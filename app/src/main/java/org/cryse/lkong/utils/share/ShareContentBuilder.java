@@ -10,7 +10,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.examples.HtmlToPlainText;
 import org.jsoup.nodes.Document;
 
-public class ShareContentBuilder {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class ShareContentBuilder {
     public static String buildSharePostContent(Context context, ThreadInfoModel threadInfo, int page, PostModel postModel) {
         StringBuilder stringBuilder = new StringBuilder();
         String threadTitle = threadInfo.getSubject();

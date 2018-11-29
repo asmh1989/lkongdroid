@@ -8,7 +8,7 @@ import org.cryse.lkong.data.provider.followedforum.FollowedForumColumns;
 import org.cryse.lkong.data.provider.followedthread.FollowedThreadColumns;
 import org.cryse.lkong.data.provider.followeduser.FollowedUserColumns;
 
-public class CheckNoticeContentProvider extends LKongContentProvider {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class CheckNoticeContentProvider extends LKongContentProvider {
     private static final String TAG = CheckNoticeContentProvider.class.getSimpleName();
     private static final String CHECK_NOTICE_AUTHORITY = "org.cryse.lkong.data.provider.checknotice";
     private static final UriMatcher URI_MATCHER = new UriMatcher(UriMatcher.NO_MATCH);

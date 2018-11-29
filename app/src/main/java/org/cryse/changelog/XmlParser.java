@@ -166,7 +166,6 @@ public class XmlParser extends BaseParser {
             } else {
                 parser = mContext.getResources().getXml(mChangeLogFileResourceId);
                 parser.next();parser.next();
-                //parser.require(XmlResourceParser.START_TAG, null, "changelog");
             }
             if (parser != null){
 
@@ -179,8 +178,9 @@ public class XmlParser extends BaseParser {
                 readChangeLogNode(parser, chg);
 
                 // Close inputstream
-                if(is != null)
-                    is.close();
+                if(is != null) {
+                  is.close();
+                }
             }else{
                 Log.d(TAG,"Changelog.xml not found");
                 throw new ChangeLogException("Changelog.xml not found");
@@ -205,15 +205,16 @@ public class XmlParser extends BaseParser {
      */
     protected void readChangeLogNode(XmlPullParser parser,ChangeLog changeLog) throws Exception{
 
-        if (parser==null || changeLog==null) return;
+        if (parser==null || changeLog==null) {
+          return;
+        }
 
         // Parse changelog node
         parser.require(XmlPullParser.START_TAG, null, TAG_CHANGELOG);
         //Log.d(TAG,"Processing main tag=");
 
-        // Read attributes
         String bulletedList = parser.getAttributeValue(null, ATTRIBUTE_BULLETEDLIST);
-        if (bulletedList==null || bulletedList.equals("true")){
+        if (bulletedList==null || "true".equals(bulletedList)){
             changeLog.setBulletedList(true);
             super.bulletedList=true;
         }else{
@@ -228,7 +229,6 @@ public class XmlParser extends BaseParser {
             }
 
             String tag = parser.getName();
-            //Log.d(TAG,"Processing tag="+tag);
 
             if (tag.equals(TAG_CHANGELOGVERSION)) {
                 readChangeLogVersionNode(parser, changeLog);
@@ -245,7 +245,9 @@ public class XmlParser extends BaseParser {
      */
     protected void readChangeLogVersionNode(XmlPullParser parser, ChangeLog changeLog) throws  Exception{
 
-        if (parser==null) return;
+        if (parser==null) {
+          return;
+        }
 
         parser.require(XmlPullParser.START_TAG, null,TAG_CHANGELOGVERSION);
 
@@ -261,8 +263,9 @@ public class XmlParser extends BaseParser {
             }
         }
         String changeDate= parser.getAttributeValue(null, ATTRIBUTE_CHANGEDATE);
-        if (versionName==null)
-            throw new ChangeLogException("VersionName required in changeLogVersion node");
+        if (versionName==null) {
+          throw new ChangeLogException("VersionName required in changeLogVersion node");
+        }
 
         ChangeLogRowHeader row=new ChangeLogRowHeader();
         row.setBugFixPrefixStringResId(mBugFixPrefixResId);
@@ -272,15 +275,12 @@ public class XmlParser extends BaseParser {
         row.setChangeDate(changeDate);
         changeLog.addRow(row);
 
-        //Log.d(TAG,"Added rowHeader:"+row.toString());
 
-        // Parse nested nodes
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
                 continue;
             }
             String tag = parser.getName();
-            //Log.d(TAG,"Processing tag="+tag);
 
             if (mChangeLogTags.contains(tag)){
                 readChangeLogRowNode(parser, changeLog, versionName, versionCode);
@@ -297,7 +297,9 @@ public class XmlParser extends BaseParser {
      */
     private void readChangeLogRowNode(XmlPullParser parser, ChangeLog changeLog, String versionName,int versionCode) throws Exception {
 
-        if (parser == null) return;
+        if (parser == null) {
+          return;
+        }
 
 
         String tag = parser.getName();
@@ -310,13 +312,14 @@ public class XmlParser extends BaseParser {
 
         // Read attributes
         String changeLogTextTitle = parser.getAttributeValue(null, ATTRIBUTE_CHANGETEXTTITLE);
-        if (changeLogTextTitle != null)
-            row.setChangeTextTitle(changeLogTextTitle);
+        if (changeLogTextTitle != null) {
+          row.setChangeTextTitle(changeLogTextTitle);
+        }
 
         // It is possible to force bulleted List
         String bulletedList = parser.getAttributeValue(null, ATTRIBUTE_BULLETEDLIST);
         if (bulletedList != null) {
-            if (bulletedList.equals("true")) {
+            if ("true".equals(bulletedList)) {
                 row.setBulletedList(true);
             } else {
                 row.setBulletedList(false);
@@ -328,8 +331,9 @@ public class XmlParser extends BaseParser {
         // Read text
         if (parser.next() == XmlPullParser.TEXT) {
             String changeLogText = parser.getText();
-            if (changeLogText == null)
-                throw new ChangeLogException("ChangeLogText required in changeLogText node");
+            if (changeLogText == null) {
+              throw new ChangeLogException("ChangeLogText required in changeLogText node");
+            }
             row.parseChangeText(changeLogText);
             row.setType(tag.equalsIgnoreCase(TAG_CHANGELOGBUG) ? ChangeLogRow.BUGFIX : tag.equalsIgnoreCase(TAG_CHANGELOGIMPROVEMENT) ? ChangeLogRow.IMPROVEMENT : ChangeLogRow.DEFAULT);
             parser.next();
@@ -342,15 +346,18 @@ public class XmlParser extends BaseParser {
 
     public static boolean isConnected(Context context) {
 
-        if (context==null) return false;
+        if (context==null) {
+          return false;
+        }
 
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager!=null){
             NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
 
-            if (activeNetworkInfo == null)
-                return false;
+            if (activeNetworkInfo == null) {
+              return false;
+            }
 
             return ((activeNetworkInfo != null) && (activeNetworkInfo
                     .isConnectedOrConnecting()));

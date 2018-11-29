@@ -38,7 +38,7 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.BindView;
 
-public abstract class SimpleCollectionFragment<
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public abstract class SimpleCollectionFragment<
         ItemType extends SimpleCollectionItem,
         AdapterType extends SimpleRecyclerViewAdapter<ItemType>,
         PresenterType extends BasePresenter>
@@ -94,8 +94,9 @@ public abstract class SimpleCollectionFragment<
 
     private void initRecyclerView() {
         UIUtils.InsetsValue insetsValue = getRecyclerViewInsets();
-        if(insetsValue != null)
-            mCollectionView.setPadding(insetsValue.getLeft(), insetsValue.getTop(), insetsValue.getRight(), insetsValue.getBottom());
+        if(insetsValue != null) {
+          mCollectionView.setPadding(insetsValue.getLeft(), insetsValue.getTop(), insetsValue.getRight(), insetsValue.getBottom());
+        }
         mCollectionView.getRecyclerView().setItemAnimator(getRecyclerViewItemAnimator());
         mCollectionView.setLayoutManager(getRecyclerViewLayoutManager());
         mCollectionAdapter = createAdapter(mItemList);
@@ -103,8 +104,9 @@ public abstract class SimpleCollectionFragment<
         mCollectionView.setAdapter(mWrapperAdapter);
         initHeaderView();
         initFooterView();
-        if(getRefreshListener() != null)
-            mCollectionView.setRefreshListener(getRefreshListener());
+        if(getRefreshListener() != null) {
+          mCollectionView.setRefreshListener(getRefreshListener());
+        }
         mCollectionView.setOnMoreListener(getOnMoreListener());
         mCollectionAdapter.setOnItemClickListener(this::onItemClick);
         onCollectionViewInitComplete();
@@ -128,10 +130,11 @@ public abstract class SimpleCollectionFragment<
                 mLastItemSortKey = savedInstanceState.getLong(DataContract.BUNDLE_THREAD_LIST_LAST_SORTKEY);
 
             } else {
-                if(getView() != null)
-                    getView().post(() -> loadInitialData());
-                else
-                    loadInitialData();
+                if(getView() != null) {
+                  getView().post(() -> loadInitialData());
+                } else {
+                  loadInitialData();
+                }
             }
         }
     }
@@ -180,7 +183,9 @@ public abstract class SimpleCollectionFragment<
     @Override
     public void showSimpleData(List<ItemType> items, boolean loadMore) {
         if(loadMore) {
-            if (items.size() == 0) isNoMore = true;
+            if (items.size() == 0) {
+              isNoMore = true;
+            }
             mCollectionAdapter.addAll(items);
         } else {
             isNoMore = false;
@@ -204,10 +209,11 @@ public abstract class SimpleCollectionFragment<
     public void setLoadingMore(boolean value) {
         isLoadingMore = value;
         mCollectionView.setLoadingMore(value);
-        if(value)
-            mCollectionView.showMoreProgress();
-        else
-            mCollectionView.hideMoreProgress();
+        if(value) {
+          mCollectionView.showMoreProgress();
+        } else {
+          mCollectionView.hideMoreProgress();
+        }
     }
 
     @Override
@@ -219,8 +225,9 @@ public abstract class SimpleCollectionFragment<
                 mCollectionView.showProgress();
             }
         } else {
-            if(mCollectionView.getSwipeToRefresh().isRefreshing())
-                mCollectionView.getSwipeToRefresh().setRefreshing(isLoading);
+            if(mCollectionView.getSwipeToRefresh().isRefreshing()) {
+              mCollectionView.getSwipeToRefresh().setRefreshing(isLoading);
+            }
             mCollectionView.hideProgress();
             mCollectionView.showRecycler();
         }
@@ -267,7 +274,7 @@ public abstract class SimpleCollectionFragment<
         mWrapperAdapter.addFooter(mMoreProgressBar);
     }
 
-    protected void onEvent(AbstractEvent event) {
+    @Override protected void onEvent(AbstractEvent event) {
 
     }
 
@@ -287,11 +294,6 @@ public abstract class SimpleCollectionFragment<
                     mCollectionView.hideMoreProgress();
                 }
             }
-
-            //@Override
-            //public void onChangeMoreVisibility(int visibility) {
-            //    mMoreProgressBar.setVisibility(visibility);
-            //}
         };
     }
 

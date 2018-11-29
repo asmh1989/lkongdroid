@@ -2,7 +2,7 @@ package org.cryse.lkong.logic.restservice.model;
 
 import java.util.Date;
 
-public class LKPostRateItem {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKPostRateItem {
     private Date dateline;
     private int extcredits;
     private long pid;

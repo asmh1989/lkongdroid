@@ -35,7 +35,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class BrowseHistoryFragment extends SimpleCollectionFragment<
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class BrowseHistoryFragment extends SimpleCollectionFragment<
         BrowseHistory,
         BrowseHistoryAdapter,
         BrowseHistoryPresenter> implements BrowseHistoryView<BrowseHistory> {
@@ -51,8 +51,9 @@ public class BrowseHistoryFragment extends SimpleCollectionFragment<
 
     public static BrowseHistoryFragment newInstance(Bundle args) {
         BrowseHistoryFragment fragment = new BrowseHistoryFragment();
-        if(args != null)
-            fragment.setArguments(args);
+        if(args != null) {
+          fragment.setArguments(args);
+        }
         return fragment;
     }
 
@@ -87,16 +88,20 @@ public class BrowseHistoryFragment extends SimpleCollectionFragment<
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         if(mChangeThemeMenuItem != null) {
-            if(isNightMode() == null)
-                mChangeThemeMenuItem.setVisible(false);
-            else if(isNightMode() != null && isNightMode())
-                mChangeThemeMenuItem.setTitle(R.string.action_light_theme);
-            else if(isNightMode() != null && !isNightMode())
-                mChangeThemeMenuItem.setTitle(R.string.action_dark_theme);
+            if(isNightMode() == null) {
+              mChangeThemeMenuItem.setVisible(false);
+            } else if(isNightMode() != null && isNightMode()) {
+              mChangeThemeMenuItem.setTitle(R.string.action_light_theme);
+            } else if(isNightMode() != null && !isNightMode()) {
+              mChangeThemeMenuItem.setTitle(R.string.action_dark_theme);
+            }
         }
         if(mNotificationMenuItem != null) {
-            if(mHasNotification) mNotificationMenuItem.setIcon(R.drawable.ic_action_notification_red_dot);
-            else mNotificationMenuItem.setIcon(R.drawable.ic_action_notification);
+            if(mHasNotification) {
+              mNotificationMenuItem.setIcon(R.drawable.ic_action_notification_red_dot);
+            } else {
+              mNotificationMenuItem.setIcon(R.drawable.ic_action_notification);
+            }
         }
         super.onPrepareOptionsMenu(menu);
     }
@@ -122,8 +127,9 @@ public class BrowseHistoryFragment extends SimpleCollectionFragment<
                 } else {
                     return false;
                 }
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -204,9 +210,9 @@ public class BrowseHistoryFragment extends SimpleCollectionFragment<
     @Override
     protected void onEvent(AbstractEvent event) {
         super.onEvent(event);
-        if(event instanceof FavoritesChangedEvent)
-            mNeedRefresh = true;
-        else if(event instanceof NoticeCountEvent) {
+        if(event instanceof FavoritesChangedEvent) {
+          mNeedRefresh = true;
+        } else if(event instanceof NoticeCountEvent) {
             mPresenter.checkNoticeCountFromDatabase(mUserAccountManager.getCurrentUserId());
         } else if (event instanceof CurrentAccountChangedEvent) {
             loadData(mUserAccountManager.getAuthObject(), 0, false);
@@ -230,8 +236,9 @@ public class BrowseHistoryFragment extends SimpleCollectionFragment<
     protected void checkNewNoticeCount() {
         if (isAdded()) {
             Account account = mUserAccountManager.getCurrentUserAccount().getAccount();
-            if(account != null)
-                SyncUtils.manualSync(account, SyncUtils.SYNC_AUTHORITY_CHECK_NOTICE);
+            if(account != null) {
+              SyncUtils.manualSync(account, SyncUtils.SYNC_AUTHORITY_CHECK_NOTICE);
+            }
             mPresenter.checkNoticeCountFromDatabase(mUserAccountManager.getCurrentUserId());
         }
     }
@@ -246,8 +253,9 @@ public class BrowseHistoryFragment extends SimpleCollectionFragment<
     public void onCheckNoticeCountComplete(NoticeCountModel noticeCountModel) {
         if(noticeCountModel != null) {
             mHasNotification = noticeCountModel.hasNotification() && noticeCountModel.getUserId() == mUserAccountManager.getCurrentUserId();
-            if(getActivity() != null)
-                getActivity().invalidateOptionsMenu();
+            if(getActivity() != null) {
+              getActivity().invalidateOptionsMenu();
+            }
         }
     }
 

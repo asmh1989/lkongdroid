@@ -13,7 +13,7 @@ import org.cryse.lkong.data.provider.base.AbstractContentValues;
 /**
  * Content values wrapper for the {@code browse_history} table.
  */
-public class BrowseHistoryContentValues extends AbstractContentValues {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class BrowseHistoryContentValues extends AbstractContentValues {
     @Override
     public Uri uri() {
         return BrowseHistoryColumns.CONTENT_URI;
@@ -100,7 +100,9 @@ public class BrowseHistoryContentValues extends AbstractContentValues {
      * The history record thread id, not null.
      */
     public BrowseHistoryContentValues putThreadTitle(@NonNull String value) {
-        if (value == null) throw new IllegalArgumentException("threadTitle must not be null");
+        if (value == null) {
+          throw new IllegalArgumentException("threadTitle must not be null");
+        }
         mContentValues.put(BrowseHistoryColumns.THREAD_TITLE, value);
         return this;
     }
@@ -119,7 +121,9 @@ public class BrowseHistoryContentValues extends AbstractContentValues {
      * The history record author name, nullable.
      */
     public BrowseHistoryContentValues putThreadAuthorName(@NonNull String value) {
-        if (value == null) throw new IllegalArgumentException("threadAuthorName must not be null");
+        if (value == null) {
+          throw new IllegalArgumentException("threadAuthorName must not be null");
+        }
         mContentValues.put(BrowseHistoryColumns.THREAD_AUTHOR_NAME, value);
         return this;
     }

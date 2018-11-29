@@ -12,7 +12,7 @@ import java.util.List;
 import okhttp3.Cookie;
 import okhttp3.HttpUrl;
 
-public class SimpleCookieJar implements ClearableCookieJar {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class SimpleCookieJar implements ClearableCookieJar {
 
     private CookieStore cache;
 
@@ -24,7 +24,7 @@ public class SimpleCookieJar implements ClearableCookieJar {
         this.cache = new InMemoryCookieStore();
     }
 
-    public CookieStore getCookieStore() {
+    @Override public CookieStore getCookieStore() {
         return cache;
     }
 
@@ -58,7 +58,7 @@ public class SimpleCookieJar implements ClearableCookieJar {
         return cookie.expiresAt() < System.currentTimeMillis();
     }
 
-    synchronized public void clear() {
+    @Override synchronized public void clear() {
         cache.clear();
     }
 }

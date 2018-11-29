@@ -64,7 +64,7 @@ import javax.inject.Singleton;
 import rx.Observable;
 import timber.log.Timber;
 
-public class LKongForumService {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKongForumService {
     public static final String LOG_TAG = LKongForumService.class.getName();
     LKongDatabase mLKongDatabase;
     RxEventBus mEventBus = RxEventBus.getInstance();
@@ -102,10 +102,6 @@ public class LKongForumService {
                 database = new LKongDatabase2(LKongDatabase2.getInstance().getContext());
 
                 if(updateFromWeb) {
-                    // ForumListRequest request = new ForumListRequest();
-                    // List<ForumModel> forumModelList = request.execute();
-                    // if (forumModelList != null)
-                    //     database.cacheForums(CachedForum.TYPE_MAIN, 0, forumModelList);
                     List<ForumModel> updatedForums = new ArrayList<>();
                     for(long fid : LKongConst.MAIN_FORUM_IDS) {
                         GetForumInfoRequest request = new GetForumInfoRequest(authObject, fid);
@@ -355,8 +351,9 @@ public class LKongForumService {
                     } else {
                         PunchRequest request = new PunchRequest(authObject);
                         result = request.execute();
-                        if(result != null)
-                            mLKongDatabase.cachePunchResult(result);
+                        if(result != null) {
+                          mLKongDatabase.cachePunchResult(result);
+                        }
                     }
                     subscriber.onNext(result);
                 subscriber.onCompleted();
@@ -638,7 +635,6 @@ public class LKongForumService {
             try {
                 database = new LKongDatabase2(LKongDatabase2.getInstance().getContext());
                 updateFollowInfo(authObject, database);
-                // getContext().sendBroadcast(new Intent(BroadcastConstants.BROADCAST_SYNC_FOLLOWED_FORUMS_DONE));
                 subscriber.onNext(null);
                 subscriber.onCompleted();
             } catch (Exception ex) {
@@ -674,7 +670,9 @@ public class LKongForumService {
         database.removeAllFollowRecord(followType, userId);
         for (int i = 0; i < count; i++) {
             long targetId = targetIds[i];
-            if(targetId == -1) continue;
+            if(targetId == -1) {
+              continue;
+            }
             database.addFollowRecord(followType, userId, targetId);
         }
     }

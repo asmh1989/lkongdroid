@@ -2,7 +2,7 @@ package org.cryse.lkong.utils.snackbar;
 
 import org.cryse.lkong.R;
 
-public class ToastErrorConstant {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class ToastErrorConstant {
     public static final int TOAST_FAILURE_SIGNIN = 17;
     public static final int TOAST_FAILURE_USER_INFO = 19;
     public static final int TOAST_FAILURE_FORUM_LIST = 20;

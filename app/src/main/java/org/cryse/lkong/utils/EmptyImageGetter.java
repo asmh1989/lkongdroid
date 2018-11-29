@@ -5,7 +5,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.Html;
 
-public class EmptyImageGetter implements Html.ImageGetter {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class EmptyImageGetter implements Html.ImageGetter {
     private static final Drawable sEmptyDrawable = new ColorDrawable(Color.TRANSPARENT);
     static {
         sEmptyDrawable.setBounds(0, 0, 0, 0);
@@ -13,7 +13,7 @@ public class EmptyImageGetter implements Html.ImageGetter {
     public EmptyImageGetter() {
     }
 
-    public Drawable getDrawable(String source) {
+    @Override public Drawable getDrawable(String source) {
         return sEmptyDrawable;
     }
 }

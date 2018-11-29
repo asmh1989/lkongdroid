@@ -29,7 +29,7 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public abstract class AbstractActivity extends AppCompatActivity implements SnackbarSupport {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public abstract class AbstractActivity extends AppCompatActivity implements SnackbarSupport {
     private View mSnackbarRootView;
     private Subscription mEventBusSubscription;
     private boolean mIsDestroyed;
@@ -186,8 +186,9 @@ public abstract class AbstractActivity extends AppCompatActivity implements Snac
     }
 
     protected View getSnackbarRootView() {
-        if(mSnackbarRootView == null)
-            mSnackbarRootView = findViewById(android.R.id.content);
+        if(mSnackbarRootView == null) {
+          mSnackbarRootView = findViewById(android.R.id.content);
+        }
         return mSnackbarRootView;
     }
 

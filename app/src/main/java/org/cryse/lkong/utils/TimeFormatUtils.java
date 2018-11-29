@@ -26,7 +26,7 @@ import java.util.*;
 
 import org.cryse.lkong.R;
 
-public class TimeFormatUtils {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class TimeFormatUtils {
     private static final int SECOND = 1000;
     private static final int MINUTE = 60 * SECOND;
     private static final int HOUR = 60 * MINUTE;
@@ -159,22 +159,6 @@ public class TimeFormatUtils {
     public static String formatDate(Context context, Date date, boolean withTime)
     {
         String result = "";
-        /*DateFormat dateFormat;
-
-        if (date != null) {
-            String format = Settings.System.getString(context.getContentResolver(), Settings.System.DATE_FORMAT);
-            if (TextUtils.isEmpty(format)) {
-                dateFormat = android.text.format.DateFormat.getDateFormat(context);
-            } else {
-                dateFormat = new SimpleDateFormat(format);
-            }
-            result = dateFormat.format(date);
-
-            if (withTime) {
-                dateFormat = android.text.format.DateFormat.getTimeFormat(context);
-                result += " " + dateFormat.format(date);
-            }
-        }*/
         DateFormat dateFormat = new SimpleDateFormat(context.getString(R.string.format_time_date));
         result = dateFormat.format(date);
         if (withTime) {

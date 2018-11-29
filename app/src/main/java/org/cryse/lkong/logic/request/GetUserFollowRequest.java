@@ -17,7 +17,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class GetUserFollowRequest extends AbstractAuthedHttpRequest<List<SearchUserItem>> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class GetUserFollowRequest extends AbstractAuthedHttpRequest<List<SearchUserItem>> {
     private long mUid;
     private boolean mFollower;
     private long mStartSortKey;
@@ -56,22 +56,30 @@ public class GetUserFollowRequest extends AbstractAuthedHttpRequest<List<SearchU
             for(int i = 0; i < size; i++) {
                 JSONObject dataItem = array.getJSONObject(i);
                 SearchUserItem item = new SearchUserItem();
-                if(dataItem.has("id"))
-                    item.setId(dataItem.getString("id"));
-                if(dataItem.has("uid"))
-                    item.setUserId(Long.valueOf(dataItem.getString("uid")));
-                if(dataItem.has("username"))
-                    item.setUserName(htmlToCharSequence(dataItem.getString("username").replace("<em>","").replace("</em>","")));
-                if(dataItem.has("gender"))
-                    item.setGender(dataItem.getInt("gender"));
-                if(dataItem.has("sightml"))
-                    item.setSignHtml(htmlToCharSequence(dataItem.getString("sightml")));
-                if(dataItem.has("customstatus"))
-                    item.setCustomStatus(htmlToCharSequence(dataItem.getString("customstatus")));
-                if(dataItem.has("uid"))
-                    item.setAvatarUrl(ModelConverter.uidToAvatarUrl(item.getUserId()));
-                if(dataItem.has("sortkey"))
-                    item.setSortKey(dataItem.getLong("sortkey"));
+                if(dataItem.has("id")) {
+                  item.setId(dataItem.getString("id"));
+                }
+                if(dataItem.has("uid")) {
+                  item.setUserId(Long.valueOf(dataItem.getString("uid")));
+                }
+                if(dataItem.has("username")) {
+                  item.setUserName(htmlToCharSequence(dataItem.getString("username").replace("<em>","").replace("</em>","")));
+                }
+                if(dataItem.has("gender")) {
+                  item.setGender(dataItem.getInt("gender"));
+                }
+                if(dataItem.has("sightml")) {
+                  item.setSignHtml(htmlToCharSequence(dataItem.getString("sightml")));
+                }
+                if(dataItem.has("customstatus")) {
+                  item.setCustomStatus(htmlToCharSequence(dataItem.getString("customstatus")));
+                }
+                if(dataItem.has("uid")) {
+                  item.setAvatarUrl(ModelConverter.uidToAvatarUrl(item.getUserId()));
+                }
+                if(dataItem.has("sortkey")) {
+                  item.setSortKey(dataItem.getLong("sortkey"));
+                }
                 users.add(item);
             }
         }

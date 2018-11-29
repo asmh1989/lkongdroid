@@ -29,7 +29,7 @@ import java.util.Locale;
  * @since 3.0
  * @version $Id: CharSequenceTranslator.java 1146844 2011-07-14 18:49:51Z mbenson $
  */
-public abstract class CharSequenceTranslator {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public abstract class CharSequenceTranslator {
 
     /**
      * Translate a set of codepoints, represented by an int index into a CharSequence, 

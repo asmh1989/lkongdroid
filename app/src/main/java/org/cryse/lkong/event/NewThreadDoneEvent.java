@@ -2,7 +2,7 @@ package org.cryse.lkong.event;
 
 import org.cryse.lkong.model.NewThreadResult;
 
-public class NewThreadDoneEvent extends AbstractEvent {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NewThreadDoneEvent extends AbstractEvent {
     private NewThreadResult newThreadResult;
 
     public NewThreadDoneEvent(NewThreadResult newThreadResult) {

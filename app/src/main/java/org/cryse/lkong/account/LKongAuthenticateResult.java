@@ -1,6 +1,6 @@
 package org.cryse.lkong.account;
 
-public class LKongAuthenticateResult {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKongAuthenticateResult {
     public String userEmail;
     public String combinedCookie;
     public String userName;

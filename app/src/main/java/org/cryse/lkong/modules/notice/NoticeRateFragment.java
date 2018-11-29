@@ -16,7 +16,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class NoticeRateFragment extends SimpleCollectionFragment<
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NoticeRateFragment extends SimpleCollectionFragment<
         NoticeRateModel,
         NoticeRateCollectionAdapter,
         NoticeRatePresenter> {
@@ -27,8 +27,9 @@ public class NoticeRateFragment extends SimpleCollectionFragment<
 
     public static NoticeRateFragment newInstance(Bundle args) {
         NoticeRateFragment fragment = new NoticeRateFragment();
-        if(args != null)
-            fragment.setArguments(args);
+        if(args != null) {
+          fragment.setArguments(args);
+        }
         return fragment;
     }
 

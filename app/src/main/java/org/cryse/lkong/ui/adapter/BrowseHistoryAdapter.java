@@ -19,7 +19,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class BrowseHistoryAdapter extends SimpleRecyclerViewAdapter<BrowseHistory> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class BrowseHistoryAdapter extends SimpleRecyclerViewAdapter<BrowseHistory> {
     private String mATEKey;
     private final String mTodayPrefix;
 
@@ -43,9 +43,7 @@ public class BrowseHistoryAdapter extends SimpleRecyclerViewAdapter<BrowseHistor
         ViewHolder viewHolder = (ViewHolder) holder;
         BrowseHistory historyItem = getItem(position);
 
-        //SpannableStringBuilder spannableTitle = new SpannableStringBuilder();
         viewHolder.mTitleTextView.setText(historyItem.getThreadTitle());
-        // viewHolder.mSecondaryTextView.setText(historyItem.getThreadAuthorName());
         viewHolder.mSecondaryTextView.setText(historyItem.getForumTitle() + " - " + historyItem.getThreadAuthorName());
         viewHolder.mTimeTextView.setText(TimeFormatUtils.formatDateDividByToday(
                 historyItem.getLastReadTimeDate(),

@@ -6,7 +6,7 @@ import org.apache.commons.lang3.text.translate.EntityArrays;
 import org.apache.commons.lang3.text.translate.LookupTranslator;
 import org.apache.commons.lang3.text.translate.NumericEntityUnescaper;
 
-public class StringEscapeUtils {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class StringEscapeUtils {
 public static final String unescapeHtml4(String input) {
         return UNESCAPE_HTML4.translate(input);
 }

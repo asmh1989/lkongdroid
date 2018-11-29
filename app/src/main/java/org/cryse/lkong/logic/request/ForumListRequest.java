@@ -18,7 +18,7 @@ import java.util.List;
 
 import timber.log.Timber;
 
-public class ForumListRequest extends AbstractHttpRequest<List<ForumModel>> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class ForumListRequest extends AbstractHttpRequest<List<ForumModel>> {
     private static final String LOG_TAG = ForumListRequest.class.getSimpleName();
     private static final int FORUM_DETAIL_CACHE_TIME = 60*10;
     private static final int FORUM_LIST_CACHE_TIME = 60*60*24;
@@ -53,8 +53,9 @@ public class ForumListRequest extends AbstractHttpRequest<List<ForumModel>> {
                         .build();
 
                 itemInfoResponse = getOkHttpClient().newCall(itemInfoRequest).execute();
-                if (!response.isSuccessful())
-                    throw new IOException("Get forum detail info failed, reason: " + response);
+                if (!response.isSuccessful()) {
+                  throw new IOException("Get forum detail info failed, reason: " + response);
+                }
                 String itemInfoResponseString = gzipToString(itemInfoResponse);
                 LKForumInfo forumInfo = gson.fromJson(itemInfoResponseString, LKForumInfo.class);
                 forumModel.setDescription(forumInfo.getDescription());

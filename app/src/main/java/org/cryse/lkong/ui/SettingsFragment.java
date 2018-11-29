@@ -30,7 +30,7 @@ import javax.inject.Inject;
 
 import timber.log.Timber;
 
-public class SettingsFragment extends PreferenceFragment {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class SettingsFragment extends PreferenceFragment {
     private static final String LOG_TAG = SettingsFragment.class.getName();
     private OnConcisePreferenceChangedListener mOnConcisePreferenceChangedListener = null;
     AppNavigation mNavigation = new AppNavigation();
@@ -130,6 +130,8 @@ public class SettingsFragment extends PreferenceFragment {
                             newDuration
                     );
                     break;
+                default:
+                    break;
             }
         }
     }
@@ -198,7 +200,7 @@ public class SettingsFragment extends PreferenceFragment {
     private void setupFeedbackPreference() {
         Preference feedBackPreference = findPreference("prefs_feedback");
         feedBackPreference.setOnPreferenceClickListener(preference -> {
-            mNavigation.openActivityForPostListByThreadId(getActivity(), 1153838l);
+            mNavigation.openActivityForPostListByThreadId(getActivity(), 1153838L);
             return true;
         });
     }

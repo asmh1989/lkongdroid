@@ -15,7 +15,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 
-@Module(includes = { ContextModule.class })
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) @Module(includes = { ContextModule.class })
 public class LKongModule {
 
     @Singleton

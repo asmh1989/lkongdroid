@@ -9,7 +9,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.graphics.drawable.DrawableCompat;
 
 
-public class ThemeUtils {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class ThemeUtils {
     public static boolean isNightMode() {
         return false;
     }

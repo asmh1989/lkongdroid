@@ -1,6 +1,6 @@
 package org.cryse.lkong.model;
 
-public class SendNewPrivateMessageResult {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class SendNewPrivateMessageResult {
     private long userId;
     private String userName;
     private long targetUserId;

@@ -13,7 +13,7 @@ import org.cryse.lkong.data.provider.base.AbstractContentValues;
 /**
  * Content values wrapper for the {@code cache_object} table.
  */
-public class CacheObjectContentValues extends AbstractContentValues {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class CacheObjectContentValues extends AbstractContentValues {
     @Override
     public Uri uri() {
         return CacheObjectColumns.CONTENT_URI;
@@ -43,7 +43,9 @@ public class CacheObjectContentValues extends AbstractContentValues {
      * The key of cache object, unique and indexed.
      */
     public CacheObjectContentValues putCacheKey(@NonNull String value) {
-        if (value == null) throw new IllegalArgumentException("cacheKey must not be null");
+        if (value == null) {
+          throw new IllegalArgumentException("cacheKey must not be null");
+        }
         mContentValues.put(CacheObjectColumns.CACHE_KEY, value);
         return this;
     }
@@ -53,7 +55,9 @@ public class CacheObjectContentValues extends AbstractContentValues {
      * The value of cache, could be simple String or Json String.
      */
     public CacheObjectContentValues putCacheValue(@NonNull String value) {
-        if (value == null) throw new IllegalArgumentException("cacheValue must not be null");
+        if (value == null) {
+          throw new IllegalArgumentException("cacheValue must not be null");
+        }
         mContentValues.put(CacheObjectColumns.CACHE_VALUE, value);
         return this;
     }

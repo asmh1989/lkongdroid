@@ -12,7 +12,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
-public class HomePagePresenter implements BasePresenter<HomePageView> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class HomePagePresenter implements BasePresenter<HomePageView> {
     public static final String LOG_TAG = HomePagePresenter.class.getName();
     LKongForumService mLKongForumService;
     Subscription mPunchSubscription;
@@ -32,8 +32,9 @@ public class HomePagePresenter implements BasePresenter<HomePageView> {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         result -> {
-                            if(mView != null)
-                                mView.onPunchUserComplete(result);
+                            if(mView != null) {
+                              mView.onPunchUserComplete(result);
+                            }
                         },
                         error -> {
                             Timber.e(error, "HomePagePresenter::punch() onError().", LOG_TAG);
@@ -50,8 +51,9 @@ public class HomePagePresenter implements BasePresenter<HomePageView> {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         result -> {
-                            if(mView != null)
-                                mView.onCheckNoticeCountComplete(result);
+                            if(mView != null) {
+                              mView.onCheckNoticeCountComplete(result);
+                            }
                         },
                         error -> {
                             Timber.e(error, "HomePagePresenter::checkNoticeCountFromDatabase() onError().", LOG_TAG);

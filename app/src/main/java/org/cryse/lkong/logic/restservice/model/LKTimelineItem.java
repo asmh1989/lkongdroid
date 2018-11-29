@@ -1,6 +1,6 @@
 package org.cryse.lkong.logic.restservice.model;
 
-public class LKTimelineItem {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKTimelineItem {
     private boolean isquote;
     private String uid;
     private String username;

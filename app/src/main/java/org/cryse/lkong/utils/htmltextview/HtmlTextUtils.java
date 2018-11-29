@@ -7,7 +7,7 @@ import android.text.TextUtils;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 
-public class HtmlTextUtils {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class HtmlTextUtils {
     public static Spanned htmlToSpanned(String html, Html.ImageGetter imageGetter, Html.TagHandler tagHandler) {
         if(TextUtils.isEmpty(html)) {
             return new SpannableString("");

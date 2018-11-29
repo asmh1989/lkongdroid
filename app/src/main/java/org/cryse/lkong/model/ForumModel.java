@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import java.io.Serializable;
 
-public class ForumModel implements Serializable, SimpleCollectionItem {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class ForumModel implements Serializable, SimpleCollectionItem {
     private long fid;
     private String name;
     private String icon;
@@ -149,11 +149,11 @@ public class ForumModel implements Serializable, SimpleCollectionItem {
     }
 
     public static final Parcelable.Creator<ForumModel> CREATOR = new Parcelable.Creator<ForumModel>() {
-        public ForumModel createFromParcel(Parcel source) {
+        @Override public ForumModel createFromParcel(Parcel source) {
             return new ForumModel(source);
         }
 
-        public ForumModel[] newArray(int size) {
+        @Override public ForumModel[] newArray(int size) {
             return new ForumModel[size];
         }
     };

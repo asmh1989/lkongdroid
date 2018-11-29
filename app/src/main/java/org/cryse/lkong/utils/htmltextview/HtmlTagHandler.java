@@ -34,7 +34,7 @@ import java.util.Vector;
 /**
  * Some parts of this code are based on android.text.Html
  */
-public class HtmlTagHandler implements Html.TagHandler {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class HtmlTagHandler implements Html.TagHandler {
     private int mListItemCount = 0;
     private Vector<String> mListParents = new Vector<String>();
 
@@ -52,12 +52,13 @@ public class HtmlTagHandler implements Html.TagHandler {
                 Log.d(HtmlTextView.TAG, "opening, output: " + output.toString());
             }
 
-            if (tag.equalsIgnoreCase("ul") || tag.equalsIgnoreCase("ol") || tag.equalsIgnoreCase("dd")) {
+            if ("ul".equalsIgnoreCase(tag) || "ol".equalsIgnoreCase(tag) || "dd".equalsIgnoreCase(
+                tag)) {
                 mListParents.add(tag);
                 mListItemCount = 0;
-            } else if (tag.equalsIgnoreCase("code")) {
+            } else if ("code".equalsIgnoreCase(tag)) {
                 start(output, new Code());
-            } else if (tag.equalsIgnoreCase("center")) {
+            } else if ("center".equalsIgnoreCase(tag)) {
                 start(output, new Center());
             }
         } else {
@@ -66,14 +67,15 @@ public class HtmlTagHandler implements Html.TagHandler {
                 Log.d(HtmlTextView.TAG, "closing, output: " + output.toString());
             }
 
-            if (tag.equalsIgnoreCase("ul") || tag.equalsIgnoreCase("ol") || tag.equalsIgnoreCase("dd")) {
+            if ("ul".equalsIgnoreCase(tag) || "ol".equalsIgnoreCase(tag) || "dd".equalsIgnoreCase(
+                tag)) {
                 mListParents.remove(tag);
                 mListItemCount = 0;
-            } else if (tag.equalsIgnoreCase("li")) {
+            } else if ("li".equalsIgnoreCase(tag)) {
                 handleListTag(output);
-            } else if (tag.equalsIgnoreCase("code")) {
+            } else if ("code".equalsIgnoreCase(tag)) {
                 end(output, Code.class, new TypefaceSpan("monospace"), false);
-            } else if (tag.equalsIgnoreCase("center")) {
+            } else if ("center".equalsIgnoreCase(tag)) {
                 end(output, Center.class, new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER), true);
             }
         }
@@ -140,14 +142,14 @@ public class HtmlTagHandler implements Html.TagHandler {
     }
 
     private void handleListTag(Editable output) {
-        if (mListParents.lastElement().equals("ul")) {
+        if ("ul".equals(mListParents.lastElement())) {
             output.append("\n");
             String[] split = output.toString().split("\n");
 
             int lastIndex = split.length - 1;
             int start = output.length() - split[lastIndex].length() - 1;
             output.setSpan(new BulletSpan(15 * mListParents.size()), start, output.length(), 0);
-        } else if (mListParents.lastElement().equals("ol")) {
+        } else if ("ol".equals(mListParents.lastElement())) {
             mListItemCount++;
 
             output.append("\n");

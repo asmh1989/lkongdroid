@@ -20,7 +20,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.BindView;
 
-public class NoticeCollectionAdapter extends SimpleRecyclerViewAdapter<NoticeModel> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NoticeCollectionAdapter extends SimpleRecyclerViewAdapter<NoticeModel> {
     private String mATEKey;
     public NoticeCollectionAdapter(Context context, String ateKey, List<NoticeModel> items) {
         super(context, items);

@@ -32,7 +32,7 @@ import org.cryse.lkong.modules.userprofile.UserProfileActivity;
 import org.cryse.lkong.utils.DataContract;
 import org.cryse.lkong.utils.ThemeUtils;
 
-public class AppNavigation {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class AppNavigation {
     public AppNavigation() {
     }
 
@@ -171,14 +171,6 @@ public class AppNavigation {
             boolean showMenuShareVia
     ) {
         if(inAppBrowser) {
-            String ateKey = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("dark_theme", false) ?
-                    "dark_theme" : "light_theme";
-            //int statusBarColor = Config.primaryColorDark(context, ateKey);
-            //int primaryColor = Config.primaryColor(context, ateKey);
-            //int accentColor = Config.primaryColor(context, ateKey);
-            //int iconColor = ATEUtil.isColorLight(primaryColor) ? Color.BLACK : Color.WHITE;
-            //int iconColorPressed = ThemeUtils.makeColorDarken(iconColor, 0.8f);
-            //int iconColorDisabled = ThemeUtils.makeColorDarken(iconColor, 0.6f);
             FinestWebView.Builder builder = new FinestWebView.Builder(context);
             builder
                     .showUrl(showUrl)
@@ -186,19 +178,8 @@ public class AppNavigation {
                     .showMenuOpenWith(showMenuOpenWith)
                     .showMenuRefresh(showMenuRefresh)
                     .showMenuShareVia(showMenuShareVia)
-                    //.statusBarColor(statusBarColor)
-                    //.toolbarColor(primaryColor)
                     .toolbarScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL | AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS)
-                    //.iconDefaultColor(iconColor)
-                    //.iconDisabledColor(iconColorDisabled)
-                    //.iconPressedColor(iconColorPressed)
-                    //.titleColor(iconColor)
-                    //.urlColor(iconColorPressed)
-                    //.progressBarColor(accentColor)
                     .show(url);
-            /*Intent intent = new Intent(context, InAppBrowserActivity.class);
-            intent.putExtra("url", url);
-            context.startActivity(intent);*/
         } else {
             Uri uri = Uri.parse(url);
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
@@ -209,7 +190,6 @@ public class AppNavigation {
 
     public void navigateToManageAccount(Activity activity) {
         Intent intent = new Intent(Settings.ACTION_SYNC_SETTINGS);
-        //intent.putExtra(Settings.EXTRA_ACCOUNT_TYPES, new String[] {"org.cryse.lkong"});
         intent.putExtra(Settings.EXTRA_AUTHORITIES, new String[] {SyncUtils.SYNC_AUTHORITY_CHECK_NOTICE});
         activity.startActivity(intent);
     }

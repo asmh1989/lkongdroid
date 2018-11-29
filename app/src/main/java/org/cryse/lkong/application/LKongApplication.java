@@ -27,7 +27,7 @@ import io.realm.Realm;
 
 import timber.log.Timber;
 
-@Singleton
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) @Singleton
 public class LKongApplication extends Application {
     private static final String TAG = LKongApplication.class.getName();
     private SimpleActivityComponent simpleActivityComponent;

@@ -28,7 +28,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 
-public class ForumsFragment extends SimpleCollectionFragment<
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class ForumsFragment extends SimpleCollectionFragment<
         ForumModel,
         ForumListAdapter,
         ForumsPresenter> implements ForumsView<ForumModel> {
@@ -42,8 +42,9 @@ public class ForumsFragment extends SimpleCollectionFragment<
 
     public static ForumsFragment newInstance(Bundle args) {
         ForumsFragment fragment = new ForumsFragment();
-        if(args != null)
-            fragment.setArguments(args);
+        if(args != null) {
+          fragment.setArguments(args);
+        }
         return fragment;
     }
 
@@ -132,11 +133,6 @@ public class ForumsFragment extends SimpleCollectionFragment<
                 mCollectionView.setLoadingMore(false);
                 mCollectionView.hideMoreProgress();
             }
-
-            //@Override
-            //public void onChangeMoreVisibility(int visibility) {
-            //    mMoreProgressBar.setVisibility(visibility);
-            //}
         };
     }
 

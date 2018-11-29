@@ -1,6 +1,6 @@
 package org.cryse.lkong.model;
 
-public class NewThreadResult {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NewThreadResult {
     private long tid;
     private boolean success;
     private String type;

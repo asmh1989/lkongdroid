@@ -4,7 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.view.View;
 
-public class LayerEnablingAnimatorListener extends AnimatorListenerAdapter {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LayerEnablingAnimatorListener extends AnimatorListenerAdapter {
     private final View mTargetView;
 
     private int mLayerType;

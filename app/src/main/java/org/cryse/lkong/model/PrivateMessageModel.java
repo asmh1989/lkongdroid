@@ -3,7 +3,7 @@ package org.cryse.lkong.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class PrivateMessageModel implements Serializable {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class PrivateMessageModel implements Serializable {
     private String id;
     private long userId;
     private Date dateline;

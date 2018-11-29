@@ -56,7 +56,7 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class UserProfileFragment extends AbstractFragment implements /*RevealBackgroundView.OnStateChangeListener, */UserProfileView {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class UserProfileFragment extends AbstractFragment implements /*RevealBackgroundView.OnStateChangeListener, */UserProfileView {
     private static final String LOG_TAG = UserProfileFragment.class.getName();
     public static final String ARG_REVEAL_START_LOCATION = "reveal_start_location";
     private static final String ARG_USER_INFO = "arg_user_info";
@@ -149,8 +149,9 @@ public class UserProfileFragment extends AbstractFragment implements /*RevealBac
 
     public static UserProfileFragment newInstance(Bundle args) {
         UserProfileFragment fragment = new UserProfileFragment();
-        if(args != null)
+        if(args != null) {
             fragment.setArguments(args);
+        }
         return fragment;
     }
 
@@ -161,9 +162,10 @@ public class UserProfileFragment extends AbstractFragment implements /*RevealBac
         setHasOptionsMenu(true);
         Bundle arguments = getArguments();
         if(arguments.containsKey(DataContract.BUNDLE_USER_ID)) {
-            mUid = arguments.getLong(DataContract.BUNDLE_USER_ID, 0l);
-            if(mUid == 0)
+            mUid = arguments.getLong(DataContract.BUNDLE_USER_ID, 0L);
+            if(mUid == 0) {
                 throw new IllegalArgumentException("Must set uid in intent.");
+            }
         } else if(arguments.containsKey(DataContract.BUNDLE_USER_NAME)) {
             mUid = -1;
             mUserName = arguments.getString(DataContract.BUNDLE_USER_NAME);
@@ -172,8 +174,9 @@ public class UserProfileFragment extends AbstractFragment implements /*RevealBac
         }
         if(savedInstanceState != null && savedInstanceState.containsKey(ARG_USER_INFO)) {
             this.mUserInfo = (UserInfoModel) savedInstanceState.getSerializable(ARG_USER_INFO);
-            if(savedInstanceState.containsKey(ARG_USER_NAME))
+            if(savedInstanceState.containsKey(ARG_USER_NAME)) {
                 this.mUserName = savedInstanceState.getString(ARG_USER_NAME);
+            }
             this.mUid = savedInstanceState.getLong(DataContract.BUNDLE_USER_ID);
 
         }
@@ -360,6 +363,8 @@ public class UserProfileFragment extends AbstractFragment implements /*RevealBac
             case R.id.action_user_profile_pm:
                 startPrivateChat();
                 return true;
+            default:
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -393,8 +398,9 @@ public class UserProfileFragment extends AbstractFragment implements /*RevealBac
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putSerializable(ARG_USER_INFO, mUserInfo);
-        if(!TextUtils.isEmpty(mUserName))
+        if(!TextUtils.isEmpty(mUserName)) {
             outState.putString(ARG_USER_NAME, mUserName);
+        }
         outState.putLong(DataContract.BUNDLE_USER_ID, mUid);
     }
 
@@ -482,15 +488,18 @@ public class UserProfileFragment extends AbstractFragment implements /*RevealBac
     }
 
     private CharSequence buildUserName(String userName, int gender) {
-        if(gender != 1 && gender != 2) return userName;
+        if(gender != 1 && gender != 2) {
+            return userName;
+        }
         SpannableStringBuilder builder = new SpannableStringBuilder();
         builder.append(userName).append("  ");
         int start = builder.length();
         int end = start + 1;
-        if(gender == 1)
+        if(gender == 1) {
             builder.append("\u2642");
-        else
+        } else {
             builder.append("\u2640");
+        }
         builder.setSpan(new ForegroundColorSpan(Color.WHITE), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         builder.setSpan(new RelativeSizeSpan(0.8f), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         return builder;
@@ -565,8 +574,9 @@ public class UserProfileFragment extends AbstractFragment implements /*RevealBac
     }
 
     private void startPrivateChat() {
-        if(mUserInfo != null)
+        if(mUserInfo != null) {
             mNavigation.openActivityForPrivateMessage(getActivity(), mUid, mUserInfo.getUserName());
+        }
     }
 
     private void checkFollowStatus() {

@@ -1,6 +1,6 @@
 package org.cryse.lkong.logic.restservice.model;
 
-public class LKPostUser {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKPostUser {
     private String adminid;
     private String customstatus;
     private int gender;

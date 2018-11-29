@@ -10,7 +10,7 @@ import android.support.annotation.Nullable;
 /**
  * Followed user.
  */
-public interface FollowedUserModel extends BaseModel {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public interface FollowedUserModel extends BaseModel {
 
     /**
      * Self id.

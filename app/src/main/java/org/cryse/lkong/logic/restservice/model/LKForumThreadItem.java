@@ -2,7 +2,7 @@ package org.cryse.lkong.logic.restservice.model;
 
 import java.util.Date;
 
-public class LKForumThreadItem {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKForumThreadItem {
     private long sortkey;
     private Date dateline;
     private String subject;

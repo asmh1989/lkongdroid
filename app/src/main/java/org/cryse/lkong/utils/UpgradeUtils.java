@@ -18,7 +18,7 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import timber.log.Timber;
 
-public class UpgradeUtils {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class UpgradeUtils {
     private static boolean sShouldShowChangelog = false;
 
     public static void showChangelog(Activity activity) {

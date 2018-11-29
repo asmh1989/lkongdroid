@@ -14,7 +14,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
-public class TimelinePresenter extends SimpleCollectionPresenter<TimelineModel, SimpleCollectionView<TimelineModel>> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class TimelinePresenter extends SimpleCollectionPresenter<TimelineModel, SimpleCollectionView<TimelineModel>> {
     private static final String LOG_TAG = TimelinePresenter.class.getName();
 
     @Inject

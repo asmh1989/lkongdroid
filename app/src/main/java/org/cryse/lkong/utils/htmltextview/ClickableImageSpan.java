@@ -16,7 +16,7 @@ import org.cryse.lkong.utils.transformation.FitSizeTransformation;
 
 import java.lang.ref.WeakReference;
 
-public class ClickableImageSpan extends DynamicDrawableSpanWithoutSpacing implements PendingImageSpan {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class ClickableImageSpan extends DynamicDrawableSpanWithoutSpacing implements PendingImageSpan {
     private static final int MAX_HEIGHT = 1280;
     private AsyncTargetDrawable mDrawable;
     private WeakReference<Context> mContext;
@@ -53,10 +53,11 @@ public class ClickableImageSpan extends DynamicDrawableSpanWithoutSpacing implem
         mIdentityTag = identityTag;
         mPicassoTag = picassoTag;
         mSource = source;
-        if(source.contains("sinaimg"))
-            mSourceMiddle = source.replace("/large/", "/bmiddle/");
-        else
-            mSourceMiddle = source;
+        if(source.contains("sinaimg")) {
+          mSourceMiddle = source.replace("/large/", "/bmiddle/");
+        } else {
+          mSourceMiddle = source;
+        }
         mPlaceHolderRes = placeholderRes;
         mErrorRes = errorRes;
         mMaxWidth = maxWidth;
@@ -90,10 +91,11 @@ public class ClickableImageSpan extends DynamicDrawableSpanWithoutSpacing implem
         mIdentityTag = identityTag;
         mPicassoTag = picassoTag;
         mSource = source;
-        if(source.contains("sinaimg"))
-            mSourceMiddle = source.replace("/large/", "/bmiddle/");
-        else
-            mSourceMiddle = source;
+        if(source.contains("sinaimg")) {
+          mSourceMiddle = source.replace("/large/", "/bmiddle/");
+        } else {
+          mSourceMiddle = source;
+        }
         mPlaceHolderRes = placeholderRes;
         mErrorRes = errorRes;
         mMaxWidth = maxWidth;
@@ -154,8 +156,9 @@ public class ClickableImageSpan extends DynamicDrawableSpanWithoutSpacing implem
         if(!mIsLoaded && mContext.get() != null) {
             if(mContext.get() instanceof AbstractActivity) {
                 AbstractActivity activity = (AbstractActivity) mContext.get();
-                if(activity.isFinishing() || activity.isActivityDestroyed())
-                    return;
+                if(activity.isFinishing() || activity.isActivityDestroyed()) {
+                  return;
+                }
             }
             Glide
                     .with(mContext.get())

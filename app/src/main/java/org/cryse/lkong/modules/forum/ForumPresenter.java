@@ -12,7 +12,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
-public class ForumPresenter implements BasePresenter<ForumView> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class ForumPresenter implements BasePresenter<ForumView> {
     public static final String LOG_TAG = ForumPresenter.class.getName();
     LKongForumService mLKongForumService;
     ForumView mView;
@@ -105,10 +105,13 @@ public class ForumPresenter implements BasePresenter<ForumView> {
     }
 
     private void setLoadingStatus(boolean loadingMore, boolean isLoading) {
-        if (mView == null) return;
-        if (loadingMore)
-            mView.setLoadingMore(isLoading);
-        else
-            mView.setLoading(isLoading);
+        if (mView == null) {
+          return;
+        }
+        if (loadingMore) {
+          mView.setLoadingMore(isLoading);
+        } else {
+          mView.setLoading(isLoading);
+        }
     }
 }

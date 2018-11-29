@@ -13,7 +13,7 @@ import org.cryse.lkong.data.provider.followeduser.FollowedUserColumns;
 /**
  * Store User browse history here.
  */
-public class BrowseHistoryColumns implements BaseColumns {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class BrowseHistoryColumns implements BaseColumns {
     public static final String TABLE_NAME = "browse_history";
     public static final Uri CONTENT_URI = Uri.parse(LKongContentProvider.CONTENT_URI_BASE + "/" + TABLE_NAME);
 
@@ -86,17 +86,37 @@ public class BrowseHistoryColumns implements BaseColumns {
     // @formatter:on
 
     public static boolean hasColumns(String[] projection) {
-        if (projection == null) return true;
+        if (projection == null) {
+          return true;
+        }
         for (String c : projection) {
-            if (c.equals(USER_ID) || c.contains("." + USER_ID)) return true;
-            if (c.equals(FORUM_ID) || c.contains("." + FORUM_ID)) return true;
-            if (c.equals(FORUM_TITLE) || c.contains("." + FORUM_TITLE)) return true;
-            if (c.equals(THREAD_ID) || c.contains("." + THREAD_ID)) return true;
-            if (c.equals(POST_ID) || c.contains("." + POST_ID)) return true;
-            if (c.equals(THREAD_TITLE) || c.contains("." + THREAD_TITLE)) return true;
-            if (c.equals(THREAD_AUTHOR_ID) || c.contains("." + THREAD_AUTHOR_ID)) return true;
-            if (c.equals(THREAD_AUTHOR_NAME) || c.contains("." + THREAD_AUTHOR_NAME)) return true;
-            if (c.equals(LAST_READ_TIME) || c.contains("." + LAST_READ_TIME)) return true;
+            if (c.equals(USER_ID) || c.contains("." + USER_ID)) {
+              return true;
+            }
+            if (c.equals(FORUM_ID) || c.contains("." + FORUM_ID)) {
+              return true;
+            }
+            if (c.equals(FORUM_TITLE) || c.contains("." + FORUM_TITLE)) {
+              return true;
+            }
+            if (c.equals(THREAD_ID) || c.contains("." + THREAD_ID)) {
+              return true;
+            }
+            if (c.equals(POST_ID) || c.contains("." + POST_ID)) {
+              return true;
+            }
+            if (c.equals(THREAD_TITLE) || c.contains("." + THREAD_TITLE)) {
+              return true;
+            }
+            if (c.equals(THREAD_AUTHOR_ID) || c.contains("." + THREAD_AUTHOR_ID)) {
+              return true;
+            }
+            if (c.equals(THREAD_AUTHOR_NAME) || c.contains("." + THREAD_AUTHOR_NAME)) {
+              return true;
+            }
+            if (c.equals(LAST_READ_TIME) || c.contains("." + LAST_READ_TIME)) {
+              return true;
+            }
         }
         return false;
     }

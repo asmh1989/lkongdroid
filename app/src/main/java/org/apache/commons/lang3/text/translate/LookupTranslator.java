@@ -26,7 +26,7 @@ import java.util.HashMap;
  * @since 3.0
  * @version $Id: LookupTranslator.java 1091096 2011-04-11 15:07:29Z mbenson $
  */
-public class LookupTranslator extends CharSequenceTranslator {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LookupTranslator extends CharSequenceTranslator {
 
     private final HashMap<CharSequence, CharSequence> lookupMap;
     private final int shortest;

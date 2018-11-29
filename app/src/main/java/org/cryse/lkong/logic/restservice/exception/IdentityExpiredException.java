@@ -1,6 +1,6 @@
 package org.cryse.lkong.logic.restservice.exception;
 
-public class IdentityExpiredException extends RuntimeException {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class IdentityExpiredException extends RuntimeException {
     public IdentityExpiredException() {
     }
 

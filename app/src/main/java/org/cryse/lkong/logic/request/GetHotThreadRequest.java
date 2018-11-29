@@ -12,7 +12,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetHotThreadRequest extends AbstractHttpRequest<List<HotThreadModel>> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class GetHotThreadRequest extends AbstractHttpRequest<List<HotThreadModel>> {
     private boolean mDigest;
     private static final int HOT_THREAD_CACHE_TIME = 60*10*10;
     public GetHotThreadRequest(boolean digest) {

@@ -2,7 +2,7 @@ package org.cryse.lkong.logic.restservice.model;
 
 import java.util.List;
 
-public class LKTimelineData {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKTimelineData {
     long nexttime;
     long curtime;
     List<LKTimelineItem> data;

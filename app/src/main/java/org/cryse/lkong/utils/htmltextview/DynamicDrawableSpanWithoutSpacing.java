@@ -8,7 +8,7 @@ import android.text.style.ReplacementSpan;
 
 import java.lang.ref.WeakReference;
 
-public abstract class DynamicDrawableSpanWithoutSpacing extends ReplacementSpan {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public abstract class DynamicDrawableSpanWithoutSpacing extends ReplacementSpan {
     private static final String TAG = DynamicDrawableSpanWithoutSpacing.class.getSimpleName();
 
     /**
@@ -64,7 +64,7 @@ public abstract class DynamicDrawableSpanWithoutSpacing extends ReplacementSpan 
             fm.ascent = - newAscent;
             fm.descent = 0;
 
-            fm.top = - newAscent; //fm.ascent;
+            fm.top = - newAscent;
             fm.bottom = 0;
         }
 
@@ -75,7 +75,6 @@ public abstract class DynamicDrawableSpanWithoutSpacing extends ReplacementSpan 
     public void draw(Canvas canvas, CharSequence text,
                      int start, int end, float x,
                      int top, int y, int bottom, Paint paint) {
-        //Log.e("DrawableSpan.draw", String.format("Args: %d, %d, %f, %d, %d, %d, %s", start, end, x, top, y, bottom, text));
         Drawable b = getCachedDrawable();
         canvas.save();
 
@@ -93,8 +92,9 @@ public abstract class DynamicDrawableSpanWithoutSpacing extends ReplacementSpan 
         WeakReference<Drawable> wr = mDrawableRef;
         Drawable d = null;
 
-        if (wr != null)
-            d = wr.get();
+        if (wr != null) {
+          d = wr.get();
+        }
 
         if (d == null) {
             d = getDrawable();

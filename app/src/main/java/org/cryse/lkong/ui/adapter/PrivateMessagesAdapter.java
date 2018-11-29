@@ -26,7 +26,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.BindView;
 
-public class PrivateMessagesAdapter extends SimpleRecyclerViewAdapter<PrivateMessageModel> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class PrivateMessagesAdapter extends SimpleRecyclerViewAdapter<PrivateMessageModel> {
     private static final String LOG_TAG = PrivateMessagesAdapter.class.getSimpleName();
     private static final int TYPE_SEND = 1;
     private static final int TYPE_RECEIVE = 2;
@@ -109,7 +109,6 @@ public class PrivateMessagesAdapter extends SimpleRecyclerViewAdapter<PrivateMes
         public PrivateMessageViewHolder(View itemView, String ateKey) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            // ATE.apply(itemView, ateKey);
             mMessageTextView.setMovementMethod(
                     LinkMovementMethod.getInstance()
             );

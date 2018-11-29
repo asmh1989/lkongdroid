@@ -1,6 +1,6 @@
 package org.cryse.lkong.logic.restservice.exception;
 
-public class UploadImageException extends RuntimeException {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class UploadImageException extends RuntimeException {
     public UploadImageException() {
     }
 

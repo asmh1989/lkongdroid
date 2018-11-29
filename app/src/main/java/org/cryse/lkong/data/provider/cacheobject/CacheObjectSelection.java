@@ -12,7 +12,7 @@ import org.cryse.lkong.data.provider.base.AbstractSelection;
 /**
  * Selection for the {@code cache_object} table.
  */
-public class CacheObjectSelection extends AbstractSelection<CacheObjectSelection> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class CacheObjectSelection extends AbstractSelection<CacheObjectSelection> {
     @Override
     protected Uri baseUri() {
         return CacheObjectColumns.CONTENT_URI;
@@ -27,7 +27,9 @@ public class CacheObjectSelection extends AbstractSelection<CacheObjectSelection
      */
     public CacheObjectCursor query(ContentResolver contentResolver, String[] projection) {
         Cursor cursor = contentResolver.query(uri(), projection, sel(), args(), order());
-        if (cursor == null) return null;
+        if (cursor == null) {
+          return null;
+        }
         return new CacheObjectCursor(cursor);
     }
 
@@ -47,7 +49,9 @@ public class CacheObjectSelection extends AbstractSelection<CacheObjectSelection
      */
     public CacheObjectCursor query(Context context, String[] projection) {
         Cursor cursor = context.getContentResolver().query(uri(), projection, sel(), args(), order());
-        if (cursor == null) return null;
+        if (cursor == null) {
+          return null;
+        }
         return new CacheObjectCursor(cursor);
     }
 

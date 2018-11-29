@@ -171,48 +171,48 @@ public class TextDrawable extends ShapeDrawable {
             width = -1;
             height = -1;
             shape = new RectShape();
-            font = null; // Typeface.create("sans-serif-light", Typeface.NORMAL);
+            font = null;
             fontSize = -1;
             isBold = false;
             toUpperCase = false;
         }
 
-        public IConfigBuilder width(int width) {
+        @Override public IConfigBuilder width(int width) {
             this.width = width;
             return this;
         }
 
-        public IConfigBuilder height(int height) {
+        @Override public IConfigBuilder height(int height) {
             this.height = height;
             return this;
         }
 
-        public IConfigBuilder textColor(int color) {
+        @Override public IConfigBuilder textColor(int color) {
             this.textColor = color;
             return this;
         }
 
-        public IConfigBuilder withBorder(int thickness) {
+        @Override public IConfigBuilder withBorder(int thickness) {
             this.borderThickness = thickness;
             return this;
         }
 
-        public IConfigBuilder useFont(Typeface font) {
+        @Override public IConfigBuilder useFont(Typeface font) {
             this.font = font;
             return this;
         }
 
-        public IConfigBuilder fontSize(int size) {
+        @Override public IConfigBuilder fontSize(int size) {
             this.fontSize = size;
             return this;
         }
 
-        public IConfigBuilder bold() {
+        @Override public IConfigBuilder bold() {
             this.isBold = true;
             return this;
         }
 
-        public IConfigBuilder toUpperCase() {
+        @Override public IConfigBuilder toUpperCase() {
             this.toUpperCase = true;
             return this;
         }

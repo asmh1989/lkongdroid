@@ -2,7 +2,7 @@ package org.cryse.utils.preference;
 
 import android.content.SharedPreferences;
 
-public abstract class PrefsItem<T> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public abstract class PrefsItem<T> {
     protected String key;
     protected T defaultValue;
     protected SharedPreferences sharedPreferences;

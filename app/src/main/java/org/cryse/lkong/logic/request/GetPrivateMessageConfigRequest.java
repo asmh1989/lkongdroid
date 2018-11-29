@@ -9,7 +9,7 @@ import org.cryse.lkong.model.PrivateChatConfigModel;
 import org.cryse.lkong.account.LKAuthObject;
 import org.json.JSONObject;
 
-public class GetPrivateMessageConfigRequest extends AbstractAuthedHttpRequest<PrivateChatConfigModel> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class GetPrivateMessageConfigRequest extends AbstractAuthedHttpRequest<PrivateChatConfigModel> {
     private long mTargetUserId;
     public GetPrivateMessageConfigRequest(LKAuthObject authObject, long targetUserId) {
         super(authObject);
@@ -35,15 +35,21 @@ public class GetPrivateMessageConfigRequest extends AbstractAuthedHttpRequest<Pr
         String responseString = gzipToString(response);
         JSONObject rootObject = new JSONObject(responseString);
         PrivateChatConfigModel configModel = new PrivateChatConfigModel();
-        if(!rootObject.has("isok")) return null;
-        if(rootObject.has("uid"))
-            configModel.setUserId(rootObject.getLong("uid"));
-        if(rootObject.has("username"))
-            configModel.setUsername(rootObject.getString("username"));
-        if(rootObject.has("touid"))
-            configModel.setTargetUserId(rootObject.getLong("touid"));
-        if(rootObject.has("touser"))
-            configModel.setTargetUserName(rootObject.getString("touser"));
+        if(!rootObject.has("isok")) {
+          return null;
+        }
+        if(rootObject.has("uid")) {
+          configModel.setUserId(rootObject.getLong("uid"));
+        }
+        if(rootObject.has("username")) {
+          configModel.setUsername(rootObject.getString("username"));
+        }
+        if(rootObject.has("touid")) {
+          configModel.setTargetUserId(rootObject.getLong("touid"));
+        }
+        if(rootObject.has("touser")) {
+          configModel.setTargetUserName(rootObject.getString("touser"));
+        }
         return configModel;
     }
 }

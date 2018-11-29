@@ -6,7 +6,7 @@ import java.util.Map;
 
 import okhttp3.Cookie;
 
-public interface CookieStore {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public interface CookieStore {
     void addAll(String url, Collection<Cookie> cookies);
     Collection<Map.Entry<String, Collection<Cookie>>> getAll();
     Collection<Cookie> getForUrl(String url);

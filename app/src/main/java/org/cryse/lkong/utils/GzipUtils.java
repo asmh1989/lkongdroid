@@ -9,7 +9,7 @@ import java.util.zip.GZIPInputStream;
 
 import okhttp3.Response;
 
-public class GzipUtils {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class GzipUtils {
     public static String responseToString(Response response) throws Exception {
         String contentEncoding = response.header("Content-Encoding");
         if(!TextUtils.isEmpty(contentEncoding) && contentEncoding.contains("gzip")) {

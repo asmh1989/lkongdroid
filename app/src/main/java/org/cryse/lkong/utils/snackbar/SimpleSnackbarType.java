@@ -2,7 +2,7 @@ package org.cryse.lkong.utils.snackbar;
 
 import android.support.design.widget.Snackbar;
 
-public enum SimpleSnackbarType {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public enum SimpleSnackbarType {
     INFO(0),
     CONFIRM(1),
     WARNING(2),

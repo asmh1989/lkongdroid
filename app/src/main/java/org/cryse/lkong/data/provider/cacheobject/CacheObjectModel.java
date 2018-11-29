@@ -10,7 +10,7 @@ import android.support.annotation.Nullable;
 /**
  * Cache any kind of object here.
  */
-public interface CacheObjectModel extends BaseModel {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public interface CacheObjectModel extends BaseModel {
 
     /**
      * The key of cache object, unique and indexed.

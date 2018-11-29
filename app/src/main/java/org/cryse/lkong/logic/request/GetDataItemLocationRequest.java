@@ -11,7 +11,7 @@ import org.cryse.lkong.model.DataItemLocationModel;
 import org.cryse.lkong.model.converter.ModelConverter;
 import org.cryse.lkong.utils.GsonUtils;
 
-public class GetDataItemLocationRequest extends AbstractAuthedHttpRequest<DataItemLocationModel> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class GetDataItemLocationRequest extends AbstractAuthedHttpRequest<DataItemLocationModel> {
     private String mDataItem;
     public GetDataItemLocationRequest(LKAuthObject authObject, String dataItem) {
         super(authObject);

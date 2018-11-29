@@ -8,7 +8,7 @@ import android.text.TextUtils;
 
 import static android.accounts.AccountManager.KEY_BOOLEAN_RESULT;
 
-public class LKongAuthenticator extends AbstractAccountAuthenticator {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKongAuthenticator extends AbstractAccountAuthenticator {
     private String LOG_TAG = LKongAuthenticator.class.getName();
     private final Context mContext;
 
@@ -45,7 +45,6 @@ public class LKongAuthenticator extends AbstractAccountAuthenticator {
             final String password = am.getPassword(account);
             if (password != null) {
                 try {
-                    //Log.d("udinic", TAG + "> re-authenticating with the existing password");
                     LKongServerAuthenticate serverAuthenticate = new LKongServerAuthenticate();
                     LKongAuthenticateResult result = serverAuthenticate.userSignIn(account.name, password);
                     authToken = result.combinedCookie;
@@ -77,10 +76,9 @@ public class LKongAuthenticator extends AbstractAccountAuthenticator {
         return bundle;
     }
 
-    public Bundle getAccountRemovalAllowed(AccountAuthenticatorResponse response, Account account) {
+    @Override public Bundle getAccountRemovalAllowed(AccountAuthenticatorResponse response, Account account) {
         Bundle result = new Bundle();
-        boolean allowed = true; // or whatever logic you want here
-        result.putBoolean(AccountManager.KEY_BOOLEAN_RESULT, allowed);
+        result.putBoolean(AccountManager.KEY_BOOLEAN_RESULT, true);
         return result;
     }
 

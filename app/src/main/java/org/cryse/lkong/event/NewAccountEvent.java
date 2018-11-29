@@ -1,5 +1,5 @@
 package org.cryse.lkong.event;
 
-public class NewAccountEvent extends AbstractEvent {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NewAccountEvent extends AbstractEvent {
 
 }

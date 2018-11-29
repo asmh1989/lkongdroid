@@ -5,7 +5,7 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.net.Uri;
 
-public abstract class AbstractContentValues {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public abstract class AbstractContentValues {
     protected final ContentValues mContentValues = new ContentValues();
 
     /**

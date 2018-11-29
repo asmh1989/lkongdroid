@@ -2,7 +2,7 @@ package org.cryse.lkong.event;
 
 import org.cryse.lkong.model.EditPostResult;
 
-public class EditPostDoneEvent extends AbstractEvent {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class EditPostDoneEvent extends AbstractEvent {
     private EditPostResult editResult;
 
     public EditPostDoneEvent(EditPostResult editResult) {

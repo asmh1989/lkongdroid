@@ -1,6 +1,6 @@
 package org.cryse.lkong.model;
 
-public class SignInResult {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class SignInResult {
     private boolean success;
     private String authCookie;
     private String dzsbheyCookie;

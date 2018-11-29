@@ -1,4 +1,4 @@
 package org.cryse.lkong.model;
 
-public abstract class AbstractSearchResult {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public abstract class AbstractSearchResult {
 }

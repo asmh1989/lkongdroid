@@ -120,8 +120,6 @@ public class ChangeLogRow {
         sb.append("bulletedList=" + bulletedList);
         sb.append(",");
         sb.append("changeText=" + changeText);
-        //sb.append(",");
-        //sb.append("changeTextTitle="+changeTextTitle);
         return sb.toString();
     }
 
@@ -149,8 +147,9 @@ public class ChangeLogRow {
     }
 
     public String getChangeText(Context context) {
-        if (context == null)
-            return getChangeText();
+        if (context == null) {
+          return getChangeText();
+        }
 
         String prefix = "";
         switch (type) {
@@ -165,6 +164,8 @@ public class ChangeLogRow {
                     prefix = context.getResources().getString(improvementPrefixStringResId);
                     prefix = prefix.replaceAll("\\[", "<").replaceAll("\\]", ">");
                 }
+                break;
+            default:
                 break;
         }
         return prefix + " " + changeText;

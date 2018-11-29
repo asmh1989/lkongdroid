@@ -3,7 +3,7 @@ package org.cryse.lkong.data.model;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class FollowRecord extends RealmObject {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FollowRecord extends RealmObject {
     public static final int TYPE_FORUM = 0;
     public static final int TYPE_THREAD = 1;
     public static final int TYPE_USER = 2;

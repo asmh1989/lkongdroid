@@ -1,6 +1,6 @@
 package org.cryse.lkong.logic.restservice.exception;
 
-public class NeedSignInException extends RuntimeException {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NeedSignInException extends RuntimeException {
     public NeedSignInException() {
     }
 

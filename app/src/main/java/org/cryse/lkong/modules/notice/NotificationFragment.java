@@ -35,7 +35,7 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.BindView;
 
-public class NotificationFragment extends InActivityFragment {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NotificationFragment extends InActivityFragment {
     private static final String LOG_TAG = NotificationFragment.class.getName();
     @Inject
     UserAccountManager mUserAccountManager;
@@ -49,8 +49,9 @@ public class NotificationFragment extends InActivityFragment {
 
     public static NotificationFragment newInstance(Bundle args) {
         NotificationFragment fragment = new NotificationFragment();
-        if(args != null)
-            fragment.setArguments(args);
+        if(args != null) {
+          fragment.setArguments(args);
+        }
         return fragment;
     }
 
@@ -66,8 +67,9 @@ public class NotificationFragment extends InActivityFragment {
         Bundle args = getArguments();
         if(args != null && args.containsKey(DataContract.BUNDLE_USER_ID)) {
             long userId = args.getLong(DataContract.BUNDLE_USER_ID);
-            if(mUserAccountManager.getCurrentUserId() != userId)
-                mUserAccountManager.setCurrentUserAccount(userId);
+            if(mUserAccountManager.getCurrentUserId() != userId) {
+              mUserAccountManager.setCurrentUserAccount(userId);
+            }
         }
     }
 
@@ -155,11 +157,13 @@ public class NotificationFragment extends InActivityFragment {
             case android.R.id.home:
                 getSwipeBackActivity().closeActivityWithTransition();
                 return true;
+            default:
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    protected void setActivityTitle() {
+    @Override protected void setActivityTitle() {
         getActivity().setTitle(getFragmentTitle());
     }
 

@@ -11,7 +11,7 @@ import org.cryse.lkong.model.SearchDataSet;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-public class SearchRequest extends AbstractAuthedHttpRequest<SearchDataSet> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class SearchRequest extends AbstractAuthedHttpRequest<SearchDataSet> {
     private long mStart;
     private String mQueryString;
     public SearchRequest(LKAuthObject authObject, long start, String queryString) {

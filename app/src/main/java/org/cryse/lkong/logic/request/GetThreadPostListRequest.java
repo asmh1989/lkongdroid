@@ -14,7 +14,7 @@ import org.cryse.lkong.account.LKAuthObject;
 
 import java.util.List;
 
-public class GetThreadPostListRequest extends AbstractAuthedHttpRequest<List<PostModel>> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class GetThreadPostListRequest extends AbstractAuthedHttpRequest<List<PostModel>> {
     private long mThreadId;
     private int mPage;
     public GetThreadPostListRequest(LKAuthObject authObject, long tid, int page) {

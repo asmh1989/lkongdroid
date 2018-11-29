@@ -39,7 +39,7 @@ import java.io.StringReader;
 import java.util.HashMap;
 import java.util.Locale;
 
-public class HtmlToSpannedConverter implements ContentHandler {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class HtmlToSpannedConverter implements ContentHandler {
 
     private static final float[] HEADER_SIZES = {
             1.5f, 1.4f, 1.3f, 1.2f, 1.1f, 1f,
@@ -120,50 +120,50 @@ public class HtmlToSpannedConverter implements ContentHandler {
     }
 
     private void handleStartTag(String tag, Attributes attributes) {
-        if (tag.equalsIgnoreCase("br")) {
+        if ("br".equalsIgnoreCase(tag)) {
             // We don't need to handle this. TagSoup will ensure that there's a </br> for each <br>
             // so we can safely emite the linebreaks when we handle the close tag.
-        } else if (tag.equalsIgnoreCase("p")) {
+        } else if ("p".equalsIgnoreCase(tag)) {
             handleP(mSpannableStringBuilder);
-        } else if (tag.equalsIgnoreCase("div")) {
+        } else if ("div".equalsIgnoreCase(tag)) {
             handleP(mSpannableStringBuilder);
-        } else if (tag.equalsIgnoreCase("strong")) {
+        } else if ("strong".equalsIgnoreCase(tag)) {
             start(mSpannableStringBuilder, new Bold());
-        } else if (tag.equalsIgnoreCase("b")) {
+        } else if ("b".equalsIgnoreCase(tag)) {
             start(mSpannableStringBuilder, new Bold());
-        } else if (tag.equalsIgnoreCase("em")) {
+        } else if ("em".equalsIgnoreCase(tag)) {
             start(mSpannableStringBuilder, new Italic());
-        } else if (tag.equalsIgnoreCase("cite")) {
+        } else if ("cite".equalsIgnoreCase(tag)) {
             start(mSpannableStringBuilder, new Italic());
-        } else if (tag.equalsIgnoreCase("dfn")) {
+        } else if ("dfn".equalsIgnoreCase(tag)) {
             start(mSpannableStringBuilder, new Italic());
-        } else if (tag.equalsIgnoreCase("i")) {
+        } else if ("i".equalsIgnoreCase(tag)) {
             start(mSpannableStringBuilder, new Italic());
-        } else if (tag.equalsIgnoreCase("big")) {
+        } else if ("big".equalsIgnoreCase(tag)) {
             start(mSpannableStringBuilder, new Big());
-        } else if (tag.equalsIgnoreCase("small")) {
+        } else if ("small".equalsIgnoreCase(tag)) {
             start(mSpannableStringBuilder, new Small());
-        } else if (tag.equalsIgnoreCase("font")) {
+        } else if ("font".equalsIgnoreCase(tag)) {
             startFont(mSpannableStringBuilder, attributes);
-        } else if (tag.equalsIgnoreCase("blockquote")) {
+        } else if ("blockquote".equalsIgnoreCase(tag)) {
             handleP(mSpannableStringBuilder);
             start(mSpannableStringBuilder, new Blockquote());
-        } else if (tag.equalsIgnoreCase("tt")) {
+        } else if ("tt".equalsIgnoreCase(tag)) {
             start(mSpannableStringBuilder, new Monospace());
-        } else if (tag.equalsIgnoreCase("a")) {
+        } else if ("a".equalsIgnoreCase(tag)) {
             startA(mSpannableStringBuilder, attributes);
-        } else if (tag.equalsIgnoreCase("u")) {
+        } else if ("u".equalsIgnoreCase(tag)) {
             start(mSpannableStringBuilder, new Underline());
-        } else if (tag.equalsIgnoreCase("sup")) {
+        } else if ("sup".equalsIgnoreCase(tag)) {
             start(mSpannableStringBuilder, new Super());
-        } else if (tag.equalsIgnoreCase("sub")) {
+        } else if ("sub".equalsIgnoreCase(tag)) {
             start(mSpannableStringBuilder, new Sub());
         } else if (tag.length() == 2 &&
                 Character.toLowerCase(tag.charAt(0)) == 'h' &&
                 tag.charAt(1) >= '1' && tag.charAt(1) <= '6') {
             handleP(mSpannableStringBuilder);
             start(mSpannableStringBuilder, new Header(tag.charAt(1) - '1'));
-        } else if (tag.equalsIgnoreCase("img")) {
+        } else if ("img".equalsIgnoreCase(tag)) {
             startImg(mSpannableStringBuilder, attributes, mImageGetter);
         } else if (mTagHandler != null) {
             mTagHandler.handleTag(true, tag, mSpannableStringBuilder, mReader);
@@ -171,43 +171,43 @@ public class HtmlToSpannedConverter implements ContentHandler {
     }
 
     private void handleEndTag(String tag) {
-        if (tag.equalsIgnoreCase("br")) {
+        if ("br".equalsIgnoreCase(tag)) {
             handleBr(mSpannableStringBuilder);
-        } else if (tag.equalsIgnoreCase("p")) {
+        } else if ("p".equalsIgnoreCase(tag)) {
             handleP(mSpannableStringBuilder);
-        } else if (tag.equalsIgnoreCase("div")) {
+        } else if ("div".equalsIgnoreCase(tag)) {
             handleP(mSpannableStringBuilder);
-        } else if (tag.equalsIgnoreCase("strong")) {
+        } else if ("strong".equalsIgnoreCase(tag)) {
             end(mSpannableStringBuilder, Bold.class, new StyleSpan(Typeface.BOLD));
-        } else if (tag.equalsIgnoreCase("b")) {
+        } else if ("b".equalsIgnoreCase(tag)) {
             end(mSpannableStringBuilder, Bold.class, new StyleSpan(Typeface.BOLD));
-        } else if (tag.equalsIgnoreCase("em")) {
+        } else if ("em".equalsIgnoreCase(tag)) {
             end(mSpannableStringBuilder, Italic.class, new StyleSpan(Typeface.ITALIC));
-        } else if (tag.equalsIgnoreCase("cite")) {
+        } else if ("cite".equalsIgnoreCase(tag)) {
             end(mSpannableStringBuilder, Italic.class, new StyleSpan(Typeface.ITALIC));
-        } else if (tag.equalsIgnoreCase("dfn")) {
+        } else if ("dfn".equalsIgnoreCase(tag)) {
             end(mSpannableStringBuilder, Italic.class, new StyleSpan(Typeface.ITALIC));
-        } else if (tag.equalsIgnoreCase("i")) {
+        } else if ("i".equalsIgnoreCase(tag)) {
             end(mSpannableStringBuilder, Italic.class, new StyleSpan(Typeface.ITALIC));
-        } else if (tag.equalsIgnoreCase("big")) {
+        } else if ("big".equalsIgnoreCase(tag)) {
             end(mSpannableStringBuilder, Big.class, new RelativeSizeSpan(1.25f));
-        } else if (tag.equalsIgnoreCase("small")) {
+        } else if ("small".equalsIgnoreCase(tag)) {
             end(mSpannableStringBuilder, Small.class, new RelativeSizeSpan(0.8f));
-        } else if (tag.equalsIgnoreCase("font")) {
+        } else if ("font".equalsIgnoreCase(tag)) {
             endFont(mSpannableStringBuilder);
-        } else if (tag.equalsIgnoreCase("blockquote")) {
+        } else if ("blockquote".equalsIgnoreCase(tag)) {
             handleP(mSpannableStringBuilder);
             end(mSpannableStringBuilder, Blockquote.class, new QuoteSpan());
-        } else if (tag.equalsIgnoreCase("tt")) {
+        } else if ("tt".equalsIgnoreCase(tag)) {
             end(mSpannableStringBuilder, Monospace.class,
                     new TypefaceSpan("monospace"));
-        } else if (tag.equalsIgnoreCase("a")) {
+        } else if ("a".equalsIgnoreCase(tag)) {
             endA(mSpannableStringBuilder);
-        } else if (tag.equalsIgnoreCase("u")) {
+        } else if ("u".equalsIgnoreCase(tag)) {
             end(mSpannableStringBuilder, Underline.class, new UnderlineSpan());
-        } else if (tag.equalsIgnoreCase("sup")) {
+        } else if ("sup".equalsIgnoreCase(tag)) {
             end(mSpannableStringBuilder, Super.class, new SuperscriptSpan());
-        } else if (tag.equalsIgnoreCase("sub")) {
+        } else if ("sub".equalsIgnoreCase(tag)) {
             end(mSpannableStringBuilder, Sub.class, new SubscriptSpan());
         } else if (tag.length() == 2 &&
                 Character.toLowerCase(tag.charAt(0)) == 'h' &&
@@ -391,31 +391,31 @@ public class HtmlToSpannedConverter implements ContentHandler {
         }
     }
 
-    public void setDocumentLocator(Locator locator) {
+    @Override public void setDocumentLocator(Locator locator) {
     }
 
-    public void startDocument() throws SAXException {
+    @Override public void startDocument() throws SAXException {
     }
 
-    public void endDocument() throws SAXException {
+    @Override public void endDocument() throws SAXException {
     }
 
-    public void startPrefixMapping(String prefix, String uri) throws SAXException {
+    @Override public void startPrefixMapping(String prefix, String uri) throws SAXException {
     }
 
-    public void endPrefixMapping(String prefix) throws SAXException {
+    @Override public void endPrefixMapping(String prefix) throws SAXException {
     }
 
-    public void startElement(String uri, String localName, String qName, Attributes attributes)
+    @Override public void startElement(String uri, String localName, String qName, Attributes attributes)
             throws SAXException {
         handleStartTag(localName, attributes);
     }
 
-    public void endElement(String uri, String localName, String qName) throws SAXException {
+    @Override public void endElement(String uri, String localName, String qName) throws SAXException {
         handleEndTag(localName);
     }
 
-    public void characters(char ch[], int start, int length) throws SAXException {
+    @Override public void characters(char[] ch, int start, int length) throws SAXException {
         StringBuilder sb = new StringBuilder();
 
         /*
@@ -453,13 +453,13 @@ public class HtmlToSpannedConverter implements ContentHandler {
         mSpannableStringBuilder.append(sb);
     }
 
-    public void ignorableWhitespace(char ch[], int start, int length) throws SAXException {
+    @Override public void ignorableWhitespace(char ch[], int start, int length) throws SAXException {
     }
 
-    public void processingInstruction(String target, String data) throws SAXException {
+    @Override public void processingInstruction(String target, String data) throws SAXException {
     }
 
-    public void skippedEntity(String name) throws SAXException {
+    @Override public void skippedEntity(String name) throws SAXException {
     }
 
     private static class Bold { }
@@ -544,8 +544,9 @@ public class HtmlToSpannedConverter implements ContentHandler {
     public static final int
     convertValueToInt(CharSequence charSeq, int defaultValue)
     {
-        if (null == charSeq)
-            return defaultValue;
+        if (null == charSeq) {
+          return defaultValue;
+        }
 
         String nm = charSeq.toString();
 
@@ -565,8 +566,9 @@ public class HtmlToSpannedConverter implements ContentHandler {
 
         if ('0' == nm.charAt(index)) {
             //  Quick check for a zero by itself
-            if (index == (len - 1))
-                return 0;
+            if (index == (len - 1)) {
+              return 0;
+            }
 
             char    c = nm.charAt(index + 1);
 

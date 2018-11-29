@@ -9,7 +9,7 @@ import org.cryse.lkong.data.provider.browsehistory.BrowseHistoryModel;
 
 import java.util.Date;
 
-public class BrowseHistory implements BrowseHistoryModel, SimpleCollectionItem {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class BrowseHistory implements BrowseHistoryModel, SimpleCollectionItem {
     long userId;
     long threadId;
     String threadTitle;
@@ -176,10 +176,12 @@ public class BrowseHistory implements BrowseHistoryModel, SimpleCollectionItem {
     }
 
     public static final Creator<BrowseHistory> CREATOR = new Creator<BrowseHistory>() {
+        @Override
         public BrowseHistory createFromParcel(Parcel source) {
             return new BrowseHistory(source);
         }
 
+        @Override
         public BrowseHistory[] newArray(int size) {
             return new BrowseHistory[size];
         }

@@ -37,7 +37,7 @@ import javax.inject.Inject;
 
 import timber.log.Timber;
 
-public class UserAccountManager {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class UserAccountManager {
     private static final String LOG_TAG = UserAccountManager.class.getName();
     private LinkedHashMap<Long, UserAccount> mUserAccounts = new LinkedHashMap<Long, UserAccount>();
     private UserAccount mCurrentUserAccount;
@@ -94,7 +94,6 @@ public class UserAccountManager {
                             // Do nothing here
                             int i = 518 * 1992;
                         });
-                        //Toast.makeText(context, String.format("onAccountsUpdated: account count = %d, mUserAccount count = %d", lkongAccount.size(), mUserAccounts.size()), Toast.LENGTH_SHORT).show();
                         if(mUserAccounts.size() != lkongAccount.size()) {
                             Timber.d("ACCOUNT COUNT CHANGED!", LOG_TAG);
                         }
@@ -167,20 +166,8 @@ public class UserAccountManager {
             } else if(currentAccount != null) {
                 setCurrentUserAccount(currentAccount);
             } else {
-                mDefaultAccountUid.set(0l);
+                mDefaultAccountUid.set(0L);
             }
-            /*if(uid >= 0) {
-                int index = -1;
-                for (int i = 0; i < mUserAccounts.size(); i++) {
-                    if(mUserAccounts.get(i).getUserId() == uid) {
-                        mCurrentUserAccount = mUserAccounts.get(i);
-                        index = i;
-                    }
-                }
-                if(index != -1) {
-                    Collections.swap(mUserAccounts, 0, index);
-                }
-            }*/
         } catch (Exception ex) {
             Timber.e(ex, "getAllUserAccounts() failed.", LOG_TAG);
         }
@@ -201,7 +188,9 @@ public class UserAccountManager {
             }
             return mCurrentUserAccount;
         }
-        if(mCurrentUserAccount != null) return mCurrentUserAccount;
+        if(mCurrentUserAccount != null) {
+            return mCurrentUserAccount;
+        }
         throw new NeedSignInException("You should sign in before you do this.");
     }
 
@@ -217,8 +206,6 @@ public class UserAccountManager {
 
     public boolean isSignedIn() {
         update();
-        Account[] accounts = mAccountManager.getAccountsByType(AccountConst.ACCOUNT_TYPE);
-        // Toast.makeText(activity, String.format("onAccountsUpdated222:  mUserAccount count = %d, accounts count = %d", mUserAccounts.size(), accounts.length), Toast.LENGTH_SHORT).show();
         return mUserAccounts.size() > 0;
     }
 
@@ -253,8 +240,7 @@ public class UserAccountManager {
         return mUserAccounts.get(uid);
     }
 
-    public void signOut(long uid) throws Exception {
-        // mLKongDatabase.removeUserAccount(uid);
+    public void signOut(long uid) {
         try {
             UserAccount userAccount = mUserAccounts.get(uid);
             Account account = userAccount.getAccount();
@@ -296,8 +282,9 @@ public class UserAccountManager {
         String userAvatar = accountManager.getUserData(account, AccountConst.KEY_ACCOUNT_USER_AVATAR);
         String userAuth = accountManager.getUserData(account, AccountConst.KEY_ACCOUNT_USER_AUTH);
         String userDzsbhey = accountManager.getUserData(account, AccountConst.KEY_ACCOUNT_USER_DZSBHEY);
-        if(TextUtils.isEmpty(userAuth))
+        if(TextUtils.isEmpty(userAuth)) {
             throw new IllegalArgumentException("userAuth is empty!");
+        }
         return new UserAccount(
                 account,
                 userId,

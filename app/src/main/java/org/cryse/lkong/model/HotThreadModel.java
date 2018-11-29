@@ -3,7 +3,7 @@ package org.cryse.lkong.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class HotThreadModel implements SimpleCollectionItem {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class HotThreadModel implements SimpleCollectionItem {
     public String subject;
     public long tid;
 
@@ -27,11 +27,11 @@ public class HotThreadModel implements SimpleCollectionItem {
     }
 
     public static final Parcelable.Creator<HotThreadModel> CREATOR = new Parcelable.Creator<HotThreadModel>() {
-        public HotThreadModel createFromParcel(Parcel source) {
+        @Override public HotThreadModel createFromParcel(Parcel source) {
             return new HotThreadModel(source);
         }
 
-        public HotThreadModel[] newArray(int size) {
+        @Override public HotThreadModel[] newArray(int size) {
             return new HotThreadModel[size];
         }
     };

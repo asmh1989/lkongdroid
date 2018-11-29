@@ -11,12 +11,14 @@ import android.util.Log;
 
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 
-public class TransformationUtils {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class TransformationUtils {
     private static final String TAG = TransformationUtils.class.getSimpleName();
     public static final int PAINT_FLAGS = Paint.DITHER_FLAG | Paint.FILTER_BITMAP_FLAG;
 
     public static Bitmap circleCrop(BitmapPool pool, Bitmap source) {
-        if (source == null) return null;
+        if (source == null) {
+          return null;
+        }
 
         int size = Math.min(source.getWidth(), source.getHeight());
         int x = (source.getWidth() - size) / 2;
@@ -39,12 +41,6 @@ public class TransformationUtils {
     }
 
     public static Bitmap fitSizeScale(BitmapPool pool, Bitmap toFit, int width, int height) {
-        /*if (toFit.getWidth() <= width) {
-            if (Log.isLoggable(TAG, Log.VERBOSE)) {
-                Log.v(TAG, "requested target size matches input, returning input");
-            }
-            return toFit;
-        }*/
         final float widthPercentage = width / (float) toFit.getWidth();
         final float heightPercentage = height / (float) toFit.getHeight();
         final float minPercentage = Math.min(widthPercentage, heightPercentage);
@@ -87,12 +83,6 @@ public class TransformationUtils {
     }
 
     public static Bitmap fitInScale(BitmapPool pool, Bitmap toFit, int width, int height, int backgroundColor) {
-        /*if (toFit.getWidth() <= width) {
-            if (Log.isLoggable(TAG, Log.VERBOSE)) {
-                Log.v(TAG, "requested target size matches input, returning input");
-            }
-            return toFit;
-        }*/
         final float widthPercentage = width / (float) toFit.getWidth();
         final float heightPercentage = height / (float) toFit.getHeight();
         final float minPercentage = Math.min(widthPercentage, heightPercentage);

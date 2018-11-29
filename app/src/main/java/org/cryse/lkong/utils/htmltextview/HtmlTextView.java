@@ -25,7 +25,7 @@ import org.cryse.lkong.utils.ImageLoader;
 
 import java.io.InputStream;
 
-public class HtmlTextView extends JellyBeanSpanFixTextView {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class HtmlTextView extends JellyBeanSpanFixTextView {
 
     public static final String TAG = "HtmlTextView";
     public static final boolean DEBUG = false;

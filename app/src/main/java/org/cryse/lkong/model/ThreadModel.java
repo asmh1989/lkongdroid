@@ -5,7 +5,7 @@ import android.os.Parcel;
 import java.io.Serializable;
 import java.util.Date;
 
-public class ThreadModel implements Serializable, SimpleCollectionItem {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class ThreadModel implements Serializable, SimpleCollectionItem {
     private long sortKey;
     private Date sortKeyTime;
     private Date dateline;
@@ -158,11 +158,11 @@ public class ThreadModel implements Serializable, SimpleCollectionItem {
     }
 
     public static final Creator<ThreadModel> CREATOR = new Creator<ThreadModel>() {
-        public ThreadModel createFromParcel(Parcel source) {
+        @Override public ThreadModel createFromParcel(Parcel source) {
             return new ThreadModel(source);
         }
 
-        public ThreadModel[] newArray(int size) {
+        @Override public ThreadModel[] newArray(int size) {
             return new ThreadModel[size];
         }
     };

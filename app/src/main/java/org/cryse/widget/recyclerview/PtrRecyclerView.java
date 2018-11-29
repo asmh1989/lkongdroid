@@ -13,7 +13,7 @@ import com.handmark.pulltorefresh.library.internal.LoadingLayout;
 
 import org.cryse.lkong.R;
 
-public class PtrRecyclerView extends PullToRefreshBase<RecyclerView> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class PtrRecyclerView extends PullToRefreshBase<RecyclerView> {
 
     public PtrRecyclerView(Context context) {
         super(context);
@@ -58,8 +58,9 @@ public class PtrRecyclerView extends PullToRefreshBase<RecyclerView> {
                 StaggeredGridLayoutManager staggeredGridLayoutManager = (StaggeredGridLayoutManager) layoutManager;
                 int[] positions = staggeredGridLayoutManager.findLastCompletelyVisibleItemPositions(null);
                 for(int position : positions) {
-                    if(position == adapter.getItemCount() - 1)
-                        return true;
+                    if(position == adapter.getItemCount() - 1) {
+                      return true;
+                    }
                 }
             } else {
                 throw new IllegalStateException();
@@ -84,8 +85,9 @@ public class PtrRecyclerView extends PullToRefreshBase<RecyclerView> {
                 StaggeredGridLayoutManager staggeredGridLayoutManager = (StaggeredGridLayoutManager) layoutManager;
                 int[] positions = staggeredGridLayoutManager.findFirstCompletelyVisibleItemPositions(null);
                 for(int position : positions) {
-                    if(position == 0)
-                        return true;
+                    if(position == 0) {
+                      return true;
+                    }
                 }
             } else {
                 throw new IllegalStateException();

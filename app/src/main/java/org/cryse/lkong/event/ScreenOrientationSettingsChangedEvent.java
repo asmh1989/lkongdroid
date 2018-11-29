@@ -1,5 +1,5 @@
 package org.cryse.lkong.event;
 
-public class ScreenOrientationSettingsChangedEvent extends AbstractEvent {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class ScreenOrientationSettingsChangedEvent extends AbstractEvent {
 
 }

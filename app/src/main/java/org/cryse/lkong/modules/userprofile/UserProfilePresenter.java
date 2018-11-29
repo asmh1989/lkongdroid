@@ -12,7 +12,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
-public class UserProfilePresenter implements BasePresenter<UserProfileView> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class UserProfilePresenter implements BasePresenter<UserProfileView> {
     private static final String LOG_TAG = UserProfilePresenter.class.getName();
     LKongForumService mLKongForumService;
     Subscription mUserProfileSubscription;
@@ -33,8 +33,9 @@ public class UserProfilePresenter implements BasePresenter<UserProfileView> {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         result -> {
-                            if(mView != null)
-                                mView.onLoadUserProfileComplete(result);
+                            if(mView != null) {
+                              mView.onLoadUserProfileComplete(result);
+                            }
                         },
                         error -> {
                             if(mView != null) {
@@ -55,8 +56,9 @@ public class UserProfilePresenter implements BasePresenter<UserProfileView> {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         result -> {
-                            if(mView != null)
-                                mView.onCheckFollowStatusComplete(result);
+                            if(mView != null) {
+                              mView.onCheckFollowStatusComplete(result);
+                            }
                         },
                         error -> {
                             if(mView != null) {
@@ -75,8 +77,9 @@ public class UserProfilePresenter implements BasePresenter<UserProfileView> {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         result -> {
-                            if(mView != null)
-                                mView.onCheckBlockStatusComplete(result);
+                            if(mView != null) {
+                              mView.onCheckBlockStatusComplete(result);
+                            }
                         },
                         error -> {
                             if(mView != null) {
@@ -95,8 +98,9 @@ public class UserProfilePresenter implements BasePresenter<UserProfileView> {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         result -> {
-                            if(mView != null)
-                                mView.onCheckFollowStatusComplete(result);
+                            if(mView != null) {
+                              mView.onCheckFollowStatusComplete(result);
+                            }
                         },
                         error -> {
                             if(mView != null) {
@@ -115,8 +119,9 @@ public class UserProfilePresenter implements BasePresenter<UserProfileView> {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         result -> {
-                            if(mView != null)
-                                mView.onCheckBlockStatusComplete(result);
+                            if(mView != null) {
+                              mView.onCheckBlockStatusComplete(result);
+                            }
                         },
                         error -> {
                             if(mView != null) {
@@ -129,7 +134,9 @@ public class UserProfilePresenter implements BasePresenter<UserProfileView> {
     }
 
     public void setLoadingStatus(boolean isLoading) {
-        if(mView == null) return;
+        if(mView == null) {
+          return;
+        }
         mView.setLoading(isLoading);
     }
 

@@ -36,7 +36,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.BindView;
 
-public class TimelineAdapter extends SimpleRecyclerViewAdapter<TimelineModel> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class TimelineAdapter extends SimpleRecyclerViewAdapter<TimelineModel> {
     private static final String LOG_TAG = TimelineAdapter.class.getName();
     private static final int TYPE_THREAD = 0;
     private static final int TYPE_REPLY = 1;
@@ -219,7 +219,8 @@ public class TimelineAdapter extends SimpleRecyclerViewAdapter<TimelineModel> {
             mOnTimelineModelItemClickListener = onTimelineModelItemClickListener;
             mAuthorAvatarImageView.setOnClickListener(view -> {
                 if(mOnTimelineModelItemClickListener != null) {
-                    mOnTimelineModelItemClickListener.onProfileAreaClick(view, getAdapterPosition(), 0l);
+                    mOnTimelineModelItemClickListener.onProfileAreaClick(view, getAdapterPosition(),
+                        0L);
                 }
             });
             itemView.setOnClickListener(v1 -> {

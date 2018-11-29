@@ -1,26 +1,23 @@
 package org.cryse.lkong.broadcast;
 
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-//import android.support.v7.app.NotificationCompat;
 
 import org.cryse.lkong.R;
 import org.cryse.lkong.model.NoticeCountModel;
-import org.cryse.lkong.modules.notice.NotificationActivity;
 import org.cryse.lkong.utils.DataContract;
 
-public class CheckNewBroadcastReceiver extends BroadcastReceiver {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class CheckNewBroadcastReceiver extends BroadcastReceiver {
     public static final int NOTIFICATION_START_ID = 150;
     @Override
     public void onReceive(Context context, Intent intent) {
         long userId = intent.getLongExtra(DataContract.BUNDLE_USER_ID, 0);
         NoticeCountModel noticeCountModel = intent.getParcelableExtra(DataContract.BUNDLE_NOTICE_COUNT_MODEL);
-        if(noticeCountModel.hasNotification())
-            showNewNoticeNotification(context, userId, noticeCountModel);
+        if(noticeCountModel.hasNotification()) {
+          showNewNoticeNotification(context, userId, noticeCountModel);
+        }
     }
 
     public void showNewNoticeNotification(Context context, long userId, NoticeCountModel noticeCount) {

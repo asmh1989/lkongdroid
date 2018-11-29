@@ -3,7 +3,7 @@ package org.cryse.lkong.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class UserInfoModel implements Serializable {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class UserInfoModel implements Serializable {
     private int email;
     private int gender;
     private int phoneNum;

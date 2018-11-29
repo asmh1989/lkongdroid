@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public interface RecyclerViewAdapter<ItemType> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public interface RecyclerViewAdapter<ItemType> {
     void addAll(Collection<ItemType> items);
 
     void addAll(int position, Collection<ItemType> items);

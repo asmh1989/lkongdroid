@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 
-public class EmojiSpan extends DynamicDrawableSpan {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class EmojiSpan extends DynamicDrawableSpan {
     private static final String EMOJI_PREFIX = "http://img.lkong.cn/bq/";
     private static final String EMOJI_PATH_WITH_SLASH = "emoji/";
 
@@ -40,7 +40,7 @@ public class EmojiSpan extends DynamicDrawableSpan {
         mTextSize = textSize;
     }
 
-    public Drawable getDrawable() {
+    @Override public Drawable getDrawable() {
         if (mDrawable == null) {
             try {
                 if (mEmojiPath.startsWith(EMOJI_PREFIX)) {
@@ -82,7 +82,6 @@ public class EmojiSpan extends DynamicDrawableSpan {
 
     @Override
     public void draw(Canvas canvas, CharSequence text, int start, int end, float x, int top, int y, int bottom, Paint paint) {
-        //super.draw(canvas, text, start, end, x, top, y, bottom, paint);
         Drawable b = getCachedDrawable();
         canvas.save();
 

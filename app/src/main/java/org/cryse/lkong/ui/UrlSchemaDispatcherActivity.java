@@ -11,7 +11,7 @@ import org.cryse.utils.preference.BooleanPrefs;
 import org.cryse.lkong.application.PreferenceConstant;
 import org.cryse.utils.preference.Prefs;
 
-public class UrlSchemaDispatcherActivity extends Activity {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class UrlSchemaDispatcherActivity extends Activity {
     AppNavigation mNavigation = new AppNavigation();
 
     BooleanPrefs mUseInAppBrowser;
@@ -63,7 +63,7 @@ public class UrlSchemaDispatcherActivity extends Activity {
 
         @Override
         public void onFailed(String url) {
-            mNavigation.openUrl(UrlSchemaDispatcherActivity.this, url, mUseInAppBrowser.get());
+            AppNavigation.openUrl(UrlSchemaDispatcherActivity.this, url, mUseInAppBrowser.get());
         }
     };
 }

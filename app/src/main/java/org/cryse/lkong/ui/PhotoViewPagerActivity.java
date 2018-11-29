@@ -56,7 +56,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
-public class PhotoViewPagerActivity extends AbstractSwipeBackActivity {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class PhotoViewPagerActivity extends AbstractSwipeBackActivity {
     private static final String LOG_TAG = PhotoViewPagerActivity.class.getName();
 
     private List<String> mPhotoUrls = new ArrayList<String>();
@@ -76,8 +76,9 @@ public class PhotoViewPagerActivity extends AbstractSwipeBackActivity {
         setContentView(R.layout.activity_photo_viewpager);
         ButterKnife.bind(this);
         setUpToolbar(mToolbar);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-            getWindow().setStatusBarColor(Color.BLACK);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+          getWindow().setStatusBarColor(Color.BLACK);
+        }
         mImageFolderName = getString(R.string.app_name);
         Intent intent = getIntent();
         if (intent.hasExtra(DataContract.BUNDLE_POST_IMAGE_INIT_URL) && intent.hasExtra(DataContract.BUNDLE_POST_IMAGE_URL_LIST)) {
@@ -149,6 +150,8 @@ public class PhotoViewPagerActivity extends AbstractSwipeBackActivity {
             case R.id.action_save_image_as:
                 savePictureAs(mPhotoUrls.get(mViewPager.getCurrentItem()));
                 return true;
+            default:
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -160,11 +163,13 @@ public class PhotoViewPagerActivity extends AbstractSwipeBackActivity {
         Observable.from(fileFuture).subscribeOn(Schedulers.io()).subscribe(cachedFile -> {
             String fileName = URLUtil.guessFileName(url, null, null);
             File sdPicturesFolder = new File(Environment.getExternalStorageDirectory(), "Pictures");
-            if (!sdPicturesFolder.exists())
-                sdPicturesFolder.mkdirs();
+            if (!sdPicturesFolder.exists()) {
+              sdPicturesFolder.mkdirs();
+            }
             File appPicturesFolder = new File(sdPicturesFolder, mImageFolderName);
-            if (!appPicturesFolder.exists())
-                appPicturesFolder.mkdirs();
+            if (!appPicturesFolder.exists()) {
+              appPicturesFolder.mkdirs();
+            }
             File targetFile = new File(appPicturesFolder, fileName);
 
             FileCopier.copyTo(cachedFile, targetFile, new FileCopier.CopyCallback() {

@@ -12,7 +12,7 @@ import org.cryse.lkong.data.provider.base.AbstractSelection;
 /**
  * Selection for the {@code followed_thread} table.
  */
-public class FollowedThreadSelection extends AbstractSelection<FollowedThreadSelection> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FollowedThreadSelection extends AbstractSelection<FollowedThreadSelection> {
     @Override
     protected Uri baseUri() {
         return FollowedThreadColumns.CONTENT_URI;
@@ -27,7 +27,9 @@ public class FollowedThreadSelection extends AbstractSelection<FollowedThreadSel
      */
     public FollowedThreadCursor query(ContentResolver contentResolver, String[] projection) {
         Cursor cursor = contentResolver.query(uri(), projection, sel(), args(), order());
-        if (cursor == null) return null;
+        if (cursor == null) {
+          return null;
+        }
         return new FollowedThreadCursor(cursor);
     }
 
@@ -47,7 +49,9 @@ public class FollowedThreadSelection extends AbstractSelection<FollowedThreadSel
      */
     public FollowedThreadCursor query(Context context, String[] projection) {
         Cursor cursor = context.getContentResolver().query(uri(), projection, sel(), args(), order());
-        if (cursor == null) return null;
+        if (cursor == null) {
+          return null;
+        }
         return new FollowedThreadCursor(cursor);
     }
 

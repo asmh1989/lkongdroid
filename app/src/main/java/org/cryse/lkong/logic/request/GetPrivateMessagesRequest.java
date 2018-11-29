@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetPrivateMessagesRequest extends AbstractAuthedHttpRequest<List<PrivateMessageModel>> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class GetPrivateMessagesRequest extends AbstractAuthedHttpRequest<List<PrivateMessageModel>> {
     private long mStartSortKey;
     private long mTargetUserId;
     private int mPointerType;
@@ -38,10 +38,11 @@ public class GetPrivateMessagesRequest extends AbstractAuthedHttpRequest<List<Pr
     @Override
     protected Request buildRequest() {
         String url = String.format(LKongWebConstants.PRIVATE_MESSAGES_URL, mTargetUserId);
-        if(mPointerType == RequestPointerType.TYPE_NEXT)
-            url = url + (mStartSortKey >= 0 ? "&nexttime=" + Long.toString(mStartSortKey) : "");
-        else if(mPointerType == RequestPointerType.TYPE_CURRENT)
-            url = url + (mStartSortKey >= 0 ? "&curtime=" + Long.toString(mStartSortKey) : "");
+        if(mPointerType == RequestPointerType.TYPE_NEXT) {
+          url = url + (mStartSortKey >= 0 ? "&nexttime=" + Long.toString(mStartSortKey) : "");
+        } else if(mPointerType == RequestPointerType.TYPE_CURRENT) {
+          url = url + (mStartSortKey >= 0 ? "&curtime=" + Long.toString(mStartSortKey) : "");
+        }
         return new Request.Builder()
                 .addHeader("Accept-Encoding", "gzip")
                 .url(url)
@@ -63,16 +64,21 @@ public class GetPrivateMessagesRequest extends AbstractAuthedHttpRequest<List<Pr
         for(int i = 0; i < dataSetLength; i++ ) {
             PrivateMessageModel model = new PrivateMessageModel();
             JSONObject jsonObject = jsonArray.getJSONObject(i);
-            if(jsonObject.has("id"))
-                model.setId(jsonObject.getString("id"));
-            if(jsonObject.has("uid"))
-                model.setUserId(jsonObject.getLong("uid"));
-            if (jsonObject.has("msgfromid"))
-                model.setMessageFromId(jsonObject.getInt("msgfromid"));
-            if (jsonObject.has("dateline"))
-                model.setDateline(dateFormat.parse(jsonObject.getString("dateline")));
-            if(jsonObject.has("sortkey"))
-                model.setSortKey(jsonObject.getLong("sortkey"));
+            if(jsonObject.has("id")) {
+              model.setId(jsonObject.getString("id"));
+            }
+            if(jsonObject.has("uid")) {
+              model.setUserId(jsonObject.getLong("uid"));
+            }
+            if (jsonObject.has("msgfromid")) {
+              model.setMessageFromId(jsonObject.getInt("msgfromid"));
+            }
+            if (jsonObject.has("dateline")) {
+              model.setDateline(dateFormat.parse(jsonObject.getString("dateline")));
+            }
+            if(jsonObject.has("sortkey")) {
+              model.setSortKey(jsonObject.getLong("sortkey"));
+            }
             if(jsonObject.has("message")) {
                 String rawMessage = jsonObject.getString("message");
                 model.setMessage(rawMessage);

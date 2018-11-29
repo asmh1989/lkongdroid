@@ -2,7 +2,7 @@ package org.cryse.utils.preference;
 
 import android.content.SharedPreferences;
 
-public class BooleanPrefs extends PrefsItem<Boolean> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class BooleanPrefs extends PrefsItem<Boolean> {
     public BooleanPrefs(SharedPreferences preferences, String key, Boolean defaultValue) {
         super(preferences, key, defaultValue);
     }

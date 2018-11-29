@@ -13,7 +13,7 @@ import org.cryse.lkong.utils.GsonUtils;
 
 import java.util.List;
 
-public class GetUserThreadsRequest extends AbstractAuthedHttpRequest<List<ThreadModel>> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class GetUserThreadsRequest extends AbstractAuthedHttpRequest<List<ThreadModel>> {
     private long mUid;
     private long mStart;
     private boolean mIsDigest;

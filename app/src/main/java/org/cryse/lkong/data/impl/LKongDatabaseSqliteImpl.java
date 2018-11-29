@@ -36,7 +36,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class LKongDatabaseSqliteImpl implements LKongDatabase {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKongDatabaseSqliteImpl implements LKongDatabase {
     Gson mGson;
     ContentResolver mContentResolver;
     @Inject
@@ -127,18 +127,21 @@ public class LKongDatabaseSqliteImpl implements LKongDatabase {
         .putThreadId(threadId)
         .putThreadTitle(threadTitle)
         .putThreadAuthorId(authorId).putThreadAuthorName(authorName).putLastReadTime(lastReadTime);
-        if(forumId == null)
-            contentValues.putForumIdNull();
-        else
-            contentValues.putForumId(forumId);
-        if(forumTitle == null)
-            contentValues.putForumTitleNull();
-        else
-            contentValues.putForumTitle(forumTitle);
-        if(postId == null)
-            contentValues.putPostIdNull();
-        else
-            contentValues.putPostId(postId);
+        if(forumId == null) {
+          contentValues.putForumIdNull();
+        } else {
+          contentValues.putForumId(forumId);
+        }
+        if(forumTitle == null) {
+          contentValues.putForumTitleNull();
+        } else {
+          contentValues.putForumTitle(forumTitle);
+        }
+        if(postId == null) {
+          contentValues.putPostIdNull();
+        } else {
+          contentValues.putPostId(postId);
+        }
         contentValues.insert(mContentResolver);
     }
 

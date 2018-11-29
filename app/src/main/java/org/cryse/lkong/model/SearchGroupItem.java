@@ -1,6 +1,6 @@
 package org.cryse.lkong.model;
 
-public class SearchGroupItem extends AbstractSearchResult {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class SearchGroupItem extends AbstractSearchResult {
     private String iconUrl;
     private CharSequence groupDescription; // description;
     private long forumId; // fid;

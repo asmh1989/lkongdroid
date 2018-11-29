@@ -9,7 +9,7 @@ import android.content.ContentResolver;
 import android.database.Cursor;
 import android.net.Uri;
 
-public abstract class AbstractSelection<T extends AbstractSelection<?>> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public abstract class AbstractSelection<T extends AbstractSelection<?>> {
     private static final String EQ = "=?";
     private static final String PAREN_OPEN = "(";
     private static final String PAREN_CLOSE = ")";
@@ -273,7 +273,9 @@ public abstract class AbstractSelection<T extends AbstractSelection<?>> {
      */
     public String[] args() {
         int size = mSelectionArgs.size();
-        if (size == 0) return null;
+        if (size == 0) {
+          return null;
+        }
         return mSelectionArgs.toArray(new String[size]);
     }
 
@@ -289,11 +291,21 @@ public abstract class AbstractSelection<T extends AbstractSelection<?>> {
      */
     public Uri uri() {
         Uri uri = baseUri();
-        if (mNotify != null) uri = BaseContentProvider.notify(uri, mNotify);
-        if (mGroupBy != null) uri = BaseContentProvider.groupBy(uri, mGroupBy);
-        if (mHaving != null) uri = BaseContentProvider.having(uri, mHaving);
-        if (mLimit != null) uri = BaseContentProvider.limit(uri, String.valueOf(mLimit));
-        if (mOffset != null) uri = BaseContentProvider.offset(uri, String.valueOf(mOffset));
+        if (mNotify != null) {
+          uri = BaseContentProvider.notify(uri, mNotify);
+        }
+        if (mGroupBy != null) {
+          uri = BaseContentProvider.groupBy(uri, mGroupBy);
+        }
+        if (mHaving != null) {
+          uri = BaseContentProvider.having(uri, mHaving);
+        }
+        if (mLimit != null) {
+          uri = BaseContentProvider.limit(uri, String.valueOf(mLimit));
+        }
+        if (mOffset != null) {
+          uri = BaseContentProvider.offset(uri, String.valueOf(mOffset));
+        }
         return uri;
     }
 
@@ -351,9 +363,13 @@ public abstract class AbstractSelection<T extends AbstractSelection<?>> {
 
     @SuppressWarnings("unchecked")
     public T orderBy(String order, boolean desc) {
-        if (mOrderBy.length() > 0) mOrderBy.append(COMMA);
+        if (mOrderBy.length() > 0) {
+          mOrderBy.append(COMMA);
+        }
         mOrderBy.append(order);
-        if (desc) mOrderBy.append(DESC);
+        if (desc) {
+          mOrderBy.append(DESC);
+        }
         return (T) this;
     }
 
@@ -371,7 +387,9 @@ public abstract class AbstractSelection<T extends AbstractSelection<?>> {
 
     public int count(ContentResolver resolver) {
         Cursor cursor = resolver.query(uri(), new String[] { COUNT }, sel(), args(), null);
-        if (cursor == null) return 0;
+        if (cursor == null) {
+          return 0;
+        }
         try {
             return cursor.moveToFirst() ? cursor.getInt(0) : 0;
         } finally {

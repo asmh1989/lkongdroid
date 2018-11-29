@@ -5,7 +5,7 @@ import android.view.View;
 
 import org.cryse.lkong.event.AbstractEvent;
 
-public abstract class AbstractSwipeBackActivity extends AbstractActivity  {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public abstract class AbstractSwipeBackActivity extends AbstractActivity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

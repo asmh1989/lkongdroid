@@ -10,7 +10,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public abstract class AbstractHttpRequest<ResponseType> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public abstract class AbstractHttpRequest<ResponseType> {
     public static final String ACCEPT_ENCODING = "Accept-Encoding";
     public static final String ACCEPT_ENCODING_GZIP = "gzip";
     public static final String CACHE_CONTROL = "Cache-Control";

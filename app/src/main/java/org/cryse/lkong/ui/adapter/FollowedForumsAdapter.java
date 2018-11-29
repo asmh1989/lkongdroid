@@ -19,7 +19,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.BindView;
 
-public class FollowedForumsAdapter extends SimpleRecyclerViewAdapter<FollowedForum> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FollowedForumsAdapter extends SimpleRecyclerViewAdapter<FollowedForum> {
     private Fragment mParentFragment;
     public FollowedForumsAdapter(Fragment parentFragment, List<FollowedForum> mItemList) {
         super(parentFragment.getContext(), mItemList);

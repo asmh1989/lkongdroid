@@ -2,7 +2,7 @@ package org.cryse.lkong.logic.restservice.model;
 
 import java.util.Date;
 
-public class LKThreadInfo {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKThreadInfo {
     private long fid;
     private long tid;
     private String subject;

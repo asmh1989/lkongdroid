@@ -15,7 +15,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
-public class UserProfileUsersPresenter extends SimpleCollectionPresenter<SearchUserItem, SimpleCollectionView<SearchUserItem>> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class UserProfileUsersPresenter extends SimpleCollectionPresenter<SearchUserItem, SimpleCollectionView<SearchUserItem>> {
     private static final String LOG_TAG = UserProfileUsersPresenter.class.getName();
 
     @Inject
@@ -34,8 +34,9 @@ public class UserProfileUsersPresenter extends SimpleCollectionPresenter<SearchU
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         result -> {
-                            if(mView != null)
-                                mView.showSimpleData(result, isLoadingMore);
+                            if(mView != null) {
+                              mView.showSimpleData(result, isLoadingMore);
+                            }
                         },
                         error -> {
                             if(mView != null) {

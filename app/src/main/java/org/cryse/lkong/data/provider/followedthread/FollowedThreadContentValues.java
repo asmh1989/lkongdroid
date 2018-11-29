@@ -13,7 +13,7 @@ import org.cryse.lkong.data.provider.base.AbstractContentValues;
 /**
  * Content values wrapper for the {@code followed_thread} table.
  */
-public class FollowedThreadContentValues extends AbstractContentValues {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FollowedThreadContentValues extends AbstractContentValues {
     @Override
     public Uri uri() {
         return FollowedThreadColumns.CONTENT_URI;
@@ -61,7 +61,9 @@ public class FollowedThreadContentValues extends AbstractContentValues {
      * Thread title.
      */
     public FollowedThreadContentValues putThreadTitle(@NonNull String value) {
-        if (value == null) throw new IllegalArgumentException("threadTitle must not be null");
+        if (value == null) {
+          throw new IllegalArgumentException("threadTitle must not be null");
+        }
         mContentValues.put(FollowedThreadColumns.THREAD_TITLE, value);
         return this;
     }
@@ -80,7 +82,9 @@ public class FollowedThreadContentValues extends AbstractContentValues {
      * Thread author name.
      */
     public FollowedThreadContentValues putThreadAuthorName(@NonNull String value) {
-        if (value == null) throw new IllegalArgumentException("threadAuthorName must not be null");
+        if (value == null) {
+          throw new IllegalArgumentException("threadAuthorName must not be null");
+        }
         mContentValues.put(FollowedThreadColumns.THREAD_AUTHOR_NAME, value);
         return this;
     }

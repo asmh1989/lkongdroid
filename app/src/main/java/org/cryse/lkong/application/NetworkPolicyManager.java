@@ -4,7 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-public class NetworkPolicyManager {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NetworkPolicyManager {
     public static int sNetworkType = ConnectivityManager.TYPE_MOBILE;
     public static boolean sIsWifiConnected = false;
 

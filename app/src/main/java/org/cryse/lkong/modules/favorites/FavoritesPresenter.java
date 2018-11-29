@@ -13,7 +13,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
-public class FavoritesPresenter extends SimpleCollectionPresenter<ThreadModel, FavoritesView<ThreadModel>> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FavoritesPresenter extends SimpleCollectionPresenter<ThreadModel, FavoritesView<ThreadModel>> {
     private static final String LOG_TAG = FavoritesPresenter.class.getName();
 
     Subscription mCheckNoticeCountSubscription;
@@ -62,8 +62,9 @@ public class FavoritesPresenter extends SimpleCollectionPresenter<ThreadModel, F
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         result -> {
-                            if(mView != null)
-                                mView.onCheckNoticeCountComplete(result);
+                            if(mView != null) {
+                              mView.onCheckNoticeCountComplete(result);
+                            }
                         },
                         error -> {
                             Timber.e(error, "FavoritesPresenter::checkNoticeCountFromDatabase() onError().", LOG_TAG);

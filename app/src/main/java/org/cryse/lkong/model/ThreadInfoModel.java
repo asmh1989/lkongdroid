@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import java.util.Date;
 
-public class ThreadInfoModel implements Parcelable {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class ThreadInfoModel implements Parcelable {
     private long fid;
     private long tid;
     private String subject;
@@ -179,11 +179,11 @@ public class ThreadInfoModel implements Parcelable {
     }
 
     public static final Parcelable.Creator<ThreadInfoModel> CREATOR = new Parcelable.Creator<ThreadInfoModel>() {
-        public ThreadInfoModel createFromParcel(Parcel source) {
+        @Override public ThreadInfoModel createFromParcel(Parcel source) {
             return new ThreadInfoModel(source);
         }
 
-        public ThreadInfoModel[] newArray(int size) {
+        @Override public ThreadInfoModel[] newArray(int size) {
             return new ThreadInfoModel[size];
         }
     };

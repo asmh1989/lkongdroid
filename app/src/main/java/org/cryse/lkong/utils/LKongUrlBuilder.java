@@ -1,6 +1,6 @@
 package org.cryse.lkong.utils;
 
-public class LKongUrlBuilder {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKongUrlBuilder {
     public static String buildThreadUrl(long threadId) {
         String threadIdString = Long.toString(threadId);
         return "http://lkong.cn/thread/" + threadIdString;

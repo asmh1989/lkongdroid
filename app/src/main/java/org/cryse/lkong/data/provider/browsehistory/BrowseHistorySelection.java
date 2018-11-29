@@ -12,7 +12,7 @@ import org.cryse.lkong.data.provider.base.AbstractSelection;
 /**
  * Selection for the {@code browse_history} table.
  */
-public class BrowseHistorySelection extends AbstractSelection<BrowseHistorySelection> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class BrowseHistorySelection extends AbstractSelection<BrowseHistorySelection> {
     @Override
     protected Uri baseUri() {
         return BrowseHistoryColumns.CONTENT_URI;
@@ -27,7 +27,9 @@ public class BrowseHistorySelection extends AbstractSelection<BrowseHistorySelec
      */
     public BrowseHistoryCursor query(ContentResolver contentResolver, String[] projection) {
         Cursor cursor = contentResolver.query(uri(), projection, sel(), args(), order());
-        if (cursor == null) return null;
+        if (cursor == null) {
+          return null;
+        }
         return new BrowseHistoryCursor(cursor);
     }
 
@@ -47,7 +49,9 @@ public class BrowseHistorySelection extends AbstractSelection<BrowseHistorySelec
      */
     public BrowseHistoryCursor query(Context context, String[] projection) {
         Cursor cursor = context.getContentResolver().query(uri(), projection, sel(), args(), order());
-        if (cursor == null) return null;
+        if (cursor == null) {
+          return null;
+        }
         return new BrowseHistoryCursor(cursor);
     }
 

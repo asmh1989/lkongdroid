@@ -12,7 +12,7 @@ import org.cryse.lkong.logic.HttpDelegate;
 import org.cryse.lkong.model.EditPostResult;
 import org.json.JSONObject;
 
-public class EditPostRequest extends AbstractAuthedHttpRequest<EditPostResult> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class EditPostRequest extends AbstractAuthedHttpRequest<EditPostResult> {
     private long mTid;
     private long mPid;
     private String mAction;
@@ -44,7 +44,7 @@ public class EditPostRequest extends AbstractAuthedHttpRequest<EditPostResult> {
                 .add("pid", Long.toString(mPid))
                 .add("ac", mAction)
                 .add("content", mContent);
-        if(!TextUtils.isEmpty(mTitle) && mAction.equalsIgnoreCase("thread")) {
+        if(!TextUtils.isEmpty(mTitle) && "thread".equalsIgnoreCase(mAction)) {
             builder.add("title", mTitle);
         }
         RequestBody formBody = builder.build();
@@ -60,13 +60,15 @@ public class EditPostRequest extends AbstractAuthedHttpRequest<EditPostResult> {
         String responseBody = gzipToString(response);
         JSONObject jsonObject = new JSONObject(responseBody);
         EditPostResult editPostResult = new EditPostResult();
-        if (jsonObject.has("error"))
-            editPostResult.setErrorMessage(jsonObject.getString("error"));
-        else {
-            if(jsonObject.has("tid"))
-                editPostResult.setTid(jsonObject.getLong("tid"));
-            if(jsonObject.has("success"))
-                editPostResult.setSuccess(jsonObject.getBoolean("success"));
+        if (jsonObject.has("error")) {
+          editPostResult.setErrorMessage(jsonObject.getString("error"));
+        } else {
+            if(jsonObject.has("tid")) {
+              editPostResult.setTid(jsonObject.getLong("tid"));
+            }
+            if(jsonObject.has("success")) {
+              editPostResult.setSuccess(jsonObject.getBoolean("success"));
+            }
         }
 
         return editPostResult;

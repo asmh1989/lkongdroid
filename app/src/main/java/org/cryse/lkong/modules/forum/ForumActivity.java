@@ -55,7 +55,7 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.BindView;
 
-public class ForumActivity extends AbstractSwipeBackActivity implements ForumView {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class ForumActivity extends AbstractSwipeBackActivity implements ForumView {
     public static final String LOG_TAG = ForumActivity.class.getName();
     private static final String FORUM_PINNED_KEY = "forum_pinned";
 
@@ -113,8 +113,9 @@ public class ForumActivity extends AbstractSwipeBackActivity implements ForumVie
             mForumName = intent.getStringExtra(DataContract.BUNDLE_FORUM_NAME);
             mForumDescription = intent.getStringExtra(DataContract.BUNDLE_FORUM_DESCRIPTION);
         }
-        if(mForumId == -1 || TextUtils.isEmpty(mForumName))
-            throw new IllegalStateException("ForumActivity missing extra in intent.");
+        if(mForumId == -1 || TextUtils.isEmpty(mForumName)) {
+          throw new IllegalStateException("ForumActivity missing extra in intent.");
+        }
         setTitle(mForumName);
     }
 
@@ -150,11 +151,6 @@ public class ForumActivity extends AbstractSwipeBackActivity implements ForumVie
                     mThreadCollectionView.hideMoreProgress();
                 }
             }
-
-            //@Override
-            //public void onChangeMoreVisibility(int visibility) {
-            //    mMoreProgressBar.setVisibility(visibility);
-            //}
         });
         mCollectionAdapter.setOnThreadItemClickListener(new ThreadListAdapter.OnThreadItemClickListener() {
             @Override
@@ -195,8 +191,9 @@ public class ForumActivity extends AbstractSwipeBackActivity implements ForumVie
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 if(newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    if(!isActivityDestroyed())
-                        Glide.with(ForumActivity.this).resumeRequests();
+                    if(!isActivityDestroyed()) {
+                      Glide.with(ForumActivity.this).resumeRequests();
+                    }
                 } else {
                     Glide.with(ForumActivity.this).pauseRequests();
                 }
@@ -215,7 +212,6 @@ public class ForumActivity extends AbstractSwipeBackActivity implements ForumVie
         mListTypeSpinner.setAdapter(dataAdapter);
         RecyclerView.LayoutParams headerLP = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         mHeaderView.setLayoutParams(headerLP);
-        //((CardView)mHeaderView).setCardBackgroundColor(Config.textColorPrimaryInverse(this, mATEKey));
         mWrapperAdapter.addHeader(mHeaderView);
 
         mMoreProgressBar = new ProgressBar(this);
@@ -245,8 +241,9 @@ public class ForumActivity extends AbstractSwipeBackActivity implements ForumVie
         if(savedInstanceState != null && savedInstanceState.containsKey(DataContract.BUNDLE_CONTENT_LIST_STORE)) {
             ArrayList<ThreadModel> list = savedInstanceState.getParcelableArrayList(DataContract.BUNDLE_CONTENT_LIST_STORE);
             mCollectionAdapter.addAll(list);
-            if(savedInstanceState.containsKey(FORUM_PINNED_KEY))
-                mIsForumFollowed = savedInstanceState.getBoolean(FORUM_PINNED_KEY);
+            if(savedInstanceState.containsKey(FORUM_PINNED_KEY)) {
+              mIsForumFollowed = savedInstanceState.getBoolean(FORUM_PINNED_KEY);
+            }
             mForumId = savedInstanceState.getLong(DataContract.BUNDLE_FORUM_ID);
             mForumName = savedInstanceState.getString(DataContract.BUNDLE_FORUM_NAME);
             mForumDescription = savedInstanceState.getString(DataContract.BUNDLE_FORUM_DESCRIPTION);
@@ -284,8 +281,9 @@ public class ForumActivity extends AbstractSwipeBackActivity implements ForumVie
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        if(mIsForumFollowed != null)
-            outState.putBoolean(FORUM_PINNED_KEY, mIsForumFollowed);
+        if(mIsForumFollowed != null) {
+          outState.putBoolean(FORUM_PINNED_KEY, mIsForumFollowed);
+        }
         outState.putLong(DataContract.BUNDLE_FORUM_ID, mForumId);
         outState.putString(DataContract.BUNDLE_FORUM_NAME, mForumName);
         outState.putString(DataContract.BUNDLE_FORUM_DESCRIPTION, mForumDescription);
@@ -305,10 +303,11 @@ public class ForumActivity extends AbstractSwipeBackActivity implements ForumVie
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         if (mChangeThemeMenuItem != null) {
-            if (isNightMode())
-                mChangeThemeMenuItem.setTitle(R.string.action_light_theme);
-            else
-                mChangeThemeMenuItem.setTitle(R.string.action_dark_theme);
+            if (isNightMode()) {
+              mChangeThemeMenuItem.setTitle(R.string.action_light_theme);
+            } else {
+              mChangeThemeMenuItem.setTitle(R.string.action_dark_theme);
+            }
         }
         if(mIsForumFollowed != null && mFollowForumMenuItem != null) {
             mFollowForumMenuItem.setVisible(true);
@@ -333,6 +332,8 @@ public class ForumActivity extends AbstractSwipeBackActivity implements ForumVie
             case R.id.action_forum_follow:
                 getPresenter().followForum(mUserAccountManager.getAuthObject(), mForumId, !mIsForumFollowed);
                 return true;
+            default:
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -384,15 +385,13 @@ public class ForumActivity extends AbstractSwipeBackActivity implements ForumVie
     @Override
     public void showThreadList(List<ThreadModel> threadList, boolean isLoadMore) {
         if(isLoadMore) {
-            if (threadList.size() == 0) isNoMore.set(true);
+            if (threadList.size() == 0) {
+              isNoMore.set(true);
+            }
             mCollectionAdapter.addAll(threadList);
         } else {
             isNoMore.set(false);
             mCollectionAdapter.replaceWith(threadList);
-            /*if (getResources().getBoolean(R.bool.isTablet)) {
-                //isLoadingMore = true;
-                loadMore(mCurrentListPageNumber);
-            }*/
         }
         if(mCollectionAdapter.getItemCount() > 0 ) {
             ThreadModel lastItem = mCollectionAdapter.getItem(mCollectionAdapter.getItemCount() - 1);
@@ -425,10 +424,11 @@ public class ForumActivity extends AbstractSwipeBackActivity implements ForumVie
     public void setLoadingMore(boolean value) {
         isLoadingMore.set(value);
         mThreadCollectionView.setLoadingMore(value);
-        if(value)
-            mThreadCollectionView.showMoreProgress();
-        else
-            mThreadCollectionView.hideMoreProgress();
+        if(value) {
+          mThreadCollectionView.showMoreProgress();
+        } else {
+          mThreadCollectionView.hideMoreProgress();
+        }
     }
 
     @Override

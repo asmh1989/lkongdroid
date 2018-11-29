@@ -2,7 +2,7 @@ package org.cryse.lkong.logic.restservice.model;
 
 import java.util.List;
 
-public class LKForumThreadList {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKForumThreadList {
     private long nexttime;
     private List<LKForumThreadItem> data;
 

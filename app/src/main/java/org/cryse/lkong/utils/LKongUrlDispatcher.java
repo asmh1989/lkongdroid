@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class LKongUrlDispatcher {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKongUrlDispatcher {
     static final Pattern sOldLKongPidPattern = Pattern.compile("#pid(\\d+)");
     static final Pattern sOldLKongThreadPattern = Pattern.compile("thread\\-(\\d+)\\-(\\d+)\\-(\\d+)\\.html");
     static final Pattern sNewLKongThreadPattern = Pattern.compile("lkong.cn/thread/(\\d+)(/(\\d+))?(\\.p_(\\d+))?");
@@ -25,14 +25,16 @@ public class LKongUrlDispatcher {
         } else if(url.contains("lkong.cn")) {
             parseNewUrl(url);
         } else {
-            if(mUrlCallback != null)
+            if(mUrlCallback != null) {
                 mUrlCallback.onFailed(url);
+            }
         }
     }
 
     public void parserInternalUrl(String url) {
-        if(mUrlCallback != null)
+        if(mUrlCallback != null) {
             mUrlCallback.onUserByName(url.substring(10));
+        }
     }
 
     public void parseNewUrl(String url) {
@@ -42,21 +44,24 @@ public class LKongUrlDispatcher {
             String tidString = matcher.group(1);
             String pageString = null;
             String pidString = null;
-            if(groupCount >= 3)
+            if(groupCount >= 3) {
                 pageString = matcher.group(3);
-            if(groupCount >= 5)
+            }
+            if(groupCount >= 5) {
                 pidString = matcher.group(5);
+            }
             long tid = Long.valueOf(tidString);
             int page = !TextUtils.isEmpty(pageString) && TextUtils.isDigitsOnly(pageString) ? Integer.valueOf(pageString) : -1;
-            long pid = !TextUtils.isEmpty(pidString) && TextUtils.isDigitsOnly(pidString) ?  Integer.valueOf(pidString) : -1l;
+            long pid = !TextUtils.isEmpty(pidString) && TextUtils.isDigitsOnly(pidString) ?  Integer.valueOf(pidString) : -1L;
 
             if(mUrlCallback != null) {
-                if (pid != -1l)
+                if (pid != -1L) {
                     mUrlCallback.onThreadByPostId(tid, pid);
-                else if (page != -1)
+                } else if (page != -1) {
                     mUrlCallback.onThreadByThreadId(tid, page);
-                else
+                } else {
                     mUrlCallback.onThreadByThreadId(tid);
+                }
             }
         }
     }
@@ -86,18 +91,21 @@ public class LKongUrlDispatcher {
                     }
                 } else {
                     // 解析失败
-                    if(mUrlCallback != null)
+                    if(mUrlCallback != null) {
                         mUrlCallback.onFailed(url);
+                    }
                 }
             } else if(url.contains("mod=redirect")) {
                 // 解析失败
                 String pid = uri.getQueryParameter("pid");
-                if(mUrlCallback != null)
+                if(mUrlCallback != null) {
                     mUrlCallback.onThreadByPostId(Long.valueOf(pid));
+                }
             } else {
                 // 解析失败
-                if(mUrlCallback != null)
+                if(mUrlCallback != null) {
                     mUrlCallback.onFailed(url);
+                }
             }
         } else if(url.contains("thread-")) {
             Matcher matcher = sOldLKongThreadPattern.matcher(url);
@@ -115,8 +123,9 @@ public class LKongUrlDispatcher {
                 }
             }
         } else {
-            if(mUrlCallback != null)
+            if(mUrlCallback != null) {
                 mUrlCallback.onFailed(url);
+            }
         }
     }
 

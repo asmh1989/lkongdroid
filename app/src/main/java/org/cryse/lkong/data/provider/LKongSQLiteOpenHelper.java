@@ -16,7 +16,7 @@ import org.cryse.lkong.data.provider.followedforum.FollowedForumColumns;
 import org.cryse.lkong.data.provider.followedthread.FollowedThreadColumns;
 import org.cryse.lkong.data.provider.followeduser.FollowedUserColumns;
 
-public class LKongSQLiteOpenHelper extends SQLiteOpenHelper {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKongSQLiteOpenHelper extends SQLiteOpenHelper {
     private static final String TAG = LKongSQLiteOpenHelper.class.getSimpleName();
 
     public static final String DATABASE_FILE_NAME = "lkong.db";
@@ -162,7 +162,9 @@ public class LKongSQLiteOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        if (BuildConfig.DEBUG) Log.d(TAG, "onCreate");
+        if (BuildConfig.DEBUG) {
+          Log.d(TAG, "onCreate");
+        }
         mOpenHelperCallbacks.onPreCreate(mContext, db);
         db.execSQL(SQL_CREATE_TABLE_BROWSE_HISTORY);
         db.execSQL(SQL_CREATE_INDEX_BROWSE_HISTORY_USER_ID);

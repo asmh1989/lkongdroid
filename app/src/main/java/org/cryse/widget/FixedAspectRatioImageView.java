@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 import org.cryse.lkong.R;
 
-@SuppressLint("AppCompatCustomView") public class FixedAspectRatioImageView extends ImageView {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) @SuppressLint("AppCompatCustomView") public class FixedAspectRatioImageView extends ImageView {
     private static final int VERTICAL = 0;
     private static final int HORIZONTAL = 1;
     private int mFixedOrientation = 0;
@@ -56,16 +56,8 @@ import org.cryse.lkong.R;
                 setMeasuredDimension(0, 0);
             } else {
                 if (mFixedOrientation == HORIZONTAL) {
-                    // Image is wider than the display (ratio)
-                    //int minWidth = MeasureSpec.getSize(widthMeasureSpec);
-                    //int height = (int) (width / mAspectRatio);
-                    //width = Math.min(minWidth, width);
                     height = (int) (width / mAspectRatio);
                 } else {
-                    // Image is taller than the display (ratio)
-                    //int minHeight = MeasureSpec.getSize(heightMeasureSpec);
-                    //int width = (int) (height * mAspectRatio);
-                    //height = Math.min(height, minHeight);
                     width = (int) (height * mAspectRatio);
                 }
                 setMeasuredDimension(width, height);

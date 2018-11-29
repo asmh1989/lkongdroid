@@ -4,7 +4,7 @@ import android.os.Parcel;
 
 import java.util.Date;
 
-public class NoticeModel implements SimpleCollectionItem {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NoticeModel implements SimpleCollectionItem {
     long userId;
     String userName;
     String noticeNote;
@@ -101,11 +101,11 @@ public class NoticeModel implements SimpleCollectionItem {
     }
 
     public static final Creator<NoticeModel> CREATOR = new Creator<NoticeModel>() {
-        public NoticeModel createFromParcel(Parcel source) {
+        @Override public NoticeModel createFromParcel(Parcel source) {
             return new NoticeModel(source);
         }
 
-        public NoticeModel[] newArray(int size) {
+        @Override public NoticeModel[] newArray(int size) {
             return new NoticeModel[size];
         }
     };

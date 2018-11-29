@@ -11,7 +11,7 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import org.cryse.lkong.R;
 import org.cryse.lkong.application.NetworkPolicyManager;
 
-public class ImageLoader {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class ImageLoader {
     public static final int IMAGE_LOAD_ALWAYS = 0;
     public static final int IMAGE_LOAD_NEVER = 1;
     public static final int IMAGE_LOAD_ONLY_WIFI = 2;
@@ -102,9 +102,10 @@ public class ImageLoader {
     }
 
     private static String toSmallAvatar(String url) {
-        if(!NetworkPolicyManager.sIsWifiConnected && NetworkPolicyManager.sNetworkType == ConnectivityManager.TYPE_MOBILE)
-            return url.replace("middle", "small");
-        else
-            return url;
+        if(!NetworkPolicyManager.sIsWifiConnected && NetworkPolicyManager.sNetworkType == ConnectivityManager.TYPE_MOBILE) {
+          return url.replace("middle", "small");
+        } else {
+          return url;
+        }
     }
 }

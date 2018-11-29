@@ -12,7 +12,7 @@ import org.cryse.lkong.model.converter.ModelConverter;
 import org.cryse.lkong.utils.GsonUtils;
 import org.cryse.lkong.account.LKAuthObject;
 
-public class GetThreadInfoRequest extends AbstractAuthedHttpRequest<ThreadInfoModel> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class GetThreadInfoRequest extends AbstractAuthedHttpRequest<ThreadInfoModel> {
     private long mThreadId;
     public GetThreadInfoRequest(LKAuthObject authObject, long threadId) {
         super(authObject);

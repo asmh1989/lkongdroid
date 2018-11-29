@@ -9,7 +9,7 @@ import org.cryse.lkong.modules.notice.NotificationActivity;
 import org.cryse.lkong.ui.SimpleContainerActivity;
 import org.cryse.lkong.utils.DataContract;
 
-public class PrivateChatActivity extends SimpleContainerActivity {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class PrivateChatActivity extends SimpleContainerActivity {
     private static final String LOG_TAG = NotificationActivity.class.getName();
     long mTargetUserId;
     String mTargetUserName;

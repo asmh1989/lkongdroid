@@ -3,7 +3,7 @@ package org.cryse.lkong.logic.restservice.model;
 import java.util.Date;
 import java.util.List;
 
-public class LKPostItem {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKPostItem {
     private long fid;
     private long sortkey;
     private Date dateline;

@@ -12,7 +12,7 @@ import org.cryse.lkong.model.PunchResult;
 
 import java.util.List;
 
-public interface LKongDatabase {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public interface LKongDatabase {
     void initialize() throws Exception;
     void close() throws Exception;
     boolean isOpen() throws Exception;

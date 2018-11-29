@@ -2,7 +2,7 @@ package org.cryse.lkong.event;
 
 import org.cryse.lkong.model.NoticeCountModel;
 
-public class NoticeCountEvent extends AbstractEvent{
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NoticeCountEvent extends AbstractEvent{
     private NoticeCountModel noticeCount;
 
     public NoticeCountModel getNoticeCount() {

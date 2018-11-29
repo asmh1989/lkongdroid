@@ -15,7 +15,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
-public class UserProfileTimelinePresenter extends SimpleCollectionPresenter<TimelineModel, SimpleCollectionView<TimelineModel>> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class UserProfileTimelinePresenter extends SimpleCollectionPresenter<TimelineModel, SimpleCollectionView<TimelineModel>> {
     private static final String LOG_TAG = UserProfileTimelinePresenter.class.getName();
 
     @Inject
@@ -32,8 +32,9 @@ public class UserProfileTimelinePresenter extends SimpleCollectionPresenter<Time
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         result -> {
-                            if(mView != null)
-                                mView.showSimpleData(result, isLoadingMore);
+                            if(mView != null) {
+                              mView.showSimpleData(result, isLoadingMore);
+                            }
                         },
                         error -> {
                             if(mView != null) {

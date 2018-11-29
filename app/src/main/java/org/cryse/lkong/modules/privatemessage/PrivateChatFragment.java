@@ -45,7 +45,7 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.BindView;
 
-public class PrivateChatFragment extends AbstractFragment implements PrivateChatView {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class PrivateChatFragment extends AbstractFragment implements PrivateChatView {
     public static final String LOG_TAG = PrivateChatFragment.class.getSimpleName();
     AppNavigation mNavigation = new AppNavigation();
     @Inject
@@ -76,8 +76,9 @@ public class PrivateChatFragment extends AbstractFragment implements PrivateChat
 
     public static PrivateChatFragment newInstance(Bundle args) {
         PrivateChatFragment fragment = new PrivateChatFragment();
-        if(args != null)
-            fragment.setArguments(args);
+        if(args != null) {
+          fragment.setArguments(args);
+        }
         return fragment;
     }
 
@@ -157,6 +158,8 @@ public class PrivateChatFragment extends AbstractFragment implements PrivateChat
             case R.id.action_user_profile:
                 mNavigation.openActivityForUserProfile(getActivity(), null, mTargetUserId);
                 return true;
+            default:
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -172,8 +175,9 @@ public class PrivateChatFragment extends AbstractFragment implements PrivateChat
     public void onStop() {
         super.onStop();
         mPresenter.unbindView();
-        if(mProgressDialog != null && mProgressDialog.isShowing())
-            mProgressDialog.dismiss();
+        if(mProgressDialog != null && mProgressDialog.isShowing()) {
+          mProgressDialog.dismiss();
+        }
     }
 
     @Override
@@ -205,10 +209,12 @@ public class PrivateChatFragment extends AbstractFragment implements PrivateChat
     @Override
     public void onLoadMessagesComplete(List<PrivateMessageModel> items, int pointerType, boolean isLoadingMore) {
         if(isLoadingMore) {
-            if (items.size() == 0) isNoMore = true;
-            if(pointerType == RequestPointerType.TYPE_NEXT)
-                mCollectionAdapter.addAll(0, items);
-            else if(pointerType == RequestPointerType.TYPE_CURRENT) {
+            if (items.size() == 0) {
+              isNoMore = true;
+            }
+            if(pointerType == RequestPointerType.TYPE_NEXT) {
+              mCollectionAdapter.addAll(0, items);
+            } else if(pointerType == RequestPointerType.TYPE_CURRENT) {
                 mCollectionAdapter.addAll(items);
                 mRecyclerView.getRefreshableView().smoothScrollToPosition(mCollectionAdapter.getItemCount() - 1);
             }
@@ -216,8 +222,9 @@ public class PrivateChatFragment extends AbstractFragment implements PrivateChat
             isNoMore = false;
             mCollectionAdapter.replaceWith(items);
             int newPostition = mCollectionAdapter.getItemCount() - 1;
-            if(newPostition > 0)
-                mRecyclerView.getRefreshableView().smoothScrollToPosition(mCollectionAdapter.getItemCount() - 1);
+            if(newPostition > 0) {
+              mRecyclerView.getRefreshableView().smoothScrollToPosition(mCollectionAdapter.getItemCount() - 1);
+            }
         }
         if(mCollectionAdapter.getItemCount() > 0) {
             PrivateMessageModel lastItem = mCollectionAdapter.getItem(mCollectionAdapter.getItemCount() - 1);
@@ -234,8 +241,9 @@ public class PrivateChatFragment extends AbstractFragment implements PrivateChat
 
     @Override
     public void onSendNewMessageComplete(SendNewPrivateMessageResult result) {
-        if(mProgressDialog != null && mProgressDialog.isShowing())
-            mProgressDialog.dismiss();
+        if(mProgressDialog != null && mProgressDialog.isShowing()) {
+          mProgressDialog.dismiss();
+        }
         if(result != null) {
             if(result.isSuccess()) {
                 mPresenter.loadPrivateMessages(mUserAccountManager.getAuthObject(), mTargetUserId, mCurrentTimeSortKey, RequestPointerType.TYPE_CURRENT, true);

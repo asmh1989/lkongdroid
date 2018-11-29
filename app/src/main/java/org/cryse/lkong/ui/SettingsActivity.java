@@ -16,7 +16,7 @@ import org.cryse.lkong.utils.AnalyticsUtils;
 import butterknife.ButterKnife;
 import butterknife.BindView;
 
-public class SettingsActivity extends AbstractSwipeBackActivity {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class SettingsActivity extends AbstractSwipeBackActivity {
     public static final String LOG_TAG = SettingsActivity.class.getName();
 
     @BindView(R.id.toolbar)

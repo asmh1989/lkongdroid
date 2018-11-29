@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import java.util.Date;
 
-public class NoticeCountModel implements Parcelable {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NoticeCountModel implements Parcelable {
     private long userId;
     private Date updateTime;
     private int notice;
@@ -132,11 +132,11 @@ public class NoticeCountModel implements Parcelable {
     }
 
     public static final Parcelable.Creator<NoticeCountModel> CREATOR = new Parcelable.Creator<NoticeCountModel>() {
-        public NoticeCountModel createFromParcel(Parcel source) {
+        @Override public NoticeCountModel createFromParcel(Parcel source) {
             return new NoticeCountModel(source);
         }
 
-        public NoticeCountModel[] newArray(int size) {
+        @Override public NoticeCountModel[] newArray(int size) {
             return new NoticeCountModel[size];
         }
     };

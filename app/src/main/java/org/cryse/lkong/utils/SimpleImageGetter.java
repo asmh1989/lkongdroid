@@ -14,7 +14,7 @@ import org.cryse.lkong.R;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class SimpleImageGetter implements ImageGetter {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class SimpleImageGetter implements ImageGetter {
     Context mContext;
     int mEmoticonSize  = 0;
     int mPlaceHolderResource  = 0;
@@ -43,7 +43,7 @@ public class SimpleImageGetter implements ImageGetter {
 
     private static final String EMOJI_PREFIX = "http://img.lkong.cn/bq/";
     private static final String EMOJI_PATH_WITH_SLASH = "emoji/";
-    public Drawable getDrawable(String source) {
+    @Override public Drawable getDrawable(String source) {
 
 
         Drawable drawable = null;

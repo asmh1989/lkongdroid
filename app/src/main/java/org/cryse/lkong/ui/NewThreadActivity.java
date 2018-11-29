@@ -23,7 +23,7 @@ import org.cryse.lkong.utils.htmltextview.HtmlTagHandler;
 import org.cryse.lkong.utils.htmltextview.HtmlTextUtils;
 import org.cryse.lkong.utils.snackbar.SimpleSnackbarType;
 
-public class NewThreadActivity extends AbstractPostActivity {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NewThreadActivity extends AbstractPostActivity {
     public static final String LOG_TAG = NewThreadActivity.class.getName();
 
     private long mForumId;
@@ -43,8 +43,8 @@ public class NewThreadActivity extends AbstractPostActivity {
             mIsEditMode = true;
             mEditTitle = intent.getStringExtra(DataContract.BUNDLE_EDIT_TITLE);
             mEditHtmlContent = removeLastEditInfo(intent.getStringExtra(DataContract.BUNDLE_EDIT_CONTENT));
-            mThreadId = intent.getLongExtra(DataContract.BUNDLE_THREAD_ID, 0l);
-            mPostId = intent.getLongExtra(DataContract.BUNDLE_POST_ID, 0l);
+            mThreadId = intent.getLongExtra(DataContract.BUNDLE_THREAD_ID, 0L);
+            mPostId = intent.getLongExtra(DataContract.BUNDLE_POST_ID, 0L);
         }
     }
 
@@ -64,7 +64,6 @@ public class NewThreadActivity extends AbstractPostActivity {
                 if (spanObj instanceof ClickableImageSpan) {
                     ((ClickableImageSpan) spanObj).loadImage(imageSpanContainer);
                 } else if (spanObj instanceof EmojiSpan) {
-                    //((EmoticonImageSpan) spanObj).loadImage(imageSpanContainer);
                 }
             }
         }
@@ -73,10 +72,11 @@ public class NewThreadActivity extends AbstractPostActivity {
 
     @Override
     protected void sendData(String title, String content) {
-        if (mIsEditMode)
+        if (mIsEditMode) {
             getSendServiceBinder().editThread(mUserAccountManager.getAuthObject(), mThreadId, mPostId, title, content);
-        else
+        } else {
             getSendServiceBinder().sendThread(mUserAccountManager.getAuthObject(), title, mForumId, content, false);
+        }
     }
 
     @Override

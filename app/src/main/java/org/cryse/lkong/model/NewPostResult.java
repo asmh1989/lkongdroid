@@ -1,6 +1,6 @@
 package org.cryse.lkong.model;
 
-public class NewPostResult {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NewPostResult {
     private long tid;
     private int pageCount;
     private int replyCount;

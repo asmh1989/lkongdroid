@@ -1,6 +1,6 @@
 package org.cryse.lkong.logic;
 
-public class TimelineListType {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class TimelineListType {
     public static final int TYPE_TIMELINE = 34;
     public static final int TYPE_MENTIONS = 35;
     public static String typeToRequestParam(int typeCode) {

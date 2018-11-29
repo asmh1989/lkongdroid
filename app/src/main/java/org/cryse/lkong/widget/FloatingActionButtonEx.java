@@ -11,7 +11,7 @@ import com.melnykov.fab.ScrollDirectionListener;
 
 import org.cryse.lkong.R;
 
-public class FloatingActionButtonEx extends FloatingActionButton {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FloatingActionButtonEx extends FloatingActionButton {
     private int mScrollThreshold;
     public FloatingActionButtonEx(Context context) {
         super(context);

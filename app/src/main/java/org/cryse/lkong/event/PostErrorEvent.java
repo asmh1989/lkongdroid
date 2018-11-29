@@ -1,6 +1,6 @@
 package org.cryse.lkong.event;
 
-public class PostErrorEvent extends AbstractEvent {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class PostErrorEvent extends AbstractEvent {
     String errorMessage;
 
     public String getErrorMessage() {

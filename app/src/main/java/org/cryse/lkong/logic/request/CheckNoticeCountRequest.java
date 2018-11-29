@@ -13,7 +13,7 @@ import org.cryse.lkong.utils.GsonUtils;
 import org.cryse.lkong.account.LKAuthObject;
 import org.json.JSONObject;
 
-public class CheckNoticeCountRequest extends AbstractAuthedHttpRequest<NoticeCountModel> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class CheckNoticeCountRequest extends AbstractAuthedHttpRequest<NoticeCountModel> {
     public CheckNoticeCountRequest(LKAuthObject authObject) {
         super(authObject);
     }

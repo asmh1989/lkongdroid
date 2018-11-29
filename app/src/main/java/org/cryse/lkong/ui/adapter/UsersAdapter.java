@@ -22,7 +22,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class UsersAdapter extends SimpleRecyclerViewAdapter<SearchUserItem> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class UsersAdapter extends SimpleRecyclerViewAdapter<SearchUserItem> {
     private String mATEKey;
     private final int mAvatarSize;
     private int mAvatarLoadPolicy;

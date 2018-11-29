@@ -16,7 +16,7 @@ import org.cryse.lkong.utils.GsonUtils;
 import java.util.Collections;
 import java.util.List;
 
-public class GetThreadListRequest extends AbstractAuthedHttpRequest<List<ThreadModel>> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class GetThreadListRequest extends AbstractAuthedHttpRequest<List<ThreadModel>> {
     private long mForumId;
     private long mStartSortKey;
     private int mListType;
@@ -51,8 +51,9 @@ public class GetThreadListRequest extends AbstractAuthedHttpRequest<List<ThreadM
         Gson gson = GsonUtils.getGson();
         LKForumThreadList lKThreadList = gson.fromJson(responseString, LKForumThreadList.class);
         List<ThreadModel> threadList = ModelConverter.toForumThreadModel(lKThreadList, false);
-        if(mListType == ThreadListType.TYPE_SORT_BY_POST)
-            Collections.reverse(threadList);
+        if(mListType == ThreadListType.TYPE_SORT_BY_POST) {
+          Collections.reverse(threadList);
+        }
         return threadList;
     }
 }

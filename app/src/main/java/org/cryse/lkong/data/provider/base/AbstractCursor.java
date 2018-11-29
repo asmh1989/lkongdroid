@@ -7,7 +7,7 @@ import android.database.Cursor;
 import android.database.CursorWrapper;
 import android.provider.BaseColumns;
 
-public abstract class AbstractCursor extends CursorWrapper {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public abstract class AbstractCursor extends CursorWrapper {
     private final HashMap<String, Integer> mColumnIndexes;
 
     public AbstractCursor(Cursor cursor) {
@@ -28,49 +28,65 @@ public abstract class AbstractCursor extends CursorWrapper {
 
     public String getStringOrNull(String colName) {
         int index = getCachedColumnIndexOrThrow(colName);
-        if (isNull(index)) return null;
+        if (isNull(index)) {
+          return null;
+        }
         return getString(index);
     }
 
     public Integer getIntegerOrNull(String colName) {
         int index = getCachedColumnIndexOrThrow(colName);
-        if (isNull(index)) return null;
+        if (isNull(index)) {
+          return null;
+        }
         return getInt(index);
     }
 
     public Long getLongOrNull(String colName) {
         int index = getCachedColumnIndexOrThrow(colName);
-        if (isNull(index)) return null;
+        if (isNull(index)) {
+          return null;
+        }
         return getLong(index);
     }
 
     public Float getFloatOrNull(String colName) {
         int index = getCachedColumnIndexOrThrow(colName);
-        if (isNull(index)) return null;
+        if (isNull(index)) {
+          return null;
+        }
         return getFloat(index);
     }
 
     public Double getDoubleOrNull(String colName) {
         int index = getCachedColumnIndexOrThrow(colName);
-        if (isNull(index)) return null;
+        if (isNull(index)) {
+          return null;
+        }
         return getDouble(index);
     }
 
     public Boolean getBooleanOrNull(String colName) {
         int index = getCachedColumnIndexOrThrow(colName);
-        if (isNull(index)) return null;
+        if (isNull(index)) {
+          return null;
+        }
         return getInt(index) != 0;
     }
 
     public Date getDateOrNull(String colName) {
         int index = getCachedColumnIndexOrThrow(colName);
-        if (isNull(index)) return null;
+        if (isNull(index)) {
+          return null;
+        }
         return new Date(getLong(index));
     }
 
     public byte[] getBlobOrNull(String colName) {
         int index = getCachedColumnIndexOrThrow(colName);
-        if (isNull(index)) return null;
+        if (isNull(index)) {
+          return null;
+        }
         return getBlob(index);
     }
 }

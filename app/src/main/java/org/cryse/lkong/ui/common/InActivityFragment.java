@@ -10,7 +10,7 @@ import org.cryse.lkong.R;
 import org.cryse.lkong.ui.MainActivity;
 import org.cryse.lkong.ui.navigation.AppNavigation;
 
-public abstract class InActivityFragment extends AbstractFragment {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public abstract class InActivityFragment extends AbstractFragment {
     AppNavigation mNavigation = new AppNavigation();
 
     protected MenuItem mChangeThemeMenuItem;
@@ -30,12 +30,13 @@ public abstract class InActivityFragment extends AbstractFragment {
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         if(mChangeThemeMenuItem != null) {
-            if(isNightMode() == null)
-                mChangeThemeMenuItem.setVisible(false);
-            else if(isNightMode() != null && isNightMode())
-                mChangeThemeMenuItem.setTitle(R.string.action_light_theme);
-            else if(isNightMode() != null && !isNightMode())
-                mChangeThemeMenuItem.setTitle(R.string.action_dark_theme);
+            if(isNightMode() == null) {
+              mChangeThemeMenuItem.setVisible(false);
+            } else if(isNightMode() != null && isNightMode()) {
+              mChangeThemeMenuItem.setTitle(R.string.action_light_theme);
+            } else if(isNightMode() != null && !isNightMode()) {
+              mChangeThemeMenuItem.setTitle(R.string.action_dark_theme);
+            }
         }
         super.onPrepareOptionsMenu(menu);
     }
@@ -51,6 +52,8 @@ public abstract class InActivityFragment extends AbstractFragment {
             case R.id.action_open_notification:
                 mNavigation.navigateToNotificationActivity(getActivity());
                 return true;
+            default:
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

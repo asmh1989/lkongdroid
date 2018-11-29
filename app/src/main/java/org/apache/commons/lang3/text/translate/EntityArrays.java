@@ -16,7 +16,7 @@
  */
 package org.apache.commons.lang3.text.translate;
 
-public class EntityArrays {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class EntityArrays {
     /**
      * Mapping to escape <a href="https://secure.wikimedia.org/wikipedia/en/wiki/ISO/IEC_8859-1">ISO-8859-1</a>
      * characters to their named HTML 3.x equivalents.
@@ -24,42 +24,78 @@ public class EntityArrays {
      */
     public static String[][] ISO8859_1_ESCAPE() { return ISO8859_1_ESCAPE.clone(); }
     private static final String[][] ISO8859_1_ESCAPE = {
-            {"\u00A0", "&nbsp;"}, // non-breaking space
-            {"\u00A1", "&iexcl;"}, // inverted exclamation mark
-            {"\u00A2", "&cent;"}, // cent sign
-            {"\u00A3", "&pound;"}, // pound sign
-            {"\u00A4", "&curren;"}, // currency sign
-            {"\u00A5", "&yen;"}, // yen sign = yuan sign
-            {"\u00A6", "&brvbar;"}, // broken bar = broken vertical bar
-            {"\u00A7", "&sect;"}, // section sign
-            {"\u00A8", "&uml;"}, // diaeresis = spacing diaeresis
-            {"\u00A9", "&copy;"}, // � - copyright sign
-            {"\u00AA", "&ordf;"}, // feminine ordinal indicator
-            {"\u00AB", "&laquo;"}, // left-pointing double angle quotation mark = left pointing guillemet
-            {"\u00AC", "&not;"}, // not sign
-            {"\u00AD", "&shy;"}, // soft hyphen = discretionary hyphen
-            {"\u00AE", "&reg;"}, // � - registered trademark sign
-            {"\u00AF", "&macr;"}, // macron = spacing macron = overline = APL overbar
-            {"\u00B0", "&deg;"}, // degree sign
-            {"\u00B1", "&plusmn;"}, // plus-minus sign = plus-or-minus sign
-            {"\u00B2", "&sup2;"}, // superscript two = superscript digit two = squared
-            {"\u00B3", "&sup3;"}, // superscript three = superscript digit three = cubed
-            {"\u00B4", "&acute;"}, // acute accent = spacing acute
-            {"\u00B5", "&micro;"}, // micro sign
-            {"\u00B6", "&para;"}, // pilcrow sign = paragraph sign
-            {"\u00B7", "&middot;"}, // middle dot = Georgian comma = Greek middle dot
-            {"\u00B8", "&cedil;"}, // cedilla = spacing cedilla
-            {"\u00B9", "&sup1;"}, // superscript one = superscript digit one
-            {"\u00BA", "&ordm;"}, // masculine ordinal indicator
-            {"\u00BB", "&raquo;"}, // right-pointing double angle quotation mark = right pointing guillemet
-            {"\u00BC", "&frac14;"}, // vulgar fraction one quarter = fraction one quarter
-            {"\u00BD", "&frac12;"}, // vulgar fraction one half = fraction one half
-            {"\u00BE", "&frac34;"}, // vulgar fraction three quarters = fraction three quarters
-            {"\u00BF", "&iquest;"}, // inverted question mark = turned question mark
-            {"\u00C0", "&Agrave;"}, // � - uppercase A, grave accent
-            {"\u00C1", "&Aacute;"}, // � - uppercase A, acute accent
-            {"\u00C2", "&Acirc;"}, // � - uppercase A, circumflex accent
-            {"\u00C3", "&Atilde;"}, // � - uppercase A, tilde
+            {"\u00A0", "&nbsp;"},
+        // non-breaking space
+            {"\u00A1", "&iexcl;"},
+        // inverted exclamation mark
+            {"\u00A2", "&cent;"},
+        // cent sign
+            {"\u00A3", "&pound;"},
+        // pound sign
+            {"\u00A4", "&curren;"},
+        // currency sign
+            {"\u00A5", "&yen;"},
+        // yen sign = yuan sign
+            {"\u00A6", "&brvbar;"},
+        // broken bar = broken vertical bar
+            {"\u00A7", "&sect;"},
+        // section sign
+            {"\u00A8", "&uml;"},
+        // diaeresis = spacing diaeresis
+            {"\u00A9", "&copy;"},
+        // - copyright sign
+            {"\u00AA", "&ordf;"},
+        // feminine ordinal indicator
+            {"\u00AB", "&laquo;"},
+        // left-pointing double angle quotation mark = left pointing guillemet
+            {"\u00AC", "&not;"},
+        // not sign
+            {"\u00AD", "&shy;"},
+        // soft hyphen = discretionary hyphen
+            {"\u00AE", "&reg;"},
+        // - registered trademark sign
+            {"\u00AF", "&macr;"},
+        // macron = spacing macron = overline = APL overbar
+            {"\u00B0", "&deg;"},
+        // degree sign
+            {"\u00B1", "&plusmn;"},
+        // plus-minus sign = plus-or-minus sign
+            {"\u00B2", "&sup2;"},
+        // superscript two = superscript digit two = squared
+            {"\u00B3", "&sup3;"},
+        // superscript three = superscript digit three = cubed
+            {"\u00B4", "&acute;"},
+        // acute accent = spacing acute
+            {"\u00B5", "&micro;"},
+        // micro sign
+            {"\u00B6", "&para;"},
+        // pilcrow sign = paragraph sign
+            {"\u00B7", "&middot;"},
+        // middle dot = Georgian comma = Greek middle dot
+            {"\u00B8", "&cedil;"},
+        // cedilla = spacing cedilla
+            {"\u00B9", "&sup1;"},
+        // superscript one = superscript digit one
+            {"\u00BA", "&ordm;"},
+        // masculine ordinal indicator
+            {"\u00BB", "&raquo;"},
+        // right-pointing double angle quotation mark = right pointing guillemet
+            {"\u00BC", "&frac14;"},
+        // vulgar fraction one quarter = fraction one quarter
+            {"\u00BD", "&frac12;"},
+        // vulgar fraction one half = fraction one half
+            {"\u00BE", "&frac34;"},
+        // vulgar fraction three quarters = fraction three quarters
+            {"\u00BF", "&iquest;"},
+        // inverted question mark = turned question mark
+            {"\u00C0", "&Agrave;"},
+        // - uppercase A, grave accent
+            {"\u00C1", "&Aacute;"},
+        //- uppercase A, acute accent
+            {"\u00C2", "&Acirc;"},
+        // - uppercase A, circumflex accent
+            {"\u00C3", "&Atilde;"},
+        // - uppercase A, tilde
             {"\u00C4", "&Auml;"}, // � - uppercase A, umlaut
             {"\u00C5", "&Aring;"}, // � - uppercase A, ring
             {"\u00C6", "&AElig;"}, // � - uppercase AE

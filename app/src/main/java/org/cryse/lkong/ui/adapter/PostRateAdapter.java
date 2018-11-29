@@ -13,7 +13,7 @@ import org.cryse.lkong.model.PostModel;
 
 import java.util.List;
 
-public class PostRateAdapter extends BaseAdapter {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class PostRateAdapter extends BaseAdapter {
     private final Context mContext;
     private final List<PostModel.PostRate> mItems;
     private final String mLBLabel;

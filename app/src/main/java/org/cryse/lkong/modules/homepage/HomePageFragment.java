@@ -72,7 +72,7 @@ import butterknife.ButterKnife;
 import butterknife.BindView;
 import timber.log.Timber;
 
-public class HomePageFragment extends AbstractFragment implements HomePageView {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class HomePageFragment extends AbstractFragment implements HomePageView {
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1023;
     public static final String LOG_TAG = HomePageFragment.class.getName();
     private static final String SEARCH_FRAGMENT_TAG = "search_fragment_tag";
@@ -106,8 +106,9 @@ public class HomePageFragment extends AbstractFragment implements HomePageView {
     private PunchResult mCurrentUserPunchResult;
     public static HomePageFragment newInstance(Bundle args) {
         HomePageFragment fragment = new HomePageFragment();
-        if(args != null)
-            fragment.setArguments(args);
+        if(args != null) {
+          fragment.setArguments(args);
+        }
         return fragment;
     }
 
@@ -183,7 +184,6 @@ public class HomePageFragment extends AbstractFragment implements HomePageView {
                 @Override
                 public boolean onKey(View v, int keyCode, KeyEvent event) {
                     if (keyCode == KeyEvent.KEYCODE_BACK) {
-                        //Toast.makeText(getContext(), "onBackPressed", Toast.LENGTH_SHORT).show();
                         if (mSearchView.isSearching()) {
                             mSearchView.closeSearch();
                             return true;
@@ -270,7 +270,6 @@ public class HomePageFragment extends AbstractFragment implements HomePageView {
                 if (searchFragment == null) {
 
                     searchFragment = SearchFragment.newInstance("", (novelModel, position) -> {
-                        //mPresenter.showNovelDetail(novelModel);
                     });
                     FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
                     fragmentTransaction.add(R.id.search_fragment_container, searchFragment, SEARCH_FRAGMENT_TAG);
@@ -370,16 +369,20 @@ public class HomePageFragment extends AbstractFragment implements HomePageView {
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         if(mChangeThemeMenuItem != null) {
-            if(isNightMode() == null)
-                mChangeThemeMenuItem.setVisible(false);
-            else if(isNightMode() != null && isNightMode())
-                mChangeThemeMenuItem.setTitle(R.string.action_light_theme);
-            else if(isNightMode() != null && !isNightMode())
-                mChangeThemeMenuItem.setTitle(R.string.action_dark_theme);
+            if(isNightMode() == null) {
+              mChangeThemeMenuItem.setVisible(false);
+            } else if(isNightMode() != null && isNightMode()) {
+              mChangeThemeMenuItem.setTitle(R.string.action_light_theme);
+            } else if(isNightMode() != null && !isNightMode()) {
+              mChangeThemeMenuItem.setTitle(R.string.action_dark_theme);
+            }
         }
         if(mNotificationMenuItem != null) {
-            if(mHasNotification) mNotificationMenuItem.setIcon(R.drawable.ic_action_notification_red_dot);
-            else mNotificationMenuItem.setIcon(R.drawable.ic_action_notification);
+            if(mHasNotification) {
+              mNotificationMenuItem.setIcon(R.drawable.ic_action_notification_red_dot);
+            } else {
+              mNotificationMenuItem.setIcon(R.drawable.ic_action_notification);
+            }
         }
         if(mPunchMenuItem != null && isAdded()) {
             if(mCurrentUserPunchResult == null) {
@@ -442,6 +445,8 @@ public class HomePageFragment extends AbstractFragment implements HomePageView {
             case R.id.action_donate:
                 DonateUtils.showDonateDialog(getActivity());
                 return true;
+            default:
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -472,8 +477,9 @@ public class HomePageFragment extends AbstractFragment implements HomePageView {
     protected void checkNewNoticeCount() {
         if (isAdded()) {
             Account account = mUserAccountManager.getCurrentUserAccount().getAccount();
-            if(account != null)
-                SyncUtils.manualSync(account, SyncUtils.SYNC_AUTHORITY_CHECK_NOTICE);
+            if(account != null) {
+              SyncUtils.manualSync(account, SyncUtils.SYNC_AUTHORITY_CHECK_NOTICE);
+            }
             mPresenter.checkNoticeCountFromDatabase(mUserAccountManager.getCurrentUserId());
         }
     }
@@ -496,8 +502,9 @@ public class HomePageFragment extends AbstractFragment implements HomePageView {
     public void onCheckNoticeCountComplete(NoticeCountModel noticeCountModel) {
         if(noticeCountModel != null) {
             mHasNotification = noticeCountModel.hasNotification() && noticeCountModel.getUserId() == mUserAccountManager.getCurrentUserId();
-            if(getActivity() != null)
-                getActivity().invalidateOptionsMenu();
+            if(getActivity() != null) {
+              getActivity().invalidateOptionsMenu();
+            }
         }
     }
 
@@ -509,8 +516,9 @@ public class HomePageFragment extends AbstractFragment implements HomePageView {
         } catch (NeedSignInException ex) {
             mNavigation.navigateToSignInActivity(getActivity(), true);
             Activity parentActivity = getActivity();
-            if(parentActivity instanceof MainActivity)
-                ((MainActivity)parentActivity).closeActivityWithTransition();
+            if(parentActivity instanceof MainActivity) {
+              ((MainActivity)parentActivity).closeActivityWithTransition();
+            }
         } catch (Exception e) {
             Timber.e(e, e.getMessage(), LOG_TAG);
         }
@@ -520,8 +528,9 @@ public class HomePageFragment extends AbstractFragment implements HomePageView {
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         v.setTranslationY(metrics.heightPixels);
         v.setAlpha(0);
-        if (!v.isShown())
-            v.setVisibility(View.VISIBLE);
+        if (!v.isShown()) {
+          v.setVisibility(View.VISIBLE);
+        }
         v.animate().
                 translationY(0).
                 alpha(1).
@@ -531,8 +540,9 @@ public class HomePageFragment extends AbstractFragment implements HomePageView {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
-                        if (runOnAnimationEnd != null)
-                            runOnAnimationEnd.run();
+                        if (runOnAnimationEnd != null) {
+                          runOnAnimationEnd.run();
+                        }
                     }
                 });
     }
@@ -551,8 +561,9 @@ public class HomePageFragment extends AbstractFragment implements HomePageView {
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
                         v.setVisibility(View.INVISIBLE);
-                        if (runOnAnimationEnd != null)
-                            runOnAnimationEnd.run();
+                        if (runOnAnimationEnd != null) {
+                          runOnAnimationEnd.run();
+                        }
                     }
                 });
     }

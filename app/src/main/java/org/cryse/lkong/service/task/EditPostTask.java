@@ -2,7 +2,7 @@ package org.cryse.lkong.service.task;
 
 import org.cryse.lkong.account.LKAuthObject;
 
-public class EditPostTask extends SendTask {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class EditPostTask extends SendTask {
     LKAuthObject authObject;
     long tid;
     long pid;
@@ -10,11 +10,11 @@ public class EditPostTask extends SendTask {
     String title;
     String content;
 
-    public LKAuthObject getAuthObject() {
+    @Override public LKAuthObject getAuthObject() {
         return authObject;
     }
 
-    public void setAuthObject(LKAuthObject authObject) {
+    @Override public void setAuthObject(LKAuthObject authObject) {
         this.authObject = authObject;
     }
 

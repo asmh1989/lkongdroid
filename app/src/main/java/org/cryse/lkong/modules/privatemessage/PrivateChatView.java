@@ -6,7 +6,7 @@ import org.cryse.lkong.modules.base.ContentViewEx;
 
 import java.util.List;
 
-public interface PrivateChatView extends ContentViewEx {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public interface PrivateChatView extends ContentViewEx {
     void onLoadMessagesComplete(List<PrivateMessageModel> data, int pointerType, boolean isLoadingMore);
     void onSendNewMessageComplete(SendNewPrivateMessageResult result);
 }

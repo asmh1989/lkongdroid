@@ -18,7 +18,7 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 
-public abstract class BaseContentProvider extends ContentProvider {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public abstract class BaseContentProvider extends ContentProvider {
     public static final String QUERY_NOTIFY = "QUERY_NOTIFY";
     public static final String QUERY_GROUP_BY = "QUERY_GROUP_BY";
     public static final String QUERY_HAVING = "QUERY_HAVING";
@@ -43,22 +43,6 @@ public abstract class BaseContentProvider extends ContentProvider {
 
     @Override
     public final boolean onCreate() {
-        //if (hasDebug()) {
-        //    // Enable logging of SQL statements as they are executed.
-        //    try {
-        //        Class<?> sqliteDebugClass = Class.forName("android.database.sqlite.SQLiteDebug");
-        //        Field field = sqliteDebugClass.getDeclaredField("DEBUG_SQL_STATEMENTS");
-        //        field.setAccessible(true);
-        //        field.set(null, true);
-        //
-        //        // Uncomment the following block if you also want logging of execution time (more verbose)
-        //        // field = sqliteDebugClass.getDeclaredField("DEBUG_SQL_TIME");
-        //        // field.setAccessible(true);
-        //        // field.set(null, true);
-        //    } catch (Throwable t) {
-        //        if (hasDebug()) Log.w(getClass().getSimpleName(), "Could not enable SQLiteDebug logging", t);
-        //    }
-        //}
         mSqLiteOpenHelper = createSqLiteOpenHelper();
         return false;
     }
@@ -68,7 +52,9 @@ public abstract class BaseContentProvider extends ContentProvider {
     public Uri insert(Uri uri, ContentValues values) {
         String table = uri.getLastPathSegment();
         long rowId = mSqLiteOpenHelper.getWritableDatabase().insertOrThrow(table, null, values);
-        if (rowId == -1) return null;
+        if (rowId == -1) {
+            return null;
+        }
         String notify;
         if (((notify = uri.getQueryParameter(QUERY_NOTIFY)) == null || "true".equals(notify))) {
             getContext().getContentResolver().notifyChange(uri, null);
@@ -140,7 +126,9 @@ public abstract class BaseContentProvider extends ContentProvider {
     }
 
     private String[] ensureIdIsFullyQualified(String[] projection, String tableName, String idColumn) {
-        if (projection == null) return null;
+        if (projection == null) {
+            return null;
+        }
         String[] res = new String[projection.length];
         for (int i = 0; i < projection.length; i++) {
             if (projection[i].equals(idColumn)) {

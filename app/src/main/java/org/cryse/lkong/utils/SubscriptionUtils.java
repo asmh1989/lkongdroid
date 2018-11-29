@@ -2,9 +2,10 @@ package org.cryse.lkong.utils;
 
 import rx.Subscription;
 
-public class SubscriptionUtils {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class SubscriptionUtils {
     public static void checkAndUnsubscribe(Subscription subscription){
-        if(subscription != null && !subscription.isUnsubscribed())
-            subscription.unsubscribe();
+        if(subscription != null && !subscription.isUnsubscribed()) {
+          subscription.unsubscribe();
+        }
     }
 }

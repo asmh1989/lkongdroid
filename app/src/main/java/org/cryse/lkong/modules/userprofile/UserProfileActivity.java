@@ -10,7 +10,7 @@ import org.cryse.lkong.R;
 import org.cryse.lkong.ui.SimpleContainerActivity;
 import org.cryse.lkong.utils.DataContract;
 
-public class UserProfileActivity extends SimpleContainerActivity {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class UserProfileActivity extends SimpleContainerActivity {
     private static final String TAG = UserProfileActivity.class.getCanonicalName();
 
     public static void startUserProfileFromLocation(Context startingContext, int[] startingLocation, long uid) {

@@ -5,7 +5,7 @@ import rx.subjects.PublishSubject;
 import rx.subjects.SerializedSubject;
 import rx.subjects.Subject;
 
-public enum RxEventBus {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public enum RxEventBus {
     INSTANCE;
 
     private final Subject<AbstractEvent, AbstractEvent> mInstance = new SerializedSubject<>(PublishSubject.create());

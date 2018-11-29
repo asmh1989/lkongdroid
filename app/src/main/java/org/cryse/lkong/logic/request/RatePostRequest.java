@@ -14,7 +14,7 @@ import org.cryse.lkong.model.converter.ModelConverter;
 import org.cryse.lkong.utils.GsonUtils;
 import org.json.JSONObject;
 
-public class RatePostRequest extends AbstractAuthedHttpRequest<PostModel.PostRate> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class RatePostRequest extends AbstractAuthedHttpRequest<PostModel.PostRate> {
     private long mPostId;
     private int mScore;
     private String mReason;

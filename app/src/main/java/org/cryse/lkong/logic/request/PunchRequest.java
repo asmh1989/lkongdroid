@@ -10,7 +10,7 @@ import org.json.JSONObject;
 
 import java.util.Date;
 
-public class PunchRequest extends AbstractAuthedHttpRequest<PunchResult> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class PunchRequest extends AbstractAuthedHttpRequest<PunchResult> {
     public PunchRequest(LKAuthObject authObject) {
         super(authObject);
     }

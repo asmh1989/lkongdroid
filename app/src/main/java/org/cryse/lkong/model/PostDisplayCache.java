@@ -7,7 +7,7 @@ import android.text.StaticLayout;
 
 import java.util.ArrayList;
 
-public class PostDisplayCache {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class PostDisplayCache {
     private SpannableStringBuilder spannableStringBuilder = null;
     private ArrayList<Object> importantSpans;
     private ArrayList<Object> emoticonSpans;

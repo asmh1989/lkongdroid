@@ -30,7 +30,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.BindView;
 
-public class EmoticonDialog extends DialogFragment {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class EmoticonDialog extends DialogFragment {
 
     private Callback mCallback;
     SuperRecyclerView mEmoticonCollectionView;
@@ -62,8 +62,9 @@ public class EmoticonDialog extends DialogFragment {
         mCollectionAdapter.setOnItemClickListener(new RecyclerViewOnItemClickListener() {
             @Override
             public void onItemClick(View view, int position, long id) {
-                if(mCallback != null)
-                    mCallback.onEmoticonSelection(mCollectionAdapter.getItem(position));
+                if(mCallback != null) {
+                  mCallback.onEmoticonSelection(mCollectionAdapter.getItem(position));
+                }
                 EmoticonDialog.this.dismiss();
             }
         });

@@ -1,6 +1,6 @@
 package org.cryse.lkong.logic.restservice.model;
 
-public class LKNoticeCount {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKNoticeCount {
     private int notice;
     private int atme;
     private int rate;

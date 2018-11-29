@@ -9,7 +9,7 @@ import java.io.Serializable;
 import okhttp3.Cookie;
 import okhttp3.HttpUrl;
 
-public class UserAccount implements Serializable {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class UserAccount implements Serializable {
     private long userId;
     private String userName;
     private String userEmail;

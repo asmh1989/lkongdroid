@@ -7,7 +7,7 @@ import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 
-public class SnackbarUtils {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class SnackbarUtils {
     public static final int LENGTH_SHORT = Snackbar.LENGTH_SHORT;
     public static final int LENGTH_LONG = Snackbar.LENGTH_LONG;
 

@@ -6,7 +6,7 @@ import android.view.ViewTreeObserver;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Interpolator;
 
-public class QuickReturnUtils {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class QuickReturnUtils {
     public static final int ANIMATE_DIRECTION_UP = 12;
     public static final int ANIMATE_DIRECTION_DOWN = 13;
     private static final int TRANSLATE_DURATION_MILLIS = 200;
@@ -67,8 +67,9 @@ public class QuickReturnUtils {
                 translationYWithTarget = height + getMarginBottom();
             } else if(mDirection == ANIMATE_DIRECTION_UP) {
                 translationYWithTarget = -(height + getMarginTop());
-            } else
-                throw new IllegalArgumentException("Unknown direction.");
+            } else {
+              throw new IllegalArgumentException("Unknown direction.");
+            }
             int translationY = visible ? 0 : translationYWithTarget;
             if (animate) {
                 mTargetView.animate().setInterpolator(mInterpolator)

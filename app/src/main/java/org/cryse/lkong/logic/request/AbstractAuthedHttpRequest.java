@@ -11,7 +11,7 @@ import java.util.List;
 import okhttp3.Cookie;
 import okhttp3.HttpUrl;
 
-public abstract class AbstractAuthedHttpRequest<ResponseType> extends AbstractHttpRequest<ResponseType> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public abstract class AbstractAuthedHttpRequest<ResponseType> extends AbstractHttpRequest<ResponseType> {
     private LKAuthObject mAuthObject;
     public AbstractAuthedHttpRequest(LKAuthObject authObject) {
         this.mAuthObject = authObject;

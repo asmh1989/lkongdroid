@@ -17,7 +17,7 @@ import io.realm.Realm;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
 
-public class LKongDatabase2 {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKongDatabase2 {
   private static LKongDatabase2 instance;
 
   public static void init(Context context) {
@@ -59,7 +59,7 @@ public class LKongDatabase2 {
     cachedForum.setSortByDateline(forum.getSortByDateline());
     cachedForum.setThreads(forum.getThreads());
     cachedForum.setTodayPosts(forum.getTodayPosts());
-    cachedForum.setLastUpdate(new Date().getTime());
+    cachedForum.setLastUpdate(System.currentTimeMillis());
     mRealm.copyToRealmOrUpdate(cachedForum);
     mRealm.commitTransaction();
   }
@@ -78,7 +78,7 @@ public class LKongDatabase2 {
       cachedForum.setSortByDateline(forum.getSortByDateline());
       cachedForum.setThreads(forum.getThreads());
       cachedForum.setTodayPosts(forum.getTodayPosts());
-      cachedForum.setLastUpdate(new Date().getTime());
+      cachedForum.setLastUpdate(System.currentTimeMillis());
       mRealm.copyToRealmOrUpdate(cachedForum);
     }
     mRealm.commitTransaction();
@@ -115,12 +115,13 @@ public class LKongDatabase2 {
       query.equalTo("id", id);
       CachedForum result = query.findFirst();
       if(result != null) {
-        long timeDiff = new Date().getTime() - result.getLastUpdate();
+        long timeDiff = System.currentTimeMillis() - result.getLastUpdate();
         long minusDiff = TimeUnit.MILLISECONDS.toMinutes(timeDiff);
-        if(minusDiff < 10)
+        if(minusDiff < 10) {
           results.add(cachedToModel(result));
-        else
+        } else {
           notexists.add(id);
+        }
       } else {
         notexists.add(id);
       }
@@ -210,10 +211,11 @@ public class LKongDatabase2 {
     query.equalTo("userid", userId);
     query.equalTo("targetId", targetId);
     FollowRecord record = query.findFirst();
-    if(record != null)
+    if(record != null) {
       return mRealm.copyFromRealm(record);
-    else
+    } else {
       return null;
+    }
   }
 
   public List<FollowRecord> getFollowRecords(int type, long userId) {
@@ -221,10 +223,11 @@ public class LKongDatabase2 {
     query.equalTo("type", type);
     query.equalTo("userid", userId);
     RealmResults<FollowRecord> records = query.findAll();
-    if(records != null && records.size() > 0)
+    if(records != null && records.size() > 0) {
       return mRealm.copyFromRealm(records);
-    else
+    } else {
       return null;
+    }
   }
 
   public void destroy() {

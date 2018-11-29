@@ -5,7 +5,7 @@ import com.google.gson.JsonParser;
 
 import okhttp3.Cookie;
 
-public class SerializableCookie {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class SerializableCookie {
     private static final String TAG = SerializableCookie.class
             .getSimpleName();
 
@@ -85,14 +85,17 @@ public class SerializableCookie {
 
         builder.path(object.get(KEY_PATH).getAsString());
 
-        if (object.get(KEY_SECURE).getAsBoolean())
+        if (object.get(KEY_SECURE).getAsBoolean()) {
             builder.secure();
+        }
 
-        if (object.get(KEY_HTTPONLY).getAsBoolean())
+        if (object.get(KEY_HTTPONLY).getAsBoolean()) {
             builder.httpOnly();
+        }
 
-        if (object.get(KEY_HOSTONLY).getAsBoolean())
+        if (object.get(KEY_HOSTONLY).getAsBoolean()) {
             builder.hostOnlyDomain(domain);
+        }
 
         Cookie cookie = builder.build();
 
@@ -115,7 +118,7 @@ public class SerializableCookie {
         return data;
     }
 
-    private static long NON_VALID_EXPIRES_AT = -1l;
+    private static long NON_VALID_EXPIRES_AT = -1L;
 
     public SerializableCookie() {
     }

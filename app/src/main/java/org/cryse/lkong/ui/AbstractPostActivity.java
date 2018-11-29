@@ -85,7 +85,7 @@ import butterknife.ButterKnife;
 import butterknife.BindView;
 import timber.log.Timber;
 
-public abstract class AbstractPostActivity extends AbstractSwipeBackActivity {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public abstract class AbstractPostActivity extends AbstractSwipeBackActivity {
     @Inject
     UserAccountManager mUserAccountManager;
 
@@ -126,12 +126,12 @@ public abstract class AbstractPostActivity extends AbstractSwipeBackActivity {
         injectThis();
         super.onCreate(savedInstanceState);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE |
-                WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+            WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         setContentView(R.layout.activity_new_thread);
         ButterKnife.bind(this);
         mPostTailText = Prefs.getStringPrefs(
-                PreferenceConstant.SHARED_PREFERENCE_POST_TAIL_TEXT,
-                PreferenceConstant.SHARED_PREFERENCE_POST_TAIL_TEXT_VALUE
+            PreferenceConstant.SHARED_PREFERENCE_POST_TAIL_TEXT,
+            PreferenceConstant.SHARED_PREFERENCE_POST_TAIL_TEXT_VALUE
         );
 
         setUpToolbar(mToolbar);
@@ -197,15 +197,17 @@ public abstract class AbstractPostActivity extends AbstractSwipeBackActivity {
             case android.R.id.home:
                 closeActivityWithTransition();
                 return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(mProgressDialog != null && mProgressDialog.isShowing())
+        if(mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
+        }
     }
 
     @Override
@@ -239,34 +241,34 @@ public abstract class AbstractPostActivity extends AbstractSwipeBackActivity {
         if(!TextUtils.isEmpty(spannableContent)) {
             if(hasTitleField() && TextUtils.isEmpty(title)) {
                 showSnackbar(
-                        getString(R.string.toast_error_title_empty),
-                        SimpleSnackbarType.ERROR,
-                        SimpleSnackbarType.LENGTH_SHORT
+                    getString(R.string.toast_error_title_empty),
+                    SimpleSnackbarType.ERROR,
+                    SimpleSnackbarType.LENGTH_SHORT
                 );
                 return;
             }
             if (mSendServiceBinder != null) {
                 mProgressDialog = ProgressDialog.show(this, "", getString(R.string.dialog_new_post_sending));
                 mProgressDialog.setCancelable(true);
-                mProgressDialog.setCanceledOnTouchOutside(false);/*
-                mProgressDialog.setOnDismissListener(dialog -> closeActivityWithTransition());*/
+                mProgressDialog.setCanceledOnTouchOutside(false);
                 StringBuilder sendContentBuilder = new StringBuilder();
                 sendContentBuilder.append(android.text.Html.toHtml(replaceBackToImageSpan(spannableContent)));
-                if(!isInEditMode())
+                if(!isInEditMode()) {
                     sendContentBuilder.append(PostTailUtils.getPostTail(this, mPostTailText.get()));
+                }
                 sendData(hasTitleField() ? title : null, sendContentBuilder.toString());
             }
         } else if (hasTitleField() && TextUtils.isEmpty(title)) {
             showSnackbar(
-                    getString(R.string.toast_error_title_empty),
-                    SimpleSnackbarType.ERROR,
-                    SimpleSnackbarType.LENGTH_SHORT
+                getString(R.string.toast_error_title_empty),
+                SimpleSnackbarType.ERROR,
+                SimpleSnackbarType.LENGTH_SHORT
             );
         } else {
             showSnackbar(
-                    getString(R.string.toast_error_content_empty),
-                    SimpleSnackbarType.ERROR,
-                    SimpleSnackbarType.LENGTH_SHORT
+                getString(R.string.toast_error_content_empty),
+                SimpleSnackbarType.ERROR,
+                SimpleSnackbarType.LENGTH_SHORT
             );
         }
     }
@@ -365,27 +367,27 @@ public abstract class AbstractPostActivity extends AbstractSwipeBackActivity {
                     selectedImageUri = data == null ? null : data.getData();
                 }
                 AsyncTargetDrawable drawable = new AsyncTargetDrawable(
-                        this,
-                        null,
-                        getLogTag(),
-                        AsyncDrawableType.NORMAL,
-                        ResourcesCompat.getDrawable(getResources(), R.drawable.placeholder_loading, getTheme()),
-                        (int)(mContentTextSize * 4),
-                        (int)(mContentTextSize * 4)
+                    this,
+                    null,
+                    getLogTag(),
+                    AsyncDrawableType.NORMAL,
+                    ResourcesCompat.getDrawable(getResources(), R.drawable.placeholder_loading, getTheme()),
+                    (int)(mContentTextSize * 4),
+                    (int)(mContentTextSize * 4)
                 );
                 Glide
-                        .with(this)
-                        .load(selectedImageUri)
-                        .placeholder(R.drawable.placeholder_loading)
-                        .error(R.drawable.placeholder_error)
-                        .override((int) (mContentTextSize * 4), (int) (mContentTextSize * 4))
-                        .centerCrop()
-                        .into(drawable);
+                    .with(this)
+                    .load(selectedImageUri)
+                    .placeholder(R.drawable.placeholder_loading)
+                    .error(R.drawable.placeholder_error)
+                    .override((int) (mContentTextSize * 4), (int) (mContentTextSize * 4))
+                    .centerCrop()
+                    .into(drawable);
                 addImageBetweenText(drawable,
-                        ContentProcessor.IMG_TYPE_LOCAL,
-                        ContentUriPathUtils.getRealPathFromUri(this, selectedImageUri),
-                        256,
-                        256
+                    ContentProcessor.IMG_TYPE_LOCAL,
+                    ContentUriPathUtils.getRealPathFromUri(this, selectedImageUri),
+                    256,
+                    256
                 );
             }
         }
@@ -483,21 +485,21 @@ public abstract class AbstractPostActivity extends AbstractSwipeBackActivity {
 
             if(editorStart == mCurrentChangeStart) {
                 synchronized (mEmoticonsToRemove) {
-                for (Object span : mEmoticonsToRemove) {
-                    int start = message.getSpanStart(span);
-                    int end = message.getSpanEnd(span);
+                    for (Object span : mEmoticonsToRemove) {
+                        int start = message.getSpanStart(span);
+                        int end = message.getSpanEnd(span);
 
-                    // Remove the span
-                    message.removeSpan(span);
+                        // Remove the span
+                        message.removeSpan(span);
 
-                    // Remove the remaining emoticon text.
-                    if (start != end) {
-                        message.delete(start, end);
+                        // Remove the remaining emoticon text.
+                        if (start != end) {
+                            message.delete(start, end);
+                        }
+                        Log.d("Edit", "Remove Span");
                     }
-                    Log.d("Edit", "Remove Span");
+                    mEmoticonsToRemove.clear();
                 }
-                mEmoticonsToRemove.clear();
-            }
             }
         }
 
@@ -518,36 +520,36 @@ public abstract class AbstractPostActivity extends AbstractSwipeBackActivity {
             if (!TextUtils.isEmpty(imageSpan.getSource()) && !imageSpan.getSource().contains("http://img.lkong.cn/bq/")) {
                 spannable.removeSpan(imageSpan);
                 ClickableImageSpan clickableImageSpan = new ClickableImageSpan(
-                        this,
-                        null,
-                        Long.toString(pid),
-                        PICASSO_TAG,
-                        imageSpan.getSource(),
-                        R.drawable.placeholder_loading,
-                        R.drawable.placeholder_error,
-                        256,
-                        256,
-                        DynamicDrawableSpan.ALIGN_BASELINE,
-                        initPlaceHolder);
+                    this,
+                    null,
+                    Long.toString(pid),
+                    PICASSO_TAG,
+                    imageSpan.getSource(),
+                    R.drawable.placeholder_loading,
+                    R.drawable.placeholder_error,
+                    256,
+                    256,
+                    DynamicDrawableSpan.ALIGN_BASELINE,
+                    initPlaceHolder);
                 spannable.setSpan(clickableImageSpan,
-                        spanStart,
-                        spanEnd,
-                        spanFlags);
+                    spanStart,
+                    spanEnd,
+                    spanFlags);
             } else if(!TextUtils.isEmpty(imageSpan.getSource()) && imageSpan.getSource().contains("http://img.lkong.cn/bq/")){
                 spannable.removeSpan(imageSpan);
 
 
                 EmojiSpan emoticonImageSpan = new EmojiSpan(
-                        this,
-                        imageSpan.getSource(),
-                        (int)(mContentTextSize * 2 * 2),
-                        ImageSpan.ALIGN_BASELINE,
-                        (int)mContentTextSize * 2
+                    this,
+                    imageSpan.getSource(),
+                    (int)(mContentTextSize * 2 * 2),
+                    ImageSpan.ALIGN_BASELINE,
+                    (int)mContentTextSize * 2
                 );
                 spannable.setSpan(emoticonImageSpan,
-                        spanStart,
-                        spanEnd,
-                        spanFlags);
+                    spanStart,
+                    spanEnd,
+                    spanFlags);
             }
         }
         return spannable;
@@ -558,22 +560,23 @@ public abstract class AbstractPostActivity extends AbstractSwipeBackActivity {
     protected void onEditDone(EditPostDoneEvent event) {
         if(isInEditMode()) {
             EditPostResult result = event.getPostResult();
-            if (mProgressDialog != null && mProgressDialog.isShowing())
+            if (mProgressDialog != null && mProgressDialog.isShowing()) {
                 mProgressDialog.dismiss();
+            }
             if (result != null && result.isSuccess()) {
                 new Handler().postDelayed(this::closeActivityWithTransition, 300);
             } else {
                 if (result != null) {
                     showSnackbar(
-                            TextUtils.isEmpty(result.getErrorMessage()) ? getString(R.string.toast_failure_new_post) : result.getErrorMessage(),
-                            SimpleSnackbarType.ERROR,
-                            SimpleSnackbarType.LENGTH_LONG
+                        TextUtils.isEmpty(result.getErrorMessage()) ? getString(R.string.toast_failure_new_post) : result.getErrorMessage(),
+                        SimpleSnackbarType.ERROR,
+                        SimpleSnackbarType.LENGTH_LONG
                     );
                 } else {
                     showSnackbar(
-                            getString(R.string.toast_failure_new_post),
-                            SimpleSnackbarType.ERROR,
-                            SimpleSnackbarType.LENGTH_LONG
+                        getString(R.string.toast_failure_new_post),
+                        SimpleSnackbarType.ERROR,
+                        SimpleSnackbarType.LENGTH_LONG
                     );
                 }
             }
@@ -581,21 +584,22 @@ public abstract class AbstractPostActivity extends AbstractSwipeBackActivity {
     }
 
     protected void onSendDataError(PostErrorEvent event) {
-        if (mProgressDialog != null && mProgressDialog.isShowing())
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
+        }
         String errorMessage = event.getErrorMessage();
         if(!TextUtils.isEmpty(errorMessage)) {
-            if(errorMessage.equals("[NETWORK_ERROR]")) {
+            if("[NETWORK_ERROR]".equals(errorMessage)) {
                 showSnackbar(
-                        getString(R.string.toast_failure_new_post),
-                        SimpleSnackbarType.ERROR,
-                        SimpleSnackbarType.LENGTH_LONG
+                    getString(R.string.toast_failure_new_post),
+                    SimpleSnackbarType.ERROR,
+                    SimpleSnackbarType.LENGTH_LONG
                 );
             } else {
                 showSnackbar(
-                        errorMessage,
-                        SimpleSnackbarType.ERROR,
-                        SimpleSnackbarType.LENGTH_LONG
+                    errorMessage,
+                    SimpleSnackbarType.ERROR,
+                    SimpleSnackbarType.LENGTH_LONG
                 );
             }
         }
@@ -642,15 +646,17 @@ public abstract class AbstractPostActivity extends AbstractSwipeBackActivity {
         Elements elements = document.select("i");
         for(Element element : elements) {
             if(element.html().contains("\u672c\u5e16\u6700\u540e\u7531") && element.html().contains("\u7f16\u8f91")) {
-                if(element.nextElementSibling() != null && element.nextElementSibling().tagName().equals("br")) {
+                if(element.nextElementSibling() != null && "br".equals(
+                    element.nextElementSibling().tagName())) {
                     element.nextElementSibling().remove();
                 }
                 element.remove();
             }
         }
         String result = document.html();
-        if(result.startsWith("\n") && result.length() > 1)
+        if(result.startsWith("\n") && result.length() > 1) {
             result = result.substring(1);
+        }
         return result;
     }
 
@@ -663,18 +669,20 @@ public abstract class AbstractPostActivity extends AbstractSwipeBackActivity {
             } else {
                 if (mContentEditText != null && !TextUtils.isEmpty(mContentEditText.getText())) {
                     new MaterialDialog.Builder(this)
-                            .content(getString(R.string.dialog_exit_new_post_title))
-                            .positiveText(R.string.dialog_exit_discard)  // the default is 'OK'
-                            .negativeText(R.string.dialog_exit_cancel)  // leaving this line out will remove the negative button
-                            .onPositive((dialog, which) -> {
-                                dialog.dismiss();
-                                AbstractPostActivity.this.finish();
-                            })
-                            .onNegative((dialog, which) -> {
-                                dialog.dismiss();
-                            })
-                            .build()
-                            .show();
+                        .content(getString(R.string.dialog_exit_new_post_title))
+                        .positiveText(R.string.dialog_exit_discard)
+                        // the default is 'OK'
+                        .negativeText(R.string.dialog_exit_cancel)
+                        // leaving this line out will remove the negative button
+                        .onPositive((dialog, which) -> {
+                            dialog.dismiss();
+                            AbstractPostActivity.this.finish();
+                        })
+                        .onNegative((dialog, which) -> {
+                            dialog.dismiss();
+                        })
+                        .build()
+                        .show();
 
                 } else {
                     super.onBackPressed();
@@ -685,27 +693,27 @@ public abstract class AbstractPostActivity extends AbstractSwipeBackActivity {
 
     protected void showInsertUrlDialog() {
         MaterialDialog urlInputDialog = new MaterialDialog.Builder(AbstractPostActivity.this)
-                .title(R.string.dialog_title_insert_url)
-                .customView(R.layout.dialog_input_url, false)
-                .positiveText(android.R.string.ok)
-                .onPositive((dialog, which) -> {
-                    if (dialog != null && dialog.getCustomView() != null) {
-                        EditText nameEditText = (EditText) dialog.getCustomView().findViewById(R.id.edit_url_name);
-                        EditText valueEditText = (EditText) dialog.getCustomView().findViewById(R.id.edit_url_value);
-                        String urlName = nameEditText.getText().toString();
-                        String urlValue = valueEditText.getText().toString();
-                        if (!TextUtils.isEmpty(urlName) && !TextUtils.isEmpty(urlValue)) {
-                            insertUrlSpan(urlName, urlValue);
-                        } else {
-                            showSnackbar(
-                                    getString(R.string.toast_error_url_empty),
-                                    SimpleSnackbarType.ERROR,
-                                    SimpleSnackbarType.LENGTH_SHORT
-                            );
-                        }
+            .title(R.string.dialog_title_insert_url)
+            .customView(R.layout.dialog_input_url, false)
+            .positiveText(android.R.string.ok)
+            .onPositive((dialog, which) -> {
+                if (dialog != null && dialog.getCustomView() != null) {
+                    EditText nameEditText = (EditText) dialog.getCustomView().findViewById(R.id.edit_url_name);
+                    EditText valueEditText = (EditText) dialog.getCustomView().findViewById(R.id.edit_url_value);
+                    String urlName = nameEditText.getText().toString();
+                    String urlValue = valueEditText.getText().toString();
+                    if (!TextUtils.isEmpty(urlName) && !TextUtils.isEmpty(urlValue)) {
+                        insertUrlSpan(urlName, urlValue);
+                    } else {
+                        showSnackbar(
+                            getString(R.string.toast_error_url_empty),
+                            SimpleSnackbarType.ERROR,
+                            SimpleSnackbarType.LENGTH_SHORT
+                        );
                     }
-                })
-                .build();
+                }
+            })
+            .build();
         urlInputDialog.show();
     }
 

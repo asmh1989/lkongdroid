@@ -12,7 +12,7 @@ import org.cryse.lkong.model.converter.ModelConverter;
 import org.cryse.lkong.utils.GsonUtils;
 import org.cryse.lkong.account.LKAuthObject;
 
-public class GetUserInfoRequest extends AbstractAuthedHttpRequest<UserInfoModel> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class GetUserInfoRequest extends AbstractAuthedHttpRequest<UserInfoModel> {
     private long mUserId;
     public GetUserInfoRequest(LKAuthObject authObject, long userId) {
         super(authObject);

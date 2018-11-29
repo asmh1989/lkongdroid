@@ -5,7 +5,7 @@ import org.cryse.lkong.modules.base.ContentViewEx;
 
 import java.util.List;
 
-public interface ForumView extends ContentViewEx {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public interface ForumView extends ContentViewEx {
     void showThreadList(List<ThreadModel> threadList, boolean isLoadMore);
     void checkPinnedStatusDone(boolean isPinned);
 }

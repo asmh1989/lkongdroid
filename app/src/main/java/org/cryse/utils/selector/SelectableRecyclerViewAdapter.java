@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public abstract class SelectableRecyclerViewAdapter<
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public abstract class SelectableRecyclerViewAdapter<
         ItemType,
         ItemCollectionType extends List<ItemType>,
         VH extends RecyclerView.ViewHolder
@@ -36,7 +36,9 @@ public abstract class SelectableRecyclerViewAdapter<
     }
 
     public void replaceWith(Collection<ItemType> items, boolean cleanToReplace) {
-        if (items == null) return;
+        if (items == null) {
+          return;
+        }
         clearSelection(false);
         if (cleanToReplace) {
             clear();
@@ -51,7 +53,9 @@ public abstract class SelectableRecyclerViewAdapter<
     }
 
     public void addItem(ItemType remoteFile) {
-        if (remoteFile == null) return;
+        if (remoteFile == null) {
+          return;
+        }
         if (!mItems.contains(remoteFile)) {
             mItems.add(remoteFile);
             notifyItemInserted(mItems.size() - 1);
@@ -62,7 +66,9 @@ public abstract class SelectableRecyclerViewAdapter<
     }
 
     public void addAll(Collection<ItemType> files) {
-        if (files == null) return;
+        if (files == null) {
+          return;
+        }
         int currentCount = mItems.size();
         int newFilesCount = files.size();
         mItems.addAll(files);
@@ -108,10 +114,11 @@ public abstract class SelectableRecyclerViewAdapter<
                 mOnSelectionListener.onDeselect(newSelectionCount, position);
                 mOnSelectionListener.onSelectionEnd();
             } else {
-                if(selection)
-                    mOnSelectionListener.onSelect(newSelectionCount, position);
-                else
-                    mOnSelectionListener.onDeselect(newSelectionCount, position);
+                if(selection) {
+                  mOnSelectionListener.onSelect(newSelectionCount, position);
+                } else {
+                  mOnSelectionListener.onDeselect(newSelectionCount, position);
+                }
             }
         }
     }

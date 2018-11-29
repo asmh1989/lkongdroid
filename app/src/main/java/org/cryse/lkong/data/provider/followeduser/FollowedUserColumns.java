@@ -12,7 +12,7 @@ import org.cryse.lkong.data.provider.followeduser.FollowedUserColumns;
 /**
  * Followed user.
  */
-public class FollowedUserColumns implements BaseColumns {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FollowedUserColumns implements BaseColumns {
     public static final String TABLE_NAME = "followed_user";
     public static final Uri CONTENT_URI_NOTIFY = Uri.parse(LKongContentProvider.CONTENT_URI_BASE + "/" + TABLE_NAME)
             .buildUpon().appendQueryParameter("QUERY_NOTIFY", Boolean.toString(true)).build();
@@ -56,10 +56,16 @@ public class FollowedUserColumns implements BaseColumns {
     // @formatter:on
 
     public static boolean hasColumns(String[] projection) {
-        if (projection == null) return true;
+        if (projection == null) {
+          return true;
+        }
         for (String c : projection) {
-            if (c.equals(USER_ID) || c.contains("." + USER_ID)) return true;
-            if (c.equals(TARGET_USER_ID) || c.contains("." + TARGET_USER_ID)) return true;
+            if (c.equals(USER_ID) || c.contains("." + USER_ID)) {
+              return true;
+            }
+            if (c.equals(TARGET_USER_ID) || c.contains("." + TARGET_USER_ID)) {
+              return true;
+            }
         }
         return false;
     }

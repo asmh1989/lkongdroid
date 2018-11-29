@@ -7,7 +7,7 @@ import android.os.Parcelable;
 import java.util.Date;
 import java.util.List;
 
-public class PostModel implements Parcelable {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class PostModel implements Parcelable {
     private long fid;
     private long sortKey;
     private Date sortKeyTime;
@@ -373,11 +373,11 @@ public class PostModel implements Parcelable {
         }
 
         public static final Parcelable.Creator<PostAuthor> CREATOR = new Parcelable.Creator<PostAuthor>() {
-            public PostAuthor createFromParcel(Parcel source) {
+            @Override public PostAuthor createFromParcel(Parcel source) {
                 return new PostAuthor(source);
             }
 
-            public PostAuthor[] newArray(int size) {
+            @Override public PostAuthor[] newArray(int size) {
                 return new PostAuthor[size];
             }
         };
@@ -489,11 +489,11 @@ public class PostModel implements Parcelable {
         }
 
         public static final Parcelable.Creator<PostRate> CREATOR = new Parcelable.Creator<PostRate>() {
-            public PostRate createFromParcel(Parcel source) {
+            @Override public PostRate createFromParcel(Parcel source) {
                 return new PostRate(source);
             }
 
-            public PostRate[] newArray(int size) {
+            @Override public PostRate[] newArray(int size) {
                 return new PostRate[size];
             }
         };
@@ -558,11 +558,11 @@ public class PostModel implements Parcelable {
     }
 
     public static final Creator<PostModel> CREATOR = new Creator<PostModel>() {
-        public PostModel createFromParcel(Parcel source) {
+        @Override public PostModel createFromParcel(Parcel source) {
             return new PostModel(source);
         }
 
-        public PostModel[] newArray(int size) {
+        @Override public PostModel[] newArray(int size) {
             return new PostModel[size];
         }
     };

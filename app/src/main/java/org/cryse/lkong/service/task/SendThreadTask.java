@@ -1,6 +1,6 @@
 package org.cryse.lkong.service.task;
 
-public class SendThreadTask extends SendTask {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class SendThreadTask extends SendTask {
     private String title;
     private long fid;
     private String content;

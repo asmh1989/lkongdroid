@@ -28,7 +28,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class UserProfileTimelineFragment extends SimpleCollectionFragment<
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class UserProfileTimelineFragment extends SimpleCollectionFragment<
         TimelineModel,
         TimelineAdapter,
         UserProfileTimelinePresenter> {
@@ -91,6 +91,8 @@ public class UserProfileTimelineFragment extends SimpleCollectionFragment<
             case android.R.id.home:
                 getSwipeBackActivity().onBackPressed();
                 return true;
+            default:
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -193,8 +195,9 @@ public class UserProfileTimelineFragment extends SimpleCollectionFragment<
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 if(newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    if(getThemedActivity() != null && !getThemedActivity().isActivityDestroyed())
-                        Glide.with(getActivity()).resumeRequests();
+                    if(getThemedActivity() != null && !getThemedActivity().isActivityDestroyed()) {
+                      Glide.with(getActivity()).resumeRequests();
+                    }
                 } else {
                     Glide.with(getActivity()).pauseRequests();
                 }

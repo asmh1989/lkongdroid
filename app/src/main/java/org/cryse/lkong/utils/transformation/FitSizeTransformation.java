@@ -7,7 +7,7 @@ import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.bumptech.glide.request.target.Target;
 
-public class FitSizeTransformation extends BitmapTransformation {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FitSizeTransformation extends BitmapTransformation {
     private int mMaxWidth = Target.SIZE_ORIGINAL;
     private int mMaxHeight = Target.SIZE_ORIGINAL;
     public FitSizeTransformation(Context context, int maxWidth, int maxHeight) {

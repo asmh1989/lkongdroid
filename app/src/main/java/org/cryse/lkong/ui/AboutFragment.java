@@ -5,7 +5,7 @@ import android.preference.PreferenceFragment;
 
 import org.cryse.lkong.R;
 
-public class AboutFragment extends PreferenceFragment {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class AboutFragment extends PreferenceFragment {
     private static final String LOG_TAG = AboutFragment.class.getSimpleName();
     @Override
     public void onCreate(Bundle savedInstanceState) {

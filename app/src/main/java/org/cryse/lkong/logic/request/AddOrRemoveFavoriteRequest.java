@@ -7,7 +7,7 @@ import org.json.JSONObject;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class AddOrRemoveFavoriteRequest extends AbstractAuthedHttpRequest<Boolean> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class AddOrRemoveFavoriteRequest extends AbstractAuthedHttpRequest<Boolean> {
     private long mTid;
     private boolean mRemove;
     public AddOrRemoveFavoriteRequest(LKAuthObject authObject, long tid, boolean remove) {
@@ -36,7 +36,9 @@ public class AddOrRemoveFavoriteRequest extends AbstractAuthedHttpRequest<Boolea
     protected Boolean parseResponse(Response response) throws Exception {
         String responseString = gzipToString(response);
         JSONObject jsonObject = new JSONObject(responseString);
-        if(!jsonObject.has("isfavorite")) return false;
+        if(!jsonObject.has("isfavorite")) {
+          return false;
+        }
         Boolean isFavorite = jsonObject.getInt("isfavorite") != 0;
         return isFavorite;
     }

@@ -1,6 +1,6 @@
 package org.cryse.lkong.model;
 
-public class UploadImageResult {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class UploadImageResult {
     private boolean success;
     private String imageUrl;
     private String errorMessage;

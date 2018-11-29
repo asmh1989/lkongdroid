@@ -12,7 +12,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 
-@Module
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) @Module
 public class ContextModule {
     Application mApplicationContext;
     public ContextModule(Application application) {

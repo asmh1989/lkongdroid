@@ -2,7 +2,7 @@ package org.cryse.lkong.model;
 
 import java.util.Date;
 
-public class PunchResult {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class PunchResult {
     private Date punchTime;
     private int punchDay;
     private long userId;

@@ -10,7 +10,7 @@ import android.support.annotation.Nullable;
 /**
  * Store User browse history here.
  */
-public interface BrowseHistoryModel extends BaseModel {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public interface BrowseHistoryModel extends BaseModel {
 
     /**
      * The history record user id, nullable.

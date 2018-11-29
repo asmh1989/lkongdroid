@@ -8,7 +8,7 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 
-@Singleton
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) @Singleton
 @Component(modules = {ContextModule.class, LKongModule.class})
 public interface SendServiceComponet {
     void inject(SendPostService service);

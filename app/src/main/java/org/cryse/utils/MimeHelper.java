@@ -5,7 +5,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.webkit.MimeTypeMap;
 
-public class MimeHelper {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class MimeHelper {
     public static String getMimeType(Context context, Uri uri) {
         String mimeType = null;
         if (uri.getScheme().equals(ContentResolver.SCHEME_CONTENT)) {

@@ -6,7 +6,7 @@ import android.os.IBinder;
 
 import org.cryse.lkong.sync.CheckNoticeSyncAdapter;
 
-public class CheckNoticeSyncService extends Service {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class CheckNoticeSyncService extends Service {
 
     private static final Object sSyncAdapterLock = new Object();
     private static CheckNoticeSyncAdapter sSyncAdapter = null;
@@ -14,8 +14,9 @@ public class CheckNoticeSyncService extends Service {
     @Override
     public void onCreate() {
         synchronized (sSyncAdapterLock) {
-            if (sSyncAdapter == null)
-                sSyncAdapter = new CheckNoticeSyncAdapter(getApplicationContext(), true);
+            if (sSyncAdapter == null) {
+              sSyncAdapter = new CheckNoticeSyncAdapter(getApplicationContext(), true);
+            }
         }
     }
 

@@ -13,7 +13,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
-public class NoticePresenter extends SimpleCollectionPresenter<NoticeModel, SimpleCollectionView<NoticeModel>> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NoticePresenter extends SimpleCollectionPresenter<NoticeModel, SimpleCollectionView<NoticeModel>> {
     private static final String LOG_TAG = NoticePresenter.class.getName();
 
     @Inject

@@ -14,7 +14,7 @@ import org.cryse.lkong.utils.GsonUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetFavoritesRequest extends AbstractAuthedHttpRequest<List<ThreadModel>> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class GetFavoritesRequest extends AbstractAuthedHttpRequest<List<ThreadModel>> {
     private long mStart;
     public GetFavoritesRequest(LKAuthObject authObject, long start) {
         super(authObject);
@@ -41,8 +41,9 @@ public class GetFavoritesRequest extends AbstractAuthedHttpRequest<List<ThreadMo
         String responseString = gzipToString(response);
         Gson gson = GsonUtils.getGson();
         LKForumThreadList lKThreadList = gson.fromJson(responseString, LKForumThreadList.class);
-        if(lKThreadList.getData() == null || lKThreadList.getData().size() == 0)
-            return new ArrayList<ThreadModel>();
+        if(lKThreadList.getData() == null || lKThreadList.getData().size() == 0) {
+          return new ArrayList<ThreadModel>();
+        }
         List<ThreadModel> favorites = ModelConverter.toForumThreadModel(lKThreadList, true);
         return favorites;
     }

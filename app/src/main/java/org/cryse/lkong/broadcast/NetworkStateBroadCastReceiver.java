@@ -8,7 +8,7 @@ import android.net.NetworkInfo;
 
 import org.cryse.lkong.application.NetworkPolicyManager;
 
-public class NetworkStateBroadCastReceiver extends BroadcastReceiver {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NetworkStateBroadCastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 

@@ -16,7 +16,7 @@
  */
 package org.apache.commons.lang3;
 
-public class ArrayUtils {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class ArrayUtils {
     public static <T> T[] clone(T[] array) {
         if (array == null) {
             return null;

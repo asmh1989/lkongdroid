@@ -35,7 +35,7 @@ import org.cryse.utils.preference.Prefs;
 
 import java.util.ArrayList;
 
-public class PostItemView extends View implements ImageSpanContainer {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class PostItemView extends View implements ImageSpanContainer {
     private long mPostId;
     private boolean mIsNightMode = false;
     private String mIdentityTag = null;
@@ -78,10 +78,12 @@ public class PostItemView extends View implements ImageSpanContainer {
         setLayerType(LAYER_TYPE_NONE, null);
         setDrawingCacheEnabled(false);
 
-        if(isInEditMode()) return;
+        if(isInEditMode()) {
+            return;
+        }
         mIsNightMode = Prefs.getBoolean(
-                PreferenceConstant.SHARED_PREFERENCE_IS_NIGHT_MODE,
-                PreferenceConstant.SHARED_PREFERENCE_IS_NIGHT_MODE_VALUE
+            PreferenceConstant.SHARED_PREFERENCE_IS_NIGHT_MODE,
+            PreferenceConstant.SHARED_PREFERENCE_IS_NIGHT_MODE_VALUE
         );
 
         if(px_width_40 == 0) {
@@ -94,7 +96,6 @@ public class PostItemView extends View implements ImageSpanContainer {
 
         mOrdinalPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         mOrdinalPaint.setTextSize(getResources().getDimension(R.dimen.text_size_caption));
-        //mOrdinalPaint.setColor(ThemeUtils.textColorSecondary(getContext()));
         mOrdinalFontMetrics = mOrdinalPaint.getFontMetrics();
         initTouchHandler();
     }
@@ -118,7 +119,9 @@ public class PostItemView extends View implements ImageSpanContainer {
     protected void onDraw(Canvas canvas) {
         canvas.getClipBounds(mClipBounds);
         int canvasWidth = canvas.getWidth();
-        if(isInEditMode()) return;
+        if(isInEditMode()) {
+            return;
+        }
         if(mPostDisplayCache.getAuthorLayout() != null) {
             canvas.save();
             canvas.translate(px_margin_72, px_margin_16);
@@ -158,10 +161,6 @@ public class PostItemView extends View implements ImageSpanContainer {
 
     public void setPostDisplayCache(PostDisplayCache postDisplayCache) {
         mPostDisplayCache = postDisplayCache;
-        /*for(int i = 0; i < postDisplayCache.getEmoticonSpans().size(); i++) {
-            PendingImageSpan pendingImageSpan = (PendingImageSpan) mPostDisplayCache.getEmoticonSpans().get(i);
-            pendingImageSpan.loadImage(this);
-        }*/
         requestLayout();
         if(mShowImages) {
             post(() -> {
@@ -169,9 +168,9 @@ public class PostItemView extends View implements ImageSpanContainer {
                 for (int i = mPostDisplayCache.getUrlSpanCount(); i < mPostDisplayCache.getImportantSpans().size(); i++) {
                     PendingImageSpan pendingImageSpan = (PendingImageSpan) mPostDisplayCache.getImportantSpans().get(i);
                     pendingImageSpan.loadImage(
-                            this,
-                            viewImageMaxWidth,
-                            Color.argb(255, 229, 229, 229)
+                        this,
+                        viewImageMaxWidth,
+                        Color.argb(255, 229, 229, 229)
                     );
                 }
             });
@@ -187,16 +186,12 @@ public class PostItemView extends View implements ImageSpanContainer {
         super.onDetachedFromWindow();
     }
 
-    // The amount of time (in milliseconds) a gesture has to be performed.
     private static final int TIME_LIMIT = 300;
 
-    // The amount of distance (in density-independent pixels) a Pointer has to move to trigger a gesture.
     private static final int MOVEMENT_LIMIT_DP = 12;
 
-    // The gesture id for an invalid gesture.
     public static final int INVALID_GESTURE = -1;
 
-    // Gesture ids for one-finger gestures.
     public static final int TAP = 0;
     public static final int LONG_TAP = 1112;
     public static final int SWIPE_UP = 1;
@@ -204,7 +199,6 @@ public class PostItemView extends View implements ImageSpanContainer {
     public static final int SWIPE_LEFT = 3;
     public static final int SWIPE_RIGHT = 4;
 
-    // Gesture ids for two-finger gestures.
     public static final int TWO_FINGER_TAP = 5;
     public static final int TWO_FINGER_SWIPE_UP = 6;
     public static final int TWO_FINGER_SWIPE_DOWN = 7;
@@ -213,10 +207,8 @@ public class PostItemView extends View implements ImageSpanContainer {
     public static final int TWO_FINGER_PINCH_IN = 10;
     public static final int TWO_FINGER_PINCH_OUT = 11;
 
-    // The amount of distance (in pixels) a Pointer has to move, to trigger a gesture.
     private float mMovementLimitPx;
 
-    // A list of Pointers involved in a gesture.
     private ArrayList<Pointer> mPointers;
 
     public void initTouchHandler() {
@@ -256,26 +248,26 @@ public class PostItemView extends View implements ImageSpanContainer {
             Pointer mPointerII = mPointers.get(1);
 
             if (mPointerI.existedWithinTimeLimitMost(TIME_LIMIT) &&
-                    mPointerII.existedWithinTimeLimitMost(TIME_LIMIT)) {
+                mPointerII.existedWithinTimeLimitMost(TIME_LIMIT)) {
 
                 if (mPointerI.tapped() &&
-                        mPointerII.tapped()) {
+                    mPointerII.tapped()) {
 
                     return TWO_FINGER_TAP;
                 } else if (mPointerI.swipedUp() &&
-                        mPointerII.swipedUp()) {
+                    mPointerII.swipedUp()) {
 
                     return TWO_FINGER_SWIPE_UP;
                 } else if (mPointerI.swipedDown() &&
-                        mPointerII.swipedDown()) {
+                    mPointerII.swipedDown()) {
 
                     return TWO_FINGER_SWIPE_DOWN;
                 } else if (mPointerI.swipedLeft() &&
-                        mPointerII.swipedLeft()) {
+                    mPointerII.swipedLeft()) {
 
                     return TWO_FINGER_SWIPE_LEFT;
                 } else if (mPointerI.swipedRight() &&
-                        mPointerII.swipedRight()) {
+                    mPointerII.swipedRight()) {
 
                     return TWO_FINGER_SWIPE_RIGHT;
                 } else if (mPointerI.pinchedIn(mPointerII, mMovementLimitPx)) {
@@ -338,15 +330,18 @@ public class PostItemView extends View implements ImageSpanContainer {
 
                 if (rectF.contains(x, y)) {
                     if (span instanceof URLSpan) {
-                        if (mOnSpanClickListener != null)
+                        if (mOnSpanClickListener != null) {
                             return mOnSpanClickListener.onUrlSpanClick(mPostId, (URLSpan) span, ((URLSpan) span).getURL());
+                        }
                         return false;
                     } else if (span instanceof ClickableImageSpan) {
-                        if (mOnSpanClickListener != null)
+                        if (mOnSpanClickListener != null) {
                             return mOnSpanClickListener.onImageSpanClick(mPostId, (ClickableImageSpan) span, mPostDisplayCache.getImageUrls(), ((ClickableImageSpan) span).getSource());
+                        }
                         return false;
-                    } else
+                    } else {
                         return false;
+                    }
                 }
             }
 
@@ -354,7 +349,7 @@ public class PostItemView extends View implements ImageSpanContainer {
         return false;
     }
 
-    public boolean onTouchEvent(MotionEvent motionEvent) {
+    @Override public boolean onTouchEvent(MotionEvent motionEvent) {
         int mActionIndex = motionEvent.getActionIndex();
 
         int mPointerId = motionEvent.getPointerId(mActionIndex);
@@ -367,15 +362,15 @@ public class PostItemView extends View implements ImageSpanContainer {
                 mPointers = new ArrayList<Pointer>();
 
                 mPointers.add(new Pointer(mPointerId,
-                        mEventTime,
-                        mX, mY,
-                        mMovementLimitPx));
+                    mEventTime,
+                    mX, mY,
+                    mMovementLimitPx));
                 break;
             case MotionEvent.ACTION_POINTER_DOWN:
                 mPointers.add(new Pointer(mPointerId,
-                        mEventTime,
-                        mX, mY,
-                        mMovementLimitPx));
+                    mEventTime,
+                    mX, mY,
+                    mMovementLimitPx));
                 break;
             case MotionEvent.ACTION_POINTER_UP:
                 for (int pIndex = mPointers.size() - 1 ; pIndex >= 0; pIndex--) {
@@ -398,6 +393,9 @@ public class PostItemView extends View implements ImageSpanContainer {
                 }
 
                 return onGesture(getGestureId(), motionEvent);
+            default:
+                break;
+
         }
         return motionEvent.getActionMasked() == MotionEvent.ACTION_DOWN || motionEvent.getActionMasked() == MotionEvent.ACTION_POINTER_DOWN;
     }

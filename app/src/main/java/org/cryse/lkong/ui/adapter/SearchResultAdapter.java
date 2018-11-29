@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import butterknife.ButterKnife;
 import butterknife.BindView;
 
-public class SearchResultAdapter extends SimpleRecyclerViewAdapter<AbstractSearchResult> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class SearchResultAdapter extends SimpleRecyclerViewAdapter<AbstractSearchResult> {
     private String mATEKey;
     private int mResultType = 0;
     private CircleTransform mCircleTransform;
@@ -89,6 +89,8 @@ public class SearchResultAdapter extends SimpleRecyclerViewAdapter<AbstractSearc
                 break;
             case SearchDataSet.TYPE_GROUP:
                 bindGroupResult((SearchGroupViewHolder) holder, position, (SearchGroupItem) item);
+                break;
+            default:
                 break;
         }
     }

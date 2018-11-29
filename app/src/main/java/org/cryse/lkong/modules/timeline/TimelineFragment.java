@@ -25,7 +25,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class TimelineFragment extends SimpleCollectionFragment<
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class TimelineFragment extends SimpleCollectionFragment<
         TimelineModel,
         TimelineAdapter,
         TimelinePresenter> {
@@ -41,8 +41,9 @@ public class TimelineFragment extends SimpleCollectionFragment<
 
     public static TimelineFragment newInstance(Bundle args) {
         TimelineFragment fragment = new TimelineFragment();
-        if(args != null)
-            fragment.setArguments(args);
+        if(args != null) {
+          fragment.setArguments(args);
+        }
         return fragment;
     }
 
@@ -145,8 +146,9 @@ public class TimelineFragment extends SimpleCollectionFragment<
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 if(newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    if(getThemedActivity() != null && !getThemedActivity().isActivityDestroyed())
-                        Glide.with(getActivity()).resumeRequests();
+                    if(getThemedActivity() != null && !getThemedActivity().isActivityDestroyed()) {
+                      Glide.with(getActivity()).resumeRequests();
+                    }
                 } else {
                     Glide.with(getActivity()).pauseRequests();
                 }

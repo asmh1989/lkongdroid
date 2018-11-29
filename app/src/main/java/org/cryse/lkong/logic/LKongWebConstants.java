@@ -1,6 +1,6 @@
 package org.cryse.lkong.logic;
 
-public class LKongWebConstants {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKongWebConstants {
     public static final String LKONG_DOMAIN_URL = "http://lkong.cn";
     public static final String LKONG_INDEX_URL = LKONG_DOMAIN_URL + "/index.php";
 

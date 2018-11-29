@@ -7,7 +7,7 @@ import java.io.Reader;
 import java.io.StringWriter;
 import java.io.Writer;
 
-public class MiniIOUtils {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class MiniIOUtils {
     private static final int DEFAULT_BUFFER_SIZE = 1024 * 4;
     public static String toString(InputStream input) throws IOException {
         StringWriter sw = new StringWriter();

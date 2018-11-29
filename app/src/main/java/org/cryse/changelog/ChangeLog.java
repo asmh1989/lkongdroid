@@ -47,7 +47,9 @@ public class ChangeLog {
      */
     public void addRow(ChangeLogRow row){
         if (row!=null){
-            if (rows==null) rows=new LinkedList<ChangeLogRow>();
+            if (rows==null) {
+              rows=new LinkedList<ChangeLogRow>();
+            }
             rows.add(row);
         }
     }

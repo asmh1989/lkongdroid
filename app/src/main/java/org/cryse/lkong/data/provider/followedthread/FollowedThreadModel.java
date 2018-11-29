@@ -10,7 +10,7 @@ import android.support.annotation.Nullable;
 /**
  * Followed thread.
  */
-public interface FollowedThreadModel extends BaseModel {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public interface FollowedThreadModel extends BaseModel {
 
     /**
      * Owner id.

@@ -28,7 +28,7 @@ import java.util.Map;
 
 import timber.log.Timber;
 
-public class SignInRequest extends AbstractHttpRequest<LKongAuthenticateResult> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class SignInRequest extends AbstractHttpRequest<LKongAuthenticateResult> {
     private static final String LOG_TAG = SignInRequest.class.getSimpleName();
     private String mUserEmail;
     private String mUserPassword;
@@ -87,7 +87,9 @@ public class SignInRequest extends AbstractHttpRequest<LKongAuthenticateResult> 
                 .build();
 
         Response response = getOkHttpClient().newCall(request).execute();
-        if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+        if (!response.isSuccessful()) {
+          throw new IOException("Unexpected code " + response);
+        }
         String responseString = gzipToString(response);
         LKUserInfo lkUserInfo = gson.fromJson(responseString, LKUserInfo.class);
         return ModelConverter.toUserInfoModel(lkUserInfo);
@@ -104,15 +106,17 @@ public class SignInRequest extends AbstractHttpRequest<LKongAuthenticateResult> 
                     Cookie cookie = cookieIterator.next();
                     if(cookie.name().compareToIgnoreCase("auth") == 0) {
                         // auth cookie pair
-                        if(CookieUtils.hasExpired(cookie))
-                            continue;
+                        if(CookieUtils.hasExpired(cookie)) {
+                          continue;
+                        }
                         authUrl = HttpUrl.parse(currentCollection.getKey());
                         authCookie = cookie;
                         Timber.d(String.format("URI: %s, COOKIE: %s", currentCollection.getKey(), cookie.name()), LOG_TAG);
                     } else if (cookie.name().compareToIgnoreCase("dzsbhey") == 0) {
                         // dzsbhey cookie pair
-                        if(CookieUtils.hasExpired(cookie))
-                            continue;
+                        if(CookieUtils.hasExpired(cookie)) {
+                          continue;
+                        }
                         dzsbheyUrl = HttpUrl.parse(currentCollection.getKey());
                         dzsbheyCookie = cookie;
                         Timber.d(String.format("URI: %s, COOKIE: %s", currentCollection.getKey(), cookie.name()), LOG_TAG);

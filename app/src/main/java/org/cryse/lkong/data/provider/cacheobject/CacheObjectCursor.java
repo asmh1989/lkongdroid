@@ -11,7 +11,7 @@ import org.cryse.lkong.data.provider.base.AbstractCursor;
 /**
  * Cursor wrapper for the {@code cache_object} table.
  */
-public class CacheObjectCursor extends AbstractCursor implements CacheObjectModel {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class CacheObjectCursor extends AbstractCursor implements CacheObjectModel {
     public CacheObjectCursor(Cursor cursor) {
         super(cursor);
     }
@@ -19,10 +19,11 @@ public class CacheObjectCursor extends AbstractCursor implements CacheObjectMode
     /**
      * Primary key.
      */
-    public long getId() {
+    @Override public long getId() {
         Long res = getLongOrNull(CacheObjectColumns._ID);
-        if (res == null)
-            throw new NullPointerException("The value of '_id' in the database was null, which is not allowed according to the model definition");
+        if (res == null) {
+          throw new NullPointerException("The value of '_id' in the database was null, which is not allowed according to the model definition");
+        }
         return res;
     }
 
@@ -30,11 +31,12 @@ public class CacheObjectCursor extends AbstractCursor implements CacheObjectMode
      * The key of cache object, unique and indexed.
      * Cannot be {@code null}.
      */
-    @NonNull
+    @Override @NonNull
     public String getCacheKey() {
         String res = getStringOrNull(CacheObjectColumns.CACHE_KEY);
-        if (res == null)
-            throw new NullPointerException("The value of 'cache_key' in the database was null, which is not allowed according to the model definition");
+        if (res == null) {
+          throw new NullPointerException("The value of 'cache_key' in the database was null, which is not allowed according to the model definition");
+        }
         return res;
     }
 
@@ -42,11 +44,12 @@ public class CacheObjectCursor extends AbstractCursor implements CacheObjectMode
      * The value of cache, could be simple String or Json String.
      * Cannot be {@code null}.
      */
-    @NonNull
+    @Override @NonNull
     public String getCacheValue() {
         String res = getStringOrNull(CacheObjectColumns.CACHE_VALUE);
-        if (res == null)
-            throw new NullPointerException("The value of 'cache_value' in the database was null, which is not allowed according to the model definition");
+        if (res == null) {
+          throw new NullPointerException("The value of 'cache_value' in the database was null, which is not allowed according to the model definition");
+        }
         return res;
     }
 
@@ -54,7 +57,7 @@ public class CacheObjectCursor extends AbstractCursor implements CacheObjectMode
      * The create time of cache, nullable.
      * Can be {@code null}.
      */
-    @Nullable
+    @Override @Nullable
     public Long getCacheTimeCreate() {
         Long res = getLongOrNull(CacheObjectColumns.CACHE_TIME_CREATE);
         return res;
@@ -64,7 +67,7 @@ public class CacheObjectCursor extends AbstractCursor implements CacheObjectMode
      * The expire time of cache, nullable.
      * Can be {@code null}.
      */
-    @Nullable
+    @Override @Nullable
     public Long getCacheTimeExpire() {
         Long res = getLongOrNull(CacheObjectColumns.CACHE_TIME_EXPIRE);
         return res;

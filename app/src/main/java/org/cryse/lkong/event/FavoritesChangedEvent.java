@@ -1,4 +1,4 @@
 package org.cryse.lkong.event;
 
-public class FavoritesChangedEvent extends AbstractEvent {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FavoritesChangedEvent extends AbstractEvent {
 }

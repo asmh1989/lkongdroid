@@ -1,6 +1,6 @@
 package org.cryse.lkong.model;
 
-public class EditPostResult {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class EditPostResult {
     private long tid;
     private boolean success;
     private String errorMessage;

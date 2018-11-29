@@ -25,14 +25,14 @@ import android.util.Log;
 /**
  * Copied from http://stackoverflow.com/a/22298833
  */
-public class LocalImageGetter implements Html.ImageGetter {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LocalImageGetter implements Html.ImageGetter {
     Context c;
 
     public LocalImageGetter(Context c) {
         this.c = c;
     }
 
-    public Drawable getDrawable(String source) {
+    @Override public Drawable getDrawable(String source) {
         int id = c.getResources().getIdentifier(source, "drawable", c.getPackageName());
 
         if (id == 0) {

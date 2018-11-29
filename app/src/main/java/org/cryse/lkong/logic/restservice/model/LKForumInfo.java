@@ -1,6 +1,6 @@
 package org.cryse.lkong.logic.restservice.model;
 
-public class LKForumInfo {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKForumInfo {
     private long fid;
     private String name;
     private String description;

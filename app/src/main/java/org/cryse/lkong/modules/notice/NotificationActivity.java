@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import org.cryse.lkong.application.LKongApplication;
 import org.cryse.lkong.ui.SimpleContainerActivity;
 
-public class NotificationActivity extends SimpleContainerActivity {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NotificationActivity extends SimpleContainerActivity {
     private static final String LOG_TAG = NotificationActivity.class.getName();
 
     @Override

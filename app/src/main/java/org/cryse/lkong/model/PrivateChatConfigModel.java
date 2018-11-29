@@ -1,6 +1,6 @@
 package org.cryse.lkong.model;
 
-public class PrivateChatConfigModel {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class PrivateChatConfigModel {
     private long userId;
     private String username;
     private long targetUserId;

@@ -7,7 +7,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.safety.Cleaner;
 import org.jsoup.safety.Whitelist;
 
-public class HtmlCleaner {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class HtmlCleaner {
     public static Document fixTagBalanceAndRemoveEmpty(String html, Whitelist whitelist) {
         Document originalDoc = Jsoup.parse(html);
         Cleaner cleaner = new Cleaner(whitelist);
@@ -20,41 +20,27 @@ public class HtmlCleaner {
             pInLi.unwrap();
         }
         for (Element pInLi: fixedDoc.select("blockquote")) {
-            if(elementTagNameEquals(pInLi.nextElementSibling(), "br"))
-                pInLi.nextElementSibling().remove();
+            if(elementTagNameEquals(pInLi.nextElementSibling(), "br")) {
+              pInLi.nextElementSibling().remove();
+            }
         }
         for (Element pInLi: fixedDoc.select("blockquote")) {
-            if(elementTagNameEquals(pInLi.nextElementSibling(), "br"))
-                pInLi.nextElementSibling().remove();
+            if(elementTagNameEquals(pInLi.nextElementSibling(), "br")) {
+              pInLi.nextElementSibling().remove();
+            }
         }
-        /*for (Element pHasImg: fixedDoc.select("p:has(img)")) {
-            pHasImg.unwrap();
-        }*/
-        /*for (Element img: fixedDoc.select("img")) {
-            if(img.nextElementSibling() != null && !img.nextElementSibling().tagName().equalsIgnoreCase("br"))
-                img.after("<br>");
-        }*/
         for (Element element : fixedDoc.select("*")) {
             if (!element.hasText() && element.isBlock() && elementTagNameNotEquals(element, "img")
                     && elementTagNameNotEquals(element, "ul")
             ) {
-                if(element.select("img").size() > 0)
-                    continue;
+                if(element.select("img").size() > 0) {
+                  continue;
+                }
                 element.remove();
             }
 
         }
         // 不确定是否移除所有直属于 body 的 br 换行
-        /*Element bodyElement = fixedDoc.body();
-        Elements bodyChildren = bodyElement.children();
-        for (int i = bodyChildren.size() - 1; i >= 0; i--) {
-            Element bodyChild = bodyChildren.get(i);
-            if(bodyChild.tagName().equalsIgnoreCase("br")) {
-                bodyChild.remove();
-            } else {
-                break;
-            }
-        }*/
         for (Element aAt: fixedDoc.select("a")) {
             if(aAt.hasText() && (aAt.children() == null || (aAt.children() != null && aAt.children().size() == 0))) {
                 String content = aAt.html().trim();

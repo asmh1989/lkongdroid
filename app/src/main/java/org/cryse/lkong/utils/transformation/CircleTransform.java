@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 
-public class CircleTransform extends BitmapTransformation {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class CircleTransform extends BitmapTransformation {
     public CircleTransform(Context context) {
         super(context);
     }

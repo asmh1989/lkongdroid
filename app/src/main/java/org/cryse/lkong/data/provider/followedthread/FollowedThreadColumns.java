@@ -12,7 +12,7 @@ import org.cryse.lkong.data.provider.followeduser.FollowedUserColumns;
 /**
  * Followed thread.
  */
-public class FollowedThreadColumns implements BaseColumns {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FollowedThreadColumns implements BaseColumns {
     public static final String TABLE_NAME = "followed_thread";
     public static final Uri CONTENT_URI_NOTIFY = Uri.parse(LKongContentProvider.CONTENT_URI_BASE + "/" + TABLE_NAME)
             .buildUpon().appendQueryParameter("QUERY_NOTIFY", Boolean.toString(true)).build();
@@ -86,15 +86,31 @@ public class FollowedThreadColumns implements BaseColumns {
     // @formatter:on
 
     public static boolean hasColumns(String[] projection) {
-        if (projection == null) return true;
+        if (projection == null) {
+          return true;
+        }
         for (String c : projection) {
-            if (c.equals(USER_ID) || c.contains("." + USER_ID)) return true;
-            if (c.equals(THREAD_ID) || c.contains("." + THREAD_ID)) return true;
-            if (c.equals(THREAD_TITLE) || c.contains("." + THREAD_TITLE)) return true;
-            if (c.equals(THREAD_AUTHOR_ID) || c.contains("." + THREAD_AUTHOR_ID)) return true;
-            if (c.equals(THREAD_AUTHOR_NAME) || c.contains("." + THREAD_AUTHOR_NAME)) return true;
-            if (c.equals(THREAD_TIMESTAMP) || c.contains("." + THREAD_TIMESTAMP)) return true;
-            if (c.equals(THREAD_REPLY_COUNT) || c.contains("." + THREAD_REPLY_COUNT)) return true;
+            if (c.equals(USER_ID) || c.contains("." + USER_ID)) {
+              return true;
+            }
+            if (c.equals(THREAD_ID) || c.contains("." + THREAD_ID)) {
+              return true;
+            }
+            if (c.equals(THREAD_TITLE) || c.contains("." + THREAD_TITLE)) {
+              return true;
+            }
+            if (c.equals(THREAD_AUTHOR_ID) || c.contains("." + THREAD_AUTHOR_ID)) {
+              return true;
+            }
+            if (c.equals(THREAD_AUTHOR_NAME) || c.contains("." + THREAD_AUTHOR_NAME)) {
+              return true;
+            }
+            if (c.equals(THREAD_TIMESTAMP) || c.contains("." + THREAD_TIMESTAMP)) {
+              return true;
+            }
+            if (c.equals(THREAD_REPLY_COUNT) || c.contains("." + THREAD_REPLY_COUNT)) {
+              return true;
+            }
         }
         return false;
     }

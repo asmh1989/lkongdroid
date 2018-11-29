@@ -21,7 +21,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.BindView;
 
-public class NoticePrivateChatsCollectionAdapter extends SimpleRecyclerViewAdapter<PrivateChatModel> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NoticePrivateChatsCollectionAdapter extends SimpleRecyclerViewAdapter<PrivateChatModel> {
     private String mATEKey;
     private CircleTransform mCircleTransform;
     private final String mTodayPrefix;

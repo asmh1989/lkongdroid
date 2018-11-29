@@ -7,7 +7,7 @@ import org.cryse.lkong.utils.SubscriptionUtils;
 
 import rx.Subscription;
 
-public abstract class SimpleCollectionPresenter<ItemType, ViewType extends SimpleCollectionView<ItemType>> implements BasePresenter<ViewType> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public abstract class SimpleCollectionPresenter<ItemType, ViewType extends SimpleCollectionView<ItemType>> implements BasePresenter<ViewType> {
     protected LKongForumService mLKongForumService;
     protected ViewType mView;
     protected Subscription mLoadDataSubscription;
@@ -35,10 +35,13 @@ public abstract class SimpleCollectionPresenter<ItemType, ViewType extends Simpl
     }
 
     public void setLoadingStatus(boolean loadingMore, boolean isLoading) {
-        if(mView == null) return;
-        if (loadingMore)
-            mView.setLoadingMore(isLoading);
-        else
-            mView.setLoading(isLoading);
+        if(mView == null) {
+          return;
+        }
+        if (loadingMore) {
+          mView.setLoadingMore(isLoading);
+        } else {
+          mView.setLoading(isLoading);
+        }
     }
 }

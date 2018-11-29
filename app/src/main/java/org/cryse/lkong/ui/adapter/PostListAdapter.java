@@ -23,7 +23,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.BindView;
 
-public class PostListAdapter extends SimpleRecyclerViewAdapter<PostModel> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class PostListAdapter extends SimpleRecyclerViewAdapter<PostModel> {
     private static final String LOG_TAG = PostListAdapter.class.getName();
     public static final String POST_PICASSO_TAG = "picasso_post_list_adapter";
     private OnItemButtonClickListener mOnItemButtonClickListener;
@@ -165,6 +165,8 @@ public class PostListAdapter extends SimpleRecyclerViewAdapter<PostModel> {
                         case R.id.recyclerview_item_post_imageview_avatar:
                             mOnItemButtonClickListener.onProfileImageClick(view, adapterPosition);
                             break;
+                        default:
+                            break;
                     }
                 }
             };
@@ -174,8 +176,9 @@ public class PostListAdapter extends SimpleRecyclerViewAdapter<PostModel> {
             mAvatarImageView.setOnClickListener(clickListener);
             mRateTextView.setOnClickListener(clickListener);
             mShareButton.setOnClickListener(clickListener);
-            if(mOnSpanClickListener != null)
-                mPostItemView.setOnSpanClickListener(mOnSpanClickListener);
+            if(mOnSpanClickListener != null) {
+              mPostItemView.setOnSpanClickListener(mOnSpanClickListener);
+            }
             mPostItemView.setLongClickable(true);
             mPostItemView.setOnTextLongPressedListener(view -> {
                 if (mOnItemButtonClickListener != null) {

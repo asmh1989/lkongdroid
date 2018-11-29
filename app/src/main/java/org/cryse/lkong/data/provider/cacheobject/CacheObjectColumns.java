@@ -8,7 +8,7 @@ import org.cryse.lkong.data.provider.LKongContentProvider;
 /**
  * Cache any kind of object here.
  */
-public class CacheObjectColumns implements BaseColumns {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class CacheObjectColumns implements BaseColumns {
     public static final String TABLE_NAME = "cache_object";
     public static final Uri CONTENT_URI_NOTIFY = Uri.parse(LKongContentProvider.CONTENT_URI_BASE + "/" + TABLE_NAME)
             .buildUpon().appendQueryParameter("QUERY_NOTIFY", Boolean.toString(true)).build();
@@ -64,12 +64,22 @@ public class CacheObjectColumns implements BaseColumns {
     // @formatter:on
 
     public static boolean hasColumns(String[] projection) {
-        if (projection == null) return true;
+        if (projection == null) {
+          return true;
+        }
         for (String c : projection) {
-            if (c.equals(CACHE_KEY) || c.contains("." + CACHE_KEY)) return true;
-            if (c.equals(CACHE_VALUE) || c.contains("." + CACHE_VALUE)) return true;
-            if (c.equals(CACHE_TIME_CREATE) || c.contains("." + CACHE_TIME_CREATE)) return true;
-            if (c.equals(CACHE_TIME_EXPIRE) || c.contains("." + CACHE_TIME_EXPIRE)) return true;
+            if (c.equals(CACHE_KEY) || c.contains("." + CACHE_KEY)) {
+              return true;
+            }
+            if (c.equals(CACHE_VALUE) || c.contains("." + CACHE_VALUE)) {
+              return true;
+            }
+            if (c.equals(CACHE_TIME_CREATE) || c.contains("." + CACHE_TIME_CREATE)) {
+              return true;
+            }
+            if (c.equals(CACHE_TIME_EXPIRE) || c.contains("." + CACHE_TIME_EXPIRE)) {
+              return true;
+            }
         }
         return false;
     }

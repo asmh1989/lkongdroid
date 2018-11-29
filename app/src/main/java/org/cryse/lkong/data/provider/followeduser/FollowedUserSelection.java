@@ -12,7 +12,7 @@ import org.cryse.lkong.data.provider.base.AbstractSelection;
 /**
  * Selection for the {@code followed_user} table.
  */
-public class FollowedUserSelection extends AbstractSelection<FollowedUserSelection> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FollowedUserSelection extends AbstractSelection<FollowedUserSelection> {
     @Override
     protected Uri baseUri() {
         return FollowedUserColumns.CONTENT_URI;
@@ -27,7 +27,9 @@ public class FollowedUserSelection extends AbstractSelection<FollowedUserSelecti
      */
     public FollowedUserCursor query(ContentResolver contentResolver, String[] projection) {
         Cursor cursor = contentResolver.query(uri(), projection, sel(), args(), order());
-        if (cursor == null) return null;
+        if (cursor == null) {
+          return null;
+        }
         return new FollowedUserCursor(cursor);
     }
 
@@ -47,7 +49,9 @@ public class FollowedUserSelection extends AbstractSelection<FollowedUserSelecti
      */
     public FollowedUserCursor query(Context context, String[] projection) {
         Cursor cursor = context.getContentResolver().query(uri(), projection, sel(), args(), order());
-        if (cursor == null) return null;
+        if (cursor == null) {
+          return null;
+        }
         return new FollowedUserCursor(cursor);
     }
 

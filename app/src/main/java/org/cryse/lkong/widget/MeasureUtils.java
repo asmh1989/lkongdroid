@@ -2,7 +2,7 @@ package org.cryse.lkong.widget;
 
 import android.view.View;
 
-public class MeasureUtils {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class MeasureUtils {
 
     /**
      * Utility to return a view's standard measurement. Uses the
@@ -30,6 +30,8 @@ public class MeasureUtils {
             case View.MeasureSpec.EXACTLY:
                 //Must be the spec size
                 resultSize = specSize;
+                break;
+            default:
                 break;
         }
 

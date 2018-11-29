@@ -1,6 +1,13 @@
 pipeline {
   agent any
   stages {
+    stage('clean') {
+      steps {
+        echo 'start clean ...'
+        sh './gradlew clean'
+      }
+    }
+
     stage('android-lint') {
       steps {
         echo 'start android lint ...'

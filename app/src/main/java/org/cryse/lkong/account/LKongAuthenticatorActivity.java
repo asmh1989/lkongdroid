@@ -43,7 +43,7 @@ import timber.log.Timber;
  * <p>
  * It sends back to the Authenticator the result.
  */
-public class LKongAuthenticatorActivity extends AccountAuthenticatorActivity {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKongAuthenticatorActivity extends AccountAuthenticatorActivity {
     private static final String LOG_TAG = LKongAuthenticatorActivity.class.getName();
     public static final String START_MAIN_ACTIVITY = "start_new_activity";
 
@@ -132,30 +132,11 @@ public class LKongAuthenticatorActivity extends AccountAuthenticatorActivity {
 
         String accountName = getIntent().getStringExtra(ARG_ACCOUNT_NAME);
         mAuthTokenType = getIntent().getStringExtra(ARG_AUTH_TYPE);
-        if (mAuthTokenType == null)
-            mAuthTokenType = AccountConst.AUTHTOKEN_TYPE_FULL_ACCESS;
-
-        UpgradeUtils.showChangelog(this);
-        /*if (accountName != null) {
-            ((TextView)findViewById(R.id.accountName)).setText(accountName);
+        if (mAuthTokenType == null) {
+          mAuthTokenType = AccountConst.AUTHTOKEN_TYPE_FULL_ACCESS;
         }
 
-        findViewById(R.id.submit).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                submit();
-            }
-        });
-        findViewById(R.id.signUp).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Since there can only be one AuthenticatorActivity, we call the sign up activity, get his results,
-                // and return them in setAccountAuthenticatorResult(). See finishLogin().
-                Intent signup = new Intent(getBaseContext(), SignUpActivity.class);
-                signup.putExtras(getIntent().getExtras());
-                startActivityForResult(signup, REQ_SIGNUP);
-            }
-        });*/
+        UpgradeUtils.showChangelog(this);
     }
 
     @Override
@@ -164,8 +145,9 @@ public class LKongAuthenticatorActivity extends AccountAuthenticatorActivity {
         // The sign up activity returned that the user has successfully created an account
         if (requestCode == REQ_SIGNUP && resultCode == RESULT_OK) {
             finishLogin(data);
-        } else
-            super.onActivityResult(requestCode, resultCode, data);
+        } else {
+          super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
     @Override
@@ -288,14 +270,14 @@ public class LKongAuthenticatorActivity extends AccountAuthenticatorActivity {
                     mAccountManager.setUserData(account, AccountConst.KEY_ACCOUNT_USER_AVATAR, intent.getStringExtra(AccountConst.KEY_ACCOUNT_USER_AVATAR));
                     mAccountManager.setUserData(account, AccountConst.KEY_ACCOUNT_USER_AUTH, intent.getStringExtra(AccountConst.KEY_ACCOUNT_USER_AUTH));
                     mAccountManager.setUserData(account, AccountConst.KEY_ACCOUNT_USER_DZSBHEY, intent.getStringExtra(AccountConst.KEY_ACCOUNT_USER_DZSBHEY));
-                    // Toast.makeText(this, "Already exist!", Toast.LENGTH_SHORT).show();
                     isExist = true;
 
                     break;
                 }
             }
-            if(!isExist)
-                mAccountManager.addAccountExplicitly(account, accountPassword, userData);
+            if(!isExist) {
+              mAccountManager.addAccountExplicitly(account, accountPassword, userData);
+            }
             mAccountManager.setAuthToken(account, authtokenType, authtoken);
         } else {
             Timber.d("> finishLogin > setPassword", LOG_TAG);
@@ -308,8 +290,9 @@ public class LKongAuthenticatorActivity extends AccountAuthenticatorActivity {
     }
 
     private void dismissProgressDialog() {
-        if (mSignInProgress != null && mSignInProgress.isShowing())
-            mSignInProgress.dismiss();
+        if (mSignInProgress != null && mSignInProgress.isShowing()) {
+          mSignInProgress.dismiss();
+        }
     }
 
     public void setLoading(Boolean value) {
@@ -344,8 +327,9 @@ public class LKongAuthenticatorActivity extends AccountAuthenticatorActivity {
     }
 
     protected View getSnackbarRootView() {
-        if (mSnackbarRootView == null)
-            mSnackbarRootView = findViewById(android.R.id.content);
+        if (mSnackbarRootView == null) {
+          mSnackbarRootView = findViewById(android.R.id.content);
+        }
         return mSnackbarRootView;
     }
 }

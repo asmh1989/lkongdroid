@@ -12,7 +12,7 @@ import org.cryse.lkong.model.converter.ModelConverter;
 import org.cryse.lkong.utils.GsonUtils;
 import org.cryse.lkong.account.LKAuthObject;
 
-public class GetForumInfoRequest extends AbstractAuthedHttpRequest<ForumModel> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class GetForumInfoRequest extends AbstractAuthedHttpRequest<ForumModel> {
     private long mForumId;
     public GetForumInfoRequest(LKAuthObject authObject, long forumId) {
         super(authObject);

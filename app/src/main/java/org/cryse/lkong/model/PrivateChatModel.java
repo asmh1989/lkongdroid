@@ -5,7 +5,7 @@ import android.os.Parcel;
 import java.io.Serializable;
 import java.util.Date;
 
-public class PrivateChatModel implements Serializable, SimpleCollectionItem {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class PrivateChatModel implements Serializable, SimpleCollectionItem {
     long userId;
     String userName;
     long targetUserId;
@@ -135,11 +135,11 @@ public class PrivateChatModel implements Serializable, SimpleCollectionItem {
     }
 
     public static final Creator<PrivateChatModel> CREATOR = new Creator<PrivateChatModel>() {
-        public PrivateChatModel createFromParcel(Parcel source) {
+        @Override public PrivateChatModel createFromParcel(Parcel source) {
             return new PrivateChatModel(source);
         }
 
-        public PrivateChatModel[] newArray(int size) {
+        @Override public PrivateChatModel[] newArray(int size) {
             return new PrivateChatModel[size];
         }
     };

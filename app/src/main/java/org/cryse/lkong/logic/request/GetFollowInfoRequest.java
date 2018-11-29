@@ -18,7 +18,7 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-public class GetFollowInfoRequest extends AbstractAuthedHttpRequest<FollowInfo> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class GetFollowInfoRequest extends AbstractAuthedHttpRequest<FollowInfo> {
     public GetFollowInfoRequest(LKAuthObject authObject) {
         super(authObject);
     }
@@ -38,7 +38,9 @@ public class GetFollowInfoRequest extends AbstractAuthedHttpRequest<FollowInfo> 
 
     @Override
     protected FollowInfo parseResponse(Response response) throws Exception {
-        if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+        if (!response.isSuccessful()) {
+          throw new IOException("Unexpected code " + response);
+        }
         String responseString = GzipUtils.responseToString(response);
         FollowInfo result = new FollowInfo();
         Document document = Jsoup.parseBodyFragment(responseString);
@@ -54,10 +56,11 @@ public class GetFollowInfoRequest extends AbstractAuthedHttpRequest<FollowInfo> 
             long[] fids = new long[fidsCount];
             for(int i = 0; i <= fidsCount - 1; i++) {
                 String value = forumsArray.getString(i);
-                if(!TextUtils.isEmpty(value) && TextUtils.isDigitsOnly(value))
-                    fids[i] = Long.valueOf(value);
-                else
-                    fids[i] = -1;
+                if(!TextUtils.isEmpty(value) && TextUtils.isDigitsOnly(value)) {
+                  fids[i] = Long.valueOf(value);
+                } else {
+                  fids[i] = -1;
+                }
             }
             result.followedForumIds = fids;
 
@@ -67,10 +70,11 @@ public class GetFollowInfoRequest extends AbstractAuthedHttpRequest<FollowInfo> 
             long[] uids = new long[uidsCount];
             for(int i = 0; i <= uidsCount - 1; i++) {
                 String value = usersArray.getString(i);
-                if(!TextUtils.isEmpty(value) && TextUtils.isDigitsOnly(value))
-                    uids[i] = Long.valueOf(value);
-                else
-                    uids[i] = -1;
+                if(!TextUtils.isEmpty(value) && TextUtils.isDigitsOnly(value)) {
+                  uids[i] = Long.valueOf(value);
+                } else {
+                  uids[i] = -1;
+                }
             }
             result.followedUserIds = uids;
 
@@ -80,10 +84,11 @@ public class GetFollowInfoRequest extends AbstractAuthedHttpRequest<FollowInfo> 
             long[] tids = new long[tidsCount];
             for(int i = 0; i <= tidsCount - 1; i++) {
                 String value = threadsArray.getString(i);
-                if(!TextUtils.isEmpty(value) && TextUtils.isDigitsOnly(value))
-                    tids[i] = Long.valueOf(value);
-                else
-                    tids[i] = -1;
+                if(!TextUtils.isEmpty(value) && TextUtils.isDigitsOnly(value)) {
+                  tids[i] = Long.valueOf(value);
+                } else {
+                  tids[i] = -1;
+                }
             }
             result.followedThreadIds = tids;
 
@@ -93,10 +98,11 @@ public class GetFollowInfoRequest extends AbstractAuthedHttpRequest<FollowInfo> 
             long[] blacks = new long[blacksCount];
             for(int i = 0; i <= blacksCount - 1; i++) {
                 String value = blacksArray.getString(i);
-                if(!TextUtils.isEmpty(value) && TextUtils.isDigitsOnly(value))
-                    blacks[i] = Long.valueOf(value);
-                else
-                    blacks[i] = -1;
+                if(!TextUtils.isEmpty(value) && TextUtils.isDigitsOnly(value)) {
+                  blacks[i] = Long.valueOf(value);
+                } else {
+                  blacks[i] = -1;
+                }
             }
             result.blacklistUserIds = blacks;
         }

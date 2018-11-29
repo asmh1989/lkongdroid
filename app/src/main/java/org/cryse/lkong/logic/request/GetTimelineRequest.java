@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class GetTimelineRequest extends AbstractAuthedHttpRequest<List<TimelineModel>> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class GetTimelineRequest extends AbstractAuthedHttpRequest<List<TimelineModel>> {
     long mStart;
     int mListType;
     boolean mOnlyThread;
@@ -54,8 +54,9 @@ public class GetTimelineRequest extends AbstractAuthedHttpRequest<List<TimelineM
         String responseString = gzipToString(response);
         Gson gson = GsonUtils.getGson();
         LKTimelineData lkTimelineData = gson.fromJson(responseString, LKTimelineData.class);
-        if (lkTimelineData.getData() == null || lkTimelineData.getData().size() == 0)
-            return new ArrayList<TimelineModel>();
+        if (lkTimelineData.getData() == null || lkTimelineData.getData().size() == 0) {
+          return new ArrayList<TimelineModel>();
+        }
         List<TimelineModel> timelineList = ModelConverter.toTimelineModel(lkTimelineData);
         Collections.reverse(timelineList);
         return timelineList;

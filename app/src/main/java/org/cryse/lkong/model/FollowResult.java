@@ -1,6 +1,6 @@
 package org.cryse.lkong.model;
 
-public class FollowResult {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FollowResult {
     public static final int ACTION_FOLLOW = 1;
     public static final int ACTION_UNFOLLOW = 2;
     public static final int TYPE_FORUM = 111;

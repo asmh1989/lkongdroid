@@ -39,7 +39,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 import javax.inject.Inject;
 
-public class SendPostService extends Service {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class SendPostService extends Service {
     private static final String LOG_TAG = SendPostService.class.getName();
 
     RxEventBus mEventBus = RxEventBus.getInstance();
@@ -111,7 +111,6 @@ public class SendPostService extends Service {
     }
 
     public void sendPost(SendPostTask task) {
-        //Log.d(LOG_TAG, "sendPost");
         NotificationCompat.Builder progressNotificationBuilder;
 
         progressNotificationBuilder = new NotificationCompat.Builder(SendPostService.this);

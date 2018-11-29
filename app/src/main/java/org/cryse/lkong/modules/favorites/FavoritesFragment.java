@@ -53,7 +53,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 
-public class FavoritesFragment extends SimpleCollectionFragment<
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FavoritesFragment extends SimpleCollectionFragment<
         ThreadModel,
         ThreadListAdapter,
         FavoritesPresenter> implements FavoritesView<ThreadModel> {
@@ -81,8 +81,9 @@ public class FavoritesFragment extends SimpleCollectionFragment<
 
     public static FavoritesFragment newInstance(Bundle args) {
         FavoritesFragment fragment = new FavoritesFragment();
-        if(args != null)
-            fragment.setArguments(args);
+        if(args != null) {
+          fragment.setArguments(args);
+        }
         return fragment;
     }
 
@@ -121,16 +122,20 @@ public class FavoritesFragment extends SimpleCollectionFragment<
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         if(mChangeThemeMenuItem != null) {
-            if(isNightMode() == null)
-                mChangeThemeMenuItem.setVisible(false);
-            else if(isNightMode() != null && isNightMode())
-                mChangeThemeMenuItem.setTitle(R.string.action_light_theme);
-            else if(isNightMode() != null && !isNightMode())
-                mChangeThemeMenuItem.setTitle(R.string.action_dark_theme);
+            if(isNightMode() == null) {
+              mChangeThemeMenuItem.setVisible(false);
+            } else if(isNightMode() != null && isNightMode()) {
+              mChangeThemeMenuItem.setTitle(R.string.action_light_theme);
+            } else if(isNightMode() != null && !isNightMode()) {
+              mChangeThemeMenuItem.setTitle(R.string.action_dark_theme);
+            }
         }
         if(mNotificationMenuItem != null) {
-            if(mHasNotification) mNotificationMenuItem.setIcon(R.drawable.ic_action_notification_red_dot);
-            else mNotificationMenuItem.setIcon(R.drawable.ic_action_notification);
+            if(mHasNotification) {
+              mNotificationMenuItem.setIcon(R.drawable.ic_action_notification_red_dot);
+            } else {
+              mNotificationMenuItem.setIcon(R.drawable.ic_action_notification);
+            }
         }
         super.onPrepareOptionsMenu(menu);
     }
@@ -162,6 +167,8 @@ public class FavoritesFragment extends SimpleCollectionFragment<
                 } else {
                     return false;
                 }
+            default:
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -177,7 +184,6 @@ public class FavoritesFragment extends SimpleCollectionFragment<
                 @Override
                 public boolean onKey(View v, int keyCode, KeyEvent event) {
                     if (keyCode == KeyEvent.KEYCODE_BACK) {
-                        //Toast.makeText(getContext(), "onBackPressed", Toast.LENGTH_SHORT).show();
                         if (mSearchView.isSearching()) {
                             mSearchView.closeSearch();
                             return true;
@@ -190,7 +196,7 @@ public class FavoritesFragment extends SimpleCollectionFragment<
         }
     }
 
-    public void setUpSearchView() {
+    @SuppressWarnings("AlibabaMethodTooLong") public void setUpSearchView() {
         VoiceRecognitionDelegate delegate = new DefaultVoiceRecognizerDelegate(this, VOICE_RECOGNITION_REQUEST_CODE);
         if (delegate.isVoiceRecognitionAvailable()) {
             mSearchView.setVoiceRecognitionDelegate(delegate);
@@ -263,7 +269,6 @@ public class FavoritesFragment extends SimpleCollectionFragment<
                 if (searchFragment == null) {
 
                     searchFragment = SearchFragment.newInstance("", (novelModel, position) -> {
-                        //mPresenter.showNovelDetail(novelModel);
                     });
                     FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
                     fragmentTransaction.add(R.id.search_fragment_container, searchFragment, SEARCH_FRAGMENT_TAG);
@@ -373,9 +378,9 @@ public class FavoritesFragment extends SimpleCollectionFragment<
     @Override
     protected void onEvent(AbstractEvent event) {
         super.onEvent(event);
-        if(event instanceof FavoritesChangedEvent)
-            mNeedRefresh = true;
-        else if(event instanceof NoticeCountEvent) {
+        if(event instanceof FavoritesChangedEvent) {
+          mNeedRefresh = true;
+        } else if(event instanceof NoticeCountEvent) {
             mPresenter.checkNoticeCountFromDatabase(mUserAccountManager.getCurrentUserId());
         } else if (event instanceof CurrentAccountChangedEvent) {
             loadData(mUserAccountManager.getAuthObject(), 0, false);
@@ -399,8 +404,9 @@ public class FavoritesFragment extends SimpleCollectionFragment<
     protected void checkNewNoticeCount() {
         if (isAdded()) {
             Account account = mUserAccountManager.getCurrentUserAccount().getAccount();
-            if(account != null)
-                SyncUtils.manualSync(account, SyncUtils.SYNC_AUTHORITY_CHECK_NOTICE);
+            if(account != null) {
+              SyncUtils.manualSync(account, SyncUtils.SYNC_AUTHORITY_CHECK_NOTICE);
+            }
             mPresenter.checkNoticeCountFromDatabase(mUserAccountManager.getCurrentUserId());
         }
     }
@@ -409,8 +415,9 @@ public class FavoritesFragment extends SimpleCollectionFragment<
     public void onCheckNoticeCountComplete(NoticeCountModel noticeCountModel) {
         if(noticeCountModel != null) {
             mHasNotification = noticeCountModel.hasNotification() && noticeCountModel.getUserId() == mUserAccountManager.getCurrentUserId();
-            if(getActivity() != null)
-                getActivity().invalidateOptionsMenu();
+            if(getActivity() != null) {
+              getActivity().invalidateOptionsMenu();
+            }
         }
     }
 
@@ -418,8 +425,9 @@ public class FavoritesFragment extends SimpleCollectionFragment<
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         v.setTranslationY(metrics.heightPixels);
         v.setAlpha(0);
-        if (!v.isShown())
-            v.setVisibility(View.VISIBLE);
+        if (!v.isShown()) {
+          v.setVisibility(View.VISIBLE);
+        }
         v.animate().
                 translationY(0).
                 alpha(1).
@@ -429,8 +437,9 @@ public class FavoritesFragment extends SimpleCollectionFragment<
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
-                        if (runOnAnimationEnd != null)
-                            runOnAnimationEnd.run();
+                        if (runOnAnimationEnd != null) {
+                          runOnAnimationEnd.run();
+                        }
                     }
                 });
     }
@@ -449,8 +458,9 @@ public class FavoritesFragment extends SimpleCollectionFragment<
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
                         v.setVisibility(View.INVISIBLE);
-                        if (runOnAnimationEnd != null)
-                            runOnAnimationEnd.run();
+                        if (runOnAnimationEnd != null) {
+                          runOnAnimationEnd.run();
+                        }
                     }
                 });
     }

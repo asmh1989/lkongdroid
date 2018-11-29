@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetPrivateChatListRequest extends AbstractAuthedHttpRequest<List<PrivateChatModel>> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class GetPrivateChatListRequest extends AbstractAuthedHttpRequest<List<PrivateChatModel>> {
     private long mStartSortKey;
     public GetPrivateChatListRequest(LKAuthObject authObject, long startSortKey) {
         super(authObject);
@@ -55,20 +55,27 @@ public class GetPrivateChatListRequest extends AbstractAuthedHttpRequest<List<Pr
             PrivateChatModel model = new PrivateChatModel();
             JSONObject jsonObject = jsonArray.getJSONObject(i);
             model.setUserId(getAuthObject().getUserId());
-            if(jsonObject.has("uid"))
-                model.setTargetUserId(jsonObject.getLong("uid"));
-            if(jsonObject.has("username"))
-                model.setUserName(jsonObject.getString("username"));
-            if(jsonObject.has("typeId"))
-                model.setTypeId(jsonObject.getLong("typeId"));
-            if(jsonObject.has("sortkey"))
-                model.setSortKey(jsonObject.getLong("sortkey"));
-            if(jsonObject.has("message"))
-                model.setMessage(jsonObject.getString("message"));
-            if (jsonObject.has("id"))
-                model.setId(jsonObject.getString("id"));
-            if (jsonObject.has("dateline"))
-                model.setDateline(dateFormat.parse(jsonObject.getString("dateline")));
+            if(jsonObject.has("uid")) {
+              model.setTargetUserId(jsonObject.getLong("uid"));
+            }
+            if(jsonObject.has("username")) {
+              model.setUserName(jsonObject.getString("username"));
+            }
+            if(jsonObject.has("typeId")) {
+              model.setTypeId(jsonObject.getLong("typeId"));
+            }
+            if(jsonObject.has("sortkey")) {
+              model.setSortKey(jsonObject.getLong("sortkey"));
+            }
+            if(jsonObject.has("message")) {
+              model.setMessage(jsonObject.getString("message"));
+            }
+            if (jsonObject.has("id")) {
+              model.setId(jsonObject.getString("id"));
+            }
+            if (jsonObject.has("dateline")) {
+              model.setDateline(dateFormat.parse(jsonObject.getString("dateline")));
+            }
             model.setTargetUserAvatar(ModelConverter.uidToAvatarUrl(model.getTargetUserId()));
 
             if(getAuthObject().getUserName().equals(model.getUserName())) {

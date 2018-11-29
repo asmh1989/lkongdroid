@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class SuggestionsBuilder implements SearchSuggestionsBuilder {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class SuggestionsBuilder implements SearchSuggestionsBuilder {
     private Context mContext;
     private List<SearchItem> mHistorySuggestions = new ArrayList<SearchItem>();
 

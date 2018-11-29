@@ -1,6 +1,6 @@
 package org.cryse.utils;
 
-public class FloatUtil {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FloatUtil {
     private final static float EPSILON = 0.00000001F;
 
     public static boolean compareFloats(float f1, float f2) {

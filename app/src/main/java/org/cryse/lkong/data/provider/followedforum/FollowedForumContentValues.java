@@ -13,7 +13,7 @@ import org.cryse.lkong.data.provider.base.AbstractContentValues;
 /**
  * Content values wrapper for the {@code followed_forum} table.
  */
-public class FollowedForumContentValues extends AbstractContentValues {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FollowedForumContentValues extends AbstractContentValues {
     @Override
     public Uri uri() {
         return FollowedForumColumns.CONTENT_URI;
@@ -61,7 +61,9 @@ public class FollowedForumContentValues extends AbstractContentValues {
      * Forum name.
      */
     public FollowedForumContentValues putForumName(@NonNull String value) {
-        if (value == null) throw new IllegalArgumentException("forumName must not be null");
+        if (value == null) {
+          throw new IllegalArgumentException("forumName must not be null");
+        }
         mContentValues.put(FollowedForumColumns.FORUM_NAME, value);
         return this;
     }
@@ -71,7 +73,9 @@ public class FollowedForumContentValues extends AbstractContentValues {
      * Forum icon url.
      */
     public FollowedForumContentValues putForumIcon(@NonNull String value) {
-        if (value == null) throw new IllegalArgumentException("forumIcon must not be null");
+        if (value == null) {
+          throw new IllegalArgumentException("forumIcon must not be null");
+        }
         mContentValues.put(FollowedForumColumns.FORUM_ICON, value);
         return this;
     }

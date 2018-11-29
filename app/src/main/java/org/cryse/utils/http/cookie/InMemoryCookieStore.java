@@ -9,7 +9,7 @@ import java.util.Map;
 
 import okhttp3.Cookie;
 
-public class InMemoryCookieStore implements CookieStore {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class InMemoryCookieStore implements CookieStore {
     Map<String, Collection<Cookie>> mStoreByHttpUrl;
 
     public InMemoryCookieStore() {

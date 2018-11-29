@@ -11,7 +11,7 @@ import org.cryse.lkong.model.SendNewPrivateMessageResult;
 import org.cryse.lkong.account.LKAuthObject;
 import org.json.JSONObject;
 
-public class SendNewPrivateMessageRequest extends AbstractAuthedHttpRequest<SendNewPrivateMessageResult> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class SendNewPrivateMessageRequest extends AbstractAuthedHttpRequest<SendNewPrivateMessageResult> {
     private long mTargetUserId;
     private String mTargetUserName;
     private String mMessage;

@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 
 import org.cryse.lkong.data.provider.followedthread.FollowedThreadModel;
 
-public class FollowedThread implements FollowedThreadModel {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FollowedThread implements FollowedThreadModel {
     private long userId;
     private long threadId;
     private String threadTitle;
@@ -60,7 +60,7 @@ public class FollowedThread implements FollowedThreadModel {
         return threadAuthorName;
     }
 
-    public long getThreadTimestamp() {
+    @Override public long getThreadTimestamp() {
         return threadTimeStamp;
     }
 

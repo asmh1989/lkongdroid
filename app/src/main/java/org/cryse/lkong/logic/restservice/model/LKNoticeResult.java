@@ -2,7 +2,7 @@ package org.cryse.lkong.logic.restservice.model;
 
 import java.util.List;
 
-public class LKNoticeResult {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKNoticeResult {
     private long curtime;
     private long nexttime;
     private List<LKNoticeItem> data;

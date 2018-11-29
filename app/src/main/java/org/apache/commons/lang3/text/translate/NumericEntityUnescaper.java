@@ -30,11 +30,10 @@ import java.util.EnumSet;
  * @since 3.0
  * @version $Id: NumericEntityUnescaper.java 1199894 2011-11-09 17:53:59Z ggregory $
  */
-public class NumericEntityUnescaper extends CharSequenceTranslator {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NumericEntityUnescaper extends CharSequenceTranslator {
 
     public static enum OPTION { semiColonRequired, semiColonOptional, errorIfNoSemiColon }
 
-    // TODO?: Create an OptionsSet class to hide some of the conditional logic below
     private final EnumSet<OPTION> options;
 
     /**

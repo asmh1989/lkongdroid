@@ -17,7 +17,7 @@ import com.bumptech.glide.request.target.Target;
 
 import java.lang.ref.WeakReference;
 
-public class AsyncTargetDrawable extends Drawable implements Target<GlideDrawable>, Drawable.Callback {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class AsyncTargetDrawable extends Drawable implements Target<GlideDrawable>, Drawable.Callback {
     public static final int TYPE_NORMAL_DRAWABLE = 11;
     public static final int TYPE_EMOTICON_DRAWABLE = 12;
     private WeakReference<Context> mContext;
@@ -129,12 +129,14 @@ public class AsyncTargetDrawable extends Drawable implements Target<GlideDrawabl
 
     @Override
     public void onResourceReady(GlideDrawable resource, GlideAnimation glideAnimation) {
-        if (mContext.get() == null)
-            throw new IllegalStateException("Context is null, cannot create bitmap drawable.");
+        if (mContext.get() == null) {
+          throw new IllegalStateException("Context is null, cannot create bitmap drawable.");
+        }
         Rect bound = new Rect(0, 0, resource.getIntrinsicWidth(), resource.getIntrinsicHeight());
         resource.setBounds(bound);
-        if(mInnerDrawable != null)
-            mInnerDrawable.setBounds(bound);
+        if(mInnerDrawable != null) {
+          mInnerDrawable.setBounds(bound);
+        }
         setDrawable(resource);
         this.setBounds(bound);
         if (mContainer.get() != null) {
@@ -205,16 +207,18 @@ public class AsyncTargetDrawable extends Drawable implements Target<GlideDrawabl
         } else {
             int width;
             int intrinsicWidth = drawable.getIntrinsicWidth();
-            if(intrinsicWidth <= 0 || intrinsicWidth > maxWidth)
-                width = maxWidth;
-            else
-                width = intrinsicWidth;
+            if(intrinsicWidth <= 0 || intrinsicWidth > maxWidth) {
+              width = maxWidth;
+            } else {
+              width = intrinsicWidth;
+            }
             int height;
             int intrinsicHeight = drawable.getIntrinsicHeight();
-            if(intrinsicHeight <= 0 || intrinsicHeight > maxHeight)
-                height = maxHeight;
-            else
-                height = intrinsicHeight;
+            if(intrinsicHeight <= 0 || intrinsicHeight > maxHeight) {
+              height = maxHeight;
+            } else {
+              height = intrinsicHeight;
+            }
             result = new Rect(0, 0, width, height);
         }
         return result;

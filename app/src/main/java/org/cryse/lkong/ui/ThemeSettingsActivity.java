@@ -33,26 +33,6 @@ public class ThemeSettingsActivity extends AbstractActivity
 
     @Override
     public void onColorSelection(@NonNull ColorChooserDialog dialog, @ColorInt int selectedColor) {
-        //final Config config = ATE.config(this, "");//getATEKey());
-        //switch (dialog.getTitle()) {
-        //    case R.string.primary_color:
-        //        config.primaryColor(selectedColor);
-        //        break;
-        //    case R.string.accent_color:
-        //        config.accentColor(selectedColor);
-        //        // We've overridden the navigation view selected colors in the default config,
-        //        // which means we are responsible for keeping those colors up to date.
-        //        config.navigationViewSelectedIcon(selectedColor);
-        //        config.navigationViewSelectedText(selectedColor);
-        //        break;
-        //    case R.string.primary_text_color:
-        //        config.textColorPrimary(selectedColor);
-        //        break;
-        //    case R.string.secondary_text_color:
-        //        config.textColorSecondary(selectedColor);
-        //        break;
-        //}
-        //config.commit();
         recreate(); // recreation needed to reach the checkboxes in the preferences layout
     }
 
@@ -252,7 +232,9 @@ public class ThemeSettingsActivity extends AbstractActivity
             getFragmentManager().beginTransaction().replace(R.id.content_frame, new SettingsFragment()).commit();
         } else {
             SettingsFragment frag = (SettingsFragment) getFragmentManager().findFragmentById(R.id.content_frame);
-            if (frag != null) frag.invalidateSettings();
+            if (frag != null) {
+              frag.invalidateSettings();
+            }
         }
     }
 

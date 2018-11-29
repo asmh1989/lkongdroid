@@ -3,7 +3,7 @@ package org.cryse.lkong.data.model;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class CachedForum extends RealmObject {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class CachedForum extends RealmObject {
     public static final int TYPE_MAIN = 0;
     public static final int TYPE_FOLLOWED = 1;
 

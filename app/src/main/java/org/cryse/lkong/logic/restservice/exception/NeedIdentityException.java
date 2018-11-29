@@ -1,6 +1,6 @@
 package org.cryse.lkong.logic.restservice.exception;
 
-public class NeedIdentityException extends RuntimeException {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class NeedIdentityException extends RuntimeException {
     public NeedIdentityException() {
     }
 

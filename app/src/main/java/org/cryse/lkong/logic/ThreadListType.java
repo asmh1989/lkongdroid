@@ -1,6 +1,6 @@
 package org.cryse.lkong.logic;
 
-public class ThreadListType {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class ThreadListType {
     public static final int TYPE_SORT_BY_REPLY = 0;
     public static final int TYPE_DIGEST = 1;
     public static final int TYPE_SORT_BY_POST = 2;

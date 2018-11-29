@@ -16,7 +16,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
-public class PostListPresenter implements BasePresenter<PostListView> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class PostListPresenter implements BasePresenter<PostListView> {
     public static final String LOG_TAG = PostListPresenter.class.getName();
     LKongForumService mLKongForumService;
     PostListView mView;

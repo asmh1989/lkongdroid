@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 
-public class HttpDelegate {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class HttpDelegate {
     private static final SimpleCookieJar sCookieJar;
 
     private static final OkHttpClient sOkHttpClient;

@@ -14,7 +14,7 @@
 
 package org.cryse.lkong.utils.gesture;
 
-public class Pointer {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class Pointer {
 
     // This Pointer's id.
     private int mId;

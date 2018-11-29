@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 import org.cryse.lkong.data.provider.followedforum.FollowedForumModel;
 import org.cryse.lkong.model.SimpleCollectionItem;
 
-public class FollowedForum implements FollowedForumModel, SimpleCollectionItem {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FollowedForum implements FollowedForumModel, SimpleCollectionItem {
     private long userId;
     private long forumId;
     private String forumName;
@@ -80,11 +80,11 @@ public class FollowedForum implements FollowedForumModel, SimpleCollectionItem {
     }
 
     public static final Parcelable.Creator<FollowedForum> CREATOR = new Parcelable.Creator<FollowedForum>() {
-        public FollowedForum createFromParcel(Parcel source) {
+        @Override public FollowedForum createFromParcel(Parcel source) {
             return new FollowedForum(source);
         }
 
-        public FollowedForum[] newArray(int size) {
+        @Override public FollowedForum[] newArray(int size) {
             return new FollowedForum[size];
         }
     };

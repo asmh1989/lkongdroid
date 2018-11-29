@@ -12,7 +12,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
-public class PrivateMessagePresenter implements BasePresenter<PrivateChatView> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class PrivateMessagePresenter implements BasePresenter<PrivateChatView> {
     public static final String LOG_TAG = PrivateMessagePresenter.class.getSimpleName();
     LKongForumService mLKongForumService;
     PrivateChatView mView;
@@ -81,10 +81,13 @@ public class PrivateMessagePresenter implements BasePresenter<PrivateChatView> {
     }
 
     public void setLoadingStatus(boolean loadingMore, boolean isLoading) {
-        if(mView == null) return;
-        if (loadingMore)
-            mView.setLoadingMore(isLoading);
-        else
-            mView.setLoading(isLoading);
+        if(mView == null) {
+          return;
+        }
+        if (loadingMore) {
+          mView.setLoadingMore(isLoading);
+        } else {
+          mView.setLoading(isLoading);
+        }
     }
 }

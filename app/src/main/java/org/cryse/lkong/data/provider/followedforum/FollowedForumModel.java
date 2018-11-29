@@ -10,7 +10,7 @@ import android.support.annotation.Nullable;
 /**
  * Followed forum.
  */
-public interface FollowedForumModel extends BaseModel {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public interface FollowedForumModel extends BaseModel {
 
     /**
      * Owner id.

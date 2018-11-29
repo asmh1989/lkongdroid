@@ -95,7 +95,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
 
-public class PostListActivity extends AbstractSwipeBackActivity implements PostListView {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class PostListActivity extends AbstractSwipeBackActivity implements PostListView {
     public static final String LOG_TAG = PostListActivity.class.getName();
     AppNavigation mNavigation = new AppNavigation();
     private int mCurrentPage = -1;
@@ -194,8 +194,9 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
             mTargetPostId = intent.getLongExtra(DataContract.BUNDLE_POST_ID, -1);
         }
         mCurrentPage = intent.getIntExtra(DataContract.BUNDLE_THREAD_CURRENT_PAGE, 1);
-        if(mThreadId == -1 && mTargetPostId == -1)
-            throw new IllegalStateException("PostListActivity missing extra in intent.");
+        if(mThreadId == -1 && mTargetPostId == -1) {
+          throw new IllegalStateException("PostListActivity missing extra in intent.");
+        }
         mUrlDispatcher = new LKongUrlDispatcher(mUrlCallback);
     }
 
@@ -234,8 +235,6 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
         mThreadTitleTextView = (TextView) mThreadIntroHeaderView.findViewById(R.id.layout_post_intro_header_textview_title);
         mThreadDetailCountTextView = (TextView) mThreadIntroHeaderView.findViewById(R.id.layout_post_intro_header_textview_detail_count);
         mForumNameTextView = (TextView) mThreadIntroHeaderView.findViewById(R.id.layout_post_intro_header_textview_forum_name);
-        // ATE.apply(mThreadIntroHeaderView, mATEKey);
-        //((CardView)mThreadIntroHeaderView).setCardBackgroundColor(Config.textColorPrimaryInverse(this, mATEKey));
 
         mWrapperAdapter.addHeader(mThreadIntroHeaderView);
 
@@ -430,7 +429,9 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
     }
 
     private void goToPage(int page) {
-        if(page == mCurrentPage || page < 1 || page > mPageCount) return;
+        if(page == mCurrentPage || page < 1 || page > mPageCount) {
+          return;
+        }
             getPresenter().loadPostList(mUserAccountManager.getAuthObject(), mThreadId, page, true, SHOW_MODE_REPLACE);
     }
 
@@ -439,13 +440,15 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
     }
 
     private void goToNextPage(boolean resetPosition) {
-        if(mCurrentPage + 1 >= 1 && mCurrentPage + 1 <= mPageCount)
-            getPresenter().loadPostList(mUserAccountManager.getAuthObject(), mThreadId, mCurrentPage + 1, resetPosition, SHOW_MODE_NEXT_PAGE);
+        if(mCurrentPage + 1 >= 1 && mCurrentPage + 1 <= mPageCount) {
+          getPresenter().loadPostList(mUserAccountManager.getAuthObject(), mThreadId, mCurrentPage + 1, resetPosition, SHOW_MODE_NEXT_PAGE);
+        }
     }
 
     private void goToPrevPage(boolean resetPosition) {
-        if(mCurrentPage - 1 >= 1 && mCurrentPage - 1 <= mPageCount)
-            getPresenter().loadPostList(mUserAccountManager.getAuthObject(), mThreadId, mCurrentPage - 1, resetPosition, SHOW_MODE_PREV_PAGE);
+        if(mCurrentPage - 1 >= 1 && mCurrentPage - 1 <= mPageCount) {
+          getPresenter().loadPostList(mUserAccountManager.getAuthObject(), mThreadId, mCurrentPage - 1, resetPosition, SHOW_MODE_PREV_PAGE);
+        }
     }
 
     @Override
@@ -454,15 +457,15 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
         if(savedInstanceState != null && savedInstanceState.containsKey(DataContract.BUNDLE_CONTENT_LIST_STORE)) {
             mThreadId = savedInstanceState.getLong(DataContract.BUNDLE_THREAD_ID);
             if(savedInstanceState.containsKey(DataContract.BUNDLE_THREAD_INFO_OBJECT)) {
-                if(savedInstanceState.containsKey(DataContract.BUNDLE_THREAD_IS_FAVORITE))
-                    mIsFavorite = savedInstanceState.getBoolean(DataContract.BUNDLE_THREAD_IS_FAVORITE);
+                if(savedInstanceState.containsKey(DataContract.BUNDLE_THREAD_IS_FAVORITE)) {
+                  mIsFavorite = savedInstanceState.getBoolean(DataContract.BUNDLE_THREAD_IS_FAVORITE);
+                }
                 mThreadSubject = savedInstanceState.getString(DataContract.BUNDLE_THREAD_SUBJECT);
                 mThreadModel = savedInstanceState.getParcelable(DataContract.BUNDLE_THREAD_INFO_OBJECT);
                 mCurrentPage = savedInstanceState.getInt(DataContract.BUNDLE_THREAD_CURRENT_PAGE);
                 mPageCount = savedInstanceState.getInt(DataContract.BUNDLE_THREAD_PAGE_COUNT);
                 mPageIndicatorItems = savedInstanceState.getStringArray(DataContract.BUNDLE_THREAD_PAGE_INDICATOR_ITEMS);
                 ArrayList<PostModel> list = savedInstanceState.getParcelableArrayList(DataContract.BUNDLE_CONTENT_LIST_STORE);
-                // mCollectionAdapter.addAll(list);
                 setThreadSubjectSpanned(mThreadModel);
                 showPostList(mCurrentPage, list, false, SHOW_MODE_REPLACE, null);
 
@@ -489,14 +492,11 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
                 }
             }
         } else {
-            /*mPostCollectionView.getSwipeToRefresh().measure(1,1);
-            mPostCollectionView.getSwipeToRefresh().setRefreshing(true);*/
             if(mThreadId != -1) {
                 getPresenter().loadThreadInfo(mUserAccountManager.getAuthObject(), mThreadId);
             } else if(mTargetPostId != -1) {
                 getPresenter().getPostLocation(mUserAccountManager.getAuthObject(), mTargetPostId, true);
             }
-            // getPresenter().loadThreadList(mForumId, mCurrentListType, false);
         }
     }
 
@@ -509,8 +509,9 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
                 long tid = doneEvent.getPostResult().getTid();
                 if (tid == mThreadId) {
                     int newReplyCount = doneEvent.getPostResult().getReplyCount(); // 这里楼主本身的一楼是被计算了的
-                    if (newReplyCount > mThreadModel.getReplies())
-                        mThreadModel.setReplies(newReplyCount);
+                    if (newReplyCount > mThreadModel.getReplies()) {
+                      mThreadModel.setReplies(newReplyCount);
+                    }
                     int newPageCount = newReplyCount == 0 ? 1 : (int) Math.ceil((double) newReplyCount / 20d);
                     if (newPageCount > mPageCount) {
                         mPageCount = newPageCount;
@@ -539,8 +540,9 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
         super.onSaveInstanceState(outState);
         outState.putLong(DataContract.BUNDLE_THREAD_ID, mThreadId);
         if(mThreadModel != null) {
-            if(mIsFavorite != null)
-                outState.putBoolean(DataContract.BUNDLE_THREAD_IS_FAVORITE, mIsFavorite);
+            if(mIsFavorite != null) {
+              outState.putBoolean(DataContract.BUNDLE_THREAD_IS_FAVORITE, mIsFavorite);
+            }
             outState.putString(DataContract.BUNDLE_THREAD_SUBJECT, mThreadSubject);
             outState.putParcelable(DataContract.BUNDLE_THREAD_INFO_OBJECT, mThreadModel);
             outState.putInt(DataContract.BUNDLE_THREAD_CURRENT_PAGE, mCurrentPage);
@@ -572,15 +574,16 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         if (mChangeThemeMenuItem != null) {
-            if (isNightMode())
-                mChangeThemeMenuItem.setTitle(R.string.action_light_theme);
-            else
-                mChangeThemeMenuItem.setTitle(R.string.action_dark_theme);
+            if (isNightMode()) {
+              mChangeThemeMenuItem.setTitle(R.string.action_light_theme);
+            } else {
+              mChangeThemeMenuItem.setTitle(R.string.action_dark_theme);
+            }
         }
         if(mFavoriteMenuItem != null) {
-            if(mItemList.size() == 0 || mUserAccountManager.getAuthObject() == null)
-                mFavoriteMenuItem.setVisible(false);
-            else if(mItemList.size() > 0 && mIsFavorite != null) {
+            if(mItemList.size() == 0 || mUserAccountManager.getAuthObject() == null) {
+              mFavoriteMenuItem.setVisible(false);
+            } else if(mItemList.size() > 0 && mIsFavorite != null) {
                 mFavoriteMenuItem.setVisible(true);
                 if(mIsFavorite) {
                     mFavoriteMenuItem.setIcon(R.drawable.ic_action_favorite);
@@ -615,6 +618,8 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
             case R.id.action_thread_favorite:
                 getPresenter().addOrRemoveFavorite(mUserAccountManager.getAuthObject(), mThreadId, mIsFavorite);
                 return true;
+            default:
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -709,15 +714,19 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
                 break;
             case SHOW_MODE_PREV_PAGE:
                 mCollectionAdapter.addAll(0, posts);
-                if(currentItemCount > 0)
-                    mCollectionAdapter.rangeRemove(posts.size(), posts.size() + currentItemCount);
+                if(currentItemCount > 0) {
+                  mCollectionAdapter.rangeRemove(posts.size(), posts.size() + currentItemCount);
+                }
                 scrollToPosition(posts.size() - 1);
                 break;
             case SHOW_MODE_NEXT_PAGE:
                 mCollectionAdapter.addAll(posts);
-                if(currentItemCount > 0)
-                    mCollectionAdapter.rangeRemove(0, currentItemCount);
+                if(currentItemCount > 0) {
+                  mCollectionAdapter.rangeRemove(0, currentItemCount);
+                }
                 scrollToPosition(0);
+                break;
+            default:
                 break;
         }
 
@@ -745,15 +754,17 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
             String idString = locationModel.getLocation();
             int firstIndex = idString.indexOf("_");
             int lastIndex = idString.lastIndexOf("_");
-            if(lastIndex > firstIndex + 1)
-                mThreadId = Long.valueOf(idString.substring(firstIndex + 1, lastIndex));
-            else
-                mThreadId = Long.valueOf(idString.substring(firstIndex + 1));
+            if(lastIndex > firstIndex + 1) {
+              mThreadId = Long.valueOf(idString.substring(firstIndex + 1, lastIndex));
+            } else {
+              mThreadId = Long.valueOf(idString.substring(firstIndex + 1));
+            }
             mTargetOrdinal = locationModel.getOrdinal();
-            if(loadThreadInfo)
-                getPresenter().loadThreadInfo(mUserAccountManager.getAuthObject(), mThreadId);
-            else
-                calculatePageAndLoad();
+            if(loadThreadInfo) {
+              getPresenter().loadThreadInfo(mUserAccountManager.getAuthObject(), mThreadId);
+            } else {
+              calculatePageAndLoad();
+            }
         }
     }
 
@@ -966,7 +977,6 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
         if (postModel != null && mThreadModel != null) {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
-            //sendIntent.putExtra(Intent.EXTRA_HTML_TEXT, postModel.getMessage());
             String shareContent = ShareContentBuilder.buildSharePostContent(
                     this,
                     mThreadModel,
@@ -983,7 +993,6 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
         if (mThreadModel != null) {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
-            //sendIntent.putExtra(Intent.EXTRA_HTML_TEXT, postModel.getMessage());
             String shareContent = ShareContentBuilder.buildShareThreadContent(
                     this,
                     mThreadModel
@@ -1061,10 +1070,11 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
 
     private CharSequence replaceImageSpan(CharSequence sequence, PostModel postModel, Drawable initPlaceHolder) {
         SpannableStringBuilder spannable;
-        if(sequence instanceof SpannableStringBuilder)
-            spannable = (SpannableStringBuilder)sequence;
-        else
-            spannable = new SpannableStringBuilder(sequence);
+        if(sequence instanceof SpannableStringBuilder) {
+          spannable = (SpannableStringBuilder)sequence;
+        } else {
+          spannable = new SpannableStringBuilder(sequence);
+        }
         ImageSpan[] imageSpans = spannable.getSpans(0, sequence.length(), ImageSpan.class );
         URLSpan[] urlSpans = spannable.getSpans(0, sequence.length(), URLSpan.class );
 
@@ -1212,7 +1222,7 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
 
         @Override
         public void onFailed(String url) {
-            mNavigation.openUrl(PostListActivity.this, url, mUseInAppBrowser.get());
+            AppNavigation.openUrl(PostListActivity.this, url, mUseInAppBrowser.get());
         }
     };
 
@@ -1221,17 +1231,13 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
     float mDatelineTextSize;
     private void initTextPaint() {
         //mTextColorPrimary = Config.textColorPrimary(this, mATEKey);
-        //mTextColorSecondary = Config.textColorSecondary(this, mATEKey);
         mTodayPrefix = getString(R.string.text_datetime_today);
         mContentTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        //float contentTextSize = Config.textSizeForMode(this, mATEKey, Config.TEXTSIZE_BODY);
         mContentTextPaint.setTextSize(UIUtils.getSpDimensionPixelSize(this, R.dimen.text_size_edit));
-        //mContentTextPaint.setColor(mTextColorPrimary);
         mContentTextPaint.linkColor = getAccentColor();
         mAuthorTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         float authorTextSize =  UIUtils.getSpDimensionPixelSize(this, R.dimen.text_size_subhead);
         mAuthorTextPaint.setTextSize(authorTextSize);
-        //mAuthorTextPaint.setColor(mTextColorPrimary);
         mAuthorTextPaint.linkColor = getAccentColor();
         mDatelineTextSize = UIUtils.getSpDimensionPixelSize(this, R.dimen.text_size_body1);
     }
@@ -1252,6 +1258,8 @@ public class PostListActivity extends AbstractSwipeBackActivity implements PostL
                     return true;
                 }
                 return false;
+            default:
+                break;
         }
         return super.onKeyDown (keyCode, event);
     }

@@ -2,7 +2,7 @@ package org.cryse.lkong.account;
 
 import org.cryse.lkong.logic.request.SignInRequest;
 
-public class LKongServerAuthenticate {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class LKongServerAuthenticate {
     private static final String LOG_TAG = LKongServerAuthenticate.class.getName();
 
     public LKongServerAuthenticate() {

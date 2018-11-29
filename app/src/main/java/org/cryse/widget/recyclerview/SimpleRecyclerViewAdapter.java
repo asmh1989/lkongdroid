@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public abstract class SimpleRecyclerViewAdapter<ItemType> extends RecyclerView.Adapter<RecyclerViewHolder> implements RecyclerViewAdapter<ItemType> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public abstract class SimpleRecyclerViewAdapter<ItemType> extends RecyclerView.Adapter<RecyclerViewHolder> implements RecyclerViewAdapter<ItemType> {
     public static final int DEFAULT_ITEM_CAPACITY = 20;
     protected Context mContext;
     protected List<ItemType> mItemList;
@@ -20,25 +20,25 @@ public abstract class SimpleRecyclerViewAdapter<ItemType> extends RecyclerView.A
         this.mItemList = items;
     }
 
-    public void addAll(Collection<ItemType> items) {
+    @Override public void addAll(Collection<ItemType> items) {
         addAll(mItemList.size(), items);
     }
 
-    public void addAll(int position, Collection<ItemType> items) {
+    @Override public void addAll(int position, Collection<ItemType> items) {
         mItemList.addAll(position, items);
         notifyItemRangeInserted(position, items.size());
     }
 
-    public void add(ItemType item) {
+    @Override public void add(ItemType item) {
         add(mItemList.size(), item);
     }
 
-    public void add(int position, ItemType item) {
+    @Override public void add(int position, ItemType item) {
         mItemList.add(position, item);
         notifyItemInserted(position);
     }
 
-    public void remove(int position){
+    @Override public void remove(int position){
         if(position >= 0 && position < mItemList.size()) {
             mItemList.remove(position);
             notifyItemRemoved(position);
@@ -56,7 +56,7 @@ public abstract class SimpleRecyclerViewAdapter<ItemType> extends RecyclerView.A
         }
     }
 
-    public void replaceWith(Collection<ItemType> items) {
+    @Override public void replaceWith(Collection<ItemType> items) {
         int currentSize = mItemList.size();
         int newSize = mItemList.size();
         int count = Math.max(currentSize, newSize);
@@ -65,7 +65,7 @@ public abstract class SimpleRecyclerViewAdapter<ItemType> extends RecyclerView.A
         notifyItemRangeRemoved(0, count);
     }
 
-    public void clear() {
+    @Override public void clear() {
         int itemCount = mItemList.size();
         mItemList.clear();
         notifyItemRangeRemoved(0, itemCount);
@@ -81,7 +81,7 @@ public abstract class SimpleRecyclerViewAdapter<ItemType> extends RecyclerView.A
         return super.getItemId(position);
     }
 
-    public ItemType getItem(int position) {
+    @Override public ItemType getItem(int position) {
         return mItemList.get(position);
     }
 
@@ -90,11 +90,11 @@ public abstract class SimpleRecyclerViewAdapter<ItemType> extends RecyclerView.A
         return (ArrayList<ItemType>) mItemList;
     }
 
-    public void setOnItemClickListener(RecyclerViewOnItemClickListener listener) {
+    @Override public void setOnItemClickListener(RecyclerViewOnItemClickListener listener) {
         this.mOnItemClickListener = listener;
     }
 
-    public void setOnItemLongClickListener(RecyclerViewOnItemLongClickListener listener) {
+    @Override public void setOnItemLongClickListener(RecyclerViewOnItemLongClickListener listener) {
         this.mOnItemLongClickListener = listener;
     }
 
@@ -129,7 +129,7 @@ public abstract class SimpleRecyclerViewAdapter<ItemType> extends RecyclerView.A
         }
     }
 
-    public RecyclerView.Adapter adapter() {
+    @Override public RecyclerView.Adapter adapter() {
         return this;
     }
 }

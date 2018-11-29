@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 
 import org.cryse.lkong.R;
 
-public class AnalyticsUtils {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class AnalyticsUtils {
     //private static Tracker sTracker;
 
     public static void init(Context context, String appKey) {

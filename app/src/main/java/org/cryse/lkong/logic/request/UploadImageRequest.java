@@ -13,7 +13,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 
-public class UploadImageRequest extends AbstractAuthedHttpRequest<UploadImageResult> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class UploadImageRequest extends AbstractAuthedHttpRequest<UploadImageResult> {
     private String mImagePath;
     private String mMimeType;
     public UploadImageRequest(LKAuthObject authObject, String imagePath, String mimeType) {

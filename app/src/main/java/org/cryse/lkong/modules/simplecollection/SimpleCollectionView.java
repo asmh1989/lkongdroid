@@ -4,7 +4,7 @@ import org.cryse.lkong.modules.base.ContentViewEx;
 
 import java.util.List;
 
-public interface SimpleCollectionView<ItemType> extends ContentViewEx {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public interface SimpleCollectionView<ItemType> extends ContentViewEx {
     void showSimpleData(List<ItemType> items, boolean loadMore);
 }
 

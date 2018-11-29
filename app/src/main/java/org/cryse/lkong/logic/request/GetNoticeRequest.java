@@ -13,7 +13,7 @@ import org.cryse.lkong.utils.GsonUtils;
 
 import java.util.List;
 
-public class GetNoticeRequest extends AbstractAuthedHttpRequest<List<NoticeModel>> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class GetNoticeRequest extends AbstractAuthedHttpRequest<List<NoticeModel>> {
     private long mStart;
     public GetNoticeRequest(LKAuthObject authObject, long start) {
         super(authObject);

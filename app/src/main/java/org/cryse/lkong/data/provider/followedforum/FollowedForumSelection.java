@@ -12,7 +12,7 @@ import org.cryse.lkong.data.provider.base.AbstractSelection;
 /**
  * Selection for the {@code followed_forum} table.
  */
-public class FollowedForumSelection extends AbstractSelection<FollowedForumSelection> {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class FollowedForumSelection extends AbstractSelection<FollowedForumSelection> {
     @Override
     protected Uri baseUri() {
         return FollowedForumColumns.CONTENT_URI;
@@ -27,7 +27,9 @@ public class FollowedForumSelection extends AbstractSelection<FollowedForumSelec
      */
     public FollowedForumCursor query(ContentResolver contentResolver, String[] projection) {
         Cursor cursor = contentResolver.query(uri(), projection, sel(), args(), order());
-        if (cursor == null) return null;
+        if (cursor == null) {
+          return null;
+        }
         return new FollowedForumCursor(cursor);
     }
 
@@ -47,7 +49,9 @@ public class FollowedForumSelection extends AbstractSelection<FollowedForumSelec
      */
     public FollowedForumCursor query(Context context, String[] projection) {
         Cursor cursor = context.getContentResolver().query(uri(), projection, sel(), args(), order());
-        if (cursor == null) return null;
+        if (cursor == null) {
+          return null;
+        }
         return new FollowedForumCursor(cursor);
     }
 

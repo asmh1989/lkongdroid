@@ -28,7 +28,7 @@ import org.apache.commons.lang3.ArrayUtils;
  * @since 3.0
  * @version $Id: AggregateTranslator.java 1088899 2011-04-05 05:31:27Z bayard $
  */
-public class AggregateTranslator extends CharSequenceTranslator {
+@SuppressWarnings({ "ALL", "AlibabaClassMustHaveAuthor" }) public class AggregateTranslator extends CharSequenceTranslator {
 
     private final CharSequenceTranslator[] translators;
 
